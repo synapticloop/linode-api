@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="linode-api-util">
+	<property name="src.java.dir" value="src/util/java" />
+	<property name="src.dir" value="src/util" />
+	<property name="build.classes.dir" value="build" />
+	<property name="dist.dir" value="dist" />
+
+	<property name="lib.dir" value="lib/runtime" />
+
+	<target name="init">
+		<mkdir dir="${build.classes.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+
+	<path id="classpath">
+		<fileset dir="lib/util">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="compile">
+		<javac srcdir="${src.java.dir}" destdir="${build.classes.dir}" classpathref="classpath" debug="on" includeantruntime="false" source="1.7" target="1.7" />
+	</target>
+
+	<target name="dist" depends="clean,init,compile">
+		<jar destfile="dist/${ant.project.name}.jar" manifest="src/util/META-INF/MANIFEST.MF">
+			<zipgroupfileset dir="lib/util/" includes="*.jar" /> 
+			<fileset dir="${build.classes.dir}">
+				<include name="**/*.*"/>
+			</fileset>
+			<fileset dir="${src.java.dir}">
+				<include name="**/*.templar"/>
+			</fileset>
+		</jar>
+	</target>
+</project>
