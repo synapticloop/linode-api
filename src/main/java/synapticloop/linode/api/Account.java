@@ -40,6 +40,8 @@ public class Account {
 	 *
 	 * @param mode This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -80,6 +82,9 @@ public class Account {
 	 * @param planID The desired PlanID available from avail.LinodePlans(). This is required for modes 'linode_new' and 'linode_resize'.
 	 * @param linodeID This is the LinodeID you want to resize and is required for mode 'linode_resize'.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest estimateinvoice(String mode, Long paymentTerm, Long planID, Long linodeID) throws ApiException {
@@ -123,6 +128,8 @@ public class Account {
 	 * }
 	 * </pre>
 	 *
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */

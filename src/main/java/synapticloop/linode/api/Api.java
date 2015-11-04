@@ -44,6 +44,8 @@ public class Api {
 	 * </pre>
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 

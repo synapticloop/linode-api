@@ -50,8 +50,15 @@ public class {api.className} {{{\n}
 
 		{\t} *{\n}
 			{loop apiMethod.requiredApiMethodParams as apiMethodParam}
-				{\t} * @param {apiMethodParam.parameterName} {apiMethodParam.description}{\n}
+				{\t} * @param {apiMethodParam.parameterName} 
+					{if fn:<[fn:length[apiMethodParam.description], "1"]}
+						(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+					{else}
+						{apiMethodParam.description}
+					{endif}{\n}
 			{endloop}
+		{\t} *{\n}
+		{\t} * @return the linode request object{\n}
 		{\t} *{\n}
 		{\t} * @throws ApiException if a required parameter is null{\n}
 		{\t} */{\n}
@@ -115,9 +122,17 @@ public class {api.className} {{{\n}
 
 			{\t} *{\n}
 				{loop apiMethod.apiMethodParams as apiMethodParam}
-					{\t} * @param {apiMethodParam.parameterName} {apiMethodParam.description}{\n}
+					{\t} * @param {apiMethodParam.parameterName} 
+						{if fn:<[fn:length[apiMethodParam.description], "1"]}
+							(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+						{else}
+							{apiMethodParam.description}
+						{endif}{\n}
 				{endloop}
 			{\t} *{\n}
+			{\t} * @return the linode request object{\n}
+			{\t} *{\n}
+			{\t} * @throws ApiException if a required parameter is null{\n}
 			{\t} */{\n}
 {\n}
 

@@ -18,7 +18,7 @@ public class LinodeResponse {
 	private static final String ERRORARRAY = "ERRORARRAY";
 
 	/**
-	 * @param json
+	 * @param json the json object returned from the http call
 	 */
 	public LinodeResponse(JSONObject json) {
 		this.json = json;
@@ -27,8 +27,9 @@ public class LinodeResponse {
 	/**
 	 * Data as JSONObject
 	 * 
-	 * @return JSONObject
-	 * @throws JSONException
+	 * @return JSONObject the data as a JSONObject
+	 * 
+	 * @throws JSONException if there was an error parsing the JSONObject
 	 */
 	public JSONObject getDataAsJSONObject() throws JSONException {
 		return json.getJSONObject(DATA);
@@ -37,8 +38,9 @@ public class LinodeResponse {
 	/**
 	 * Data as JSONArray
 	 * 
-	 * @return JSONArray
-	 * @throws JSONException
+	 * @return JSONArray the data as a JSON array
+	 *
+	 * @throws JSONException if there was an error parsing the JSONObject
 	 */
 	public JSONArray getDataAsJSONArray() throws JSONException {
 		return json.getJSONArray(DATA);
@@ -47,8 +49,9 @@ public class LinodeResponse {
 	/**
 	 * Action value
 	 * 
-	 * @return
-	 * @throws JSONException
+	 * @return the action that was performed for the request
+	 * 
+	 * @throws JSONException if there was an error parsing the JSONObject
 	 */
 	public String getAction() throws JSONException {
 		return json.getString(ACTION);
@@ -58,7 +61,8 @@ public class LinodeResponse {
 	 * returns JSONArray of errors
 	 * 
 	 * @return JSONArray of errors
-	 * @throws JSONException
+	 * 
+	 * @throws JSONException if there was an error parsing the JSONObject
 	 */
 	public JSONArray getErrorArray() throws JSONException {
 		return json.getJSONArray(ERRORARRAY);

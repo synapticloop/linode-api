@@ -28,6 +28,8 @@ public class Test {
 	 * </pre>
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 

@@ -55,6 +55,8 @@ public class Domain {
 	 * @param domain The zone's name
 	 * @param type master or slave
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -97,15 +99,18 @@ public class Domain {
 	 * @param description Currently undisplayed.
 	 * @param type master or slave
 	 * @param SOA_Email Required when type=master
-	 * @param Refresh_sec 
-	 * @param Retry_sec 
-	 * @param Expire_sec 
-	 * @param TTL_sec 
+	 * @param Refresh_sec (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param Retry_sec (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param Expire_sec (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param TTL_sec (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param lpm_displayGroup Display group in the Domain list inside the Linode DNS Manager
 	 * @param status 0, 1, or 2 (disabled, active, edit mode)
 	 * @param master_ips When type=slave, the zone's master DNS servers list, semicolon separated 
 	 * @param axfr_ips IP addresses allowed to AXFR the entire zone, semicolon separated
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest create(String domain, String description, String type, String SOA_Email, Long Refresh_sec, Long Retry_sec, Long Expire_sec, Long TTL_sec, String lpm_displayGroup, Long status, String master_ips, String axfr_ips) throws ApiException {
@@ -154,7 +159,6 @@ public class Domain {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -172,7 +176,9 @@ public class Domain {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param domainID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -228,6 +234,8 @@ public class Domain {
 	 * </pre>
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -278,6 +286,9 @@ public class Domain {
 	 *
 	 * @param domainID Limits the list to the specified DomainID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest list(Long domainID) throws ApiException {
@@ -308,8 +319,10 @@ public class Domain {
 	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
-	 * @param domainID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param type One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -349,16 +362,19 @@ public class Domain {
 	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
-	 * @param domainID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param type One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
 	 * @param name The hostname or FQDN. When Type=MX the subdomain to delegate to the Target MX server.
 	 * @param target When Type=MX the hostname. When Type=CNAME the target of the alias. When Type=TXT the value of the record. When Type=A or AAAA the token of '[remote_addr]' will be substituted with the IP address of the request.
 	 * @param priority Priority for MX and SRV records, 0-255
-	 * @param weight 
-	 * @param port 
+	 * @param weight (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param port (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param protocol The protocol to append to an SRV record. Ignored on other record types.
 	 * @param TTL_sec TTL. Leave as 0 to accept our default.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest resourcecreate(Long domainID, String type, String name, String target, Long priority, Long weight, Long port, String protocol, Long TTL_sec) throws ApiException {
@@ -398,7 +414,6 @@ public class Domain {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -416,8 +431,10 @@ public class Domain {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param domainID 
-	 * @param resourceID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param resourceID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -438,7 +455,6 @@ public class Domain {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -475,7 +491,9 @@ public class Domain {
 	 * }
 	 * </pre>
 	 *
-	 * @param domainID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -491,7 +509,6 @@ public class Domain {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -528,9 +545,12 @@ public class Domain {
 	 * }
 	 * </pre>
 	 *
-	 * @param domainID 
-	 * @param resourceID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param resourceID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest resourcelist(Long domainID, Long resourceID) throws ApiException {
@@ -566,7 +586,9 @@ public class Domain {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param resourceID 
+	 * @param resourceID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -601,16 +623,19 @@ public class Domain {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param domainID 
-	 * @param resourceID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param resourceID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param name The hostname or FQDN. When Type=MX the subdomain to delegate to the Target MX server.
 	 * @param target When Type=MX the hostname. When Type=CNAME the target of the alias. When Type=TXT the value of the record. When Type=A or AAAA the token of '[remote_addr]' will be substituted with the IP address of the request.
 	 * @param priority Priority for MX and SRV records, 0-255
-	 * @param weight 
-	 * @param port 
+	 * @param weight (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param port (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param protocol The protocol to append to an SRV record. Ignored on other record types.
 	 * @param TTL_sec TTL. Leave as 0 to accept our default.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest resourceupdate(Long domainID, Long resourceID, String name, String target, Long priority, Long weight, Long port, String protocol, Long TTL_sec) throws ApiException {
@@ -667,7 +692,9 @@ public class Domain {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param domainID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -702,20 +729,23 @@ public class Domain {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param domainID 
+	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param domain The zone's name
 	 * @param description Currently undisplayed.
 	 * @param type master or slave
 	 * @param SOA_Email Required when type=master
-	 * @param Refresh_sec 
-	 * @param Retry_sec 
-	 * @param Expire_sec 
-	 * @param TTL_sec 
+	 * @param Refresh_sec (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param Retry_sec (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param Expire_sec (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param TTL_sec (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param lpm_displayGroup Display group in the Domain list inside the Linode DNS Manager
 	 * @param status 0, 1, or 2 (disabled, active, edit mode)
 	 * @param master_ips When type=slave, the zone's master DNS servers list, semicolon separated 
 	 * @param axfr_ips IP addresses allowed to AXFR the entire zone, semicolon separated
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest update(Long domainID, String domain, String description, String type, String SOA_Email, Long Refresh_sec, Long Retry_sec, Long Expire_sec, Long TTL_sec, String lpm_displayGroup, Long status, String master_ips, String axfr_ips) throws ApiException {

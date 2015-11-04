@@ -40,6 +40,10 @@ public class ApiMethod {
 
 	public void addDescription(String description) {
 		this.description = description;
+		if(description != null && "<p></p>".equals(description)) {
+			description = "";
+			return;
+		}
 
 		// now go through and populate the descriptions array list
 		String[] splits = description.split(" ");

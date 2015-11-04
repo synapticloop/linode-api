@@ -73,6 +73,8 @@ public class Avail {
 	 * </pre>
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -119,6 +121,8 @@ public class Avail {
 	 * }
 	 * </pre>
 	 *
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -168,6 +172,9 @@ public class Avail {
 	 *
 	 * @param distributionID Limits the results to the specified DistributionID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest distributions(Long distributionID) throws ApiException {
@@ -220,6 +227,8 @@ public class Avail {
 	 * }
 	 * </pre>
 	 *
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -274,6 +283,9 @@ public class Avail {
 	 * @param isXen Show or hide Xen compatible kernels
 	 * @param isKVM Show or hide KVM compatible kernels
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest kernels(Boolean isXen, Boolean isKVM) throws ApiException {
@@ -336,6 +348,8 @@ public class Avail {
 	 * </pre>
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -394,6 +408,9 @@ public class Avail {
 	 *
 	 * @param planID Limits the list to the specified PlanID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest linodeplans(Long planID) throws ApiException {
@@ -421,6 +438,8 @@ public class Avail {
 	 * }
 	 * </pre>
 	 *
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -477,6 +496,8 @@ public class Avail {
 	 * }
 	 * </pre>
 	 *
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -537,6 +558,9 @@ public class Avail {
 	 * @param distributionVendor Debian, Ubuntu, Fedora, etc.
 	 * @param keywords Search terms
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest stackscripts(Long distributionID, String distributionVendor, String keywords) throws ApiException {

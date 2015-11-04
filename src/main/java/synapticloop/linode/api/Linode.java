@@ -90,7 +90,9 @@ public class Linode {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -125,9 +127,12 @@ public class Linode {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param configID The ConfigID to boot, available from linode.config.list().
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest boot(Long linodeID, Long configID) throws ApiException {
@@ -172,6 +177,8 @@ public class Linode {
 	 * @param linodeID The LinodeID that you want cloned
 	 * @param datacenterID The DatacenterID from avail.datacenters() where you wish to place this new Linode
 	 * @param planID The desired PlanID available from avail.LinodePlans()
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -227,6 +234,9 @@ public class Linode {
 	 * @param planID The desired PlanID available from avail.LinodePlans()
 	 * @param paymentTerm Subscription term in months for prepaid customers. One of: 1, 12, or 24
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest clone(Long linodeID, Long datacenterID, Long planID, Long paymentTerm) throws ApiException {
@@ -272,10 +282,12 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param kernelID The KernelID for this profile. Found in avail.kernels()
 	 * @param label The Label for this profile
 	 * @param diskList A comma delimited list of DiskIDs; position reflects device node. The 9th element for specifying the initrd.
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -325,7 +337,7 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param kernelID The KernelID for this profile. Found in avail.kernels()
 	 * @param label The Label for this profile
 	 * @param comments Comments you wish to save along with this profile
@@ -343,6 +355,9 @@ public class Linode {
 	 * @param helper_network Automatically creates network configuration files for your distro and places them into your filesystem.
 	 * @param devtmpfs_automount Controls if pv_ops kernels should automount devtmpfs at boot. 
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest configcreate(Long linodeID, Long kernelID, String label, String comments, Long rAMLimit, String diskList, String virt_mode, String runLevel, Long rootDeviceNum, String rootDeviceCustom, Boolean rootDeviceRO, Boolean helper_disableUpdateDB, Boolean helper_distro, Boolean helper_xen, Boolean helper_depmod, Boolean helper_network, Boolean devtmpfs_automount) throws ApiException {
@@ -429,8 +444,10 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
-	 * @param configID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -502,7 +519,9 @@ public class Linode {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -569,9 +588,12 @@ public class Linode {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID 
-	 * @param configID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest configlist(Long linodeID, Long configID) throws ApiException {
@@ -607,7 +629,9 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID 
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -642,8 +666,8 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
-	 * @param configID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param kernelID The KernelID for this profile. Found in avail.kernels()
 	 * @param label The Label for this profile
 	 * @param comments Comments you wish to save along with this profile
@@ -661,6 +685,9 @@ public class Linode {
 	 * @param helper_network Automatically creates network configuration files for your distro and places them into your filesystem.
 	 * @param devtmpfs_automount Controls if pv_ops kernels should automount devtmpfs at boot. 
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest configupdate(Long linodeID, Long configID, Long kernelID, String label, String comments, Long rAMLimit, String diskList, String virt_mode, String runLevel, Long rootDeviceNum, String rootDeviceCustom, Boolean rootDeviceRO, Boolean helper_disableUpdateDB, Boolean helper_distro, Boolean helper_xen, Boolean helper_depmod, Boolean helper_network, Boolean devtmpfs_automount) throws ApiException {
@@ -751,6 +778,8 @@ public class Linode {
 	 * @param datacenterID The DatacenterID from avail.datacenters() where you wish to place this new Linode
 	 * @param planID The desired PlanID available from avail.LinodePlans()
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -797,6 +826,9 @@ public class Linode {
 	 * @param planID The desired PlanID available from avail.LinodePlans()
 	 * @param paymentTerm Subscription term in months for prepaid customers. One of: 1, 12, or 24
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest create(Long datacenterID, Long planID, Long paymentTerm) throws ApiException {
@@ -841,6 +873,8 @@ public class Linode {
 	 *
 	 * @param linodeID The LinodeID to delete
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -879,6 +913,9 @@ public class Linode {
 	 * @param linodeID The LinodeID to delete
 	 * @param skipChecks Skips the safety checks and will always delete the Linode
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest delete(Long linodeID, Boolean skipChecks) throws ApiException {
@@ -895,7 +932,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -915,10 +951,12 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param label The display label for this Disk
 	 * @param type The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
 	 * @param size The size in MB of this Disk.
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -949,7 +987,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -969,15 +1006,18 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
-	 * @param fromDistributionID 
-	 * @param rootPass 
-	 * @param rootSSHKey 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param fromDistributionID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param rootPass (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param rootSSHKey (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param label The display label for this Disk
 	 * @param type The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
 	 * @param isReadOnly Enable forced read-only for this Disk
 	 * @param size The size in MB of this Disk.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest diskcreate(Long linodeID, Long fromDistributionID, String rootPass, String rootSSHKey, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
@@ -1018,7 +1058,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -1038,11 +1077,13 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param distributionID The DistributionID to create this disk from. Found in avail.distributions()
 	 * @param label The label of this new disk image
 	 * @param size Size of this disk image in MB
 	 * @param rootPass The root user's password
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1078,7 +1119,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -1098,13 +1138,16 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param distributionID The DistributionID to create this disk from. Found in avail.distributions()
 	 * @param label The label of this new disk image
 	 * @param size Size of this disk image in MB
 	 * @param rootPass The root user's password
 	 * @param rootSSHKey Optionally sets this string into /root/.ssh/authorized_keys upon distribution configuration.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest diskcreatefromdistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
@@ -1159,6 +1202,8 @@ public class Linode {
 	 * @param imageID The ID of the frozen image to deploy from
 	 * @param linodeID Specifies the Linode to deploy on to
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -1200,6 +1245,9 @@ public class Linode {
 	 * @param rootPass Optionally sets the root password at deployment time. If a password is not provided the existing root password of the frozen image will not be modified
 	 * @param rootSSHKey Optionally sets this string into /root/.ssh/authorized_keys upon image deployment
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest diskcreatefromimage(Long imageID, Long linodeID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
@@ -1230,7 +1278,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -1250,13 +1297,15 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param stackScriptID The StackScript to create this image from
 	 * @param stackScriptUDFResponses JSON encoded name/value pairs, answering this StackScript's User Defined Fields
 	 * @param distributionID Which Distribution to apply this StackScript to. Must be one from the script's DistributionIDList
 	 * @param label The label of this new disk image
 	 * @param size Size of this disk image in MB
 	 * @param rootPass The root user's password
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1302,7 +1351,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -1322,7 +1370,7 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param stackScriptID The StackScript to create this image from
 	 * @param stackScriptUDFResponses JSON encoded name/value pairs, answering this StackScript's User Defined Fields
 	 * @param distributionID Which Distribution to apply this StackScript to. Must be one from the script's DistributionIDList
@@ -1331,6 +1379,9 @@ public class Linode {
 	 * @param rootPass The root user's password
 	 * @param rootSSHKey Optionally sets this string into /root/.ssh/authorized_keys upon distribution configuration.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest diskcreatefromstackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
@@ -1377,7 +1428,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -1397,8 +1447,10 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
-	 * @param diskID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param diskID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1439,8 +1491,10 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
-	 * @param diskID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param diskID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1478,6 +1532,8 @@ public class Linode {
 	 *
 	 * @param linodeID Specifies the source Linode to create the image from
 	 * @param diskID Specifies the source Disk to create the image from
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1518,6 +1574,9 @@ public class Linode {
 	 * @param description An optional description of the created image
 	 * @param label Sets the name of the image shown in the base image list, defaults to the source image label
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest diskimagize(Long linodeID, Long diskID, String description, String label) throws ApiException {
@@ -1577,7 +1636,9 @@ public class Linode {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1628,9 +1689,12 @@ public class Linode {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID 
-	 * @param diskID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param diskID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest disklist(Long linodeID, Long diskID) throws ApiException {
@@ -1647,7 +1711,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -1667,9 +1730,11 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
-	 * @param diskID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param diskID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param size The requested new size of this Disk in MB
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1695,7 +1760,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -1714,7 +1778,9 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param diskID 
+	 * @param diskID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1730,7 +1796,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -1749,11 +1814,14 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
-	 * @param diskID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param diskID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param label The display label for this Disk
 	 * @param isReadOnly Enable forced read-only for this Disk
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest diskupdate(Long linodeID, Long diskID, String label, Boolean isReadOnly) throws ApiException {
@@ -1795,7 +1863,9 @@ public class Linode {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1832,6 +1902,8 @@ public class Linode {
 	 *   - VALIDATION
 	 *
 	 * @param linodeID The LinodeID of the Linode that will be assigned an additional public IP address
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1879,6 +1951,8 @@ public class Linode {
 	 *   - NOTFOUND
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -1922,6 +1996,9 @@ public class Linode {
 	 * @param linodeID If specified, limits the result to this LinodeID
 	 * @param iPAddressID If specified, limits the result to this IPAddressID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest iplist(Long linodeID, Long iPAddressID) throws ApiException {
@@ -1960,6 +2037,8 @@ public class Linode {
 	 *
 	 * @param iPAddressID The IPAddressID of the address to update
 	 * @param hostname The hostname to set the reverse DNS to
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -2013,6 +2092,8 @@ public class Linode {
 	 *
 	 * @param iPAddressID The IPAddressID of an IP Address to transfer or swap
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -2062,6 +2143,9 @@ public class Linode {
 	 * @param withIPAddressID The IP Address ID to swap
 	 * @param toLinodeID The LinodeID of the Linode where IPAddressID will be transfered
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest ipswap(Long iPAddressID, Long withIPAddressID, Long toLinodeID) throws ApiException {
@@ -2081,7 +2165,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -2118,7 +2201,9 @@ public class Linode {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -2134,7 +2219,6 @@ public class Linode {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -2171,10 +2255,13 @@ public class Linode {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param jobID Limits the list to the specified JobID
-	 * @param pendingOnly 
+	 * @param pendingOnly (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest joblist(Long linodeID, Long jobID, Boolean pendingOnly) throws ApiException {
@@ -2238,6 +2325,8 @@ public class Linode {
 	 * </pre>
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -2292,6 +2381,9 @@ public class Linode {
 	 *
 	 * @param linodeID Limits the list to the specified LinodeID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest list(Long linodeID) throws ApiException {
@@ -2321,7 +2413,9 @@ public class Linode {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -2355,9 +2449,12 @@ public class Linode {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID 
-	 * @param configID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest reboot(Long linodeID, Long configID) throws ApiException {
@@ -2398,8 +2495,10 @@ public class Linode {
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param planID The desired PlanID available from avail.LinodePlans()
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -2438,7 +2537,9 @@ public class Linode {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -2473,7 +2574,9 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -2508,7 +2611,7 @@ public class Linode {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID 
+	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param label This Linode's label
 	 * @param lpm_displayGroup Display group in the Linode list inside the Linode Manager
 	 * @param Alert_cpu_enabled Enable the cpu usage email alert
@@ -2521,14 +2624,17 @@ public class Linode {
 	 * @param Alert_bwout_threshold Mb/sec
 	 * @param Alert_bwquota_enabled Enable the bw quote email alert
 	 * @param Alert_bwquota_threshold Percentage of monthly bw quota
-	 * @param backupWindow 
-	 * @param backupWeeklyDay 
+	 * @param backupWindow (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param backupWeeklyDay (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param watchdog Enable the Lassie shutdown watchdog
-	 * @param ms_ssh_disabled 
-	 * @param ms_ssh_user 
-	 * @param ms_ssh_ip 
-	 * @param ms_ssh_port 
+	 * @param ms_ssh_disabled (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param ms_ssh_user (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param ms_ssh_ip (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param ms_ssh_port (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest update(Long linodeID, String label, String lpm_displayGroup, Boolean Alert_cpu_enabled, Long Alert_cpu_threshold, Boolean Alert_diskio_enabled, Long Alert_diskio_threshold, Boolean Alert_bwin_enabled, Long Alert_bwin_threshold, Boolean Alert_bwout_enabled, Long Alert_bwout_threshold, Boolean Alert_bwquota_enabled, Long Alert_bwquota_threshold, Long backupWindow, Long backupWeeklyDay, Boolean watchdog, Boolean ms_ssh_disabled, String ms_ssh_user, String ms_ssh_ip, Long ms_ssh_port) throws ApiException {

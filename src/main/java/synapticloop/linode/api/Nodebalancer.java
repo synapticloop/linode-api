@@ -36,7 +36,6 @@ public class Nodebalancer {
 	private static final String PARAM_CONSTANT_NODEID = "NodeID";
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -57,6 +56,8 @@ public class Nodebalancer {
 	 *
 	 * @param nodeBalancerID The parent NodeBalancer's ID
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -71,7 +72,6 @@ public class Nodebalancer {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -106,6 +106,9 @@ public class Nodebalancer {
 	 * @param ssl_key Unpassphrased private key for the SSL certificate when protocol is 'https'
 	 * @param cipher_suite SSL cipher suite to enforce. One of 'recommended', 'legacy'
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest configcreate(Long nodeBalancerID, Long port, String protocol, String algorithm, String stickiness, String check, Long check_interval, String check_timeout, String check_attempts, String check_path, String check_body, Boolean check_passive, String ssl_cert, String ssl_key, String cipher_suite) throws ApiException {
@@ -179,8 +182,10 @@ public class Nodebalancer {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeBalancerID 
+	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param configID The ConfigID to delete
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -247,7 +252,9 @@ public class Nodebalancer {
 	 * }
 	 * </pre>
 	 *
-	 * @param nodeBalancerID 
+	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -309,9 +316,12 @@ public class Nodebalancer {
 	 * }
 	 * </pre>
 	 *
-	 * @param nodeBalancerID 
+	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param configID Limits the list to the specified ConfigID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest configlist(Long nodeBalancerID, Long configID) throws ApiException {
@@ -347,7 +357,9 @@ public class Nodebalancer {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID 
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -382,7 +394,7 @@ public class Nodebalancer {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID 
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param port Port to bind to on the public interfaces. 1-65534
 	 * @param protocol Either 'tcp', 'http', or 'https'
 	 * @param algorithm Balancing algorithm. One of 'roundrobin', 'leastconn', 'source'
@@ -398,6 +410,9 @@ public class Nodebalancer {
 	 * @param ssl_key Unpassphrased private key for the SSL certificate when protocol is 'https'
 	 * @param cipher_suite SSL cipher suite to enforce. One of 'recommended', 'legacy'
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest configupdate(Long configID, Long port, String protocol, String algorithm, String stickiness, String check, Long check_interval, String check_timeout, String check_attempts, String check_path, String check_body, Boolean check_passive, String ssl_cert, String ssl_key, String cipher_suite) throws ApiException {
@@ -453,7 +468,6 @@ public class Nodebalancer {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -477,6 +491,8 @@ public class Nodebalancer {
 	 *
 	 * @param datacenterID The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -491,7 +507,6 @@ public class Nodebalancer {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -517,6 +532,9 @@ public class Nodebalancer {
 	 * @param label This NodeBalancer's label
 	 * @param clientConnThrottle To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest create(Long datacenterID, String label, Long clientConnThrottle) throws ApiException {
@@ -559,6 +577,8 @@ public class Nodebalancer {
 	 *
 	 * @param nodeBalancerID The NodeBalancerID to delete
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -597,6 +617,8 @@ public class Nodebalancer {
 	 * </pre>
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -631,6 +653,9 @@ public class Nodebalancer {
 	 *
 	 * @param nodeBalancerID Limits the list to the specified NodeBalancerID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest list(Long nodeBalancerID) throws ApiException {
@@ -642,7 +667,6 @@ public class Nodebalancer {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -664,6 +688,8 @@ public class Nodebalancer {
 	 * @param configID The parent ConfigID to attach this Node to
 	 * @param label This backend Node's label
 	 * @param address The address:port combination used to communicate with this Node
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -689,7 +715,6 @@ public class Nodebalancer {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -714,6 +739,9 @@ public class Nodebalancer {
 	 * @param weight Load balancing weight, 1-255. Higher means more connections.
 	 * @param mode The connections mode for this node. One of 'accept', 'reject', or 'drain'
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest nodecreate(Long configID, String label, String address, Long weight, String mode) throws ApiException {
@@ -763,6 +791,8 @@ public class Nodebalancer {
 	 *
 	 * @param nodeID The NodeID to delete
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -800,7 +830,9 @@ public class Nodebalancer {
 	 * }
 	 * </pre>
 	 *
-	 * @param configID 
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -839,9 +871,12 @@ public class Nodebalancer {
 	 * }
 	 * </pre>
 	 *
-	 * @param configID 
+	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param nodeID Limits the list to the specified NodeID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest nodelist(Long configID, Long nodeID) throws ApiException {
@@ -877,7 +912,9 @@ public class Nodebalancer {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeID 
+	 * @param nodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -912,12 +949,15 @@ public class Nodebalancer {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeID 
+	 * @param nodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param label This backend Node's label
 	 * @param address The address:port combination used to communicate with this Node
 	 * @param weight Load balancing weight, 1-255. Higher means more connections.
 	 * @param mode The connections mode for this node. One of 'accept', 'reject', or 'drain'
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest nodeupdate(Long nodeID, String label, String address, Long weight, String mode) throws ApiException {
@@ -964,7 +1004,9 @@ public class Nodebalancer {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID 
+	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -1001,10 +1043,13 @@ public class Nodebalancer {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID 
+	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param label This NodeBalancer's label
 	 * @param clientConnThrottle To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest update(Long nodeBalancerID, String label, Long clientConnThrottle) throws ApiException {

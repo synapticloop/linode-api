@@ -42,8 +42,10 @@ public class User {
 	 *   - PASSWORDEXPIRED
 	 *   - KEYLIMIT
 	 *
-	 * @param username 
-	 * @param password 
+	 * @param username (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param password (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -88,12 +90,15 @@ public class User {
 	 *   - PASSWORDEXPIRED
 	 *   - KEYLIMIT
 	 *
-	 * @param username 
-	 * @param password 
+	 * @param username (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param password (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param token Required when two-factor authentication is enabled.
 	 * @param expires Number of hours the key will remain valid, between 0 and 8760. 0 means no expiration. Defaults to 168.
 	 * @param label An optional label for this key.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest getapikey(String username, String password, String token, Long expires, String label) throws ApiException {

@@ -49,6 +49,8 @@ public class Image {
 	 *
 	 * @param imageID The ID of the gold-master image to delete
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -107,6 +109,8 @@ public class Image {
 	 *   - NOTFOUND
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -162,6 +166,9 @@ public class Image {
 	 * @param pending Show images currently being created.
 	 * @param imageID Request information for a specific gold-master image
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest list(Long pending, Long imageID) throws ApiException {
@@ -208,6 +215,8 @@ public class Image {
 	 *   - VALIDATION
 	 *
 	 * @param imageID The ID of the Image to modify.
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -258,6 +267,9 @@ public class Image {
 	 * @param label The label of the Image.
 	 * @param description An optional description of the Image.
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest update(Long imageID, String label, String description) throws ApiException {

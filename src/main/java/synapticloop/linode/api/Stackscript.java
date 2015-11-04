@@ -43,6 +43,8 @@ public class Stackscript {
 	 * @param distributionIDList Comma delimited list of DistributionIDs that this script works on 
 	 * @param script The actual script
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -87,12 +89,15 @@ public class Stackscript {
 	 *   - VALIDATION
 	 *
 	 * @param label The Label for this StackScript
-	 * @param description 
+	 * @param description (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param distributionIDList Comma delimited list of DistributionIDs that this script works on 
 	 * @param isPublic Whether this StackScript is published in the Library, for everyone to use
-	 * @param rev_note 
+	 * @param rev_note (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param script The actual script
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest create(String label, String description, String distributionIDList, Boolean isPublic, String rev_note, String script) throws ApiException {
@@ -125,7 +130,6 @@ public class Stackscript {
 	}
 
 	/**
-	 * <p></p> 
 	 * 
 	 * Example response:
 	 * 
@@ -143,7 +147,9 @@ public class Stackscript {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param stackScriptID 
+	 * @param stackScriptID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -205,6 +211,8 @@ public class Stackscript {
 	 * </pre>
 	 *
 	 *
+	 * @return the linode request object
+	 *
 	 * @throws ApiException if a required parameter is null
 	 */
 
@@ -261,6 +269,9 @@ public class Stackscript {
 	 *
 	 * @param stackScriptID Limits the list to the specified StackScriptID
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest list(Long stackScriptID) throws ApiException {
@@ -291,7 +302,9 @@ public class Stackscript {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param stackScriptID 
+	 * @param stackScriptID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 *
+	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null
 	 */
@@ -326,14 +339,17 @@ public class Stackscript {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param stackScriptID 
+	 * @param stackScriptID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param label The Label for this StackScript
-	 * @param description 
+	 * @param description (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param distributionIDList Comma delimited list of DistributionIDs that this script works on 
 	 * @param isPublic Whether this StackScript is published in the Library, for everyone to use
-	 * @param rev_note 
+	 * @param rev_note (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param script The actual script
 	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null
 	 */
 
 	public static LinodeRequest update(Long stackScriptID, String label, String description, String distributionIDList, Boolean isPublic, String rev_note, String script) throws ApiException {
