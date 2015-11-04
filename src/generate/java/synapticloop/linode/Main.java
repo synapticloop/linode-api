@@ -23,9 +23,11 @@ import synapticloop.templar.exception.RenderException;
 import synapticloop.templar.utils.TemplarContext;
 
 public class Main {
-	private static final int NODE_SMALL = 2;
-	private static final int NODE_STRONG = 1;
+	private static final String API_DOCS_DIRECTORY = "./api-docs";
+	private static final String JAVA_SRC_OUTPUT_DIRECTORY = "./src/main/java/synapticloop/linode/api/";
 	private static final int NODE_TEXT = 0;
+	private static final int NODE_STRONG = 1;
+	private static final int NODE_SMALL = 2;
 	private static Map<String, Integer> NODE_NAME_MAP = new HashMap<String, Integer>();
 	static {
 		NODE_NAME_MAP.put("#text", NODE_TEXT);
@@ -37,10 +39,10 @@ public class Main {
 
 	public static void main(String[] args) throws ParseException, RenderException, IOException {
 		// here we are going to walk the directory and 
-		File apiDocsDirectory = new File("./api-docs");
+		File apiDocsDirectory = new File(API_DOCS_DIRECTORY);
 		listFiles(apiDocsDirectory.listFiles());
 
-		new File("./src/main/java/synapticloop/linode/api/").mkdirs();
+		new File(JAVA_SRC_OUTPUT_DIRECTORY).mkdirs();
 
 		// now that we have all of the apis
 		Iterator<String> iterator = apiBeanCache.keySet().iterator();
@@ -50,7 +52,7 @@ public class Main {
 			TemplarContext templarContext = new TemplarContext();
 			templarContext.add("api", api);
 			Parser parser = new Parser(Main.class.getResourceAsStream("/java-create-api.templar"));
-			String pathname = "./src/main/java/synapticloop/linode/api/" + api.getClassName() + ".java";
+			String pathname = JAVA_SRC_OUTPUT_DIRECTORY + api.getClassName() + ".java";
 			System.out.println("Generating for: " + api.getClassName());
 			File outFile = new File(pathname);
 			FileWriter fileWriter = new FileWriter(outFile);
@@ -127,7 +129,8 @@ public class Main {
 				apiMethod.addApiMethodParam(apiMethodParam);
 			}
 
-			apiMethod.addExampleResponse(document.select("pre.highlight").first().text());
+			String exampleResponse = document.select("pre.highlight").first().text();
+			apiMethod.addExampleResponse(exampleResponse);
 
 			Elements apiErrors = document.select("code.api-error");
 			Iterator<Element> apiErrorIterator = apiErrors.iterator();
@@ -138,7 +141,6 @@ public class Main {
 			}
 
 			api.addApiMethod(apiMethod);
-
 
 		} catch (IOException ex) {
 			ex.printStackTrace();

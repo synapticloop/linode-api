@@ -26,7 +26,6 @@ public class Api {
 	}
 
 	private String getConstantName(String name) {
-		byte[] bytes = name.getBytes();
 		return("PARAM_CONSTANT_" + name.toUpperCase());
 	}
 

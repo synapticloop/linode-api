@@ -2,3 +2,5 @@ api-docs/
 build/
 dist/
 target/
+bin/
+.gradle

@@ -67,6 +67,23 @@ public class AvailTest {
 
 		linodeResponse = linodeApi.execute(Avail.kernels(false, false));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+	}
+	
+	@Test
+	public void testLinodePlans() throws ApiException, JSONException {
+		LinodeResponse linodeResponse = linodeApi.execute(Avail.linodeplans());
+		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+	}
 
+	@Test
+	public void testNodeBalancers() throws ApiException, JSONException {
+		LinodeResponse linodeResponse = linodeApi.execute(Avail.nodebalancers());
+		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+	}
+
+	@Test
+	public void testStackScripts() throws ApiException, JSONException {
+		LinodeResponse linodeResponse = linodeApi.execute(Avail.stackscripts());
+		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 }
