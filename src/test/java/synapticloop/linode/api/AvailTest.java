@@ -23,7 +23,7 @@ public class AvailTest {
 	}
 
 	@Test
-	public void testBatchAvailable() throws ApiException, JSONException {
+	public void testBatchAvailable() throws ApiException {
 		List<LinodeRequest> linodeRequests = new ArrayList<LinodeRequest>();
 		linodeRequests.add(Avail.datacenters());
 		linodeRequests.add(Avail.distributions());
@@ -35,7 +35,7 @@ public class AvailTest {
 	}
 
 	@Test
-	public void testAvailableDatacentres() throws ApiException, JSONException {
+	public void testAvailableDatacentres() throws ApiException {
 		LinodeResponse linodeResponse = linodeApi.execute(Avail.datacenters());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
@@ -52,7 +52,14 @@ public class AvailTest {
 	}
 
 	@Test
-	public void testAvailableKernels() throws ApiException, JSONException {
+	public void testInvalidDatacentre() throws ApiException, JSONException {
+		// test distributions with distributon id
+		LinodeResponse linodeResponse = linodeApi.execute(Avail.distributions(-109809809l));
+		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+	}
+
+	@Test
+	public void testAvailableKernels() throws ApiException {
 		LinodeResponse linodeResponse = linodeApi.execute(Avail.kernels());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
@@ -70,19 +77,19 @@ public class AvailTest {
 	}
 	
 	@Test
-	public void testLinodePlans() throws ApiException, JSONException {
+	public void testLinodePlans() throws ApiException {
 		LinodeResponse linodeResponse = linodeApi.execute(Avail.linodeplans());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
 	@Test
-	public void testNodeBalancers() throws ApiException, JSONException {
+	public void testNodeBalancers() throws ApiException {
 		LinodeResponse linodeResponse = linodeApi.execute(Avail.nodebalancers());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
 	@Test
-	public void testStackScripts() throws ApiException, JSONException {
+	public void testStackScripts() throws ApiException {
 		LinodeResponse linodeResponse = linodeApi.execute(Avail.stackscripts());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}

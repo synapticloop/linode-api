@@ -3,6 +3,8 @@ package synapticloop.linode.bean;
 import java.util.HashMap;
 import java.util.Map;
 
+import synapticloop.linode.logger.SimpleLogger;
+
 public class ApiMethodParam {
 	private static final Map<String, String> TYPE_LOOKUP = new HashMap<String, String>();
 	static {
@@ -37,7 +39,7 @@ public class ApiMethodParam {
 
 		this.type = TYPE_LOOKUP.get(splits[0].trim());
 		if(null == this.type) {
-			System.out.println("UNKNOWN TYPE>>> " + splits[0].trim());
+			SimpleLogger.log("UNKNOWN TYPE >>> " + splits[0].trim() + " we cannot map this to a java type - update ApiMethodParam.TYPE_LOOKUP");
 		}
 
 		this.required = splits[1].trim().contains("(required)");

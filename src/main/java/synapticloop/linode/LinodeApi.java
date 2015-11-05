@@ -83,7 +83,7 @@ public class LinodeApi {
 				throw new ApiException("Non-200 HTTP Status code returned: " + statusCode);
 			}
 
-			String response;
+			String response = null;
 			try {
 				response = EntityUtils.toString(httpResponse.getEntity());
 			} catch (ParseException | IOException ex) {
@@ -146,7 +146,7 @@ public class LinodeApi {
 				System.out.println(response);
 			}
 
-			
+
 			// as we are doing batch mode - the return will be an array
 			JSONArray jsonArray = new JSONArray(response);
 			for(int i = 0; i < jsonArray.length(); i ++) {

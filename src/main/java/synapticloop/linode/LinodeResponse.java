@@ -4,10 +4,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import synapticloop.linode.exception.ApiException;
+
 /**
  * Response from an Linode API call
- * 
- * @author theodore nguyen-cao
  * 
  */
 public class LinodeResponse {
@@ -29,10 +29,14 @@ public class LinodeResponse {
 	 * 
 	 * @return JSONObject the data as a JSONObject
 	 * 
-	 * @throws JSONException if there was an error parsing the JSONObject
+	 * @throws ApiException if there was an error parsing the JSONObject
 	 */
-	public JSONObject getDataAsJSONObject() throws JSONException {
-		return json.getJSONObject(DATA);
+	public JSONObject getDataAsJSONObject() throws ApiException {
+		try {
+			return json.getJSONObject(DATA);
+		} catch (JSONException ex) {
+			throw new ApiException("Could not parse JSON.", ex);
+		}
 	}
 
 	/**
@@ -40,10 +44,14 @@ public class LinodeResponse {
 	 * 
 	 * @return JSONArray the data as a JSON array
 	 *
-	 * @throws JSONException if there was an error parsing the JSONObject
+	 * @throws ApiException if there was an error parsing the JSONObject
 	 */
-	public JSONArray getDataAsJSONArray() throws JSONException {
-		return json.getJSONArray(DATA);
+	public JSONArray getDataAsJSONArray() throws ApiException {
+		try {
+			return json.getJSONArray(DATA);
+		} catch (JSONException ex) {
+			throw new ApiException("Could not parse JSON.", ex);
+		}
 	}
 
 	/**
@@ -51,10 +59,14 @@ public class LinodeResponse {
 	 * 
 	 * @return the action that was performed for the request
 	 * 
-	 * @throws JSONException if there was an error parsing the JSONObject
+	 * @throws ApiException if there was an error parsing the JSONObject
 	 */
-	public String getAction() throws JSONException {
-		return json.getString(ACTION);
+	public String getAction() throws ApiException {
+		try {
+			return json.getString(ACTION);
+		} catch (JSONException ex) {
+			throw new ApiException("Could not parse JSON.", ex);
+		}
 	}
 
 	/**
@@ -62,10 +74,14 @@ public class LinodeResponse {
 	 * 
 	 * @return JSONArray of errors
 	 * 
-	 * @throws JSONException if there was an error parsing the JSONObject
+	 * @throws ApiException if there was an error parsing the JSONObject
 	 */
-	public JSONArray getErrorArray() throws JSONException {
-		return json.getJSONArray(ERRORARRAY);
+	public JSONArray getErrorArray() throws ApiException {
+		try {
+			return json.getJSONArray(ERRORARRAY);
+		} catch (JSONException ex) {
+			throw new ApiException("Could not parse JSON.", ex);
+		}
 	}
 
 	public JSONObject getJSON() {

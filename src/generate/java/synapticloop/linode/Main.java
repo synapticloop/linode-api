@@ -1,6 +1,7 @@
 package synapticloop.linode;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ import org.jsoup.select.Elements;
 import synapticloop.linode.bean.Api;
 import synapticloop.linode.bean.ApiMethod;
 import synapticloop.linode.bean.ApiMethodParam;
+import synapticloop.linode.logger.SimpleLogger;
 import synapticloop.templar.Parser;
 import synapticloop.templar.exception.ParseException;
 import synapticloop.templar.exception.RenderException;
@@ -35,12 +37,23 @@ public class Main {
 		NODE_NAME_MAP.put("small", NODE_SMALL);
 	}
 
+	private static FileFilter fileFilter = new FileFilter() {
+		
+		@Override
+		public boolean accept(File file) {
+			String name = file.getName();
+			if("index.html".equals(name) || "robots.txt".equals(name) || name.startsWith(".")) {
+				return(false);
+			}
+			return(true);
+		}
+	};
 	private static Map<String, Api> apiBeanCache = new HashMap<String, Api>();
 
 	public static void main(String[] args) throws ParseException, RenderException, IOException {
 		// here we are going to walk the directory and 
 		File apiDocsDirectory = new File(API_DOCS_DIRECTORY);
-		listFiles(apiDocsDirectory.listFiles());
+		listFiles(apiDocsDirectory.listFiles(fileFilter));
 
 		new File(JAVA_SRC_OUTPUT_DIRECTORY).mkdirs();
 
@@ -53,7 +66,7 @@ public class Main {
 			templarContext.add("api", api);
 			Parser parser = new Parser(Main.class.getResourceAsStream("/java-create-api.templar"));
 			String pathname = JAVA_SRC_OUTPUT_DIRECTORY + api.getClassName() + ".java";
-			System.out.println("Generating for: " + api.getClassName());
+			SimpleLogger.log("Generating for: " + api.getClassName());
 			File outFile = new File(pathname);
 			FileWriter fileWriter = new FileWriter(outFile);
 			fileWriter.write(parser.render(templarContext));
@@ -65,20 +78,18 @@ public class Main {
 	private static void listFiles(File[] files) {
 		for (File file : files) {
 			if(file.isDirectory()) {
-				listFiles(file.listFiles());
+				listFiles(file.listFiles(fileFilter));
 			} else {
-				String absolutePath = file.getAbsolutePath();
-				if(!absolutePath.endsWith("index.html") && !absolutePath.endsWith("robots.txt")) {
-					parseFile(file);
-				}
+				parseFile(file);
 			}
 		}
-
 	}
 
 	private static void parseFile(File file) {
+		SimpleLogger.log("Parsing file: " + file.getName());
+		Document document = null;
 		try {
-			Document document = Jsoup.parse(file, "UTF-8");
+			document = Jsoup.parse(file, "UTF-8");
 			String title = document.select("h1.h2").first().text();
 			if(!title.contains("()")) {
 				return;
@@ -103,7 +114,7 @@ public class Main {
 				for (Node node : childNodes) {
 					String nodeName = node.nodeName();
 					if(!NODE_NAME_MAP.containsKey(nodeName)) {
-						System.out.println("unknown node name of '" + nodeName + "'.");
+						SimpleLogger.log("unknown node name of '" + nodeName + "', update Main.parseFile() switch");
 					} else {
 						switch (NODE_NAME_MAP.get(nodeName)) {
 						case NODE_TEXT:
@@ -120,7 +131,7 @@ public class Main {
 							api.addConstant(nodeString);
 							break;
 						default:
-							System.out.println("uncaught switch statement for node '" + nodeName + "'.");
+							SimpleLogger.log("uncaught switch statement for node '" + nodeName + "', update Main.parseFile() switch statement");
 							break;
 						}
 					}
@@ -143,6 +154,7 @@ public class Main {
 			api.addApiMethod(apiMethod);
 
 		} catch (IOException ex) {
+			SimpleLogger.log("IO Exception on file '" + file.getAbsolutePath() + "'.");
 			ex.printStackTrace();
 		}
 
