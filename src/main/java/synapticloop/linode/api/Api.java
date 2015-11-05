@@ -10,7 +10,19 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Api api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Api {
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Api() {}
 
 	/**
 	 * <p>Returns a data structure of the entire Linode API specification. This method does not 

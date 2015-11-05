@@ -10,7 +10,19 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Test api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Test {
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Test() {}
 
 	/**
 	 * <p>Echos back parameters that were passed in.</p> 

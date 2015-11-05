@@ -11,12 +11,25 @@ import synapticloop.linode.exception.ApiException;{\n}
 
 
 {\n}
-
+/**{\n}
+ * This is the interaction class for the {api.className} api calls, this was automatically{\n}
+ * generated from the linode api documentation.{\n}
+ * {\n}
+ * @author synapticloop{\n}
+ */{\n}
+{\n}
 public class {api.className} {{{\n}
 
 	{loop api.constantCache.keySet as key}
 		{\t}private static final String {key} = "{api.constantCache.$key}";{\n}
 	{endloop}
+{\n}
+
+	/**{\n}
+	 * Private constructor to deter instantiation{\n}
+	 */{\n}
+
+	private {api.className}() {{}{\n}
 {\n}
 
 	{loop api.apiMethods as apiMethod}

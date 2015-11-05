@@ -10,6 +10,13 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Nodebalancer api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Nodebalancer {
 	private static final String PARAM_CONSTANT_NODEBALANCERID = "NodeBalancerID";
 	private static final String PARAM_CONSTANT_PORT = "Port";
@@ -34,6 +41,11 @@ public class Nodebalancer {
 	private static final String PARAM_CONSTANT_WEIGHT = "Weight";
 	private static final String PARAM_CONSTANT_MODE = "Mode";
 	private static final String PARAM_CONSTANT_NODEID = "NodeID";
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Nodebalancer() {}
 
 	/**
 	 * 

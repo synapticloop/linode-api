@@ -10,6 +10,13 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Avail api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Avail {
 	private static final String PARAM_CONSTANT_DISTRIBUTIONID = "DistributionID";
 	private static final String PARAM_CONSTANT_ISXEN = "isXen";
@@ -17,6 +24,11 @@ public class Avail {
 	private static final String PARAM_CONSTANT_PLANID = "PlanID";
 	private static final String PARAM_CONSTANT_DISTRIBUTIONVENDOR = "DistributionVendor";
 	private static final String PARAM_CONSTANT_KEYWORDS = "keywords";
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Avail() {}
 
 	/**
 	 * <p>Returns a list of Linode data center facilities.</p> 

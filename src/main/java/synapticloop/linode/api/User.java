@@ -10,12 +10,24 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the User api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class User {
 	private static final String PARAM_CONSTANT_USERNAME = "username";
 	private static final String PARAM_CONSTANT_PASSWORD = "password";
 	private static final String PARAM_CONSTANT_TOKEN = "token";
 	private static final String PARAM_CONSTANT_EXPIRES = "expires";
 	private static final String PARAM_CONSTANT_LABEL = "label";
+
+/**
+ * Private constructor to deter instantiation
+ */
+private User() {}
 
 	/**
 	 * <p>Authenticates a Linode Manager user against their username, password, and two-factor 

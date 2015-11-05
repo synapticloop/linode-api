@@ -10,6 +10,13 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Stackscript api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Stackscript {
 	private static final String PARAM_CONSTANT_LABEL = "Label";
 	private static final String PARAM_CONSTANT_DESCRIPTION = "Description";
@@ -18,6 +25,11 @@ public class Stackscript {
 	private static final String PARAM_CONSTANT_REV_NOTE = "rev_note";
 	private static final String PARAM_CONSTANT_SCRIPT = "script";
 	private static final String PARAM_CONSTANT_STACKSCRIPTID = "StackScriptID";
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Stackscript() {}
 
 	/**
 	 * <p>Create a StackScript.</p> 

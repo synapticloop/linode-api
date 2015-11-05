@@ -21,6 +21,11 @@ import org.json.JSONObject;
 
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * The main class for interacting with the Linode api.
+ * 
+ * @author synapticloop
+ */
 public class LinodeApi {
 	private static final String PARAMETER_API_KEY = "api_key";
 	private static final String PARAMETER_API_ACTION = "api_action";

@@ -10,11 +10,23 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Image api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Image {
 	private static final String PARAM_CONSTANT_IMAGEID = "ImageID";
 	private static final String PARAM_CONSTANT_PENDING = "pending";
 	private static final String PARAM_CONSTANT_LABEL = "label";
 	private static final String PARAM_CONSTANT_DESCRIPTION = "description";
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Image() {}
 
 	/**
 	 * <p>Deletes a gold-master image</p> 

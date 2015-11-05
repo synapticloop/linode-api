@@ -10,6 +10,13 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Linode api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Linode {
 	private static final String PARAM_CONSTANT_LINODEID = "LinodeID";
 	private static final String PARAM_CONSTANT_CONFIGID = "ConfigID";
@@ -69,6 +76,11 @@ public class Linode {
 	private static final String PARAM_CONSTANT_MS_SSH_USER = "ms_ssh_user";
 	private static final String PARAM_CONSTANT_MS_SSH_IP = "ms_ssh_ip";
 	private static final String PARAM_CONSTANT_MS_SSH_PORT = "ms_ssh_port";
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Linode() {}
 
 	/**
 	 * <p>Issues a boot job for the provided ConfigID. If no ConfigID is provided boots the last used 

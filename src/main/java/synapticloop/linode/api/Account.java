@@ -10,11 +10,23 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Account api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Account {
 	private static final String PARAM_CONSTANT_MODE = "mode";
 	private static final String PARAM_CONSTANT_PAYMENTTERM = "PaymentTerm";
 	private static final String PARAM_CONSTANT_PLANID = "PlanID";
 	private static final String PARAM_CONSTANT_LINODEID = "LinodeID";
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Account() {}
 
 	/**
 	 * <p>Estimates the invoice for adding a new Linode or NodeBalancer as well as resizing a Linode. 

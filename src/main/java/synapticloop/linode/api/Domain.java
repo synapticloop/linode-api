@@ -10,6 +10,13 @@ import java.util.Map;
 import synapticloop.linode.LinodeRequest;
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * This is the interaction class for the Domain api calls, this was automatically
+ * generated from the linode api documentation.
+ * 
+ * @author synapticloop
+ */
+
 public class Domain {
 	private static final String PARAM_CONSTANT_DOMAIN = "Domain";
 	private static final String PARAM_CONSTANT_DESCRIPTION = "Description";
@@ -31,6 +38,11 @@ public class Domain {
 	private static final String PARAM_CONSTANT_PORT = "Port";
 	private static final String PARAM_CONSTANT_PROTOCOL = "Protocol";
 	private static final String PARAM_CONSTANT_RESOURCEID = "ResourceID";
+
+/**
+ * Private constructor to deter instantiation
+ */
+private Domain() {}
 
 	/**
 	 * <p>Create a domain record.</p> 
