@@ -17,7 +17,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Image {
+public class Image extends ApiBase {
 	private static final String PARAM_CONSTANT_IMAGEID = "ImageID";
 	private static final String PARAM_CONSTANT_PENDING = "pending";
 	private static final String PARAM_CONSTANT_LABEL = "label";
@@ -26,7 +26,7 @@ public class Image {
 /**
  * Private constructor to deter instantiation
  */
-private Image() {}
+	private Image() {}
 
 	/**
 	 * <p>Deletes a gold-master image</p> 
@@ -63,16 +63,12 @@ private Image() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest delete(Long imageID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != imageID) {
-			parameters.put(PARAM_CONSTANT_IMAGEID, imageID.toString());
-		} else {
-			throw new ApiException("Parameter 'imageID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
 		return(new LinodeRequest("image.delete", parameters));
 	}
 
@@ -123,7 +119,7 @@ private Image() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest list() throws ApiException {
@@ -180,17 +176,13 @@ private Image() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest list(Long pending, Long imageID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != pending) {
-			parameters.put(PARAM_CONSTANT_PENDING, pending.toString());
-		}
-		if(null != imageID) {
-			parameters.put(PARAM_CONSTANT_IMAGEID, imageID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_PENDING, pending, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, true);
 		return(new LinodeRequest("image.list", parameters));
 	}
 
@@ -230,16 +222,12 @@ private Image() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest update(Long imageID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != imageID) {
-			parameters.put(PARAM_CONSTANT_IMAGEID, imageID.toString());
-		} else {
-			throw new ApiException("Parameter 'imageID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
 		return(new LinodeRequest("image.update", parameters));
 	}
 
@@ -281,22 +269,14 @@ private Image() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest update(Long imageID, String label, String description) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != imageID) {
-			parameters.put(PARAM_CONSTANT_IMAGEID, imageID.toString());
-		} else {
-			throw new ApiException("Parameter 'imageID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
-		if(null != description) {
-			parameters.put(PARAM_CONSTANT_DESCRIPTION, description.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
 		return(new LinodeRequest("image.update", parameters));
 	}
 

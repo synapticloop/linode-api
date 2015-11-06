@@ -18,7 +18,7 @@ import synapticloop.linode.exception.ApiException;{\n}
  * @author synapticloop{\n}
  */{\n}
 {\n}
-public class {api.className} {{{\n}
+public class {api.className} extends ApiBase {{{\n}
 
 	{loop api.constantCache.keySet as key}
 		{\t}private static final String {key} = "{api.constantCache.$key}";{\n}
@@ -29,7 +29,7 @@ public class {api.className} {{{\n}
 	 * Private constructor to deter instantiation{\n}
 	 */{\n}
 
-	private {api.className}() {{}{\n}
+{\t}private {api.className}() {{}{\n}
 {\n}
 
 	{loop api.apiMethods as apiMethod}
@@ -73,7 +73,7 @@ public class {api.className} {{{\n}
 		{\t} *{\n}
 		{\t} * @return the linode request object{\n}
 		{\t} *{\n}
-		{\t} * @throws ApiException if a required parameter is null{\n}
+		{\t} * @throws ApiException if a required parameter is null, or there was an error with the call{\n}
 		{\t} */{\n}
 
 {\n}
@@ -84,11 +84,7 @@ public class {api.className} {{{\n}
 					) throws ApiException {{{\n}
 				{\t}{\t}Map<String, String> parameters = new HashMap<String, String>();{\n}
 				{loop apiMethod.requiredApiMethodParams as apiMethodParam}
-					{\t}{\t}if(null != {apiMethodParam.parameterName}) {{{\n}
-					{\t}{\t}{\t}parameters.put({apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}.toString());{\n}
-					{\t}{\t}} else {{{\n}
-					{\t}{\t}{\t}throw new ApiException("Parameter '{apiMethodParam.parameterName}' is required and cannot be null.");{\n}
-					{\t}{\t}}{\n}
+					{\t}{\t}addParameterSafely(parameters, {apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}, {!apiMethodParam.required});{\n}
 				{endloop}
 
 				{\t}{\t}return(new LinodeRequest("{apiMethod.methodName}", parameters));{\n}
@@ -145,7 +141,7 @@ public class {api.className} {{{\n}
 			{\t} *{\n}
 			{\t} * @return the linode request object{\n}
 			{\t} *{\n}
-			{\t} * @throws ApiException if a required parameter is null{\n}
+			{\t} * @throws ApiException if a required parameter is null, or there is an error with the call{\n}
 			{\t} */{\n}
 {\n}
 
@@ -156,16 +152,7 @@ public class {api.className} {{{\n}
 					) throws ApiException {{{\n}
 				{\t}{\t}Map<String, String> parameters = new HashMap<String, String>();{\n}
 				{loop apiMethod.apiMethodParams as apiMethodParam}
-					{\t}{\t}if(null != {apiMethodParam.parameterName}) {{{\n}
-					{\t}{\t}{\t}parameters.put({apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}.toString());{\n}
-
-					{if apiMethodParam.required}
-						{\t}{\t}} else {{{\n}
-						{\t}{\t}{\t}throw new ApiException("Parameter '{apiMethodParam.parameterName}' is required and cannot be null.");{\n}
-					{endif}
-
-					{\t}{\t}}{\n}
-
+					{\t}{\t}addParameterSafely(parameters, {apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}, {!apiMethodParam.required});{\n}
 				{endloop}
 
 				{\t}{\t}return(new LinodeRequest("{apiMethod.methodName}", parameters));{\n}

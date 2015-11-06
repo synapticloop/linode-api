@@ -75,7 +75,7 @@ public class AvailTest {
 		linodeResponse = linodeApi.execute(Avail.kernels(false, false));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
-	
+
 	@Test
 	public void testLinodePlans() throws ApiException {
 		LinodeResponse linodeResponse = linodeApi.execute(Avail.linodeplans());

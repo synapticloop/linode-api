@@ -28,11 +28,14 @@ import synapticloop.linode.exception.ApiException;
  */
 public class LinodeApi {
 	private static final String PARAMETER_API_KEY = "api_key";
+
 	private static final String PARAMETER_API_ACTION = "api_action";
 	private static final String PARAMETER_API_REQUEST_ARRAY = "api_requestArray";
 
 	/** API end point - defaults to https://api.linode.com/ */
 	private static final String API_ENDPOINT = "https://api.linode.com/";
+
+	private static final String BATCH = "batch";
 
 	private CloseableHttpClient closeableHttpClient = null;
 
@@ -54,8 +57,8 @@ public class LinodeApi {
 	/**
 	 * Create a Linode client with specified API key and debug setting
 	 * 
-	 * @param apiKey - the user's API key
-	 * @param debug - true to enable request debugging, false otherwise
+	 * @param apiKey the user's API key
+	 * @param debug true to enable request debugging, false otherwise
 	 */
 	public LinodeApi(String apiKey, boolean debug) {
 		this.apiKey = apiKey;
@@ -64,12 +67,20 @@ public class LinodeApi {
 		this.debug = debug;
 	}
 
+	/**
+	 * Execute a single request to the linode api
+	 * 
+	 * @param linodeRequest the request to be made
+	 * 
+	 * @return the response of the request
+	 * 
+	 * @throws ApiException if there was a problem with the request
+	 */
 	public LinodeResponse execute(LinodeRequest linodeRequest) throws ApiException {
 		try {
 			HttpPost httpPost = new HttpPost(API_ENDPOINT);
 
-			ArrayList<NameValuePair> postParameters;
-			postParameters = new ArrayList<NameValuePair>();
+			ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
 			postParameters.add(new BasicNameValuePair(PARAMETER_API_KEY, this.apiKey));
 			postParameters.add(new BasicNameValuePair(PARAMETER_API_ACTION, linodeRequest.getAction()));
 
@@ -106,15 +117,23 @@ public class LinodeApi {
 		}
 	}
 
+	/**
+	 * Execute a batch request to the linode api.
+	 * 
+	 * @param linodeRequests The list of requests to execute
+	 * 
+	 * @return the list of responses to the requests
+	 * 
+	 * @throws ApiException if there was an error with the request
+	 */
 	public List<LinodeResponse> execute(List<LinodeRequest> linodeRequests) throws ApiException {
 		List<LinodeResponse> linodeResponses = new ArrayList<LinodeResponse>();
 		try {
 			HttpPost httpPost = new HttpPost(API_ENDPOINT);
 
-			ArrayList<NameValuePair> postParameters;
-			postParameters = new ArrayList<NameValuePair>();
+			ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();
 			postParameters.add(new BasicNameValuePair(PARAMETER_API_KEY, this.apiKey));
-			postParameters.add(new BasicNameValuePair(PARAMETER_API_ACTION, "batch"));
+			postParameters.add(new BasicNameValuePair(PARAMETER_API_ACTION, BATCH));
 
 			// now add the parameters
 			JSONArray apiRequestArray = new JSONArray();

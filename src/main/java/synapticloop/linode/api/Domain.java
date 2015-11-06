@@ -17,7 +17,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Domain {
+public class Domain extends ApiBase {
 	private static final String PARAM_CONSTANT_DOMAIN = "Domain";
 	private static final String PARAM_CONSTANT_DESCRIPTION = "Description";
 	private static final String PARAM_CONSTANT_TYPE = "Type";
@@ -42,7 +42,7 @@ public class Domain {
 /**
  * Private constructor to deter instantiation
  */
-private Domain() {}
+	private Domain() {}
 
 	/**
 	 * <p>Create a domain record.</p> 
@@ -61,7 +61,6 @@ private Domain() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
 	 * @param domain The zone's name
@@ -69,21 +68,13 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest create(String domain, String type) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domain) {
-			parameters.put(PARAM_CONSTANT_DOMAIN, domain.toString());
-		} else {
-			throw new ApiException("Parameter 'domain' is required and cannot be null.");
-		}
-		if(null != type) {
-			parameters.put(PARAM_CONSTANT_TYPE, type.toString());
-		} else {
-			throw new ApiException("Parameter 'type' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAIN, domain, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
 		return(new LinodeRequest("domain.create", parameters));
 	}
 
@@ -104,7 +95,6 @@ private Domain() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
 	 * @param domain The zone's name
@@ -122,51 +112,23 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest create(String domain, String description, String type, String SOA_Email, Long Refresh_sec, Long Retry_sec, Long Expire_sec, Long TTL_sec, String lpm_displayGroup, Long status, String master_ips, String axfr_ips) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domain) {
-			parameters.put(PARAM_CONSTANT_DOMAIN, domain.toString());
-		} else {
-			throw new ApiException("Parameter 'domain' is required and cannot be null.");
-		}
-		if(null != description) {
-			parameters.put(PARAM_CONSTANT_DESCRIPTION, description.toString());
-		}
-		if(null != type) {
-			parameters.put(PARAM_CONSTANT_TYPE, type.toString());
-		} else {
-			throw new ApiException("Parameter 'type' is required and cannot be null.");
-		}
-		if(null != SOA_Email) {
-			parameters.put(PARAM_CONSTANT_SOA_EMAIL, SOA_Email.toString());
-		}
-		if(null != Refresh_sec) {
-			parameters.put(PARAM_CONSTANT_REFRESH_SEC, Refresh_sec.toString());
-		}
-		if(null != Retry_sec) {
-			parameters.put(PARAM_CONSTANT_RETRY_SEC, Retry_sec.toString());
-		}
-		if(null != Expire_sec) {
-			parameters.put(PARAM_CONSTANT_EXPIRE_SEC, Expire_sec.toString());
-		}
-		if(null != TTL_sec) {
-			parameters.put(PARAM_CONSTANT_TTL_SEC, TTL_sec.toString());
-		}
-		if(null != lpm_displayGroup) {
-			parameters.put(PARAM_CONSTANT_LPM_DISPLAYGROUP, lpm_displayGroup.toString());
-		}
-		if(null != status) {
-			parameters.put(PARAM_CONSTANT_STATUS, status.toString());
-		}
-		if(null != master_ips) {
-			parameters.put(PARAM_CONSTANT_MASTER_IPS, master_ips.toString());
-		}
-		if(null != axfr_ips) {
-			parameters.put(PARAM_CONSTANT_AXFR_IPS, axfr_ips.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAIN, domain, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_SOA_EMAIL, SOA_Email, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_REFRESH_SEC, Refresh_sec, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_RETRY_SEC, Retry_sec, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_EXPIRE_SEC, Expire_sec, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TTL_SEC, TTL_sec, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_LPM_DISPLAYGROUP, lpm_displayGroup, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_STATUS, status, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_MASTER_IPS, master_ips, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_AXFR_IPS, axfr_ips, true);
 		return(new LinodeRequest("domain.create", parameters));
 	}
 
@@ -192,16 +154,12 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest delete(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		} else {
-			throw new ApiException("Parameter 'domainID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		return(new LinodeRequest("domain.delete", parameters));
 	}
 
@@ -248,7 +206,7 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest list() throws ApiException {
@@ -300,14 +258,12 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest list(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, true);
 		return(new LinodeRequest("domain.list", parameters));
 	}
 
@@ -328,7 +284,6 @@ private Domain() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
 	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
@@ -336,21 +291,13 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest resourcecreate(Long domainID, String type) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		} else {
-			throw new ApiException("Parameter 'domainID' is required and cannot be null.");
-		}
-		if(null != type) {
-			parameters.put(PARAM_CONSTANT_TYPE, type.toString());
-		} else {
-			throw new ApiException("Parameter 'type' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
 		return(new LinodeRequest("domain.resource.create", parameters));
 	}
 
@@ -371,7 +318,6 @@ private Domain() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
 	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
@@ -386,42 +332,20 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest resourcecreate(Long domainID, String type, String name, String target, Long priority, Long weight, Long port, String protocol, Long TTL_sec) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		} else {
-			throw new ApiException("Parameter 'domainID' is required and cannot be null.");
-		}
-		if(null != type) {
-			parameters.put(PARAM_CONSTANT_TYPE, type.toString());
-		} else {
-			throw new ApiException("Parameter 'type' is required and cannot be null.");
-		}
-		if(null != name) {
-			parameters.put(PARAM_CONSTANT_NAME, name.toString());
-		}
-		if(null != target) {
-			parameters.put(PARAM_CONSTANT_TARGET, target.toString());
-		}
-		if(null != priority) {
-			parameters.put(PARAM_CONSTANT_PRIORITY, priority.toString());
-		}
-		if(null != weight) {
-			parameters.put(PARAM_CONSTANT_WEIGHT, weight.toString());
-		}
-		if(null != port) {
-			parameters.put(PARAM_CONSTANT_PORT, port.toString());
-		}
-		if(null != protocol) {
-			parameters.put(PARAM_CONSTANT_PROTOCOL, protocol.toString());
-		}
-		if(null != TTL_sec) {
-			parameters.put(PARAM_CONSTANT_TTL_SEC, TTL_sec.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_NAME, name, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TARGET, target, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PRIORITY, priority, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_WEIGHT, weight, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PORT, port, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PROTOCOL, protocol, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TTL_SEC, TTL_sec, true);
 		return(new LinodeRequest("domain.resource.create", parameters));
 	}
 
@@ -448,21 +372,13 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest resourcedelete(Long domainID, Long resourceID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		} else {
-			throw new ApiException("Parameter 'domainID' is required and cannot be null.");
-		}
-		if(null != resourceID) {
-			parameters.put(PARAM_CONSTANT_RESOURCEID, resourceID.toString());
-		} else {
-			throw new ApiException("Parameter 'resourceID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, false);
 		return(new LinodeRequest("domain.resource.delete", parameters));
 	}
 
@@ -507,16 +423,12 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest resourcelist(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		} else {
-			throw new ApiException("Parameter 'domainID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		return(new LinodeRequest("domain.resource.list", parameters));
 	}
 
@@ -562,19 +474,13 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest resourcelist(Long domainID, Long resourceID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		} else {
-			throw new ApiException("Parameter 'domainID' is required and cannot be null.");
-		}
-		if(null != resourceID) {
-			parameters.put(PARAM_CONSTANT_RESOURCEID, resourceID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, true);
 		return(new LinodeRequest("domain.resource.list", parameters));
 	}
 
@@ -602,16 +508,12 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest resourceupdate(Long resourceID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != resourceID) {
-			parameters.put(PARAM_CONSTANT_RESOURCEID, resourceID.toString());
-		} else {
-			throw new ApiException("Parameter 'resourceID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, false);
 		return(new LinodeRequest("domain.resource.update", parameters));
 	}
 
@@ -647,40 +549,20 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest resourceupdate(Long domainID, Long resourceID, String name, String target, Long priority, Long weight, Long port, String protocol, Long TTL_sec) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		}
-		if(null != resourceID) {
-			parameters.put(PARAM_CONSTANT_RESOURCEID, resourceID.toString());
-		} else {
-			throw new ApiException("Parameter 'resourceID' is required and cannot be null.");
-		}
-		if(null != name) {
-			parameters.put(PARAM_CONSTANT_NAME, name.toString());
-		}
-		if(null != target) {
-			parameters.put(PARAM_CONSTANT_TARGET, target.toString());
-		}
-		if(null != priority) {
-			parameters.put(PARAM_CONSTANT_PRIORITY, priority.toString());
-		}
-		if(null != weight) {
-			parameters.put(PARAM_CONSTANT_WEIGHT, weight.toString());
-		}
-		if(null != port) {
-			parameters.put(PARAM_CONSTANT_PORT, port.toString());
-		}
-		if(null != protocol) {
-			parameters.put(PARAM_CONSTANT_PROTOCOL, protocol.toString());
-		}
-		if(null != TTL_sec) {
-			parameters.put(PARAM_CONSTANT_TTL_SEC, TTL_sec.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_NAME, name, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TARGET, target, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PRIORITY, priority, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_WEIGHT, weight, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PORT, port, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PROTOCOL, protocol, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TTL_SEC, TTL_sec, true);
 		return(new LinodeRequest("domain.resource.update", parameters));
 	}
 
@@ -708,16 +590,12 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest update(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		} else {
-			throw new ApiException("Parameter 'domainID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		return(new LinodeRequest("domain.update", parameters));
 	}
 
@@ -757,52 +635,24 @@ private Domain() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest update(Long domainID, String domain, String description, String type, String SOA_Email, Long Refresh_sec, Long Retry_sec, Long Expire_sec, Long TTL_sec, String lpm_displayGroup, Long status, String master_ips, String axfr_ips) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != domainID) {
-			parameters.put(PARAM_CONSTANT_DOMAINID, domainID.toString());
-		} else {
-			throw new ApiException("Parameter 'domainID' is required and cannot be null.");
-		}
-		if(null != domain) {
-			parameters.put(PARAM_CONSTANT_DOMAIN, domain.toString());
-		}
-		if(null != description) {
-			parameters.put(PARAM_CONSTANT_DESCRIPTION, description.toString());
-		}
-		if(null != type) {
-			parameters.put(PARAM_CONSTANT_TYPE, type.toString());
-		}
-		if(null != SOA_Email) {
-			parameters.put(PARAM_CONSTANT_SOA_EMAIL, SOA_Email.toString());
-		}
-		if(null != Refresh_sec) {
-			parameters.put(PARAM_CONSTANT_REFRESH_SEC, Refresh_sec.toString());
-		}
-		if(null != Retry_sec) {
-			parameters.put(PARAM_CONSTANT_RETRY_SEC, Retry_sec.toString());
-		}
-		if(null != Expire_sec) {
-			parameters.put(PARAM_CONSTANT_EXPIRE_SEC, Expire_sec.toString());
-		}
-		if(null != TTL_sec) {
-			parameters.put(PARAM_CONSTANT_TTL_SEC, TTL_sec.toString());
-		}
-		if(null != lpm_displayGroup) {
-			parameters.put(PARAM_CONSTANT_LPM_DISPLAYGROUP, lpm_displayGroup.toString());
-		}
-		if(null != status) {
-			parameters.put(PARAM_CONSTANT_STATUS, status.toString());
-		}
-		if(null != master_ips) {
-			parameters.put(PARAM_CONSTANT_MASTER_IPS, master_ips.toString());
-		}
-		if(null != axfr_ips) {
-			parameters.put(PARAM_CONSTANT_AXFR_IPS, axfr_ips.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DOMAIN, domain, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_SOA_EMAIL, SOA_Email, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_REFRESH_SEC, Refresh_sec, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_RETRY_SEC, Retry_sec, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_EXPIRE_SEC, Expire_sec, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TTL_SEC, TTL_sec, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_LPM_DISPLAYGROUP, lpm_displayGroup, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_STATUS, status, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_MASTER_IPS, master_ips, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_AXFR_IPS, axfr_ips, true);
 		return(new LinodeRequest("domain.update", parameters));
 	}
 

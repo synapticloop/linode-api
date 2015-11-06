@@ -17,7 +17,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Account {
+public class Account extends ApiBase {
 	private static final String PARAM_CONSTANT_MODE = "mode";
 	private static final String PARAM_CONSTANT_PAYMENTTERM = "PaymentTerm";
 	private static final String PARAM_CONSTANT_PLANID = "PlanID";
@@ -26,7 +26,7 @@ public class Account {
 /**
  * Private constructor to deter instantiation
  */
-private Account() {}
+	private Account() {}
 
 	/**
 	 * <p>Estimates the invoice for adding a new Linode or NodeBalancer as well as resizing a Linode. 
@@ -54,16 +54,12 @@ private Account() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest estimateinvoice(String mode) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != mode) {
-			parameters.put(PARAM_CONSTANT_MODE, mode.toString());
-		} else {
-			throw new ApiException("Parameter 'mode' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, false);
 		return(new LinodeRequest("account.estimateinvoice", parameters));
 	}
 
@@ -96,25 +92,15 @@ private Account() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest estimateinvoice(String mode, Long paymentTerm, Long planID, Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != mode) {
-			parameters.put(PARAM_CONSTANT_MODE, mode.toString());
-		} else {
-			throw new ApiException("Parameter 'mode' is required and cannot be null.");
-		}
-		if(null != paymentTerm) {
-			parameters.put(PARAM_CONSTANT_PAYMENTTERM, paymentTerm.toString());
-		}
-		if(null != planID) {
-			parameters.put(PARAM_CONSTANT_PLANID, planID.toString());
-		}
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
 		return(new LinodeRequest("account.estimateinvoice", parameters));
 	}
 
@@ -143,7 +129,7 @@ private Account() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest info() throws ApiException {

@@ -17,7 +17,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Nodebalancer {
+public class Nodebalancer extends ApiBase {
 	private static final String PARAM_CONSTANT_NODEBALANCERID = "NodeBalancerID";
 	private static final String PARAM_CONSTANT_PORT = "Port";
 	private static final String PARAM_CONSTANT_PROTOCOL = "Protocol";
@@ -45,7 +45,7 @@ public class Nodebalancer {
 /**
  * Private constructor to deter instantiation
  */
-private Nodebalancer() {}
+	private Nodebalancer() {}
 
 	/**
 	 * 
@@ -70,16 +70,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest configcreate(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeBalancerID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
 		return(new LinodeRequest("nodebalancer.config.create", parameters));
 	}
 
@@ -120,58 +116,26 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest configcreate(Long nodeBalancerID, Long port, String protocol, String algorithm, String stickiness, String check, Long check_interval, String check_timeout, String check_attempts, String check_path, String check_body, Boolean check_passive, String ssl_cert, String ssl_key, String cipher_suite) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeBalancerID' is required and cannot be null.");
-		}
-		if(null != port) {
-			parameters.put(PARAM_CONSTANT_PORT, port.toString());
-		}
-		if(null != protocol) {
-			parameters.put(PARAM_CONSTANT_PROTOCOL, protocol.toString());
-		}
-		if(null != algorithm) {
-			parameters.put(PARAM_CONSTANT_ALGORITHM, algorithm.toString());
-		}
-		if(null != stickiness) {
-			parameters.put(PARAM_CONSTANT_STICKINESS, stickiness.toString());
-		}
-		if(null != check) {
-			parameters.put(PARAM_CONSTANT_CHECK, check.toString());
-		}
-		if(null != check_interval) {
-			parameters.put(PARAM_CONSTANT_CHECK_INTERVAL, check_interval.toString());
-		}
-		if(null != check_timeout) {
-			parameters.put(PARAM_CONSTANT_CHECK_TIMEOUT, check_timeout.toString());
-		}
-		if(null != check_attempts) {
-			parameters.put(PARAM_CONSTANT_CHECK_ATTEMPTS, check_attempts.toString());
-		}
-		if(null != check_path) {
-			parameters.put(PARAM_CONSTANT_CHECK_PATH, check_path.toString());
-		}
-		if(null != check_body) {
-			parameters.put(PARAM_CONSTANT_CHECK_BODY, check_body.toString());
-		}
-		if(null != check_passive) {
-			parameters.put(PARAM_CONSTANT_CHECK_PASSIVE, check_passive.toString());
-		}
-		if(null != ssl_cert) {
-			parameters.put(PARAM_CONSTANT_SSL_CERT, ssl_cert.toString());
-		}
-		if(null != ssl_key) {
-			parameters.put(PARAM_CONSTANT_SSL_KEY, ssl_key.toString());
-		}
-		if(null != cipher_suite) {
-			parameters.put(PARAM_CONSTANT_CIPHER_SUITE, cipher_suite.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PORT, port, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PROTOCOL, protocol, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALGORITHM, algorithm, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_STICKINESS, stickiness, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK, check, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_INTERVAL, check_interval, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_TIMEOUT, check_timeout, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_ATTEMPTS, check_attempts, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_PATH, check_path, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_BODY, check_body, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_PASSIVE, check_passive, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_SSL_CERT, ssl_cert, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_SSL_KEY, ssl_key, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CIPHER_SUITE, cipher_suite, true);
 		return(new LinodeRequest("nodebalancer.config.create", parameters));
 	}
 
@@ -199,21 +163,13 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest configdelete(Long nodeBalancerID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeBalancerID' is required and cannot be null.");
-		}
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
 		return(new LinodeRequest("nodebalancer.config.delete", parameters));
 	}
 
@@ -268,16 +224,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest configlist(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeBalancerID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
 		return(new LinodeRequest("nodebalancer.config.list", parameters));
 	}
 
@@ -333,19 +285,13 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest configlist(Long nodeBalancerID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeBalancerID' is required and cannot be null.");
-		}
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
 		return(new LinodeRequest("nodebalancer.config.list", parameters));
 	}
 
@@ -373,16 +319,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest configupdate(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
 		return(new LinodeRequest("nodebalancer.config.update", parameters));
 	}
 
@@ -424,58 +366,26 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest configupdate(Long configID, Long port, String protocol, String algorithm, String stickiness, String check, Long check_interval, String check_timeout, String check_attempts, String check_path, String check_body, Boolean check_passive, String ssl_cert, String ssl_key, String cipher_suite) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
-		if(null != port) {
-			parameters.put(PARAM_CONSTANT_PORT, port.toString());
-		}
-		if(null != protocol) {
-			parameters.put(PARAM_CONSTANT_PROTOCOL, protocol.toString());
-		}
-		if(null != algorithm) {
-			parameters.put(PARAM_CONSTANT_ALGORITHM, algorithm.toString());
-		}
-		if(null != stickiness) {
-			parameters.put(PARAM_CONSTANT_STICKINESS, stickiness.toString());
-		}
-		if(null != check) {
-			parameters.put(PARAM_CONSTANT_CHECK, check.toString());
-		}
-		if(null != check_interval) {
-			parameters.put(PARAM_CONSTANT_CHECK_INTERVAL, check_interval.toString());
-		}
-		if(null != check_timeout) {
-			parameters.put(PARAM_CONSTANT_CHECK_TIMEOUT, check_timeout.toString());
-		}
-		if(null != check_attempts) {
-			parameters.put(PARAM_CONSTANT_CHECK_ATTEMPTS, check_attempts.toString());
-		}
-		if(null != check_path) {
-			parameters.put(PARAM_CONSTANT_CHECK_PATH, check_path.toString());
-		}
-		if(null != check_body) {
-			parameters.put(PARAM_CONSTANT_CHECK_BODY, check_body.toString());
-		}
-		if(null != check_passive) {
-			parameters.put(PARAM_CONSTANT_CHECK_PASSIVE, check_passive.toString());
-		}
-		if(null != ssl_cert) {
-			parameters.put(PARAM_CONSTANT_SSL_CERT, ssl_cert.toString());
-		}
-		if(null != ssl_key) {
-			parameters.put(PARAM_CONSTANT_SSL_KEY, ssl_key.toString());
-		}
-		if(null != cipher_suite) {
-			parameters.put(PARAM_CONSTANT_CIPHER_SUITE, cipher_suite.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PORT, port, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PROTOCOL, protocol, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALGORITHM, algorithm, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_STICKINESS, stickiness, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK, check, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_INTERVAL, check_interval, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_TIMEOUT, check_timeout, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_ATTEMPTS, check_attempts, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_PATH, check_path, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_BODY, check_body, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CHECK_PASSIVE, check_passive, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_SSL_CERT, ssl_cert, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_SSL_KEY, ssl_key, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CIPHER_SUITE, cipher_suite, true);
 		return(new LinodeRequest("nodebalancer.config.update", parameters));
 	}
 
@@ -497,7 +407,6 @@ private Nodebalancer() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
@@ -505,16 +414,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest create(Long datacenterID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != datacenterID) {
-			parameters.put(PARAM_CONSTANT_DATACENTERID, datacenterID.toString());
-		} else {
-			throw new ApiException("Parameter 'datacenterID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		return(new LinodeRequest("nodebalancer.create", parameters));
 	}
 
@@ -536,7 +441,6 @@ private Nodebalancer() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
@@ -546,22 +450,14 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest create(Long datacenterID, String label, Long clientConnThrottle) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != datacenterID) {
-			parameters.put(PARAM_CONSTANT_DATACENTERID, datacenterID.toString());
-		} else {
-			throw new ApiException("Parameter 'datacenterID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
-		if(null != clientConnThrottle) {
-			parameters.put(PARAM_CONSTANT_CLIENTCONNTHROTTLE, clientConnThrottle.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CLIENTCONNTHROTTLE, clientConnThrottle, true);
 		return(new LinodeRequest("nodebalancer.create", parameters));
 	}
 
@@ -591,16 +487,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest delete(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeBalancerID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
 		return(new LinodeRequest("nodebalancer.delete", parameters));
 	}
 
@@ -631,7 +523,7 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest list() throws ApiException {
@@ -667,14 +559,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest list(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, true);
 		return(new LinodeRequest("nodebalancer.list", parameters));
 	}
 
@@ -703,26 +593,14 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest nodecreate(Long configID, String label, String address) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != address) {
-			parameters.put(PARAM_CONSTANT_ADDRESS, address.toString());
-		} else {
-			throw new ApiException("Parameter 'address' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ADDRESS, address, false);
 		return(new LinodeRequest("nodebalancer.node.create", parameters));
 	}
 
@@ -753,32 +631,16 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest nodecreate(Long configID, String label, String address, Long weight, String mode) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != address) {
-			parameters.put(PARAM_CONSTANT_ADDRESS, address.toString());
-		} else {
-			throw new ApiException("Parameter 'address' is required and cannot be null.");
-		}
-		if(null != weight) {
-			parameters.put(PARAM_CONSTANT_WEIGHT, weight.toString());
-		}
-		if(null != mode) {
-			parameters.put(PARAM_CONSTANT_MODE, mode.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ADDRESS, address, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_WEIGHT, weight, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, true);
 		return(new LinodeRequest("nodebalancer.node.create", parameters));
 	}
 
@@ -805,16 +667,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest nodedelete(Long nodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeID) {
-			parameters.put(PARAM_CONSTANT_NODEID, nodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, false);
 		return(new LinodeRequest("nodebalancer.node.delete", parameters));
 	}
 
@@ -846,16 +704,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest nodelist(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
 		return(new LinodeRequest("nodebalancer.node.list", parameters));
 	}
 
@@ -888,19 +742,13 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest nodelist(Long configID, Long nodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
-		if(null != nodeID) {
-			parameters.put(PARAM_CONSTANT_NODEID, nodeID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, true);
 		return(new LinodeRequest("nodebalancer.node.list", parameters));
 	}
 
@@ -928,16 +776,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest nodeupdate(Long nodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeID) {
-			parameters.put(PARAM_CONSTANT_NODEID, nodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, false);
 		return(new LinodeRequest("nodebalancer.node.update", parameters));
 	}
 
@@ -969,28 +813,16 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest nodeupdate(Long nodeID, String label, String address, Long weight, String mode) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeID) {
-			parameters.put(PARAM_CONSTANT_NODEID, nodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
-		if(null != address) {
-			parameters.put(PARAM_CONSTANT_ADDRESS, address.toString());
-		}
-		if(null != weight) {
-			parameters.put(PARAM_CONSTANT_WEIGHT, weight.toString());
-		}
-		if(null != mode) {
-			parameters.put(PARAM_CONSTANT_MODE, mode.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ADDRESS, address, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_WEIGHT, weight, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, true);
 		return(new LinodeRequest("nodebalancer.node.update", parameters));
 	}
 
@@ -1020,16 +852,12 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest update(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeBalancerID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
 		return(new LinodeRequest("nodebalancer.update", parameters));
 	}
 
@@ -1061,22 +889,14 @@ private Nodebalancer() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest update(Long nodeBalancerID, String label, Long clientConnThrottle) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != nodeBalancerID) {
-			parameters.put(PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID.toString());
-		} else {
-			throw new ApiException("Parameter 'nodeBalancerID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
-		if(null != clientConnThrottle) {
-			parameters.put(PARAM_CONSTANT_CLIENTCONNTHROTTLE, clientConnThrottle.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CLIENTCONNTHROTTLE, clientConnThrottle, true);
 		return(new LinodeRequest("nodebalancer.update", parameters));
 	}
 

@@ -17,12 +17,12 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Test {
+public class Test extends ApiBase {
 
 /**
  * Private constructor to deter instantiation
  */
-private Test() {}
+	private Test() {}
 
 	/**
 	 * <p>Echos back parameters that were passed in.</p> 
@@ -42,7 +42,7 @@ private Test() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest echo() throws ApiException {

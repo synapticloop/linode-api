@@ -17,7 +17,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class User {
+public class User extends ApiBase {
 	private static final String PARAM_CONSTANT_USERNAME = "username";
 	private static final String PARAM_CONSTANT_PASSWORD = "password";
 	private static final String PARAM_CONSTANT_TOKEN = "token";
@@ -27,7 +27,7 @@ public class User {
 /**
  * Private constructor to deter instantiation
  */
-private User() {}
+	private User() {}
 
 	/**
 	 * <p>Authenticates a Linode Manager user against their username, password, and two-factor 
@@ -50,30 +50,19 @@ private User() {}
 	 * Possible return error codes:
 	 * 
 	 *   - AUTHFAIL
-	 *   - NEEDTOKEN
-	 *   - PASSWORDEXPIRED
-	 *   - KEYLIMIT
 	 *
 	 * @param username (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param password (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest getapikey(String username, String password) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != username) {
-			parameters.put(PARAM_CONSTANT_USERNAME, username.toString());
-		} else {
-			throw new ApiException("Parameter 'username' is required and cannot be null.");
-		}
-		if(null != password) {
-			parameters.put(PARAM_CONSTANT_PASSWORD, password.toString());
-		} else {
-			throw new ApiException("Parameter 'password' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_USERNAME, username, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PASSWORD, password, false);
 		return(new LinodeRequest("user.getapikey", parameters));
 	}
 
@@ -98,9 +87,6 @@ private User() {}
 	 * Possible return error codes:
 	 * 
 	 *   - AUTHFAIL
-	 *   - NEEDTOKEN
-	 *   - PASSWORDEXPIRED
-	 *   - KEYLIMIT
 	 *
 	 * @param username (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param password (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
@@ -110,30 +96,16 @@ private User() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest getapikey(String username, String password, String token, Long expires, String label) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != username) {
-			parameters.put(PARAM_CONSTANT_USERNAME, username.toString());
-		} else {
-			throw new ApiException("Parameter 'username' is required and cannot be null.");
-		}
-		if(null != password) {
-			parameters.put(PARAM_CONSTANT_PASSWORD, password.toString());
-		} else {
-			throw new ApiException("Parameter 'password' is required and cannot be null.");
-		}
-		if(null != token) {
-			parameters.put(PARAM_CONSTANT_TOKEN, token.toString());
-		}
-		if(null != expires) {
-			parameters.put(PARAM_CONSTANT_EXPIRES, expires.toString());
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_USERNAME, username, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PASSWORD, password, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_TOKEN, token, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_EXPIRES, expires, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
 		return(new LinodeRequest("user.getapikey", parameters));
 	}
 

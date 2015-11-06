@@ -18,6 +18,7 @@ import org.jsoup.select.Elements;
 import synapticloop.linode.bean.Api;
 import synapticloop.linode.bean.ApiMethod;
 import synapticloop.linode.bean.ApiMethodParam;
+import synapticloop.linode.bean.ErrorCodeMapper;
 import synapticloop.linode.logger.SimpleLogger;
 import synapticloop.templar.Parser;
 import synapticloop.templar.exception.ParseException;
@@ -148,7 +149,13 @@ public class Main {
 
 			while (apiErrorIterator.hasNext()) {
 				Element apiError = (Element) apiErrorIterator.next();
-				apiMethod.addApiError(apiError.text());
+				String apiErrorText = apiError.text();
+
+				if(ErrorCodeMapper.hasErrorCode(apiErrorText)) {
+					apiMethod.addApiError(apiErrorText);
+				} else {
+					SimpleLogger.log("Unknown error code '" + apiErrorText + "', update Main.parseFile() apiError checking");
+				}
 			}
 
 			api.addApiMethod(apiMethod);

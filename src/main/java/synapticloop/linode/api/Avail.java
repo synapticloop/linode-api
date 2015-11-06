@@ -17,7 +17,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Avail {
+public class Avail extends ApiBase {
 	private static final String PARAM_CONSTANT_DISTRIBUTIONID = "DistributionID";
 	private static final String PARAM_CONSTANT_ISXEN = "isXen";
 	private static final String PARAM_CONSTANT_ISKVM = "isKVM";
@@ -28,7 +28,7 @@ public class Avail {
 /**
  * Private constructor to deter instantiation
  */
-private Avail() {}
+	private Avail() {}
 
 	/**
 	 * <p>Returns a list of Linode data center facilities.</p> 
@@ -87,7 +87,7 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest datacenters() throws ApiException {
@@ -136,7 +136,7 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest distributions() throws ApiException {
@@ -186,14 +186,12 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest distributions(Long distributionID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != distributionID) {
-			parameters.put(PARAM_CONSTANT_DISTRIBUTIONID, distributionID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, true);
 		return(new LinodeRequest("avail.distributions", parameters));
 	}
 
@@ -242,7 +240,7 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest kernels() throws ApiException {
@@ -297,17 +295,13 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest kernels(Boolean isXen, Boolean isKVM) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != isXen) {
-			parameters.put(PARAM_CONSTANT_ISXEN, isXen.toString());
-		}
-		if(null != isKVM) {
-			parameters.put(PARAM_CONSTANT_ISKVM, isKVM.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_ISXEN, isXen, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ISKVM, isKVM, true);
 		return(new LinodeRequest("avail.kernels", parameters));
 	}
 
@@ -362,7 +356,7 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest linodeplans() throws ApiException {
@@ -422,14 +416,12 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest linodeplans(Long planID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != planID) {
-			parameters.put(PARAM_CONSTANT_PLANID, planID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, true);
 		return(new LinodeRequest("avail.linodeplans", parameters));
 	}
 
@@ -453,7 +445,7 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest nodebalancers() throws ApiException {
@@ -511,7 +503,7 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest stackscripts() throws ApiException {
@@ -572,20 +564,14 @@ private Avail() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest stackscripts(Long distributionID, String distributionVendor, String keywords) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != distributionID) {
-			parameters.put(PARAM_CONSTANT_DISTRIBUTIONID, distributionID.toString());
-		}
-		if(null != distributionVendor) {
-			parameters.put(PARAM_CONSTANT_DISTRIBUTIONVENDOR, distributionVendor.toString());
-		}
-		if(null != keywords) {
-			parameters.put(PARAM_CONSTANT_KEYWORDS, keywords.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONVENDOR, distributionVendor, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_KEYWORDS, keywords, true);
 		return(new LinodeRequest("avail.stackscripts", parameters));
 	}
 

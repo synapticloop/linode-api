@@ -84,6 +84,11 @@ public class LinodeResponse {
 		}
 	}
 
+	/**
+	 * Return the JSON object in full for this response
+	 * 
+	 * @return the JSON response object
+	 */
 	public JSONObject getJSON() {
 		return json;
 	}

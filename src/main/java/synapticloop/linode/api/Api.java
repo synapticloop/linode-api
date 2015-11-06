@@ -17,12 +17,12 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Api {
+public class Api extends ApiBase {
 
 /**
  * Private constructor to deter instantiation
  */
-private Api() {}
+	private Api() {}
 
 	/**
 	 * <p>Returns a data structure of the entire Linode API specification. This method does not 
@@ -58,7 +58,7 @@ private Api() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest spec() throws ApiException {

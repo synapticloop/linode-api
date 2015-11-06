@@ -17,7 +17,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Linode {
+public class Linode extends ApiBase {
 	private static final String PARAM_CONSTANT_LINODEID = "LinodeID";
 	private static final String PARAM_CONSTANT_CONFIGID = "ConfigID";
 	private static final String PARAM_CONSTANT_DATACENTERID = "DatacenterID";
@@ -80,7 +80,7 @@ public class Linode {
 /**
  * Private constructor to deter instantiation
  */
-private Linode() {}
+	private Linode() {}
 
 	/**
 	 * <p>Issues a boot job for the provided ConfigID. If no ConfigID is provided boots the last used 
@@ -106,16 +106,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest boot(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.boot", parameters));
 	}
 
@@ -144,19 +140,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest boot(Long linodeID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
 		return(new LinodeRequest("linode.boot", parameters));
 	}
 
@@ -179,7 +169,6 @@ private Linode() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - NOTFOUND
 	 *   - CCFAILED
 	 *   - VALIDATION
@@ -192,26 +181,14 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest clone(Long linodeID, Long datacenterID, Long planID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != datacenterID) {
-			parameters.put(PARAM_CONSTANT_DATACENTERID, datacenterID.toString());
-		} else {
-			throw new ApiException("Parameter 'datacenterID' is required and cannot be null.");
-		}
-		if(null != planID) {
-			parameters.put(PARAM_CONSTANT_PLANID, planID.toString());
-		} else {
-			throw new ApiException("Parameter 'planID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
 		return(new LinodeRequest("linode.clone", parameters));
 	}
 
@@ -234,7 +211,6 @@ private Linode() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - NOTFOUND
 	 *   - CCFAILED
 	 *   - VALIDATION
@@ -248,29 +224,15 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest clone(Long linodeID, Long datacenterID, Long planID, Long paymentTerm) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != datacenterID) {
-			parameters.put(PARAM_CONSTANT_DATACENTERID, datacenterID.toString());
-		} else {
-			throw new ApiException("Parameter 'datacenterID' is required and cannot be null.");
-		}
-		if(null != planID) {
-			parameters.put(PARAM_CONSTANT_PLANID, planID.toString());
-		} else {
-			throw new ApiException("Parameter 'planID' is required and cannot be null.");
-		}
-		if(null != paymentTerm) {
-			parameters.put(PARAM_CONSTANT_PAYMENTTERM, paymentTerm.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
 		return(new LinodeRequest("linode.clone", parameters));
 	}
 
@@ -301,31 +263,15 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest configcreate(Long linodeID, Long kernelID, String label, String diskList) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != kernelID) {
-			parameters.put(PARAM_CONSTANT_KERNELID, kernelID.toString());
-		} else {
-			throw new ApiException("Parameter 'kernelID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != diskList) {
-			parameters.put(PARAM_CONSTANT_DISKLIST, diskList.toString());
-		} else {
-			throw new ApiException("Parameter 'diskList' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_KERNELID, kernelID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKLIST, diskList, false);
 		return(new LinodeRequest("linode.config.create", parameters));
 	}
 
@@ -369,70 +315,28 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest configcreate(Long linodeID, Long kernelID, String label, String comments, Long rAMLimit, String diskList, String virt_mode, String runLevel, Long rootDeviceNum, String rootDeviceCustom, Boolean rootDeviceRO, Boolean helper_disableUpdateDB, Boolean helper_distro, Boolean helper_xen, Boolean helper_depmod, Boolean helper_network, Boolean devtmpfs_automount) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != kernelID) {
-			parameters.put(PARAM_CONSTANT_KERNELID, kernelID.toString());
-		} else {
-			throw new ApiException("Parameter 'kernelID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != comments) {
-			parameters.put(PARAM_CONSTANT_COMMENTS, comments.toString());
-		}
-		if(null != rAMLimit) {
-			parameters.put(PARAM_CONSTANT_RAMLIMIT, rAMLimit.toString());
-		}
-		if(null != diskList) {
-			parameters.put(PARAM_CONSTANT_DISKLIST, diskList.toString());
-		} else {
-			throw new ApiException("Parameter 'diskList' is required and cannot be null.");
-		}
-		if(null != virt_mode) {
-			parameters.put(PARAM_CONSTANT_VIRT_MODE, virt_mode.toString());
-		}
-		if(null != runLevel) {
-			parameters.put(PARAM_CONSTANT_RUNLEVEL, runLevel.toString());
-		}
-		if(null != rootDeviceNum) {
-			parameters.put(PARAM_CONSTANT_ROOTDEVICENUM, rootDeviceNum.toString());
-		}
-		if(null != rootDeviceCustom) {
-			parameters.put(PARAM_CONSTANT_ROOTDEVICECUSTOM, rootDeviceCustom.toString());
-		}
-		if(null != rootDeviceRO) {
-			parameters.put(PARAM_CONSTANT_ROOTDEVICERO, rootDeviceRO.toString());
-		}
-		if(null != helper_disableUpdateDB) {
-			parameters.put(PARAM_CONSTANT_HELPER_DISABLEUPDATEDB, helper_disableUpdateDB.toString());
-		}
-		if(null != helper_distro) {
-			parameters.put(PARAM_CONSTANT_HELPER_DISTRO, helper_distro.toString());
-		}
-		if(null != helper_xen) {
-			parameters.put(PARAM_CONSTANT_HELPER_XEN, helper_xen.toString());
-		}
-		if(null != helper_depmod) {
-			parameters.put(PARAM_CONSTANT_HELPER_DEPMOD, helper_depmod.toString());
-		}
-		if(null != helper_network) {
-			parameters.put(PARAM_CONSTANT_HELPER_NETWORK, helper_network.toString());
-		}
-		if(null != devtmpfs_automount) {
-			parameters.put(PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT, devtmpfs_automount.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_KERNELID, kernelID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_COMMENTS, comments, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_RAMLIMIT, rAMLimit, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKLIST, diskList, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_VIRT_MODE, virt_mode, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_RUNLEVEL, runLevel, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTDEVICENUM, rootDeviceNum, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTDEVICECUSTOM, rootDeviceCustom, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTDEVICERO, rootDeviceRO, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DISABLEUPDATEDB, helper_disableUpdateDB, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DISTRO, helper_distro, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_XEN, helper_xen, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DEPMOD, helper_depmod, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_NETWORK, helper_network, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT, devtmpfs_automount, true);
 		return(new LinodeRequest("linode.config.create", parameters));
 	}
 
@@ -461,21 +365,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest configdelete(Long linodeID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
 		return(new LinodeRequest("linode.config.delete", parameters));
 	}
 
@@ -535,16 +431,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest configlist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.config.list", parameters));
 	}
 
@@ -605,19 +497,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest configlist(Long linodeID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
 		return(new LinodeRequest("linode.config.list", parameters));
 	}
 
@@ -645,16 +531,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest configupdate(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
 		return(new LinodeRequest("linode.config.update", parameters));
 	}
 
@@ -699,67 +581,29 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest configupdate(Long linodeID, Long configID, Long kernelID, String label, String comments, Long rAMLimit, String diskList, String virt_mode, String runLevel, Long rootDeviceNum, String rootDeviceCustom, Boolean rootDeviceRO, Boolean helper_disableUpdateDB, Boolean helper_distro, Boolean helper_xen, Boolean helper_depmod, Boolean helper_network, Boolean devtmpfs_automount) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		}
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		} else {
-			throw new ApiException("Parameter 'configID' is required and cannot be null.");
-		}
-		if(null != kernelID) {
-			parameters.put(PARAM_CONSTANT_KERNELID, kernelID.toString());
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
-		if(null != comments) {
-			parameters.put(PARAM_CONSTANT_COMMENTS, comments.toString());
-		}
-		if(null != rAMLimit) {
-			parameters.put(PARAM_CONSTANT_RAMLIMIT, rAMLimit.toString());
-		}
-		if(null != diskList) {
-			parameters.put(PARAM_CONSTANT_DISKLIST, diskList.toString());
-		}
-		if(null != virt_mode) {
-			parameters.put(PARAM_CONSTANT_VIRT_MODE, virt_mode.toString());
-		}
-		if(null != runLevel) {
-			parameters.put(PARAM_CONSTANT_RUNLEVEL, runLevel.toString());
-		}
-		if(null != rootDeviceNum) {
-			parameters.put(PARAM_CONSTANT_ROOTDEVICENUM, rootDeviceNum.toString());
-		}
-		if(null != rootDeviceCustom) {
-			parameters.put(PARAM_CONSTANT_ROOTDEVICECUSTOM, rootDeviceCustom.toString());
-		}
-		if(null != rootDeviceRO) {
-			parameters.put(PARAM_CONSTANT_ROOTDEVICERO, rootDeviceRO.toString());
-		}
-		if(null != helper_disableUpdateDB) {
-			parameters.put(PARAM_CONSTANT_HELPER_DISABLEUPDATEDB, helper_disableUpdateDB.toString());
-		}
-		if(null != helper_distro) {
-			parameters.put(PARAM_CONSTANT_HELPER_DISTRO, helper_distro.toString());
-		}
-		if(null != helper_xen) {
-			parameters.put(PARAM_CONSTANT_HELPER_XEN, helper_xen.toString());
-		}
-		if(null != helper_depmod) {
-			parameters.put(PARAM_CONSTANT_HELPER_DEPMOD, helper_depmod.toString());
-		}
-		if(null != helper_network) {
-			parameters.put(PARAM_CONSTANT_HELPER_NETWORK, helper_network.toString());
-		}
-		if(null != devtmpfs_automount) {
-			parameters.put(PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT, devtmpfs_automount.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_KERNELID, kernelID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_COMMENTS, comments, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_RAMLIMIT, rAMLimit, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKLIST, diskList, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_VIRT_MODE, virt_mode, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_RUNLEVEL, runLevel, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTDEVICENUM, rootDeviceNum, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTDEVICECUSTOM, rootDeviceCustom, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTDEVICERO, rootDeviceRO, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DISABLEUPDATEDB, helper_disableUpdateDB, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DISTRO, helper_distro, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_XEN, helper_xen, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DEPMOD, helper_depmod, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_NETWORK, helper_network, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT, devtmpfs_automount, true);
 		return(new LinodeRequest("linode.config.update", parameters));
 	}
 
@@ -781,7 +625,6 @@ private Linode() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *   - LINODELIMITER
@@ -792,21 +635,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest create(Long datacenterID, Long planID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != datacenterID) {
-			parameters.put(PARAM_CONSTANT_DATACENTERID, datacenterID.toString());
-		} else {
-			throw new ApiException("Parameter 'datacenterID' is required and cannot be null.");
-		}
-		if(null != planID) {
-			parameters.put(PARAM_CONSTANT_PLANID, planID.toString());
-		} else {
-			throw new ApiException("Parameter 'planID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
 		return(new LinodeRequest("linode.create", parameters));
 	}
 
@@ -828,7 +663,6 @@ private Linode() {}
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOACCESS
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *   - LINODELIMITER
@@ -840,24 +674,14 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest create(Long datacenterID, Long planID, Long paymentTerm) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != datacenterID) {
-			parameters.put(PARAM_CONSTANT_DATACENTERID, datacenterID.toString());
-		} else {
-			throw new ApiException("Parameter 'datacenterID' is required and cannot be null.");
-		}
-		if(null != planID) {
-			parameters.put(PARAM_CONSTANT_PLANID, planID.toString());
-		} else {
-			throw new ApiException("Parameter 'planID' is required and cannot be null.");
-		}
-		if(null != paymentTerm) {
-			parameters.put(PARAM_CONSTANT_PAYMENTTERM, paymentTerm.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
 		return(new LinodeRequest("linode.create", parameters));
 	}
 
@@ -887,16 +711,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest delete(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.delete", parameters));
 	}
 
@@ -927,19 +747,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest delete(Long linodeID, Boolean skipChecks) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != skipChecks) {
-			parameters.put(PARAM_CONSTANT_SKIPCHECKS, skipChecks.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_SKIPCHECKS, skipChecks, true);
 		return(new LinodeRequest("linode.delete", parameters));
 	}
 
@@ -970,31 +784,15 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskcreate(Long linodeID, String label, String type, Long size) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != type) {
-			parameters.put(PARAM_CONSTANT_TYPE, type.toString());
-		} else {
-			throw new ApiException("Parameter 'type' is required and cannot be null.");
-		}
-		if(null != size) {
-			parameters.put(PARAM_CONSTANT_SIZE, size.toString());
-		} else {
-			throw new ApiException("Parameter 'size' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		return(new LinodeRequest("linode.disk.create", parameters));
 	}
 
@@ -1029,43 +827,19 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest diskcreate(Long linodeID, Long fromDistributionID, String rootPass, String rootSSHKey, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != fromDistributionID) {
-			parameters.put(PARAM_CONSTANT_FROMDISTRIBUTIONID, fromDistributionID.toString());
-		}
-		if(null != rootPass) {
-			parameters.put(PARAM_CONSTANT_ROOTPASS, rootPass.toString());
-		}
-		if(null != rootSSHKey) {
-			parameters.put(PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey.toString());
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != type) {
-			parameters.put(PARAM_CONSTANT_TYPE, type.toString());
-		} else {
-			throw new ApiException("Parameter 'type' is required and cannot be null.");
-		}
-		if(null != isReadOnly) {
-			parameters.put(PARAM_CONSTANT_ISREADONLY, isReadOnly.toString());
-		}
-		if(null != size) {
-			parameters.put(PARAM_CONSTANT_SIZE, size.toString());
-		} else {
-			throw new ApiException("Parameter 'size' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_FROMDISTRIBUTIONID, fromDistributionID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ISREADONLY, isReadOnly, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		return(new LinodeRequest("linode.disk.create", parameters));
 	}
 
@@ -1097,36 +871,16 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskcreatefromdistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != distributionID) {
-			parameters.put(PARAM_CONSTANT_DISTRIBUTIONID, distributionID.toString());
-		} else {
-			throw new ApiException("Parameter 'distributionID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != size) {
-			parameters.put(PARAM_CONSTANT_SIZE, size.toString());
-		} else {
-			throw new ApiException("Parameter 'size' is required and cannot be null.");
-		}
-		if(null != rootPass) {
-			parameters.put(PARAM_CONSTANT_ROOTPASS, rootPass.toString());
-		} else {
-			throw new ApiException("Parameter 'rootPass' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
 		return(new LinodeRequest("linode.disk.createfromdistribution", parameters));
 	}
 
@@ -1159,39 +913,17 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest diskcreatefromdistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != distributionID) {
-			parameters.put(PARAM_CONSTANT_DISTRIBUTIONID, distributionID.toString());
-		} else {
-			throw new ApiException("Parameter 'distributionID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != size) {
-			parameters.put(PARAM_CONSTANT_SIZE, size.toString());
-		} else {
-			throw new ApiException("Parameter 'size' is required and cannot be null.");
-		}
-		if(null != rootPass) {
-			parameters.put(PARAM_CONSTANT_ROOTPASS, rootPass.toString());
-		} else {
-			throw new ApiException("Parameter 'rootPass' is required and cannot be null.");
-		}
-		if(null != rootSSHKey) {
-			parameters.put(PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
 		return(new LinodeRequest("linode.disk.createfromdistribution", parameters));
 	}
 
@@ -1216,21 +948,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskcreatefromimage(Long imageID, Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != imageID) {
-			parameters.put(PARAM_CONSTANT_IMAGEID, imageID.toString());
-		} else {
-			throw new ApiException("Parameter 'imageID' is required and cannot be null.");
-		}
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.disk.createfromimage", parameters));
 	}
 
@@ -1259,33 +983,17 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest diskcreatefromimage(Long imageID, Long linodeID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != imageID) {
-			parameters.put(PARAM_CONSTANT_IMAGEID, imageID.toString());
-		} else {
-			throw new ApiException("Parameter 'imageID' is required and cannot be null.");
-		}
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
-		if(null != size) {
-			parameters.put(PARAM_CONSTANT_SIZE, size.toString());
-		}
-		if(null != rootPass) {
-			parameters.put(PARAM_CONSTANT_ROOTPASS, rootPass.toString());
-		}
-		if(null != rootSSHKey) {
-			parameters.put(PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
 		return(new LinodeRequest("linode.disk.createfromimage", parameters));
 	}
 
@@ -1319,46 +1027,18 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskcreatefromstackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != stackScriptID) {
-			parameters.put(PARAM_CONSTANT_STACKSCRIPTID, stackScriptID.toString());
-		} else {
-			throw new ApiException("Parameter 'stackScriptID' is required and cannot be null.");
-		}
-		if(null != stackScriptUDFResponses) {
-			parameters.put(PARAM_CONSTANT_STACKSCRIPTUDFRESPONSES, stackScriptUDFResponses.toString());
-		} else {
-			throw new ApiException("Parameter 'stackScriptUDFResponses' is required and cannot be null.");
-		}
-		if(null != distributionID) {
-			parameters.put(PARAM_CONSTANT_DISTRIBUTIONID, distributionID.toString());
-		} else {
-			throw new ApiException("Parameter 'distributionID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != size) {
-			parameters.put(PARAM_CONSTANT_SIZE, size.toString());
-		} else {
-			throw new ApiException("Parameter 'size' is required and cannot be null.");
-		}
-		if(null != rootPass) {
-			parameters.put(PARAM_CONSTANT_ROOTPASS, rootPass.toString());
-		} else {
-			throw new ApiException("Parameter 'rootPass' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTUDFRESPONSES, stackScriptUDFResponses, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
 		return(new LinodeRequest("linode.disk.createfromstackscript", parameters));
 	}
 
@@ -1393,49 +1073,19 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest diskcreatefromstackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != stackScriptID) {
-			parameters.put(PARAM_CONSTANT_STACKSCRIPTID, stackScriptID.toString());
-		} else {
-			throw new ApiException("Parameter 'stackScriptID' is required and cannot be null.");
-		}
-		if(null != stackScriptUDFResponses) {
-			parameters.put(PARAM_CONSTANT_STACKSCRIPTUDFRESPONSES, stackScriptUDFResponses.toString());
-		} else {
-			throw new ApiException("Parameter 'stackScriptUDFResponses' is required and cannot be null.");
-		}
-		if(null != distributionID) {
-			parameters.put(PARAM_CONSTANT_DISTRIBUTIONID, distributionID.toString());
-		} else {
-			throw new ApiException("Parameter 'distributionID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		} else {
-			throw new ApiException("Parameter 'label' is required and cannot be null.");
-		}
-		if(null != size) {
-			parameters.put(PARAM_CONSTANT_SIZE, size.toString());
-		} else {
-			throw new ApiException("Parameter 'size' is required and cannot be null.");
-		}
-		if(null != rootPass) {
-			parameters.put(PARAM_CONSTANT_ROOTPASS, rootPass.toString());
-		} else {
-			throw new ApiException("Parameter 'rootPass' is required and cannot be null.");
-		}
-		if(null != rootSSHKey) {
-			parameters.put(PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTUDFRESPONSES, stackScriptUDFResponses, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
 		return(new LinodeRequest("linode.disk.createfromstackscript", parameters));
 	}
 
@@ -1464,21 +1114,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskdelete(Long linodeID, Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != diskID) {
-			parameters.put(PARAM_CONSTANT_DISKID, diskID.toString());
-		} else {
-			throw new ApiException("Parameter 'diskID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		return(new LinodeRequest("linode.disk.delete", parameters));
 	}
 
@@ -1508,21 +1150,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskduplicate(Long linodeID, Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != diskID) {
-			parameters.put(PARAM_CONSTANT_DISKID, diskID.toString());
-		} else {
-			throw new ApiException("Parameter 'diskID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		return(new LinodeRequest("linode.disk.duplicate", parameters));
 	}
 
@@ -1547,21 +1181,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskimagize(Long linodeID, Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != diskID) {
-			parameters.put(PARAM_CONSTANT_DISKID, diskID.toString());
-		} else {
-			throw new ApiException("Parameter 'diskID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		return(new LinodeRequest("linode.disk.imagize", parameters));
 	}
 
@@ -1588,27 +1214,15 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest diskimagize(Long linodeID, Long diskID, String description, String label) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != diskID) {
-			parameters.put(PARAM_CONSTANT_DISKID, diskID.toString());
-		} else {
-			throw new ApiException("Parameter 'diskID' is required and cannot be null.");
-		}
-		if(null != description) {
-			parameters.put(PARAM_CONSTANT_DESCRIPTION, description.toString());
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
 		return(new LinodeRequest("linode.disk.imagize", parameters));
 	}
 
@@ -1652,16 +1266,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest disklist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.disk.list", parameters));
 	}
 
@@ -1706,19 +1316,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest disklist(Long linodeID, Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != diskID) {
-			parameters.put(PARAM_CONSTANT_DISKID, diskID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, true);
 		return(new LinodeRequest("linode.disk.list", parameters));
 	}
 
@@ -1748,26 +1352,14 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskresize(Long linodeID, Long diskID, Long size) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != diskID) {
-			parameters.put(PARAM_CONSTANT_DISKID, diskID.toString());
-		} else {
-			throw new ApiException("Parameter 'diskID' is required and cannot be null.");
-		}
-		if(null != size) {
-			parameters.put(PARAM_CONSTANT_SIZE, size.toString());
-		} else {
-			throw new ApiException("Parameter 'size' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		return(new LinodeRequest("linode.disk.resize", parameters));
 	}
 
@@ -1794,16 +1386,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest diskupdate(Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != diskID) {
-			parameters.put(PARAM_CONSTANT_DISKID, diskID.toString());
-		} else {
-			throw new ApiException("Parameter 'diskID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		return(new LinodeRequest("linode.disk.update", parameters));
 	}
 
@@ -1833,25 +1421,15 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest diskupdate(Long linodeID, Long diskID, String label, Boolean isReadOnly) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		}
-		if(null != diskID) {
-			parameters.put(PARAM_CONSTANT_DISKID, diskID.toString());
-		} else {
-			throw new ApiException("Parameter 'diskID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
-		if(null != isReadOnly) {
-			parameters.put(PARAM_CONSTANT_ISREADONLY, isReadOnly.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ISREADONLY, isReadOnly, true);
 		return(new LinodeRequest("linode.disk.update", parameters));
 	}
 
@@ -1879,16 +1457,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest ipaddprivate(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.ip.addprivate", parameters));
 	}
 
@@ -1917,16 +1491,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest ipaddpublic(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.ip.addpublic", parameters));
 	}
 
@@ -1965,7 +1535,7 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest iplist() throws ApiException {
@@ -2010,17 +1580,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest iplist(Long linodeID, Long iPAddressID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		}
-		if(null != iPAddressID) {
-			parameters.put(PARAM_CONSTANT_IPADDRESSID, iPAddressID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, true);
 		return(new LinodeRequest("linode.ip.list", parameters));
 	}
 
@@ -2052,21 +1618,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest ipsetrdns(Long iPAddressID, String hostname) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != iPAddressID) {
-			parameters.put(PARAM_CONSTANT_IPADDRESSID, iPAddressID.toString());
-		} else {
-			throw new ApiException("Parameter 'iPAddressID' is required and cannot be null.");
-		}
-		if(null != hostname) {
-			parameters.put(PARAM_CONSTANT_HOSTNAME, hostname.toString());
-		} else {
-			throw new ApiException("Parameter 'hostname' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_HOSTNAME, hostname, false);
 		return(new LinodeRequest("linode.ip.setrdns", parameters));
 	}
 
@@ -2106,16 +1664,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest ipswap(Long iPAddressID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != iPAddressID) {
-			parameters.put(PARAM_CONSTANT_IPADDRESSID, iPAddressID.toString());
-		} else {
-			throw new ApiException("Parameter 'iPAddressID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
 		return(new LinodeRequest("linode.ip.swap", parameters));
 	}
 
@@ -2157,22 +1711,14 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest ipswap(Long iPAddressID, Long withIPAddressID, Long toLinodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != iPAddressID) {
-			parameters.put(PARAM_CONSTANT_IPADDRESSID, iPAddressID.toString());
-		} else {
-			throw new ApiException("Parameter 'iPAddressID' is required and cannot be null.");
-		}
-		if(null != withIPAddressID) {
-			parameters.put(PARAM_CONSTANT_WITHIPADDRESSID, withIPAddressID.toString());
-		}
-		if(null != toLinodeID) {
-			parameters.put(PARAM_CONSTANT_TOLINODEID, toLinodeID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_WITHIPADDRESSID, withIPAddressID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_TOLINODEID, toLinodeID, true);
 		return(new LinodeRequest("linode.ip.swap", parameters));
 	}
 
@@ -2217,16 +1763,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest joblist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.job.list", parameters));
 	}
 
@@ -2273,22 +1815,14 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest joblist(Long linodeID, Long jobID, Boolean pendingOnly) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != jobID) {
-			parameters.put(PARAM_CONSTANT_JOBID, jobID.toString());
-		}
-		if(null != pendingOnly) {
-			parameters.put(PARAM_CONSTANT_PENDINGONLY, pendingOnly.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_JOBID, jobID, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_PENDINGONLY, pendingOnly, true);
 		return(new LinodeRequest("linode.job.list", parameters));
 	}
 
@@ -2339,7 +1873,7 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest list() throws ApiException {
@@ -2395,14 +1929,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest list(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
 		return(new LinodeRequest("linode.list", parameters));
 	}
 
@@ -2429,16 +1961,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest reboot(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.reboot", parameters));
 	}
 
@@ -2466,19 +1994,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest reboot(Long linodeID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != configID) {
-			parameters.put(PARAM_CONSTANT_CONFIGID, configID.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
 		return(new LinodeRequest("linode.reboot", parameters));
 	}
 
@@ -2512,21 +2034,13 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest resize(Long linodeID, Long planID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != planID) {
-			parameters.put(PARAM_CONSTANT_PLANID, planID.toString());
-		} else {
-			throw new ApiException("Parameter 'planID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
 		return(new LinodeRequest("linode.resize", parameters));
 	}
 
@@ -2553,16 +2067,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest shutdown(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.shutdown", parameters));
 	}
 
@@ -2590,16 +2100,12 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 
 	public static LinodeRequest update(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		return(new LinodeRequest("linode.update", parameters));
 	}
 
@@ -2646,73 +2152,31 @@ private Linode() {}
 	 *
 	 * @return the linode request object
 	 *
-	 * @throws ApiException if a required parameter is null
+	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
 
 	public static LinodeRequest update(Long linodeID, String label, String lpm_displayGroup, Boolean Alert_cpu_enabled, Long Alert_cpu_threshold, Boolean Alert_diskio_enabled, Long Alert_diskio_threshold, Boolean Alert_bwin_enabled, Long Alert_bwin_threshold, Boolean Alert_bwout_enabled, Long Alert_bwout_threshold, Boolean Alert_bwquota_enabled, Long Alert_bwquota_threshold, Long backupWindow, Long backupWeeklyDay, Boolean watchdog, Boolean ms_ssh_disabled, String ms_ssh_user, String ms_ssh_ip, Long ms_ssh_port) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		if(null != linodeID) {
-			parameters.put(PARAM_CONSTANT_LINODEID, linodeID.toString());
-		} else {
-			throw new ApiException("Parameter 'linodeID' is required and cannot be null.");
-		}
-		if(null != label) {
-			parameters.put(PARAM_CONSTANT_LABEL, label.toString());
-		}
-		if(null != lpm_displayGroup) {
-			parameters.put(PARAM_CONSTANT_LPM_DISPLAYGROUP, lpm_displayGroup.toString());
-		}
-		if(null != Alert_cpu_enabled) {
-			parameters.put(PARAM_CONSTANT_ALERT_CPU_ENABLED, Alert_cpu_enabled.toString());
-		}
-		if(null != Alert_cpu_threshold) {
-			parameters.put(PARAM_CONSTANT_ALERT_CPU_THRESHOLD, Alert_cpu_threshold.toString());
-		}
-		if(null != Alert_diskio_enabled) {
-			parameters.put(PARAM_CONSTANT_ALERT_DISKIO_ENABLED, Alert_diskio_enabled.toString());
-		}
-		if(null != Alert_diskio_threshold) {
-			parameters.put(PARAM_CONSTANT_ALERT_DISKIO_THRESHOLD, Alert_diskio_threshold.toString());
-		}
-		if(null != Alert_bwin_enabled) {
-			parameters.put(PARAM_CONSTANT_ALERT_BWIN_ENABLED, Alert_bwin_enabled.toString());
-		}
-		if(null != Alert_bwin_threshold) {
-			parameters.put(PARAM_CONSTANT_ALERT_BWIN_THRESHOLD, Alert_bwin_threshold.toString());
-		}
-		if(null != Alert_bwout_enabled) {
-			parameters.put(PARAM_CONSTANT_ALERT_BWOUT_ENABLED, Alert_bwout_enabled.toString());
-		}
-		if(null != Alert_bwout_threshold) {
-			parameters.put(PARAM_CONSTANT_ALERT_BWOUT_THRESHOLD, Alert_bwout_threshold.toString());
-		}
-		if(null != Alert_bwquota_enabled) {
-			parameters.put(PARAM_CONSTANT_ALERT_BWQUOTA_ENABLED, Alert_bwquota_enabled.toString());
-		}
-		if(null != Alert_bwquota_threshold) {
-			parameters.put(PARAM_CONSTANT_ALERT_BWQUOTA_THRESHOLD, Alert_bwquota_threshold.toString());
-		}
-		if(null != backupWindow) {
-			parameters.put(PARAM_CONSTANT_BACKUPWINDOW, backupWindow.toString());
-		}
-		if(null != backupWeeklyDay) {
-			parameters.put(PARAM_CONSTANT_BACKUPWEEKLYDAY, backupWeeklyDay.toString());
-		}
-		if(null != watchdog) {
-			parameters.put(PARAM_CONSTANT_WATCHDOG, watchdog.toString());
-		}
-		if(null != ms_ssh_disabled) {
-			parameters.put(PARAM_CONSTANT_MS_SSH_DISABLED, ms_ssh_disabled.toString());
-		}
-		if(null != ms_ssh_user) {
-			parameters.put(PARAM_CONSTANT_MS_SSH_USER, ms_ssh_user.toString());
-		}
-		if(null != ms_ssh_ip) {
-			parameters.put(PARAM_CONSTANT_MS_SSH_IP, ms_ssh_ip.toString());
-		}
-		if(null != ms_ssh_port) {
-			parameters.put(PARAM_CONSTANT_MS_SSH_PORT, ms_ssh_port.toString());
-		}
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_LPM_DISPLAYGROUP, lpm_displayGroup, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_CPU_ENABLED, Alert_cpu_enabled, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_CPU_THRESHOLD, Alert_cpu_threshold, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_DISKIO_ENABLED, Alert_diskio_enabled, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_DISKIO_THRESHOLD, Alert_diskio_threshold, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_BWIN_ENABLED, Alert_bwin_enabled, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_BWIN_THRESHOLD, Alert_bwin_threshold, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_BWOUT_ENABLED, Alert_bwout_enabled, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_BWOUT_THRESHOLD, Alert_bwout_threshold, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_BWQUOTA_ENABLED, Alert_bwquota_enabled, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_ALERT_BWQUOTA_THRESHOLD, Alert_bwquota_threshold, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_BACKUPWINDOW, backupWindow, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_BACKUPWEEKLYDAY, backupWeeklyDay, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_WATCHDOG, watchdog, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_DISABLED, ms_ssh_disabled, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_USER, ms_ssh_user, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_IP, ms_ssh_ip, true);
+		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_PORT, ms_ssh_port, true);
 		return(new LinodeRequest("linode.update", parameters));
 	}
 
