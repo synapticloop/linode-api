@@ -12,7 +12,8 @@ import synapticloop.linode.exception.ApiException;
 
 /**
  * This is the interaction class for the Account api calls, this was automatically
- * generated from the linode api documentation.
+ * generated from the linode api documentation - which can be found here:
+ * <a href="http://www.linode.com/api/account/account.estimateinvoice">http://www.linode.com/api/account/account.estimateinvoice</a>
  * 
  * @author synapticloop
  */
@@ -50,7 +51,7 @@ public class Account extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param mode This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
+	 * @param mode   This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
 	 *
 	 * @return the linode request object
 	 *

@@ -12,7 +12,8 @@ import synapticloop.linode.exception.ApiException;
 
 /**
  * This is the interaction class for the Image api calls, this was automatically
- * generated from the linode api documentation.
+ * generated from the linode api documentation - which can be found here:
+ * <a href="http://www.linode.com/api/image/image.delete">http://www.linode.com/api/image/image.delete</a>
  * 
  * @author synapticloop
  */
@@ -59,7 +60,7 @@ public class Image extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param imageID The ID of the gold-master image to delete
+	 * @param imageID   The ID of the gold-master image to delete
 	 *
 	 * @return the linode request object
 	 *
@@ -218,7 +219,7 @@ public class Image extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param imageID The ID of the Image to modify.
+	 * @param imageID   The ID of the Image to modify.
 	 *
 	 * @return the linode request object
 	 *

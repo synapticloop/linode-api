@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -27,6 +29,8 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 public class LinodeApi {
+	private static final Logger LOGGER = Logger.getLogger(LinodeApi.class.getName());
+
 	private static final String PARAMETER_API_KEY = "api_key";
 
 	private static final String PARAMETER_API_ACTION = "api_action";
@@ -39,10 +43,8 @@ public class LinodeApi {
 
 	private CloseableHttpClient closeableHttpClient = null;
 
-	/** User's API key */
 	private String apiKey = null;
 
-	/** True to enable request debugging, false otherwise */
 	private boolean debug = false;
 
 	/**
@@ -107,8 +109,10 @@ public class LinodeApi {
 			}
 
 			if (debug) {
-				System.out.println("End point: " + API_ENDPOINT);
-				System.out.println(response);
+				if(LOGGER.isLoggable(Level.INFO)) {
+					LOGGER.info("Response for end point: " + API_ENDPOINT + ", with action " + linodeRequest.getAction());
+					LOGGER.info(response);
+				}
 			}
 
 			return(new LinodeResponse(new JSONObject(response)));
@@ -166,8 +170,10 @@ public class LinodeApi {
 			}
 
 			if (debug) {
-				System.out.println("End point: " + API_ENDPOINT);
-				System.out.println(response);
+				if(LOGGER.isLoggable(Level.INFO)) {
+					LOGGER.info("Response for end point: " + API_ENDPOINT + ", with action batch");
+					LOGGER.info(response);
+				}
 			}
 
 

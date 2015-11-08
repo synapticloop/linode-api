@@ -13,7 +13,8 @@ import synapticloop.linode.exception.ApiException;{\n}
 {\n}
 /**{\n}
  * This is the interaction class for the {api.className} api calls, this was automatically{\n}
- * generated from the linode api documentation.{\n}
+ * generated from the linode api documentation - which can be found here:{\n}
+ * <a href="{api.location}">{api.location}</a>{\n}
  * {\n}
  * @author synapticloop{\n}
  */{\n}
@@ -64,11 +65,9 @@ public class {api.className} extends ApiBase {{{\n}
 		{\t} *{\n}
 			{loop apiMethod.requiredApiMethodParams as apiMethodParam}
 				{\t} * @param {apiMethodParam.parameterName} 
-					{if fn:<[fn:length[apiMethodParam.description], "1"]}
-						(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-					{else}
-						{apiMethodParam.description}
-					{endif}{\n}
+					{if fn:=[fn:length[apiMethodParam.description], "0"]}
+						(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+					{else}  {apiMethodParam.description}{endif}{\n}
 			{endloop}
 		{\t} *{\n}
 		{\t} * @return the linode request object{\n}
@@ -76,7 +75,6 @@ public class {api.className} extends ApiBase {{{\n}
 		{\t} * @throws ApiException if a required parameter is null, or there was an error with the call{\n}
 		{\t} */{\n}
 
-{\n}
 		{\t}public static LinodeRequest {apiMethod.name}(
 				{loop apiMethod.requiredApiMethodParams as apiMethodParam}
 					{apiMethodParam.type} {apiMethodParam.parameterName}{if !apiMethodParamStatus.last}, {endif}
@@ -132,8 +130,8 @@ public class {api.className} extends ApiBase {{{\n}
 			{\t} *{\n}
 				{loop apiMethod.apiMethodParams as apiMethodParam}
 					{\t} * @param {apiMethodParam.parameterName} 
-						{if fn:<[fn:length[apiMethodParam.description], "1"]}
-							(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+						{if fn:=[fn:length[apiMethodParam.description], "0"]}
+							(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 						{else}
 							{apiMethodParam.description}
 						{endif}{\n}
@@ -143,9 +141,8 @@ public class {api.className} extends ApiBase {{{\n}
 			{\t} *{\n}
 			{\t} * @throws ApiException if a required parameter is null, or there is an error with the call{\n}
 			{\t} */{\n}
-{\n}
 
-		{\t}public static LinodeRequest {apiMethod.name}(
+			{\t}public static LinodeRequest {apiMethod.name}(
 				{loop apiMethod.apiMethodParams as apiMethodParam}
 					{apiMethodParam.type} {apiMethodParam.parameterName}{if !apiMethodParamStatus.last}, {endif}
 				{endloop}

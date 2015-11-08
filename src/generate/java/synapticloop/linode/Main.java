@@ -5,9 +5,11 @@ import java.io.FileFilter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -38,23 +40,29 @@ public class Main {
 		NODE_NAME_MAP.put("small", NODE_SMALL);
 	}
 
+	private static Set<String> ignoreFiles = new HashSet<String>();
+	static {
+		ignoreFiles.add("index.html");
+		ignoreFiles.add("robots.txt");
+	}
+
 	private static FileFilter fileFilter = new FileFilter() {
-		
 		@Override
 		public boolean accept(File file) {
 			String name = file.getName();
-			if("index.html".equals(name) || "robots.txt".equals(name) || name.startsWith(".")) {
+			if(ignoreFiles.contains(name) || name.startsWith(".")) {
 				return(false);
 			}
 			return(true);
 		}
 	};
+
 	private static Map<String, Api> apiBeanCache = new HashMap<String, Api>();
 
 	public static void main(String[] args) throws ParseException, RenderException, IOException {
 		// here we are going to walk the directory and 
 		File apiDocsDirectory = new File(API_DOCS_DIRECTORY);
-		listFiles(apiDocsDirectory.listFiles(fileFilter));
+		parseFiles(apiDocsDirectory.listFiles(fileFilter));
 
 		new File(JAVA_SRC_OUTPUT_DIRECTORY).mkdirs();
 
@@ -76,10 +84,10 @@ public class Main {
 
 	}
 
-	private static void listFiles(File[] files) {
+	private static void parseFiles(File[] files) {
 		for (File file : files) {
 			if(file.isDirectory()) {
-				listFiles(file.listFiles(fileFilter));
+				parseFiles(file.listFiles(fileFilter));
 			} else {
 				parseFile(file);
 			}
@@ -179,10 +187,13 @@ public class Main {
 		if(apiBeanCache.containsKey(apiName)) {
 			return(apiBeanCache.get(apiName));
 		} else {
-			Api api = new Api(apiName);
+			Api api = new Api(getLocation(file.getAbsolutePath()), apiName);
 			apiBeanCache.put(apiName, api);
 			return(api);
 		}
 	}
 
+	private static String getLocation(String fileName) {
+		return("http:/" + fileName.substring(fileName.indexOf(API_DOCS_DIRECTORY) + API_DOCS_DIRECTORY.length()));
+	}
 }

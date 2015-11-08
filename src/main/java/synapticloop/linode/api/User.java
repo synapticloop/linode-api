@@ -12,7 +12,8 @@ import synapticloop.linode.exception.ApiException;
 
 /**
  * This is the interaction class for the User api calls, this was automatically
- * generated from the linode api documentation.
+ * generated from the linode api documentation - which can be found here:
+ * <a href="http://www.linode.com/api/account/user.getapikey">http://www.linode.com/api/account/user.getapikey</a>
  * 
  * @author synapticloop
  */

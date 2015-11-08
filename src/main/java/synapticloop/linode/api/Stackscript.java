@@ -12,7 +12,8 @@ import synapticloop.linode.exception.ApiException;
 
 /**
  * This is the interaction class for the Stackscript api calls, this was automatically
- * generated from the linode api documentation.
+ * generated from the linode api documentation - which can be found here:
+ * <a href="http://www.linode.com/api/stackscript/stackscript.create">http://www.linode.com/api/stackscript/stackscript.create</a>
  * 
  * @author synapticloop
  */
@@ -50,9 +51,9 @@ public class Stackscript extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param label The Label for this StackScript
-	 * @param distributionIDList Comma delimited list of DistributionIDs that this script works on 
-	 * @param script The actual script
+	 * @param label   The Label for this StackScript
+	 * @param distributionIDList   Comma delimited list of DistributionIDs that this script works on 
+	 * @param script   The actual script
 	 *
 	 * @return the linode request object
 	 *

@@ -2,7 +2,7 @@ package synapticloop.linode.exception;
 
 /**
  * An API Exception is a wrapper for any exception that may occur when attempting 
- * to interact with the Linode Api
+ * to interact with the Linode API
  * 
  * @author synapticloop
  */

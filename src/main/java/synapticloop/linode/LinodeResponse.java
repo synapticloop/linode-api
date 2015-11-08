@@ -11,18 +11,47 @@ import synapticloop.linode.exception.ApiException;
  * 
  */
 public class LinodeResponse {
-	private JSONObject json = null;
-
 	private static final String DATA = "DATA";
 	private static final String ACTION = "ACTION";
 	private static final String ERRORARRAY = "ERRORARRAY";
 
+	private JSONObject json = null;
+
 	/**
-	 * @param json the json object returned from the http call
+	 * @param json the JSON object returned from the HTTP call
 	 */
 	public LinodeResponse(JSONObject json) {
 		this.json = json;
 	}
+
+	/**
+	 * Helper method to return whether the DATA object for this request is of type 
+	 * JSONObject, false if there was an error or it is not a JSONObject
+	 * 
+	 * @return whether the DATA is a JSONObject
+	 */
+	public boolean getIsDataJSONObject() {
+		try {
+			return(json.get(DATA) instanceof JSONObject);
+		} catch (JSONException jsonex) {
+			return(false);
+		}
+	}
+
+	/**
+	 * Helper method to return whether the DATA object for this request is of type 
+	 * JSONArray, false if there was an error or it is not a JSONArray
+	 * 
+	 * @return whether the DATA is a JSONArray
+	 */
+	public boolean getIsDataJSONArray() {
+		try {
+			return(json.get(DATA) instanceof JSONArray);
+		} catch (JSONException jsonex) {
+			return(false);
+		}
+	}
+	
 
 	/**
 	 * Data as JSONObject

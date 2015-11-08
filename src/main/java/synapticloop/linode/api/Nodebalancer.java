@@ -12,7 +12,8 @@ import synapticloop.linode.exception.ApiException;
 
 /**
  * This is the interaction class for the Nodebalancer api calls, this was automatically
- * generated from the linode api documentation.
+ * generated from the linode api documentation - which can be found here:
+ * <a href="http://www.linode.com/api/nodebalancer/nodebalancer.config.create">http://www.linode.com/api/nodebalancer/nodebalancer.config.create</a>
  * 
  * @author synapticloop
  */
@@ -66,7 +67,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID The parent NodeBalancer's ID
+	 * @param nodeBalancerID   The parent NodeBalancer's ID
 	 *
 	 * @return the linode request object
 	 *
@@ -159,7 +160,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *
 	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param configID The ConfigID to delete
+	 * @param configID   The ConfigID to delete
 	 *
 	 * @return the linode request object
 	 *
@@ -410,7 +411,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
-	 * @param datacenterID The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
+	 * @param datacenterID   The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
 	 *
 	 * @return the linode request object
 	 *
@@ -483,7 +484,7 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeBalancerID The NodeBalancerID to delete
+	 * @param nodeBalancerID   The NodeBalancerID to delete
 	 *
 	 * @return the linode request object
 	 *
@@ -587,9 +588,9 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID The parent ConfigID to attach this Node to
-	 * @param label This backend Node's label
-	 * @param address The address:port combination used to communicate with this Node
+	 * @param configID   The parent ConfigID to attach this Node to
+	 * @param label   This backend Node's label
+	 * @param address   The address:port combination used to communicate with this Node
 	 *
 	 * @return the linode request object
 	 *
@@ -663,7 +664,7 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeID The NodeID to delete
+	 * @param nodeID   The NodeID to delete
 	 *
 	 * @return the linode request object
 	 *

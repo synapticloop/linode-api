@@ -30,6 +30,7 @@ public class LinodeRequest {
 	 * @return the requested action
 	 */
 	public String getAction() { return this.action; }
+
 	/**
 	 * Return the parameters
 	 * 

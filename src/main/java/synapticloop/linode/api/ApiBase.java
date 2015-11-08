@@ -4,6 +4,11 @@ import java.util.Map;
 
 import synapticloop.linode.exception.ApiException;
 
+/**
+ * The abstract base class with helper methods for all API calls.
+ * 
+ * @author synapticloop
+ */
 public abstract class ApiBase {
 
 	/**

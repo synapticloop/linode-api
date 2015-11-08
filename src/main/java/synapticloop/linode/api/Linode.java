@@ -12,7 +12,8 @@ import synapticloop.linode.exception.ApiException;
 
 /**
  * This is the interaction class for the Linode api calls, this was automatically
- * generated from the linode api documentation.
+ * generated from the linode api documentation - which can be found here:
+ * <a href="http://www.linode.com/api/linode/linode.boot">http://www.linode.com/api/linode/linode.boot</a>
  * 
  * @author synapticloop
  */
@@ -175,9 +176,9 @@ public class Linode extends ApiBase {
 	 *   - LINODELIMITER
 	 *   - ACCOUNTLIMIT
 	 *
-	 * @param linodeID The LinodeID that you want cloned
-	 * @param datacenterID The DatacenterID from avail.datacenters() where you wish to place this new Linode
-	 * @param planID The desired PlanID available from avail.LinodePlans()
+	 * @param linodeID   The LinodeID that you want cloned
+	 * @param datacenterID   The DatacenterID from avail.datacenters() where you wish to place this new Linode
+	 * @param planID   The desired PlanID available from avail.LinodePlans()
 	 *
 	 * @return the linode request object
 	 *
@@ -257,9 +258,9 @@ public class Linode extends ApiBase {
 	 *   - VALIDATION
 	 *
 	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param kernelID The KernelID for this profile. Found in avail.kernels()
-	 * @param label The Label for this profile
-	 * @param diskList A comma delimited list of DiskIDs; position reflects device node. The 9th element for specifying the initrd.
+	 * @param kernelID   The KernelID for this profile. Found in avail.kernels()
+	 * @param label   The Label for this profile
+	 * @param diskList   A comma delimited list of DiskIDs; position reflects device node. The 9th element for specifying the initrd.
 	 *
 	 * @return the linode request object
 	 *
@@ -630,8 +631,8 @@ public class Linode extends ApiBase {
 	 *   - LINODELIMITER
 	 *   - ACCOUNTLIMIT
 	 *
-	 * @param datacenterID The DatacenterID from avail.datacenters() where you wish to place this new Linode
-	 * @param planID The desired PlanID available from avail.LinodePlans()
+	 * @param datacenterID   The DatacenterID from avail.datacenters() where you wish to place this new Linode
+	 * @param planID   The desired PlanID available from avail.LinodePlans()
 	 *
 	 * @return the linode request object
 	 *
@@ -707,7 +708,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - LINODENOTEMPTY
 	 *
-	 * @param linodeID The LinodeID to delete
+	 * @param linodeID   The LinodeID to delete
 	 *
 	 * @return the linode request object
 	 *
@@ -778,9 +779,9 @@ public class Linode extends ApiBase {
 	 *   - VALIDATION
 	 *
 	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param label The display label for this Disk
-	 * @param type The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
-	 * @param size The size in MB of this Disk.
+	 * @param label   The display label for this Disk
+	 * @param type   The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
+	 * @param size   The size in MB of this Disk.
 	 *
 	 * @return the linode request object
 	 *
@@ -864,10 +865,10 @@ public class Linode extends ApiBase {
 	 *   - VALIDATION
 	 *
 	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param distributionID The DistributionID to create this disk from. Found in avail.distributions()
-	 * @param label The label of this new disk image
-	 * @param size Size of this disk image in MB
-	 * @param rootPass The root user's password
+	 * @param distributionID   The DistributionID to create this disk from. Found in avail.distributions()
+	 * @param label   The label of this new disk image
+	 * @param size   Size of this disk image in MB
+	 * @param rootPass   The root user's password
 	 *
 	 * @return the linode request object
 	 *
@@ -943,8 +944,8 @@ public class Linode extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param imageID The ID of the frozen image to deploy from
-	 * @param linodeID Specifies the Linode to deploy on to
+	 * @param imageID   The ID of the frozen image to deploy from
+	 * @param linodeID   Specifies the Linode to deploy on to
 	 *
 	 * @return the linode request object
 	 *
@@ -1018,12 +1019,12 @@ public class Linode extends ApiBase {
 	 *   - VALIDATION
 	 *
 	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param stackScriptID The StackScript to create this image from
-	 * @param stackScriptUDFResponses JSON encoded name/value pairs, answering this StackScript's User Defined Fields
-	 * @param distributionID Which Distribution to apply this StackScript to. Must be one from the script's DistributionIDList
-	 * @param label The label of this new disk image
-	 * @param size Size of this disk image in MB
-	 * @param rootPass The root user's password
+	 * @param stackScriptID   The StackScript to create this image from
+	 * @param stackScriptUDFResponses   JSON encoded name/value pairs, answering this StackScript's User Defined Fields
+	 * @param distributionID   Which Distribution to apply this StackScript to. Must be one from the script's DistributionIDList
+	 * @param label   The label of this new disk image
+	 * @param size   Size of this disk image in MB
+	 * @param rootPass   The root user's password
 	 *
 	 * @return the linode request object
 	 *
@@ -1176,8 +1177,8 @@ public class Linode extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID Specifies the source Linode to create the image from
-	 * @param diskID Specifies the source Disk to create the image from
+	 * @param linodeID   Specifies the source Linode to create the image from
+	 * @param diskID   Specifies the source Disk to create the image from
 	 *
 	 * @return the linode request object
 	 *
@@ -1348,7 +1349,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
 	 * @param diskID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param size The requested new size of this Disk in MB
+	 * @param size   The requested new size of this Disk in MB
 	 *
 	 * @return the linode request object
 	 *
@@ -1487,7 +1488,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID The LinodeID of the Linode that will be assigned an additional public IP address
+	 * @param linodeID   The LinodeID of the Linode that will be assigned an additional public IP address
 	 *
 	 * @return the linode request object
 	 *
@@ -1613,8 +1614,8 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param iPAddressID The IPAddressID of the address to update
-	 * @param hostname The hostname to set the reverse DNS to
+	 * @param iPAddressID   The IPAddressID of the address to update
+	 * @param hostname   The hostname to set the reverse DNS to
 	 *
 	 * @return the linode request object
 	 *
@@ -1660,7 +1661,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param iPAddressID The IPAddressID of an IP Address to transfer or swap
+	 * @param iPAddressID   The IPAddressID of an IP Address to transfer or swap
 	 *
 	 * @return the linode request object
 	 *
@@ -2030,7 +2031,7 @@ public class Linode extends ApiBase {
 	 *   - VALIDATION
 	 *
 	 * @param linodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param planID The desired PlanID available from avail.LinodePlans()
+	 * @param planID   The desired PlanID available from avail.LinodePlans()
 	 *
 	 * @return the linode request object
 	 *

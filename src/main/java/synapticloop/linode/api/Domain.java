@@ -12,7 +12,8 @@ import synapticloop.linode.exception.ApiException;
 
 /**
  * This is the interaction class for the Domain api calls, this was automatically
- * generated from the linode api documentation.
+ * generated from the linode api documentation - which can be found here:
+ * <a href="http://www.linode.com/api/dns/domain.create">http://www.linode.com/api/dns/domain.create</a>
  * 
  * @author synapticloop
  */
@@ -63,8 +64,8 @@ public class Domain extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param domain The zone's name
-	 * @param type master or slave
+	 * @param domain   The zone's name
+	 * @param type   master or slave
 	 *
 	 * @return the linode request object
 	 *
@@ -287,7 +288,7 @@ public class Domain extends ApiBase {
 	 *   - VALIDATION
 	 *
 	 * @param domainID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param type One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
+	 * @param type   One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
 	 *
 	 * @return the linode request object
 	 *

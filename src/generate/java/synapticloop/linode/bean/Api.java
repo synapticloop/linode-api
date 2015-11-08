@@ -7,11 +7,13 @@ import java.util.Map;
 
 public class Api {
 	public List<ApiMethod> apiMethods = new ArrayList<ApiMethod>();
+	private String location = null;
 	private String name = null;
 	private final Map<String, String> CONSTANT_CACHE = new LinkedHashMap<String, String>();
 
 
-	public Api(String name) {
+	public Api(String location, String name) {
+		this.location = location;
 		this.name = name;
 	}
 
@@ -32,4 +34,5 @@ public class Api {
 	public Map<String, String> getConstantCache() { return CONSTANT_CACHE; }
 	public List<ApiMethod> getApiMethods() { return this.apiMethods; }
 	public String getName() { return this.name; }
+	public String getLocation() { return this.location; }
 }
