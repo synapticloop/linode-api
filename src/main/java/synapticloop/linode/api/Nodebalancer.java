@@ -500,7 +500,7 @@ public class Nodebalancer extends ApiBase {
 	 *    "DATA":[
 	 *       {
 	 *          "NODEBALANCERID":53,
-	 *          "LABEL":"urmombalancer",
+	 *          "LABEL":"awesomebal",
 	 *          "DATACENTERID":6,
 	 *          "HOSTNAME":"nb-69-164-223-4.newark.nodebalancer.linode.com",
 	 *          "ADDRESS4":"69.164.223.4",
@@ -534,7 +534,7 @@ public class Nodebalancer extends ApiBase {
 	 *    "DATA":[
 	 *       {
 	 *          "NODEBALANCERID":53,
-	 *          "LABEL":"urmombalancer",
+	 *          "LABEL":"awesomebal",
 	 *          "DATACENTERID":6,
 	 *          "HOSTNAME":"nb-69-164-223-4.newark.nodebalancer.linode.com",
 	 *          "ADDRESS4":"69.164.223.4",
