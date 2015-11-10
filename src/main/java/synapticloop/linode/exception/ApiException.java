@@ -10,7 +10,7 @@ public class ApiException extends Exception {
 	private static final long serialVersionUID = -4211535423309700542L;
 
 	/**
-	 * Create a new API exception
+	 * Create a new API exception with a message
 	 * 
 	 * @param message the message for the exception
 	 */
@@ -19,21 +19,21 @@ public class ApiException extends Exception {
 	}
 
 	/**
-	 * Create a new API exception
+	 * Create a new API exception with a root cause exception
 	 * 
-	 * @param throwable the throwable cause
+	 * @param ex the root cause of the exception
 	 */
-	public ApiException(Throwable throwable) {
-		super(throwable);
+	public ApiException(Exception ex) {
+		super(ex);
 	}
 
 	/**
-	 * Create a new API exception
+	 * Create a new API exception with a message and a root cause exception
 	 * 
 	 * @param message the message for the exception
-	 * @param throwable the throwable cause
+	 * @param ex the root cause of the exception
 	 */
-	public ApiException(String message, Throwable throwable) {
-		super(message, throwable);
+	public ApiException(String message, Exception ex) {
+		super(message, ex);
 	}
 }

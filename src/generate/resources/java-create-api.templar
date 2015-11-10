@@ -3,7 +3,10 @@ package synapticloop.linode.api;{\n}{\n}
 //     with the use of synapticloop templar templating language{\n}
 //               (java-create-api.templar){\n}{\n}
 
-import java.util.HashMap;{\n}
+{if fn:<>[apiMethod.name "echo"]}
+	import java.util.HashMap;{\n}
+{endif}
+
 import java.util.Map;{\n}
 {\n}
 import synapticloop.linode.LinodeRequest;{\n}
