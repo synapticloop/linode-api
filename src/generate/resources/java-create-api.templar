@@ -78,7 +78,7 @@ public class {api.className} extends ApiBase {{{\n}
 				{\t} * @param {apiMethodParam.parameterName} 
 					{if apiMethodParam.required} <strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
 					{if fn:=[fn:length[apiMethodParam.description], "0"]}
-						(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+						(<strong>SORRY</strong> - there was no description provided in the documentation)
 					{else}  {apiMethodParam.description}{endif}{\n}
 			{endloop}
 		{\t} *{\n}
@@ -160,7 +160,7 @@ public class {api.className} extends ApiBase {{{\n}
 					{\t} * @param {apiMethodParam.parameterName} 
 						{if apiMethodParam.required} <strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
 						{if fn:=[fn:length[apiMethodParam.description], "0"]}
-							(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+							(<strong>SORRY</strong> - there was no description provided in the documentation)
 						{else}
 							{apiMethodParam.description}
 						{endif}{\n}

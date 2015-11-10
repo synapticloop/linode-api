@@ -103,7 +103,7 @@ public class Linode extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -135,7 +135,7 @@ public class Linode extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param configID  <em>(OPTIONAL)</em> The ConfigID to boot, available from linode.config.list().
 	 *
 	 * @return the linode request object
@@ -253,7 +253,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param kernelID  <strong>(REQUIRED)</strong>   The KernelID for this profile. Found in avail.kernels()
 	 * @param label  <strong>(REQUIRED)</strong>   The Label for this profile
 	 * @param diskList  <strong>(REQUIRED)</strong>   A comma delimited list of DiskIDs; position reflects device node. The 9th element for specifying the initrd.
@@ -291,7 +291,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param kernelID  <strong>(REQUIRED)</strong> The KernelID for this profile. Found in avail.kernels()
 	 * @param label  <strong>(REQUIRED)</strong> The Label for this profile
 	 * @param comments  <em>(OPTIONAL)</em> Comments you wish to save along with this profile
@@ -355,8 +355,8 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -421,7 +421,7 @@ public class Linode extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -485,8 +485,8 @@ public class Linode extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param configID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -519,7 +519,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -551,8 +551,8 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param kernelID  <em>(OPTIONAL)</em> The KernelID for this profile. Found in avail.kernels()
 	 * @param label  <em>(OPTIONAL)</em> The Label for this profile
 	 * @param comments  <em>(OPTIONAL)</em> Comments you wish to save along with this profile
@@ -763,7 +763,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label  <strong>(REQUIRED)</strong>   The display label for this Disk
 	 * @param type  <strong>(REQUIRED)</strong>   The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
 	 * @param size  <strong>(REQUIRED)</strong>   The size in MB of this Disk.
@@ -801,10 +801,10 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param fromDistributionID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param rootPass  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param rootSSHKey  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param fromDistributionID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param rootPass  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param rootSSHKey  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label  <strong>(REQUIRED)</strong> The display label for this Disk
 	 * @param type  <strong>(REQUIRED)</strong> The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
 	 * @param isReadOnly  <em>(OPTIONAL)</em> Enable forced read-only for this Disk
@@ -847,7 +847,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param distributionID  <strong>(REQUIRED)</strong>   The DistributionID to create this disk from. Found in avail.distributions()
 	 * @param label  <strong>(REQUIRED)</strong>   The label of this new disk image
 	 * @param size  <strong>(REQUIRED)</strong>   Size of this disk image in MB
@@ -887,7 +887,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param distributionID  <strong>(REQUIRED)</strong> The DistributionID to create this disk from. Found in avail.distributions()
 	 * @param label  <strong>(REQUIRED)</strong> The label of this new disk image
 	 * @param size  <strong>(REQUIRED)</strong> Size of this disk image in MB
@@ -997,7 +997,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param stackScriptID  <strong>(REQUIRED)</strong>   The StackScript to create this image from
 	 * @param stackScriptUDFResponses  <strong>(REQUIRED)</strong>   JSON encoded name/value pairs, answering this StackScript's User Defined Fields
 	 * @param distributionID  <strong>(REQUIRED)</strong>   Which Distribution to apply this StackScript to. Must be one from the script's DistributionIDList
@@ -1041,7 +1041,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param stackScriptID  <strong>(REQUIRED)</strong> The StackScript to create this image from
 	 * @param stackScriptUDFResponses  <strong>(REQUIRED)</strong> JSON encoded name/value pairs, answering this StackScript's User Defined Fields
 	 * @param distributionID  <strong>(REQUIRED)</strong> Which Distribution to apply this StackScript to. Must be one from the script's DistributionIDList
@@ -1087,8 +1087,8 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1122,8 +1122,8 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1236,7 +1236,7 @@ public class Linode extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1284,8 +1284,8 @@ public class Linode extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param diskID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param diskID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1318,8 +1318,8 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param size  <strong>(REQUIRED)</strong>   The requested new size of this Disk in MB
 	 *
 	 * @return the linode request object
@@ -1353,7 +1353,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1384,8 +1384,8 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param diskID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label  <em>(OPTIONAL)</em> The display label for this Disk
 	 * @param isReadOnly  <em>(OPTIONAL)</em> Enable forced read-only for this Disk
 	 *
@@ -1422,7 +1422,7 @@ public class Linode extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1721,7 +1721,7 @@ public class Linode extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1770,9 +1770,9 @@ public class Linode extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param jobID  <em>(OPTIONAL)</em> Limits the list to the specified JobID
-	 * @param pendingOnly  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param pendingOnly  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1915,7 +1915,7 @@ public class Linode extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1946,8 +1946,8 @@ public class Linode extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param configID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -1985,7 +1985,7 @@ public class Linode extends ApiBase {
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param planID  <strong>(REQUIRED)</strong>   The desired PlanID available from avail.LinodePlans()
 	 *
 	 * @return the linode request object
@@ -2018,7 +2018,7 @@ public class Linode extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -2050,7 +2050,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -2082,7 +2082,7 @@ public class Linode extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param linodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label  <em>(OPTIONAL)</em> This Linode's label
 	 * @param lpm_displayGroup  <em>(OPTIONAL)</em> Display group in the Linode list inside the Linode Manager
 	 * @param Alert_cpu_enabled  <em>(OPTIONAL)</em> Enable the cpu usage email alert
@@ -2095,13 +2095,13 @@ public class Linode extends ApiBase {
 	 * @param Alert_bwout_threshold  <em>(OPTIONAL)</em> Mb/sec
 	 * @param Alert_bwquota_enabled  <em>(OPTIONAL)</em> Enable the bw quote email alert
 	 * @param Alert_bwquota_threshold  <em>(OPTIONAL)</em> Percentage of monthly bw quota
-	 * @param backupWindow  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param backupWeeklyDay  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param backupWindow  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param backupWeeklyDay  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param watchdog  <em>(OPTIONAL)</em> Enable the Lassie shutdown watchdog
-	 * @param ms_ssh_disabled  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param ms_ssh_user  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param ms_ssh_ip  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
-	 * @param ms_ssh_port  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param ms_ssh_disabled  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param ms_ssh_user  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param ms_ssh_ip  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param ms_ssh_port  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
