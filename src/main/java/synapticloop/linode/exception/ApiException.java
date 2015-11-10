@@ -6,7 +6,7 @@ package synapticloop.linode.exception;
  * 
  * @author synapticloop
  */
-public class ApiException extends Throwable {
+public class ApiException extends Exception {
 	private static final long serialVersionUID = -4211535423309700542L;
 
 	/**

@@ -43,9 +43,9 @@ public class Nodebalancer extends ApiBase {
 	private static final String PARAM_CONSTANT_MODE = "Mode";
 	private static final String PARAM_CONSTANT_NODEID = "NodeID";
 
-/**
- * Private constructor to deter instantiation
- */
+	/**
+	 * Private constructor to deter instantiation
+	 */
 	private Nodebalancer() {}
 
 	/**
@@ -67,13 +67,12 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID   The parent NodeBalancer's ID
+	 * @param nodeBalancerID  <strong>(REQUIRED)</strong>   The parent NodeBalancer's ID
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest configcreate(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
@@ -99,27 +98,26 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID The parent NodeBalancer's ID
-	 * @param port Port to bind to on the public interfaces. 1-65534
-	 * @param protocol Either 'tcp', 'http', or 'https'
-	 * @param algorithm Balancing algorithm. One of 'roundrobin', 'leastconn', 'source'
-	 * @param stickiness Session persistence. One of 'none', 'table', 'http_cookie'
-	 * @param check Perform active health checks on the backend nodes. One of 'connection', 'http', 'http_body'
-	 * @param check_interval Seconds between health check probes. 2-3600
-	 * @param check_timeout Seconds to wait before considering the probe a failure. 1-30. Must be less than check_interval.
-	 * @param check_attempts Number of failed probes before taking a node out of rotation. 1-30
-	 * @param check_path When check=http, the path to request
-	 * @param check_body When check=http, a regex to match within the first 16,384 bytes of the response body
-	 * @param check_passive Enable passive checks based on observing communication with back-end nodes.
-	 * @param ssl_cert SSL certificate served by the NodeBalancer when the protocol is 'https'
-	 * @param ssl_key Unpassphrased private key for the SSL certificate when protocol is 'https'
-	 * @param cipher_suite SSL cipher suite to enforce. One of 'recommended', 'legacy'
+	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> The parent NodeBalancer's ID
+	 * @param port  <em>(OPTIONAL)</em> Port to bind to on the public interfaces. 1-65534
+	 * @param protocol  <em>(OPTIONAL)</em> Either 'tcp', 'http', or 'https'
+	 * @param algorithm  <em>(OPTIONAL)</em> Balancing algorithm. One of 'roundrobin', 'leastconn', 'source'
+	 * @param stickiness  <em>(OPTIONAL)</em> Session persistence. One of 'none', 'table', 'http_cookie'
+	 * @param check  <em>(OPTIONAL)</em> Perform active health checks on the backend nodes. One of 'connection', 'http', 'http_body'
+	 * @param check_interval  <em>(OPTIONAL)</em> Seconds between health check probes. 2-3600
+	 * @param check_timeout  <em>(OPTIONAL)</em> Seconds to wait before considering the probe a failure. 1-30. Must be less than check_interval.
+	 * @param check_attempts  <em>(OPTIONAL)</em> Number of failed probes before taking a node out of rotation. 1-30
+	 * @param check_path  <em>(OPTIONAL)</em> When check=http, the path to request
+	 * @param check_body  <em>(OPTIONAL)</em> When check=http, a regex to match within the first 16,384 bytes of the response body
+	 * @param check_passive  <em>(OPTIONAL)</em> Enable passive checks based on observing communication with back-end nodes.
+	 * @param ssl_cert  <em>(OPTIONAL)</em> SSL certificate served by the NodeBalancer when the protocol is 'https'
+	 * @param ssl_key  <em>(OPTIONAL)</em> Unpassphrased private key for the SSL certificate when protocol is 'https'
+	 * @param cipher_suite  <em>(OPTIONAL)</em> SSL cipher suite to enforce. One of 'recommended', 'legacy'
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest configcreate(Long nodeBalancerID, Long port, String protocol, String algorithm, String stickiness, String check, Long check_interval, String check_timeout, String check_attempts, String check_path, String check_body, Boolean check_passive, String ssl_cert, String ssl_key, String cipher_suite) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
@@ -159,14 +157,13 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param configID   The ConfigID to delete
+	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param configID  <strong>(REQUIRED)</strong>   The ConfigID to delete
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest configdelete(Long nodeBalancerID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
@@ -221,13 +218,12 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest configlist(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
@@ -281,14 +277,13 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param configID Limits the list to the specified ConfigID
+	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param configID  <em>(OPTIONAL)</em> Limits the list to the specified ConfigID
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest configlist(Long nodeBalancerID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
@@ -316,13 +311,12 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest configupdate(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
@@ -349,27 +343,26 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param port Port to bind to on the public interfaces. 1-65534
-	 * @param protocol Either 'tcp', 'http', or 'https'
-	 * @param algorithm Balancing algorithm. One of 'roundrobin', 'leastconn', 'source'
-	 * @param stickiness Session persistence. One of 'none', 'table', 'http_cookie'
-	 * @param check Perform active health checks on the backend nodes. One of 'connection', 'http', 'http_body'
-	 * @param check_interval Seconds between health check probes. 2-3600
-	 * @param check_timeout Seconds to wait before considering the probe a failure. 1-30. Must be less than check_interval.
-	 * @param check_attempts Number of failed probes before taking a node out of rotation. 1-30
-	 * @param check_path When check=http, the path to request
-	 * @param check_body When check=http, a regex to match within the first 16,384 bytes of the response body
-	 * @param check_passive Enable passive checks based on observing communication with back-end nodes.
-	 * @param ssl_cert SSL certificate served by the NodeBalancer when the protocol is 'https'
-	 * @param ssl_key Unpassphrased private key for the SSL certificate when protocol is 'https'
-	 * @param cipher_suite SSL cipher suite to enforce. One of 'recommended', 'legacy'
+	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param port  <em>(OPTIONAL)</em> Port to bind to on the public interfaces. 1-65534
+	 * @param protocol  <em>(OPTIONAL)</em> Either 'tcp', 'http', or 'https'
+	 * @param algorithm  <em>(OPTIONAL)</em> Balancing algorithm. One of 'roundrobin', 'leastconn', 'source'
+	 * @param stickiness  <em>(OPTIONAL)</em> Session persistence. One of 'none', 'table', 'http_cookie'
+	 * @param check  <em>(OPTIONAL)</em> Perform active health checks on the backend nodes. One of 'connection', 'http', 'http_body'
+	 * @param check_interval  <em>(OPTIONAL)</em> Seconds between health check probes. 2-3600
+	 * @param check_timeout  <em>(OPTIONAL)</em> Seconds to wait before considering the probe a failure. 1-30. Must be less than check_interval.
+	 * @param check_attempts  <em>(OPTIONAL)</em> Number of failed probes before taking a node out of rotation. 1-30
+	 * @param check_path  <em>(OPTIONAL)</em> When check=http, the path to request
+	 * @param check_body  <em>(OPTIONAL)</em> When check=http, a regex to match within the first 16,384 bytes of the response body
+	 * @param check_passive  <em>(OPTIONAL)</em> Enable passive checks based on observing communication with back-end nodes.
+	 * @param ssl_cert  <em>(OPTIONAL)</em> SSL certificate served by the NodeBalancer when the protocol is 'https'
+	 * @param ssl_key  <em>(OPTIONAL)</em> Unpassphrased private key for the SSL certificate when protocol is 'https'
+	 * @param cipher_suite  <em>(OPTIONAL)</em> SSL cipher suite to enforce. One of 'recommended', 'legacy'
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest configupdate(Long configID, Long port, String protocol, String algorithm, String stickiness, String check, Long check_interval, String check_timeout, String check_attempts, String check_path, String check_body, Boolean check_passive, String ssl_cert, String ssl_key, String cipher_suite) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
@@ -411,13 +404,12 @@ public class Nodebalancer extends ApiBase {
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
-	 * @param datacenterID   The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
+	 * @param datacenterID  <strong>(REQUIRED)</strong>   The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest create(Long datacenterID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
@@ -445,15 +437,14 @@ public class Nodebalancer extends ApiBase {
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
-	 * @param datacenterID The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
-	 * @param label This NodeBalancer's label
-	 * @param clientConnThrottle To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.
+	 * @param datacenterID  <strong>(REQUIRED)</strong> The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
+	 * @param label  <em>(OPTIONAL)</em> This NodeBalancer's label
+	 * @param clientConnThrottle  <em>(OPTIONAL)</em> To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest create(Long datacenterID, String label, Long clientConnThrottle) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
@@ -484,13 +475,12 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeBalancerID   The NodeBalancerID to delete
+	 * @param nodeBalancerID  <strong>(REQUIRED)</strong>   The NodeBalancerID to delete
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest delete(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
@@ -526,7 +516,6 @@ public class Nodebalancer extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		return(new LinodeRequest("nodebalancer.list", parameters));
@@ -556,13 +545,12 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param nodeBalancerID Limits the list to the specified NodeBalancerID
+	 * @param nodeBalancerID  <em>(OPTIONAL)</em> Limits the list to the specified NodeBalancerID
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest list(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, true);
@@ -588,15 +576,14 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID   The parent ConfigID to attach this Node to
-	 * @param label   This backend Node's label
-	 * @param address   The address:port combination used to communicate with this Node
+	 * @param configID  <strong>(REQUIRED)</strong>   The parent ConfigID to attach this Node to
+	 * @param label  <strong>(REQUIRED)</strong>   This backend Node's label
+	 * @param address  <strong>(REQUIRED)</strong>   The address:port combination used to communicate with this Node
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest nodecreate(Long configID, String label, String address) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
@@ -624,17 +611,16 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID The parent ConfigID to attach this Node to
-	 * @param label This backend Node's label
-	 * @param address The address:port combination used to communicate with this Node
-	 * @param weight Load balancing weight, 1-255. Higher means more connections.
-	 * @param mode The connections mode for this node. One of 'accept', 'reject', or 'drain'
+	 * @param configID  <strong>(REQUIRED)</strong> The parent ConfigID to attach this Node to
+	 * @param label  <strong>(REQUIRED)</strong> This backend Node's label
+	 * @param address  <strong>(REQUIRED)</strong> The address:port combination used to communicate with this Node
+	 * @param weight  <em>(OPTIONAL)</em> Load balancing weight, 1-255. Higher means more connections.
+	 * @param mode  <em>(OPTIONAL)</em> The connections mode for this node. One of 'accept', 'reject', or 'drain'
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest nodecreate(Long configID, String label, String address, Long weight, String mode) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
@@ -664,13 +650,12 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeID   The NodeID to delete
+	 * @param nodeID  <strong>(REQUIRED)</strong>   The NodeID to delete
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest nodedelete(Long nodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, false);
@@ -701,13 +686,12 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest nodelist(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
@@ -738,14 +722,13 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param configID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param nodeID Limits the list to the specified NodeID
+	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param nodeID  <em>(OPTIONAL)</em> Limits the list to the specified NodeID
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest nodelist(Long configID, Long nodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
@@ -773,13 +756,12 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param nodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest nodeupdate(Long nodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, false);
@@ -806,17 +788,16 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param label This backend Node's label
-	 * @param address The address:port combination used to communicate with this Node
-	 * @param weight Load balancing weight, 1-255. Higher means more connections.
-	 * @param mode The connections mode for this node. One of 'accept', 'reject', or 'drain'
+	 * @param nodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param label  <em>(OPTIONAL)</em> This backend Node's label
+	 * @param address  <em>(OPTIONAL)</em> The address:port combination used to communicate with this Node
+	 * @param weight  <em>(OPTIONAL)</em> Load balancing weight, 1-255. Higher means more connections.
+	 * @param mode  <em>(OPTIONAL)</em> The connections mode for this node. One of 'accept', 'reject', or 'drain'
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest nodeupdate(Long nodeID, String label, String address, Long weight, String mode) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, false);
@@ -849,13 +830,12 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest update(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
@@ -884,15 +864,14 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param label This NodeBalancer's label
-	 * @param clientConnThrottle To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.
+	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param label  <em>(OPTIONAL)</em> This NodeBalancer's label
+	 * @param clientConnThrottle  <em>(OPTIONAL)</em> To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest update(Long nodeBalancerID, String label, Long clientConnThrottle) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);

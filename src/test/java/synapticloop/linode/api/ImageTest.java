@@ -1,4 +1,5 @@
 package synapticloop.linode.api;
+
 import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -26,11 +27,28 @@ public class ImageTest {
 	}
 
 	@Test
+	public void testImageList() throws Exception, ApiException {
+		LinodeResponse linodeResponse = linodeApi.execute(Image.list());
+		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+	}
+
+	@Test
+	public void testImageListParameters() throws Exception, ApiException {
+		LinodeResponse linodeResponse = linodeApi.execute(Image.list(null, null));
+		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+	}
+
+	@Test
 	public void testDeleteImagesInvalid() throws ApiException, JSONException {
 		LinodeRequest linodeRequest = Image.delete(-1l);
 		LinodeResponse linodeResponse = linodeApi.execute(linodeRequest);
 		// we are going to get a not found error here
 		Assert.assertEquals(1, linodeResponse.getErrorArray().length());
+	}
+
+	@Test(expected = ApiException.class)
+	public void testUpdateImagesInvalid() throws ApiException {
+		linodeApi.execute(Image.update(null, null, null));
 	}
 
 }

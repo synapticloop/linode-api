@@ -26,9 +26,9 @@ public class {api.className} extends ApiBase {{{\n}
 	{endloop}
 {\n}
 
-	/**{\n}
-	 * Private constructor to deter instantiation{\n}
-	 */{\n}
+	{\t}/**{\n}
+	{\t} * Private constructor to deter instantiation{\n}
+	{\t} */{\n}
 
 {\t}private {api.className}() {{}{\n}
 {\n}
@@ -63,8 +63,17 @@ public class {api.className} extends ApiBase {{{\n}
 		{endloop}
 
 		{\t} *{\n}
+			{--
+			  At this point we are doind a special test for the 'echo' method
+			}
+
+			{if fn:=[apiMethod.name "echo"]}
+				{\t} * @param parameters the map of parameters (String:String) to echo back{\n}
+			{endif}
+
 			{loop apiMethod.requiredApiMethodParams as apiMethodParam}
 				{\t} * @param {apiMethodParam.parameterName} 
+					{if apiMethodParam.required} <strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
 					{if fn:=[fn:length[apiMethodParam.description], "0"]}
 						(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 					{else}  {apiMethodParam.description}{endif}{\n}
@@ -79,8 +88,16 @@ public class {api.className} extends ApiBase {{{\n}
 				{loop apiMethod.requiredApiMethodParams as apiMethodParam}
 					{apiMethodParam.type} {apiMethodParam.parameterName}{if !apiMethodParamStatus.last}, {endif}
 				{endloop}
+
+				{if fn:=[apiMethod.name "echo"]}Map<String, String> parameters{endif}
+
 					) throws ApiException {{{\n}
-				{\t}{\t}Map<String, String> parameters = new HashMap<String, String>();{\n}
+
+				{if fn:<>[apiMethod.name "echo"]}
+					{\t}{\t}Map<String, String> parameters = new HashMap<String, String>();{\n}
+				{endif}
+
+
 				{loop apiMethod.requiredApiMethodParams as apiMethodParam}
 					{\t}{\t}addParameterSafely(parameters, {apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}, {!apiMethodParam.required});{\n}
 				{endloop}
@@ -128,8 +145,17 @@ public class {api.className} extends ApiBase {{{\n}
 			{endloop}
 
 			{\t} *{\n}
+			{--
+			  At this point we are doind a special test for the 'echo' method
+			}
+
+			{if fn:=[apiMethod.name "echo"]}
+				{\t} * @param parameters the map of parameters (String:String) to echo back{\n}
+			{endif}
+
 				{loop apiMethod.apiMethodParams as apiMethodParam}
 					{\t} * @param {apiMethodParam.parameterName} 
+						{if apiMethodParam.required} <strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
 						{if fn:=[fn:length[apiMethodParam.description], "0"]}
 							(<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 						{else}
@@ -146,8 +172,15 @@ public class {api.className} extends ApiBase {{{\n}
 				{loop apiMethod.apiMethodParams as apiMethodParam}
 					{apiMethodParam.type} {apiMethodParam.parameterName}{if !apiMethodParamStatus.last}, {endif}
 				{endloop}
+
+				{if fn:=[apiMethod.name "echo"]}Map<String, String> parameters{endif}
+
 					) throws ApiException {{{\n}
-				{\t}{\t}Map<String, String> parameters = new HashMap<String, String>();{\n}
+
+				{if fn:<>[apiMethod.name "echo"]}
+					{\t}{\t}Map<String, String> parameters = new HashMap<String, String>();{\n}
+				{endif}
+
 				{loop apiMethod.apiMethodParams as apiMethodParam}
 					{\t}{\t}addParameterSafely(parameters, {apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}, {!apiMethodParam.required});{\n}
 				{endloop}

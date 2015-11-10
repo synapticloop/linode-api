@@ -20,9 +20,9 @@ import synapticloop.linode.exception.ApiException;
 
 public class Test extends ApiBase {
 
-/**
- * Private constructor to deter instantiation
- */
+	/**
+	 * Private constructor to deter instantiation
+	 */
 	private Test() {}
 
 	/**
@@ -40,14 +40,13 @@ public class Test extends ApiBase {
 	 * }
 	 * </pre>
 	 *
+	 * @param parameters the map of parameters (String:String) to echo back
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
-	public static LinodeRequest echo() throws ApiException {
-		Map<String, String> parameters = new HashMap<String, String>();
+	public static LinodeRequest echo(Map<String, String> parameters) throws ApiException {
 		return(new LinodeRequest("test.echo", parameters));
 	}
 

@@ -27,9 +27,9 @@ public class Stackscript extends ApiBase {
 	private static final String PARAM_CONSTANT_SCRIPT = "script";
 	private static final String PARAM_CONSTANT_STACKSCRIPTID = "StackScriptID";
 
-/**
- * Private constructor to deter instantiation
- */
+	/**
+	 * Private constructor to deter instantiation
+	 */
 	private Stackscript() {}
 
 	/**
@@ -51,15 +51,14 @@ public class Stackscript extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param label   The Label for this StackScript
-	 * @param distributionIDList   Comma delimited list of DistributionIDs that this script works on 
-	 * @param script   The actual script
+	 * @param label  <strong>(REQUIRED)</strong>   The Label for this StackScript
+	 * @param distributionIDList  <strong>(REQUIRED)</strong>   Comma delimited list of DistributionIDs that this script works on 
+	 * @param script  <strong>(REQUIRED)</strong>   The actual script
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest create(String label, String distributionIDList, String script) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
@@ -87,18 +86,17 @@ public class Stackscript extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param label The Label for this StackScript
-	 * @param description (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param distributionIDList Comma delimited list of DistributionIDs that this script works on 
-	 * @param isPublic Whether this StackScript is published in the Library, for everyone to use
-	 * @param rev_note (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param script The actual script
+	 * @param label  <strong>(REQUIRED)</strong> The Label for this StackScript
+	 * @param description  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param distributionIDList  <strong>(REQUIRED)</strong> Comma delimited list of DistributionIDs that this script works on 
+	 * @param isPublic  <em>(OPTIONAL)</em> Whether this StackScript is published in the Library, for everyone to use
+	 * @param rev_note  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param script  <strong>(REQUIRED)</strong> The actual script
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest create(String label, String description, String distributionIDList, Boolean isPublic, String rev_note, String script) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
@@ -128,13 +126,12 @@ public class Stackscript extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param stackScriptID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param stackScriptID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest delete(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
@@ -192,7 +189,6 @@ public class Stackscript extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		return(new LinodeRequest("stackscript.list", parameters));
@@ -244,13 +240,12 @@ public class Stackscript extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param stackScriptID Limits the list to the specified StackScriptID
+	 * @param stackScriptID  <em>(OPTIONAL)</em> Limits the list to the specified StackScriptID
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest list(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, true);
@@ -277,13 +272,12 @@ public class Stackscript extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param stackScriptID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param stackScriptID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest update(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
@@ -310,19 +304,18 @@ public class Stackscript extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param stackScriptID (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param label The Label for this StackScript
-	 * @param description (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param distributionIDList Comma delimited list of DistributionIDs that this script works on 
-	 * @param isPublic Whether this StackScript is published in the Library, for everyone to use
-	 * @param rev_note (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param script The actual script
+	 * @param stackScriptID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param label  <em>(OPTIONAL)</em> The Label for this StackScript
+	 * @param description  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param distributionIDList  <em>(OPTIONAL)</em> Comma delimited list of DistributionIDs that this script works on 
+	 * @param isPublic  <em>(OPTIONAL)</em> Whether this StackScript is published in the Library, for everyone to use
+	 * @param rev_note  <em>(OPTIONAL)</em> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param script  <em>(OPTIONAL)</em> The actual script
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest update(Long stackScriptID, String label, String description, String distributionIDList, Boolean isPublic, String rev_note, String script) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);

@@ -16,10 +16,9 @@ import synapticloop.linode.exception.ApiException;
 public class AvailTest {
 	private LinodeApi linodeApi = null;
 
-
 	@Before
 	public void setup() {
-		linodeApi = new LinodeApi(System.getenv("LINODE_API_KEY"), true);
+		linodeApi = new LinodeApi(System.getenv("LINODE_API_KEY"), false);
 	}
 
 	@Test
@@ -77,8 +76,13 @@ public class AvailTest {
 	}
 
 	@Test
-	public void testLinodePlans() throws ApiException {
+	public void testLinodePlans() throws ApiException, JSONException {
 		LinodeResponse linodeResponse = linodeApi.execute(Avail.linodeplans());
+		Assert.assertFalse(linodeResponse.getIsDataJSONObject());
+		Assert.assertTrue(linodeResponse.getIsDataJSONArray());
+		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+
+		linodeResponse = linodeApi.execute(Avail.linodeplans(1l));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
@@ -89,8 +93,12 @@ public class AvailTest {
 	}
 
 	@Test
-	public void testStackScripts() throws ApiException {
+	public void testStackScripts() throws ApiException, JSONException {
 		LinodeResponse linodeResponse = linodeApi.execute(Avail.stackscripts());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+
+		linodeResponse = linodeApi.execute(Avail.stackscripts(null, null, "Install"));
+		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
+
 }

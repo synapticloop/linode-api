@@ -24,9 +24,9 @@ public class Account extends ApiBase {
 	private static final String PARAM_CONSTANT_PLANID = "PlanID";
 	private static final String PARAM_CONSTANT_LINODEID = "LinodeID";
 
-/**
- * Private constructor to deter instantiation
- */
+	/**
+	 * Private constructor to deter instantiation
+	 */
 	private Account() {}
 
 	/**
@@ -51,13 +51,12 @@ public class Account extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param mode   This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
+	 * @param mode  <strong>(REQUIRED)</strong>   This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest estimateinvoice(String mode) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, false);
@@ -86,16 +85,15 @@ public class Account extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param mode This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
-	 * @param paymentTerm Subscription term in months. One of: 1, 12, or 24. This is required for modes 'linode_new' and 'nodebalancer_new'.
-	 * @param planID The desired PlanID available from avail.LinodePlans(). This is required for modes 'linode_new' and 'linode_resize'.
-	 * @param linodeID This is the LinodeID you want to resize and is required for mode 'linode_resize'.
+	 * @param mode  <strong>(REQUIRED)</strong> This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
+	 * @param paymentTerm  <em>(OPTIONAL)</em> Subscription term in months. One of: 1, 12, or 24. This is required for modes 'linode_new' and 'nodebalancer_new'.
+	 * @param planID  <em>(OPTIONAL)</em> The desired PlanID available from avail.LinodePlans(). This is required for modes 'linode_new' and 'linode_resize'.
+	 * @param linodeID  <em>(OPTIONAL)</em> This is the LinodeID you want to resize and is required for mode 'linode_resize'.
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest estimateinvoice(String mode, Long paymentTerm, Long planID, Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, false);
@@ -132,7 +130,6 @@ public class Account extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest info() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		return(new LinodeRequest("account.info", parameters));

@@ -1,5 +1,6 @@
 package synapticloop.linode;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,7 +22,12 @@ public class LinodeRequest {
 	 */
 	public LinodeRequest(String action, Map<String, String> parameters) {
 		this.action = action;
-		this.parameters = parameters;
+		if(null != parameters) {
+			this.parameters = parameters;
+		} else {
+			this.parameters = new HashMap<String, String>();
+		}
+		
 	}
 
 	/**

@@ -25,9 +25,9 @@ public class User extends ApiBase {
 	private static final String PARAM_CONSTANT_EXPIRES = "expires";
 	private static final String PARAM_CONSTANT_LABEL = "label";
 
-/**
- * Private constructor to deter instantiation
- */
+	/**
+	 * Private constructor to deter instantiation
+	 */
 	private User() {}
 
 	/**
@@ -52,14 +52,13 @@ public class User extends ApiBase {
 	 * 
 	 *   - AUTHFAIL
 	 *
-	 * @param username (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param password (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
+	 * @param username  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param password  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-
 	public static LinodeRequest getapikey(String username, String password) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_USERNAME, username, false);
@@ -89,17 +88,16 @@ public class User extends ApiBase {
 	 * 
 	 *   - AUTHFAIL
 	 *
-	 * @param username (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param password (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, thereore I could not generate one)
-	 * @param token Required when two-factor authentication is enabled.
-	 * @param expires Number of hours the key will remain valid, between 0 and 8760. 0 means no expiration. Defaults to 168.
-	 * @param label An optional label for this key.
+	 * @param username  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param password  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> there was no description provided for this parameter in the documentation, therefore I could not generate one)
+	 * @param token  <em>(OPTIONAL)</em> Required when two-factor authentication is enabled.
+	 * @param expires  <em>(OPTIONAL)</em> Number of hours the key will remain valid, between 0 and 8760. 0 means no expiration. Defaults to 168.
+	 * @param label  <em>(OPTIONAL)</em> An optional label for this key.
 	 *
 	 * @return the linode request object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-
 	public static LinodeRequest getapikey(String username, String password, String token, Long expires, String label) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_USERNAME, username, false);
