@@ -4,7 +4,6 @@ package synapticloop.linode.api;
 //     with the use of synapticloop templar templating language
 //               (java-create-api.templar)
 
-import java.util.HashMap;
 import java.util.Map;
 
 import synapticloop.linode.LinodeRequest;

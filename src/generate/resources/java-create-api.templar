@@ -3,7 +3,7 @@ package synapticloop.linode.api;{\n}{\n}
 //     with the use of synapticloop templar templating language{\n}
 //               (java-create-api.templar){\n}{\n}
 
-{if fn:<>[apiMethod.name "echo"]}
+{if fn:<>[api.className "Test"]}
 	import java.util.HashMap;{\n}
 {endif}
 
