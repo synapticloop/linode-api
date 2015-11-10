@@ -13,7 +13,7 @@ import synapticloop.linode.exception.ApiException;
 /**
  * This is the interaction class for the Account api calls, this was automatically
  * generated from the linode api documentation - which can be found here:
- * <a href="http://www.linode.com/api/account/account.estimateinvoice">http://www.linode.com/api/account/account.estimateinvoice</a>
+ * <a href="http://www.linode.com/api/account">http://www.linode.com/api/account</a>
  * 
  * @author synapticloop
  */

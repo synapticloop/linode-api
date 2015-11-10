@@ -13,7 +13,7 @@ import synapticloop.linode.exception.ApiException;
 /**
  * This is the interaction class for the Domain api calls, this was automatically
  * generated from the linode api documentation - which can be found here:
- * <a href="http://www.linode.com/api/dns/domain.create">http://www.linode.com/api/dns/domain.create</a>
+ * <a href="http://www.linode.com/api/dns">http://www.linode.com/api/dns</a>
  * 
  * @author synapticloop
  */

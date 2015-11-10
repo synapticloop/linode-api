@@ -13,7 +13,7 @@ import synapticloop.linode.exception.ApiException;
 /**
  * This is the interaction class for the Image api calls, this was automatically
  * generated from the linode api documentation - which can be found here:
- * <a href="http://www.linode.com/api/image/image.delete">http://www.linode.com/api/image/image.delete</a>
+ * <a href="http://www.linode.com/api/image">http://www.linode.com/api/image</a>
  * 
  * @author synapticloop
  */

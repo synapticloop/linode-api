@@ -13,7 +13,7 @@ import synapticloop.linode.exception.ApiException;
 /**
  * This is the interaction class for the Linode api calls, this was automatically
  * generated from the linode api documentation - which can be found here:
- * <a href="http://www.linode.com/api/linode/linode.boot">http://www.linode.com/api/linode/linode.boot</a>
+ * <a href="http://www.linode.com/api/linode">http://www.linode.com/api/linode</a>
  * 
  * @author synapticloop
  */

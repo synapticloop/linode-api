@@ -13,7 +13,7 @@ import synapticloop.linode.exception.ApiException;
 /**
  * This is the interaction class for the Avail api calls, this was automatically
  * generated from the linode api documentation - which can be found here:
- * <a href="http://www.linode.com/api/utility/avail.datacenters">http://www.linode.com/api/utility/avail.datacenters</a>
+ * <a href="http://www.linode.com/api/utility">http://www.linode.com/api/utility</a>
  * 
  * @author synapticloop
  */

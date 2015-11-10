@@ -194,6 +194,6 @@ public class Main {
 	}
 
 	private static String getLocation(String fileName) {
-		return("http:/" + fileName.substring(fileName.indexOf(API_DOCS_DIRECTORY) + API_DOCS_DIRECTORY.length()));
+		return("http:/" + fileName.substring(fileName.indexOf(API_DOCS_DIRECTORY) + API_DOCS_DIRECTORY.length(), fileName.lastIndexOf("/")));
 	}
 }

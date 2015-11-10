@@ -13,7 +13,7 @@ import synapticloop.linode.exception.ApiException;
 /**
  * This is the interaction class for the Api api calls, this was automatically
  * generated from the linode api documentation - which can be found here:
- * <a href="http://www.linode.com/api/utility/api.spec">http://www.linode.com/api/utility/api.spec</a>
+ * <a href="http://www.linode.com/api/utility">http://www.linode.com/api/utility</a>
  * 
  * @author synapticloop
  */

@@ -13,7 +13,7 @@ import synapticloop.linode.exception.ApiException;
 /**
  * This is the interaction class for the Nodebalancer api calls, this was automatically
  * generated from the linode api documentation - which can be found here:
- * <a href="http://www.linode.com/api/nodebalancer/nodebalancer.config.create">http://www.linode.com/api/nodebalancer/nodebalancer.config.create</a>
+ * <a href="http://www.linode.com/api/nodebalancer">http://www.linode.com/api/nodebalancer</a>
  * 
  * @author synapticloop
  */
