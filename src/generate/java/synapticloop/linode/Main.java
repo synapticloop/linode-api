@@ -33,6 +33,7 @@ public class Main {
 	private static final int NODE_TEXT = 0;
 	private static final int NODE_STRONG = 1;
 	private static final int NODE_SMALL = 2;
+
 	private static Map<String, Integer> NODE_NAME_MAP = new HashMap<String, Integer>();
 	static {
 		NODE_NAME_MAP.put("#text", NODE_TEXT);
@@ -81,7 +82,6 @@ public class Main {
 			fileWriter.write(parser.render(templarContext));
 			fileWriter.close();
 		}
-
 	}
 
 	private static void parseFiles(File[] files) {

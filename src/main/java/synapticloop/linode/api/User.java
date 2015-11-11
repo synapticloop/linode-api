@@ -52,8 +52,8 @@ public class User extends ApiBase {
 	 * 
 	 *   - AUTHFAIL
 	 *
-	 * @param username  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param password  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param username  <strong>(REQUIRED)</strong>   
+	 * @param password  <strong>(REQUIRED)</strong>   
 	 *
 	 * @return the linode request object
 	 *
@@ -88,8 +88,8 @@ public class User extends ApiBase {
 	 * 
 	 *   - AUTHFAIL
 	 *
-	 * @param username  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param password  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param username  <strong>(REQUIRED)</strong> 
+	 * @param password  <strong>(REQUIRED)</strong> 
 	 * @param token  <em>(OPTIONAL)</em> Required when two-factor authentication is enabled.
 	 * @param expires  <em>(OPTIONAL)</em> Number of hours the key will remain valid, between 0 and 8760. 0 means no expiration. Defaults to 168.
 	 * @param label  <em>(OPTIONAL)</em> An optional label for this key.

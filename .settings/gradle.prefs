@@ -1,0 +1,12 @@
+{
+  "1.0": {
+    "project_path": ":",
+    "project_dir": "/Users/osmanj/projects/linode-api",
+    "connection_project_dir": "/Users/osmanj/projects/linode-api",
+    "connection_gradle_user_home": null,
+    "connection_gradle_distribution": "GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(/java-libraries/gradle-2.8))",
+    "connection_java_home": null,
+    "connection_jvm_arguments": "",
+    "connection_arguments": ""
+  }
+}
