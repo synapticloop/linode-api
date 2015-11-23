@@ -16,6 +16,11 @@ public class ApiMethod {
 	private String[] exampleResponses = null;
 	private List<String> apiErrors = new ArrayList<String>();
 
+	/**
+	 * This maps to one method call for an api
+	 * 
+	 * @param methodName the name of the method
+	 */
 	public ApiMethod(String methodName) {
 		this.methodName = methodName;
 		int indexOf = methodName.indexOf(".");

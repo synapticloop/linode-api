@@ -51,7 +51,7 @@ public class Account extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param mode  <strong>(REQUIRED)</strong>   This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
+	 * @param mode <strong>(REQUIRED)</strong>   This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
 	 *
 	 * @return the linode request object
 	 *
@@ -85,7 +85,7 @@ public class Account extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param mode  <strong>(REQUIRED)</strong> This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
+	 * @param mode <strong>(REQUIRED)</strong> This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
 	 * @param paymentTerm  <em>(OPTIONAL)</em> Subscription term in months. One of: 1, 12, or 24. This is required for modes 'linode_new' and 'nodebalancer_new'.
 	 * @param planID  <em>(OPTIONAL)</em> The desired PlanID available from avail.LinodePlans(). This is required for modes 'linode_new' and 'linode_resize'.
 	 * @param linodeID  <em>(OPTIONAL)</em> This is the LinodeID you want to resize and is required for mode 'linode_resize'.

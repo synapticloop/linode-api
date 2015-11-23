@@ -67,7 +67,7 @@ public class {api.className} extends ApiBase {{{\n}
 
 		{\t} *{\n}
 			{--
-			  At this point we are doind a special test for the 'echo' method
+			  At this point we are doing a special test for the 'echo' method
 			}
 
 			{if fn:=[apiMethod.name "echo"]}
@@ -75,7 +75,7 @@ public class {api.className} extends ApiBase {{{\n}
 			{endif}
 
 			{loop apiMethod.requiredApiMethodParams as apiMethodParam}
-				{\t} * @param {apiMethodParam.parameterName} 
+				{\t} * @param {apiMethodParam.parameterName}
 					{if apiMethodParam.required} <strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
 					{if fn:=[fn:length[apiMethodParam.description], "0"]}
 						(<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -158,7 +158,7 @@ public class {api.className} extends ApiBase {{{\n}
 
 				{loop apiMethod.apiMethodParams as apiMethodParam}
 					{\t} * @param {apiMethodParam.parameterName} 
-						{if apiMethodParam.required} <strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
+						{if apiMethodParam.required}<strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
 						{if fn:=[fn:length[apiMethodParam.description], "0"]}
 							(<strong>SORRY</strong> - there was no description provided in the documentation)
 						{else}

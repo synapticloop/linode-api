@@ -64,8 +64,8 @@ public class Domain extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param domain  <strong>(REQUIRED)</strong>   The zone's name
-	 * @param type  <strong>(REQUIRED)</strong>   master or slave
+	 * @param domain <strong>(REQUIRED)</strong>   The zone's name
+	 * @param type <strong>(REQUIRED)</strong>   master or slave
 	 *
 	 * @return the linode request object
 	 *
@@ -97,9 +97,9 @@ public class Domain extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param domain  <strong>(REQUIRED)</strong> The zone's name
+	 * @param domain <strong>(REQUIRED)</strong> The zone's name
 	 * @param description  <em>(OPTIONAL)</em> Currently undisplayed.
-	 * @param type  <strong>(REQUIRED)</strong> master or slave
+	 * @param type <strong>(REQUIRED)</strong> master or slave
 	 * @param SOA_Email  <em>(OPTIONAL)</em> Required when type=master
 	 * @param Refresh_sec  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param Retry_sec  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -107,7 +107,7 @@ public class Domain extends ApiBase {
 	 * @param TTL_sec  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param lpm_displayGroup  <em>(OPTIONAL)</em> Display group in the Domain list inside the Linode DNS Manager
 	 * @param status  <em>(OPTIONAL)</em> 0, 1, or 2 (disabled, active, edit mode)
-	 * @param master_ips  <em>(OPTIONAL)</em> When type=slave, the zone's master DNS servers list, semicolon separated 
+	 * @param master_ips  <em>(OPTIONAL)</em> When type=slave, the zone's master DNS servers list, semicolon separated
 	 * @param axfr_ips  <em>(OPTIONAL)</em> IP addresses allowed to AXFR the entire zone, semicolon separated
 	 *
 	 * @return the linode request object
@@ -149,7 +149,7 @@ public class Domain extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param domainID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -282,8 +282,8 @@ public class Domain extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param domainID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param type  <strong>(REQUIRED)</strong>   One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
+	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param type <strong>(REQUIRED)</strong>   One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
 	 *
 	 * @return the linode request object
 	 *
@@ -315,8 +315,8 @@ public class Domain extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param domainID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param type  <strong>(REQUIRED)</strong> One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
+	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param type <strong>(REQUIRED)</strong> One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
 	 * @param name  <em>(OPTIONAL)</em> The hostname or FQDN. When Type=MX the subdomain to delegate to the Target MX server.
 	 * @param target  <em>(OPTIONAL)</em> When Type=MX the hostname. When Type=CNAME the target of the alias. When Type=TXT the value of the record. When Type=A or AAAA the token of '[remote_addr]' will be substituted with the IP address of the request.
 	 * @param priority  <em>(OPTIONAL)</em> Priority for MX and SRV records, 0-255
@@ -361,8 +361,8 @@ public class Domain extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param domainID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param resourceID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param resourceID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -412,7 +412,7 @@ public class Domain extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param domainID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -461,7 +461,7 @@ public class Domain extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param domainID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param resourceID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
@@ -495,7 +495,7 @@ public class Domain extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param resourceID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param resourceID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -528,7 +528,7 @@ public class Domain extends ApiBase {
 	 *   - VALIDATION
 	 *
 	 * @param domainID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param resourceID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param resourceID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param name  <em>(OPTIONAL)</em> The hostname or FQDN. When Type=MX the subdomain to delegate to the Target MX server.
 	 * @param target  <em>(OPTIONAL)</em> When Type=MX the hostname. When Type=CNAME the target of the alias. When Type=TXT the value of the record. When Type=A or AAAA the token of '[remote_addr]' will be substituted with the IP address of the request.
 	 * @param priority  <em>(OPTIONAL)</em> Priority for MX and SRV records, 0-255
@@ -575,7 +575,7 @@ public class Domain extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param domainID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -607,7 +607,7 @@ public class Domain extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param domainID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param domain  <em>(OPTIONAL)</em> The zone's name
 	 * @param description  <em>(OPTIONAL)</em> Currently undisplayed.
 	 * @param type  <em>(OPTIONAL)</em> master or slave
@@ -618,7 +618,7 @@ public class Domain extends ApiBase {
 	 * @param TTL_sec  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param lpm_displayGroup  <em>(OPTIONAL)</em> Display group in the Domain list inside the Linode DNS Manager
 	 * @param status  <em>(OPTIONAL)</em> 0, 1, or 2 (disabled, active, edit mode)
-	 * @param master_ips  <em>(OPTIONAL)</em> When type=slave, the zone's master DNS servers list, semicolon separated 
+	 * @param master_ips  <em>(OPTIONAL)</em> When type=slave, the zone's master DNS servers list, semicolon separated
 	 * @param axfr_ips  <em>(OPTIONAL)</em> IP addresses allowed to AXFR the entire zone, semicolon separated
 	 *
 	 * @return the linode request object

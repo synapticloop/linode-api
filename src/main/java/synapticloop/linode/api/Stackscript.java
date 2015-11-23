@@ -51,9 +51,9 @@ public class Stackscript extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param label  <strong>(REQUIRED)</strong>   The Label for this StackScript
-	 * @param distributionIDList  <strong>(REQUIRED)</strong>   Comma delimited list of DistributionIDs that this script works on 
-	 * @param script  <strong>(REQUIRED)</strong>   The actual script
+	 * @param label <strong>(REQUIRED)</strong>   The Label for this StackScript
+	 * @param distributionIDList <strong>(REQUIRED)</strong>   Comma delimited list of DistributionIDs that this script works on
+	 * @param script <strong>(REQUIRED)</strong>   The actual script
 	 *
 	 * @return the linode request object
 	 *
@@ -86,12 +86,12 @@ public class Stackscript extends ApiBase {
 	 * 
 	 *   - VALIDATION
 	 *
-	 * @param label  <strong>(REQUIRED)</strong> The Label for this StackScript
+	 * @param label <strong>(REQUIRED)</strong> The Label for this StackScript
 	 * @param description  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param distributionIDList  <strong>(REQUIRED)</strong> Comma delimited list of DistributionIDs that this script works on 
+	 * @param distributionIDList <strong>(REQUIRED)</strong> Comma delimited list of DistributionIDs that this script works on
 	 * @param isPublic  <em>(OPTIONAL)</em> Whether this StackScript is published in the Library, for everyone to use
 	 * @param rev_note  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param script  <strong>(REQUIRED)</strong> The actual script
+	 * @param script <strong>(REQUIRED)</strong> The actual script
 	 *
 	 * @return the linode request object
 	 *
@@ -126,7 +126,7 @@ public class Stackscript extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param stackScriptID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param stackScriptID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -272,7 +272,7 @@ public class Stackscript extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param stackScriptID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param stackScriptID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -304,10 +304,10 @@ public class Stackscript extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param stackScriptID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param stackScriptID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label  <em>(OPTIONAL)</em> The Label for this StackScript
 	 * @param description  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param distributionIDList  <em>(OPTIONAL)</em> Comma delimited list of DistributionIDs that this script works on 
+	 * @param distributionIDList  <em>(OPTIONAL)</em> Comma delimited list of DistributionIDs that this script works on
 	 * @param isPublic  <em>(OPTIONAL)</em> Whether this StackScript is published in the Library, for everyone to use
 	 * @param rev_note  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param script  <em>(OPTIONAL)</em> The actual script

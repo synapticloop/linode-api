@@ -67,7 +67,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID  <strong>(REQUIRED)</strong>   The parent NodeBalancer's ID
+	 * @param nodeBalancerID <strong>(REQUIRED)</strong>   The parent NodeBalancer's ID
 	 *
 	 * @return the linode request object
 	 *
@@ -98,7 +98,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> The parent NodeBalancer's ID
+	 * @param nodeBalancerID <strong>(REQUIRED)</strong> The parent NodeBalancer's ID
 	 * @param port  <em>(OPTIONAL)</em> Port to bind to on the public interfaces. 1-65534
 	 * @param protocol  <em>(OPTIONAL)</em> Either 'tcp', 'http', or 'https'
 	 * @param algorithm  <em>(OPTIONAL)</em> Balancing algorithm. One of 'roundrobin', 'leastconn', 'source'
@@ -157,8 +157,8 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param configID  <strong>(REQUIRED)</strong>   The ConfigID to delete
+	 * @param nodeBalancerID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID <strong>(REQUIRED)</strong>   The ConfigID to delete
 	 *
 	 * @return the linode request object
 	 *
@@ -218,7 +218,7 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param nodeBalancerID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -277,7 +277,7 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param nodeBalancerID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param configID  <em>(OPTIONAL)</em> Limits the list to the specified ConfigID
 	 *
 	 * @return the linode request object
@@ -311,7 +311,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -343,7 +343,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param port  <em>(OPTIONAL)</em> Port to bind to on the public interfaces. 1-65534
 	 * @param protocol  <em>(OPTIONAL)</em> Either 'tcp', 'http', or 'https'
 	 * @param algorithm  <em>(OPTIONAL)</em> Balancing algorithm. One of 'roundrobin', 'leastconn', 'source'
@@ -404,7 +404,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
-	 * @param datacenterID  <strong>(REQUIRED)</strong>   The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
+	 * @param datacenterID <strong>(REQUIRED)</strong>   The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
 	 *
 	 * @return the linode request object
 	 *
@@ -437,7 +437,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
-	 * @param datacenterID  <strong>(REQUIRED)</strong> The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
+	 * @param datacenterID <strong>(REQUIRED)</strong> The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
 	 * @param label  <em>(OPTIONAL)</em> This NodeBalancer's label
 	 * @param clientConnThrottle  <em>(OPTIONAL)</em> To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.
 	 *
@@ -475,7 +475,7 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeBalancerID  <strong>(REQUIRED)</strong>   The NodeBalancerID to delete
+	 * @param nodeBalancerID <strong>(REQUIRED)</strong>   The NodeBalancerID to delete
 	 *
 	 * @return the linode request object
 	 *
@@ -576,9 +576,9 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID  <strong>(REQUIRED)</strong>   The parent ConfigID to attach this Node to
-	 * @param label  <strong>(REQUIRED)</strong>   This backend Node's label
-	 * @param address  <strong>(REQUIRED)</strong>   The address:port combination used to communicate with this Node
+	 * @param configID <strong>(REQUIRED)</strong>   The parent ConfigID to attach this Node to
+	 * @param label <strong>(REQUIRED)</strong>   This backend Node's label
+	 * @param address <strong>(REQUIRED)</strong>   The address:port combination used to communicate with this Node
 	 *
 	 * @return the linode request object
 	 *
@@ -611,9 +611,9 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param configID  <strong>(REQUIRED)</strong> The parent ConfigID to attach this Node to
-	 * @param label  <strong>(REQUIRED)</strong> This backend Node's label
-	 * @param address  <strong>(REQUIRED)</strong> The address:port combination used to communicate with this Node
+	 * @param configID <strong>(REQUIRED)</strong> The parent ConfigID to attach this Node to
+	 * @param label <strong>(REQUIRED)</strong> This backend Node's label
+	 * @param address <strong>(REQUIRED)</strong> The address:port combination used to communicate with this Node
 	 * @param weight  <em>(OPTIONAL)</em> Load balancing weight, 1-255. Higher means more connections.
 	 * @param mode  <em>(OPTIONAL)</em> The connections mode for this node. One of 'accept', 'reject', or 'drain'
 	 *
@@ -650,7 +650,7 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param nodeID  <strong>(REQUIRED)</strong>   The NodeID to delete
+	 * @param nodeID <strong>(REQUIRED)</strong>   The NodeID to delete
 	 *
 	 * @return the linode request object
 	 *
@@ -686,7 +686,7 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -722,7 +722,7 @@ public class Nodebalancer extends ApiBase {
 	 * }
 	 * </pre>
 	 *
-	 * @param configID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param configID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param nodeID  <em>(OPTIONAL)</em> Limits the list to the specified NodeID
 	 *
 	 * @return the linode request object
@@ -756,7 +756,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param nodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -788,7 +788,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param nodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label  <em>(OPTIONAL)</em> This backend Node's label
 	 * @param address  <em>(OPTIONAL)</em> The address:port combination used to communicate with this Node
 	 * @param weight  <em>(OPTIONAL)</em> Load balancing weight, 1-255. Higher means more connections.
@@ -830,7 +830,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param nodeBalancerID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
 	 * @return the linode request object
 	 *
@@ -864,7 +864,7 @@ public class Nodebalancer extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param nodeBalancerID  <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 * @param nodeBalancerID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label  <em>(OPTIONAL)</em> This NodeBalancer's label
 	 * @param clientConnThrottle  <em>(OPTIONAL)</em> To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.
 	 *

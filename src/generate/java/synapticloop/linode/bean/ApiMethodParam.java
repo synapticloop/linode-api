@@ -19,7 +19,7 @@ public class ApiMethodParam {
 	private boolean required = false;
 
 	public void addDescription(String description) {
-		this.description = description;
+		this.description = description.trim();
 	}
 
 	public void addParameterName(String parameterName) {

@@ -60,7 +60,7 @@ public class Image extends ApiBase {
 	 * 
 	 *   - NOTFOUND
 	 *
-	 * @param imageID  <strong>(REQUIRED)</strong>   The ID of the gold-master image to delete
+	 * @param imageID <strong>(REQUIRED)</strong>   The ID of the gold-master image to delete
 	 *
 	 * @return the linode request object
 	 *
@@ -216,7 +216,7 @@ public class Image extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param imageID  <strong>(REQUIRED)</strong>   The ID of the Image to modify.
+	 * @param imageID <strong>(REQUIRED)</strong>   The ID of the Image to modify.
 	 *
 	 * @return the linode request object
 	 *
@@ -260,7 +260,7 @@ public class Image extends ApiBase {
 	 *   - NOTFOUND
 	 *   - VALIDATION
 	 *
-	 * @param imageID  <strong>(REQUIRED)</strong> The ID of the Image to modify.
+	 * @param imageID <strong>(REQUIRED)</strong> The ID of the Image to modify.
 	 * @param label  <em>(OPTIONAL)</em> The label of the Image.
 	 * @param description  <em>(OPTIONAL)</em> An optional description of the Image.
 	 *

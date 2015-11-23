@@ -5,12 +5,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This is the holder bean for a spcific linode api 
+ * 
+ * @author synapticloop
+ *
+ */
 public class Api {
 	public List<ApiMethod> apiMethods = new ArrayList<ApiMethod>();
 	private String location = null;
 	private String name = null;
 	private final Map<String, String> CONSTANT_CACHE = new LinkedHashMap<String, String>();
-
 
 	public Api(String location, String name) {
 		this.location = location;

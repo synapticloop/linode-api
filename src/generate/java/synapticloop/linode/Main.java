@@ -61,7 +61,7 @@ public class Main {
 	private static Map<String, Api> apiBeanCache = new HashMap<String, Api>();
 
 	public static void main(String[] args) throws ParseException, RenderException, IOException {
-		// here we are going to walk the directory and 
+		// here we are going to walk the directory and parse the documentation
 		File apiDocsDirectory = new File(API_DOCS_DIRECTORY);
 		parseFiles(apiDocsDirectory.listFiles(fileFilter));
 
@@ -132,7 +132,7 @@ public class Main {
 							}
 							break;
 						case NODE_SMALL:
-							apiMethodParam.addDescription(node.childNode(0).toString());
+							apiMethodParam.addDescription(node.childNode(0).toString().trim());
 							break;
 						case NODE_STRONG:
 							String nodeString = node.childNode(0).toString();
