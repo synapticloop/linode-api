@@ -38,7 +38,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a href="/"><img id="navbar-logo" src="/media/images/header/linode_logo_white.png"></a>
+						<a href="/"><img id="navbar-logo" src="/media/images/header/linode-logo.svg"></a>
 					</div>
 
 					
@@ -53,7 +53,7 @@
 										<li class="dropdown-third">
 											<ul >
 												<li><a href="/docs/getting-started">Getting Started</a></li>
-												<li><a href="/docs/migrate-to-linode/migrate-from-shared-hosting">Migrating to Linode</a></li>
+												<li><a href="/docs/migrate-to-linode/migrate-from-shared-hosting-to-linode/">Migrating to Linode</a></li>
 												<li><a href="/docs/websites/hosting-a-website">Hosting a Website</a></li>
 												<li class="divider"></li>
 												<li class="big"><a href="/docs"><i class="fa fa-book"></i> Guides &amp; Tutorials</a></li>
@@ -65,7 +65,7 @@
 												<li><a href="/api">API</a></li>
 												<li><a href="/stackscripts">StackScripts</a></li>
 												<li><a href="/mobile">Mobile</a></li>
-												<li><a href="/cli" target="_blank">CLI</a></li>
+												<li><a href="/cli" target="_blank" rel="nofollow">CLI</a></li>
 
 												<li class="divider"></li>
 
@@ -296,7 +296,7 @@
 								<h5><a href="/docs">Resources</a></h5>
 								<ul>
 									<li><a href="/docs/getting-started">Getting Started</a></li>
-									<li><a href="/docs/migrate-to-linode/migrate-from-shared-hosting">Migrating to Linode</a></li>
+									<li><a href="/docs/migrate-to-linode/migrate-from-shared-hosting-to-linode/">Migrating to Linode</a></li>
 									<li><a href="/docs/websites/hosting-a-website">Hosting a Website</a></li>
 									<li><a href="/docs">Guides &amp; Tutorials</a></li>
 									<li><a href="/compliance">Standards &amp; Compliance</a></li>
@@ -317,6 +317,7 @@
 									<li><a href="/events">Events</a></li>
 									<li><a href="/press">Press</a></li>
 									<li><a href="/case-studies">Case Studies</a></li>
+									<li><a href="/sponsorships">Supported Projects</a></li>
 									<li><a href="/logos">Logos</a></li>
 									<li><a href="/referrals">Referral System</a></li>
 									<li><a href="/careers">Careers</a></li>
@@ -329,6 +330,7 @@
 								<ul>
 									<li><a href="tel:+18554546633">855-4-LINODE</a></li>
 									<li><a href="tel:+18554546633">(855-454-6633)</a></li>
+									<li><a href="tel:+16093807100">Intl.: +1 609-380-7100</a></li>
 									<li><a href="mailto:support@linode.com">Email us</a></li>
 									<li>
 										<ul>
@@ -353,7 +355,7 @@
 					<div id="footer-copyright" class="row">
 						
 							<div class="col-sm-3 text-center">
-								&copy; 2015 Linode, LLC
+								&copy; 2016 Linode, LLC
 							</div>
 
 							<div class="col-sm-3 text-center">
@@ -380,68 +382,15 @@
 
 		<script src="/media/js/main.js?5"></script>
 
-		<div class="t">
-			<script type="text/javascript">
-				var _gaq = _gaq || [];
-				var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
-				_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
-				_gaq.push(['_setAccount', 'UA-177150-1']);
-				_gaq.push(['_setDomainName', 'linode.com']);
-				_gaq.push(['_trackPageview']);
-
-				(function() {
-					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-				})();
-			</script>
-
-			<script type="text/javascript">
-			/* <![CDATA[ */
-			var google_conversion_id = 1071926901;
-			var google_custom_params = window.google_tag_params;
-			var google_remarketing_only = true;
-			/* ]]> */
-			</script>
-			<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">;
-			</script>
+		<!-- Google Tag Manager -->
 			<noscript>
-			<div style="display:inline;">
-			<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1071926901/?value=0&amp;guid=ON&amp;script=0"/>
-			</div>
+			<iframe src="//www.googletagmanager.com/ns.html?id=GTM-M3XXZX" height="0" width="0" style="display:none;visibility:hidden">
+			</iframe>
 			</noscript>
-
-			<script type="text/javascript">
-				adroll_adv_id = "IL4WBB7BGVAMPP6O6DBOTR";
-				adroll_pix_id = "PYYL6IEEX5AWZGO6IXQDLQ";
-				(function () {
-				var oldonload = window.onload;
-				window.onload = function(){
-					__adroll_loaded=true;
-					var scr = document.createElement("script");
-					var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
-					scr.setAttribute('async', 'true');
-					scr.type = "text/javascript";
-					scr.src = host + "/j/roundtrip.js";
-					((document.getElementsByTagName('head') || [null])[0] ||
-					document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
-					if(oldonload){oldonload()}};
-				}());
+			<script>
+			(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M3XXZX');
 			</script>
-
-			<script type="text/javascript">
-				setTimeout(function(){var a=document.createElement("script");
-				var b=document.getElementsByTagName("script")[0];
-				a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0024/3657.js?"+Math.floor(new
-				Date().getTime()/3600000);
-				a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
-			</script>
-
-			
-
-			<!-- Bing Ads Universal Event Tracker -->
-			<script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"4055942"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script><noscript><img src="//bat.bing.com/action/0?ti=4055942&Ver=2" height="0" width="0" style="display:none; visibility: hidden;" /></noscript>
-		</div>
+		<!-- End Google Tag Manager -->
 
 	</body>
 </html>
