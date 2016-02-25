@@ -49,7 +49,10 @@ public class Stackscript extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOACCESS</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param label <strong>(REQUIRED)</strong>   The Label for this StackScript
 	 * @param distributionIDList <strong>(REQUIRED)</strong>   Comma delimited list of DistributionIDs that this script works on
@@ -84,6 +87,7 @@ public class Stackscript extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
+	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
 	 * @param label <strong>(REQUIRED)</strong> The Label for this StackScript
@@ -124,7 +128,9 @@ public class Stackscript extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param stackScriptID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -269,8 +275,10 @@ public class Stackscript extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param stackScriptID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *

@@ -49,7 +49,9 @@ public class Account extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param mode <strong>(REQUIRED)</strong>   This is one of the following options: 'linode_new', 'linode_resize', or 'nodebalancer_new'.
 	 *

@@ -101,7 +101,9 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -168,11 +170,14 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - CCFAILED
-	 *   - VALIDATION
-	 *   - LINODELIMITER
-	 *   - ACCOUNTLIMIT
+	 * <ul>
+	 *   <li>NOACCESS</li>
+	 *   <li>NOTFOUND</li>
+	 *   <li>CCFAILED</li>
+	 *   <li>VALIDATION</li>
+	 *   <li>LINODELIMITER</li>
+	 *   <li>ACCOUNTLIMIT</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong>   The LinodeID that you want cloned
 	 * @param datacenterID <strong>(REQUIRED)</strong>   The DatacenterID from avail.datacenters() where you wish to place this new Linode
@@ -209,6 +214,7 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
+	 *   - NOACCESS
 	 *   - NOTFOUND
 	 *   - CCFAILED
 	 *   - VALIDATION
@@ -250,8 +256,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param kernelID <strong>(REQUIRED)</strong>   The KernelID for this profile. Found in avail.kernels()
@@ -352,8 +360,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param configID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -419,7 +429,9 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -516,8 +528,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param configID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -615,10 +629,13 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - CCFAILED
-	 *   - VALIDATION
-	 *   - LINODELIMITER
-	 *   - ACCOUNTLIMIT
+	 * <ul>
+	 *   <li>NOACCESS</li>
+	 *   <li>CCFAILED</li>
+	 *   <li>VALIDATION</li>
+	 *   <li>LINODELIMITER</li>
+	 *   <li>ACCOUNTLIMIT</li>
+	 * </ul>
 	 *
 	 * @param datacenterID <strong>(REQUIRED)</strong>   The DatacenterID from avail.datacenters() where you wish to place this new Linode
 	 * @param planID <strong>(REQUIRED)</strong>   The desired PlanID available from avail.LinodePlans()
@@ -652,6 +669,7 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
+	 *   - NOACCESS
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *   - LINODELIMITER
@@ -692,8 +710,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - LINODENOTEMPTY
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>LINODENOTEMPTY</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong>   The LinodeID to delete
 	 *
@@ -760,8 +780,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label <strong>(REQUIRED)</strong>   The display label for this Disk
@@ -844,8 +866,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param distributionID <strong>(REQUIRED)</strong>   The DistributionID to create this disk from. Found in avail.distributions()
@@ -994,8 +1018,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param stackScriptID <strong>(REQUIRED)</strong>   The StackScript to create this image from
@@ -1084,8 +1110,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param diskID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -1119,8 +1147,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param diskID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -1315,8 +1345,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param diskID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -1350,8 +1382,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param diskID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -1420,7 +1454,9 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -1452,8 +1488,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong>   The LinodeID of the Linode that will be assigned an additional public IP address
 	 *
@@ -1497,7 +1535,9 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 *
 	 * @return the linode request object
@@ -1575,8 +1615,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param iPAddressID <strong>(REQUIRED)</strong>   The IPAddressID of the address to update
 	 * @param hostname <strong>(REQUIRED)</strong>   The hostname to set the reverse DNS to
@@ -1621,8 +1663,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param iPAddressID <strong>(REQUIRED)</strong>   The IPAddressID of an IP Address to transfer or swap
 	 *
@@ -1913,7 +1957,9 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -1981,9 +2027,11 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - CCFAILED
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>CCFAILED</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param planID <strong>(REQUIRED)</strong>   The desired PlanID available from avail.LinodePlans()
@@ -2016,7 +2064,9 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -2047,8 +2097,10 @@ public class Linode extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *

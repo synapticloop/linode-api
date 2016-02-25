@@ -64,8 +64,10 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param nodeBalancerID <strong>(REQUIRED)</strong>   The parent NodeBalancer's ID
 	 *
@@ -155,7 +157,9 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param nodeBalancerID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param configID <strong>(REQUIRED)</strong>   The ConfigID to delete
@@ -308,8 +312,10 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param configID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -401,8 +407,11 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - CCFAILED
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOACCESS</li>
+	 *   <li>CCFAILED</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param datacenterID <strong>(REQUIRED)</strong>   The DatacenterID from avail.datacenters() where you wish to place this new NodeBalancer
 	 *
@@ -434,6 +443,7 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
+	 *   - NOACCESS
 	 *   - CCFAILED
 	 *   - VALIDATION
 	 *
@@ -473,7 +483,9 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param nodeBalancerID <strong>(REQUIRED)</strong>   The NodeBalancerID to delete
 	 *
@@ -573,8 +585,10 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param configID <strong>(REQUIRED)</strong>   The parent ConfigID to attach this Node to
 	 * @param label <strong>(REQUIRED)</strong>   This backend Node's label
@@ -648,7 +662,9 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param nodeID <strong>(REQUIRED)</strong>   The NodeID to delete
 	 *
@@ -753,8 +769,10 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param nodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -827,8 +845,10 @@ public class Nodebalancer extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param nodeBalancerID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *

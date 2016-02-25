@@ -161,6 +161,7 @@ public class Main {
 
 				if(ErrorCodeMapper.hasErrorCode(apiErrorText)) {
 					apiMethod.addApiError(apiErrorText);
+					
 				} else {
 					SimpleLogger.log("Unknown error code '" + apiErrorText + "', update Main.parseFile() apiError checking - from file: '" + file.getPath() + "'.");
 				}

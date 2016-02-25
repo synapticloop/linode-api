@@ -61,8 +61,12 @@ public class {api.className} extends ApiBase {{{\n}
 				{\t} * {\n}
 				{\t} * Possible return error codes:{\n}
 				{\t} * {\n}
+				{\t} * <ul>{\n}
 			{endif}
-			{\t} *   - {apiError}{\n}
+			{\t} *   <li>{apiError}</li>{\n}
+			{if apiErrorStatus.last}
+				{\t} * </ul>{\n}
+			{endif}
 		{endloop}
 
 		{\t} *{\n}

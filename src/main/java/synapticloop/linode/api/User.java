@@ -50,7 +50,12 @@ public class User extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - AUTHFAIL
+	 * <ul>
+	 *   <li>AUTHFAIL</li>
+	 *   <li>NEEDTOKEN</li>
+	 *   <li>PASSWORDEXPIRED</li>
+	 *   <li>KEYLIMIT</li>
+	 * </ul>
 	 *
 	 * @param username <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param password <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -87,6 +92,9 @@ public class User extends ApiBase {
 	 * Possible return error codes:
 	 * 
 	 *   - AUTHFAIL
+	 *   - NEEDTOKEN
+	 *   - PASSWORDEXPIRED
+	 *   - KEYLIMIT
 	 *
 	 * @param username <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param password <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)

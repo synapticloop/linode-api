@@ -62,7 +62,10 @@ public class Domain extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOACCESS</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param domain <strong>(REQUIRED)</strong>   The zone's name
 	 * @param type <strong>(REQUIRED)</strong>   master or slave
@@ -95,6 +98,7 @@ public class Domain extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
+	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
 	 * @param domain <strong>(REQUIRED)</strong> The zone's name
@@ -147,7 +151,9 @@ public class Domain extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -280,7 +286,10 @@ public class Domain extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOACCESS</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param type <strong>(REQUIRED)</strong>   One of: NS, MX, A, AAAA, CNAME, TXT, or SRV
@@ -313,6 +322,7 @@ public class Domain extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
+	 *   - NOACCESS
 	 *   - VALIDATION
 	 *
 	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -359,7 +369,9 @@ public class Domain extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 * </ul>
 	 *
 	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param resourceID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -492,8 +504,10 @@ public class Domain extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param resourceID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
@@ -572,8 +586,10 @@ public class Domain extends ApiBase {
 	 * 
 	 * Possible return error codes:
 	 * 
-	 *   - NOTFOUND
-	 *   - VALIDATION
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
 	 *
 	 * @param domainID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
