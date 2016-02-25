@@ -11,7 +11,7 @@ group = 'synapticloop'
 archivesBaseName = 'linode-api'
 description = """An api for linode"""
 
-version = 'v1.0.5'
+version = 'v1.0.6'
 
 description = """linode-api"""
 
@@ -66,10 +66,10 @@ task generate(type: JavaExec) {
 tasks.compileJava.dependsOn("generate")
 
 dependencies {
-	runtime 'org.json:json:20090211'
+	runtime 'org.json:json:20160212'
 	runtime 'org.apache.httpcomponents:httpclient:4.3.4'
 
-	compile 'org.json:json:20090211'
+	compile 'org.json:json:20160212'
 	compile 'org.apache.httpcomponents:httpclient:4.3.4'
 
 	generateCompile 'synapticloop:templar:v1.1.2'
