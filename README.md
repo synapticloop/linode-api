@@ -137,7 +137,7 @@ And now for the dependency
     <dependency>
       <groupId>synapticloop</groupId>
       <artifactId>linode-api</artifactId>
-      <version>v1.0.2</version>
+      <version>v1.0.6</version>
       <type>jar</type>
     </dependency>
  
@@ -160,15 +160,15 @@ Repository
 
 and then include the dependency:
 
-    runtime(group: 'synapticloop', name: 'linode-api', version: 'v1.0.2', ext: 'jar')
+    runtime(group: 'synapticloop', name: 'linode-api', version: 'v1.0.6', ext: 'jar')
 
-    compile(group: 'synapticloop', name: 'linode-api', version: 'v1.0.2', ext: 'jar')
+    compile(group: 'synapticloop', name: 'linode-api', version: 'v1.0.6', ext: 'jar')
  
 or 
 
-    runtime 'synapticloop:linode-api:v1.0.2'
+    runtime 'synapticloop:linode-api:v1.0.6'
 
-    compile 'synapticloop:linode-api:v1.0.2'
+    compile 'synapticloop:linode-api:v1.0.6'
     
 ## Other
 
@@ -176,7 +176,7 @@ You may either download the files from [https://bintray.com/synapticloop/maven/l
 
 You will also need the dependencies:
 
- - `org.json` `json` `20090211`
+ - `org.json` `json` `20160212`
  - `org.apache.httpcomponents` `httpclient` `4.3.4`
 
 which can be found by searching here: [http://mvnrepository.com/](http://mvnrepository.com/)

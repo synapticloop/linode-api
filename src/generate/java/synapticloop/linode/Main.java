@@ -162,7 +162,7 @@ public class Main {
 				if(ErrorCodeMapper.hasErrorCode(apiErrorText)) {
 					apiMethod.addApiError(apiErrorText);
 				} else {
-					SimpleLogger.log("Unknown error code '" + apiErrorText + "', update Main.parseFile() apiError checking");
+					SimpleLogger.log("Unknown error code '" + apiErrorText + "', update Main.parseFile() apiError checking - from file: '" + file.getPath() + "'.");
 				}
 			}
 
@@ -172,8 +172,6 @@ public class Main {
 			SimpleLogger.log("IO Exception on file '" + file.getAbsolutePath() + "'.");
 			ex.printStackTrace();
 		}
-
-
 	}
 
 	private static Api getApiForFile(File file) {

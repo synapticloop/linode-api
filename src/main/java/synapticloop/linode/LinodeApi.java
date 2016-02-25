@@ -199,7 +199,7 @@ public class LinodeApi {
 	 * @param action The action that was done
 	 * @param statusCode The response status code
 	 * 
-	 * @throws ApiException if the reponse code was not OK (200)
+	 * @throws ApiException if the response code was not OK (200)
 	 */
 	private void throwIfUnsuccessful(String action, int statusCode) throws ApiException {
 		if (statusCode != HttpStatus.SC_OK) {
