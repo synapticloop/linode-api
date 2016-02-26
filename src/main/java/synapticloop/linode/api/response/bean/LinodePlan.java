@@ -51,7 +51,7 @@ public class LinodePlan {
 		Iterator<String> keys = availObject.keys();
 		while (keys.hasNext()) {
 			String key = (String) keys.next();
-			availability.put(Long.parseLong(key), jsonObject.getLong(key));
+			availability.put(Long.parseLong(key), availObject.getLong(key));
 		}
 	}
 

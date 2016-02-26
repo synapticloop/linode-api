@@ -1,15 +1,19 @@
 package synapticloop.linode.api.response;
 
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
 public class AccountInfoResponse extends BaseResponse {
+	private static final Logger LOGGER = Logger.getLogger(AccountInfoResponse.class.getName());
+
 	private Date activeSince = null;
 	private Long transferPool = null;
 	private Long transferUsed = null;
 	private Long transferBillable = null;
 	private boolean isManaged = false;
+	private String billingMethod = null;
 	private Long balance = null;
 
 	/**
@@ -26,12 +30,29 @@ public class AccountInfoResponse extends BaseResponse {
 	 */
 	public AccountInfoResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		this.activeSince = BaseResponse.convertDate(jsonObject.getString("ACTIVE_SINCE"));
-		this.transferPool = jsonObject.getLong("TRANSFER_POOL");
-		this.transferUsed = jsonObject.getLong("TRANSFER_USED");
-		this.transferBillable = jsonObject.getLong("TRANSFER_BILLABLE");
-		this.isManaged = jsonObject.getBoolean("MANAGED");
-		this.balance = jsonObject.getLong("BALANCE");
+
+		if(!hasErrors()) {
+			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			this.activeSince = BaseResponse.convertDate(dataObject.getString("ACTIVE_SINCE"));
+			dataObject.remove("ACTIVE_SINCE");
+			this.transferPool = dataObject.getLong("TRANSFER_POOL");
+			dataObject.remove("TRANSFER_POOL");
+			this.transferUsed = dataObject.getLong("TRANSFER_USED");
+			dataObject.remove("TRANSFER_USED");
+			this.transferBillable = dataObject.getLong("TRANSFER_BILLABLE");
+			dataObject.remove("TRANSFER_BILLABLE");
+			this.isManaged = dataObject.getBoolean("MANAGED");
+			dataObject.remove("MANAGED");
+			this.billingMethod = dataObject.getString("BILLING_METHOD");
+			dataObject.remove("BILLING_METHOD");
+			this.balance = dataObject.getLong("BALANCE");
+			dataObject.remove("BALANCE");
+
+			warnOnMissedKeys(LOGGER, dataObject);
+		}
+
+		jsonObject.remove("DATA");
+		warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Date getActiveSince() {
@@ -56,6 +77,10 @@ public class AccountInfoResponse extends BaseResponse {
 
 	public Long getBalance() {
 		return this.balance;
+	}
+
+	public String getBillingMethod() {
+		return this.billingMethod;
 	}
 
 }

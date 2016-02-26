@@ -3,10 +3,15 @@ package synapticloop.linode.api.response.bean;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
+import synapticloop.linode.api.response.BaseResponse;
+
 public class Method {
+	private static final Logger LOGGER = Logger.getLogger(Method.class.getName());
+
 	private String name = null;
 	private String description = null;
 	private String errors = null;
@@ -25,14 +30,22 @@ public class Method {
 	 */
 	public Method(String name, JSONObject jsonObject) {
 		this.name = name;
+
 		this.description = jsonObject.getString("DESCRIPTION");
-		this.errors = jsonObject.getString("ERRORS");
+		jsonObject.remove("DESCRIPTION");
+
+		this.errors = jsonObject.getString("THROWS");
+		jsonObject.remove("THROWS");
+
 		JSONObject parametersObject = jsonObject.getJSONObject("PARAMETERS");
 		Iterator<String> keys = parametersObject.keys();
 		while (keys.hasNext()) {
 			String key = (String) keys.next();
 			parameters.put(key, new Parameter(parametersObject.getJSONObject(key)));
 		}
+		jsonObject.remove("PARAMETERS");
+
+		BaseResponse.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public String getName() {
