@@ -1,0 +1,216 @@
+package synapticloop.linode;{\n}
+{\n}
+import java.io.IOException;{\n}
+import java.util.ArrayList;{\n}
+import java.util.List;{\n}
+import java.util.Map;{\n}
+import java.util.logging.Level;{\n}
+import java.util.logging.Logger;{\n}
+{\n}
+import org.apache.http.HttpStatus;{\n}
+import org.apache.http.NameValuePair;{\n}
+import org.apache.http.ParseException;{\n}
+import org.apache.http.client.entity.UrlEncodedFormEntity;{\n}
+import org.apache.http.client.methods.CloseableHttpResponse;{\n}
+import org.apache.http.client.methods.HttpPost;{\n}
+import org.apache.http.impl.client.CloseableHttpClient;{\n}
+import org.apache.http.impl.client.HttpClients;{\n}
+import org.apache.http.message.BasicNameValuePair;{\n}
+import org.apache.http.util.EntityUtils;{\n}
+import org.json.JSONArray;{\n}
+import org.json.JSONException;{\n}
+import org.json.JSONObject;{\n}
+{\n}
+import synapticloop.linode.exception.ApiException;{\n}
+{\n}
+/**{\n}
+ * The main class for interacting with the Linode api.{\n}
+ * {\n}
+ * @author synapticloop{\n}
+ */{\n}
+public class LinodeApi {{{\n}
+{\t}private static final Logger LOGGER = Logger.getLogger(LinodeApi.class.getName());{\n}
+{\n}
+{\t}private static final String API_ENDPOINT = "https://api.linode.com/";{\n}
+{\n}
+{\t}private static final String PARAMETER_API_KEY = "api_key";{\n}
+{\t}private static final String PARAMETER_API_ACTION = "api_action";{\n}
+{\t}private static final String PARAMETER_API_REQUEST_ARRAY = "api_requestArray";{\n}
+{\n}
+{\t}private static final String PARAMETER_BATCH = "batch";{\n}
+{\n}
+{\t}private CloseableHttpClient closeableHttpClient = null;{\n}
+{\n}
+{\t}private String apiKey = null;{\n}
+{\n}
+{\t}private boolean debug = false;{\n}
+{\n}
+{\t}/**{\n}
+{\t} * Create a Linode client with the specified API key{\n}
+{\t} * {\n}
+{\t} * @param apiKey the user's API key{\n}
+{\t} */{\n}
+{\t}public LinodeApi(String apiKey) {{{\n}
+{\t}{\t}this(apiKey, false);{\n}
+{\t}}{\n}
+{\n}
+{\t}/**{\n}
+{\t} * Create a Linode client with specified API key and debug setting{\n}
+{\t} * {\n}
+{\t} * @param apiKey the user's API key{\n}
+{\t} * @param debug true to enable request debugging, false otherwise{\n}
+{\t} */{\n}
+{\t}public LinodeApi(String apiKey, boolean debug) {{{\n}
+{\t}{\t}this.apiKey = apiKey;{\n}
+{\n}
+{\t}{\t}this.closeableHttpClient = HttpClients.createDefault();{\n}
+{\t}{\t}this.debug = debug;{\n}
+{\t}}{\n}
+{\n}
+{\t}/**{\n}
+{\t} * Execute a single request to the linode api{\n}
+{\t} * {\n}
+{\t} * @param linodeRequest the request to be made{\n}
+{\t} * {\n}
+{\t} * @return the response of the request{\n}
+{\t} * {\n}
+{\t} * @throws ApiException if there was a problem with the request{\n}
+{\t} */{\n}
+{\t}public LinodeResponse execute(LinodeRequest linodeRequest) throws ApiException {{{\n}
+{\t}{\t}try {{{\n}
+{\t}{\t}{\t}HttpPost httpPost = new HttpPost(API_ENDPOINT);{\n}
+{\n}
+{\t}{\t}{\t}ArrayList postParameters = new ArrayList();{\n}
+{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_KEY, this.apiKey));{\n}
+{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_ACTION, linodeRequest.getAction()));{\n}
+{\n}
+{\t}{\t}{\t}// now add the parameters{\n}
+{\t}{\t}{\t}Map parameters = linodeRequest.getParameters();{\n}
+{\t}{\t}{\t}for (String parameterKey : parameters.keySet()) {{{\n}
+{\t}{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(parameterKey, parameters.get(parameterKey)));{\n}
+{\t}{\t}{\t}}{\n}
+{\t}{\t}{\t}{\n}
+{\n}
+{\t}{\t}{\t}String response = callApi(linodeRequest.getAction(), httpPost, postParameters);{\n}
+{\n}
+{\t}{\t}{\t}return(new LinodeResponse(new JSONObject(response)));{\n}
+{\t}{\t}} catch (JSONException ex) {{{\n}
+{\t}{\t}{\t}throw new ApiException(ex);{\n}
+{\t}{\t}}{\n}
+{\t}}{\n}
+{\n}
+{\t}/**{\n}
+{\t} * Execute a batch request to the linode api.{\n}
+{\t} * {\n}
+{\t} * @param linodeRequests The list of requests to execute{\n}
+{\t} * {\n}
+{\t} * @return the list of responses to the requests{\n}
+{\t} * {\n}
+{\t} * @throws ApiException if there was an error with the request{\n}
+{\t} */{\n}
+{\t}public List execute(List linodeRequests) throws ApiException {{{\n}
+{\t}{\t}List linodeResponses = new ArrayList();{\n}
+{\t}{\t}try {{{\n}
+{\t}{\t}{\t}HttpPost httpPost = new HttpPost(API_ENDPOINT);{\n}
+{\n}
+{\t}{\t}{\t}ArrayList postParameters = new ArrayList();{\n}
+{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_KEY, this.apiKey));{\n}
+{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_ACTION, PARAMETER_BATCH));{\n}
+{\n}
+{\t}{\t}{\t}// now add the parameters{\n}
+{\t}{\t}{\t}JSONArray apiRequestArray = new JSONArray();{\n}
+{\t}{\t}{\t}for (LinodeRequest linodeRequest : linodeRequests) {{{\n}
+{\t}{\t}{\t}{\t}JSONObject jsonObject = new JSONObject();{\n}
+{\n}
+{\t}{\t}{\t}{\t}Map parameters = linodeRequest.getParameters();{\n}
+{\t}{\t}{\t}{\t}jsonObject.put(PARAMETER_API_ACTION, linodeRequest.getAction());{\n}
+{\t}{\t}{\t}{\t}for (String parameterKey : parameters.keySet()) {{{\n}
+{\t}{\t}{\t}{\t}{\t}jsonObject.append(parameterKey, parameters.get(parameterKey));{\n}
+{\t}{\t}{\t}{\t}}{\n}
+{\t}{\t}{\t}{\t}apiRequestArray.put(jsonObject);{\n}
+{\t}{\t}{\t}}{\n}
+{\n}
+{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_REQUEST_ARRAY, apiRequestArray.toString()));{\n}
+{\t}{\t}{\t}httpPost.setEntity(new UrlEncodedFormEntity(postParameters));{\n}
+{\n}
+{\t}{\t}{\t}String response = callApi(PARAMETER_BATCH, httpPost, postParameters);{\n}
+{\n}
+{\t}{\t}{\t}// as we are doing batch mode - the return will be an array{\n}
+{\t}{\t}{\t}JSONArray jsonArray = new JSONArray(response);{\n}
+{\t}{\t}{\t}for(int i = 0; i < jsonArray.length(); i ++) {{{\n}
+{\t}{\t}{\t}{\t}linodeResponses.add(new LinodeResponse(jsonArray.getJSONObject(i)));{\n}
+{\t}{\t}{\t}}{\n}
+{\t}{\t}} catch (JSONException | IOException ex) {{{\n}
+{\t}{\t}{\t}throw new ApiException(ex);{\n}
+{\t}{\t}}{\n}
+{\n}
+{\t}{\t}return(linodeResponses);{\n}
+{\t}}{\n}
+{\n}
+{\n}
+{\t}/**{\n}
+{\t} * Call the api{\n}
+{\t} * {\n}
+{\t} * @param action the action that was being called{\n}
+{\t} * @param httpPost the http post object{\n}
+{\t} * @param postParameters the post parameters for the httpPost{\n}
+{\t} * {\n}
+{\t} * @return The response{\n}
+{\t} * {\n}
+{\t} * @throws ApiException If there was an error with the call{\n}
+{\t} */{\n}
+{\t}private String callApi(String action, HttpPost httpPost, ArrayList postParameters) throws ApiException {{{\n}
+{\t}{\t}try {{{\n}
+{\t}{\t}{\t}httpPost.setEntity(new UrlEncodedFormEntity(postParameters));{\n}
+{\t}{\t}{\t}CloseableHttpResponse httpResponse = closeableHttpClient.execute(httpPost);{\n}
+{\t}{\t}{\t}int statusCode = httpResponse.getStatusLine().getStatusCode();{\n}
+{\n}
+{\t}{\t}{\t}throwIfUnsuccessful(action, statusCode);{\n}
+{\n}
+{\t}{\t}{\t}String response = null;{\n}
+{\t}{\t}{\t}try {{{\n}
+{\t}{\t}{\t}{\t}response = EntityUtils.toString(httpResponse.getEntity());{\n}
+{\t}{\t}{\t}} catch (ParseException | IOException ex) {{{\n}
+{\t}{\t}{\t}{\t}throw new ApiException(ex);{\n}
+{\t}{\t}{\t}}{\n}
+{\n}
+{\t}{\t}{\t}if (debug) {{{\n}
+{\t}{\t}{\t}{\t}if(LOGGER.isLoggable(Level.INFO)) {{{\n}
+{\t}{\t}{\t}{\t}{\t}StringBuilder stringBuilder = new StringBuilder();{\n}
+{\t}{\t}{\t}{\t}{\t}stringBuilder.append("Response for end point: ");{\n}
+{\t}{\t}{\t}{\t}{\t}stringBuilder.append(API_ENDPOINT);{\n}
+{\t}{\t}{\t}{\t}{\t}stringBuilder.append(", with action '");{\n}
+{\t}{\t}{\t}{\t}{\t}stringBuilder.append(action);{\n}
+{\t}{\t}{\t}{\t}{\t}stringBuilder.append("'");{\n}
+{\t}{\t}{\t}{\t}{\t}LOGGER.info(stringBuilder.toString());{\n}
+{\t}{\t}{\t}{\t}{\t}LOGGER.info(response);{\n}
+{\t}{\t}{\t}{\t}}{\n}
+{\t}{\t}{\t}}{\n}
+{\t}{\t}{\t}return(response);{\n}
+{\n}
+{\t}{\t}} catch (IOException ex) {{{\n}
+{\t}{\t}{\t}throw(new ApiException(ex));{\n}
+{\t}{\t}}{\n}
+{\t}}{\n}
+{\n}
+{\t}/**{\n}
+{\t} * Throw an ApiException if the status code was not OK (200){\n}
+{\t} * {\n}
+{\t} * @param action The action that was done{\n}
+{\t} * @param statusCode The response status code{\n}
+{\t} * {\n}
+{\t} * @throws ApiException if the response code was not OK (200){\n}
+{\t} */{\n}
+{\t}private void throwIfUnsuccessful(String action, int statusCode) throws ApiException {{{\n}
+{\t}{\t}if (statusCode != HttpStatus.SC_OK) {{{\n}
+{\t}{\t}{\t}StringBuilder stringBuilder = new StringBuilder();{\n}
+{\t}{\t}{\t}stringBuilder.append("Non-200 HTTP Status code returned:");{\n}
+{\t}{\t}{\t}stringBuilder.append(statusCode);{\n}
+{\t}{\t}{\t}stringBuilder.append(" for action '");{\n}
+{\t}{\t}{\t}stringBuilder.append(action);{\n}
+{\t}{\t}{\t}stringBuilder.append("'.");{\n}
+{\t}{\t}{\t}throw new ApiException(stringBuilder.toString());{\n}
+{\t}{\t}}{\n}
+{\t}}{\n}
+}{\n}
+{\n}

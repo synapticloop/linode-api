@@ -96,6 +96,10 @@ public class ApiMethod {
 
 	public static Map<String, String> getConstantCache() { return CONSTANT_CACHE; }
 	public String getName() { return this.name; }
+	public String getResponseName() {
+		
+		return this.name.substring(0,1).toUpperCase() + this.name.substring(1) + "Response"; 
+	}
 	public String getDescription() { return this.description; }
 	public List<ApiMethodParam> getApiMethodParams() { return this.apiMethodParams; }
 	public List<String> getDescriptions() { return this.descriptions;}

@@ -1,4 +1,4 @@
-package synapticloop.linode.api;
+package synapticloop.linode.api.request;
 
 import java.util.ArrayList;
 import java.util.List;

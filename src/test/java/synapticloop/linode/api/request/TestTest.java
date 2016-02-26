@@ -1,4 +1,4 @@
-package synapticloop.linode.api;
+package synapticloop.linode.api.request;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,7 @@ public class TestTest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put("foo", "bar");
 		parameters.put("one", "two");
-		LinodeResponse linodeResponse = linodeApi.execute(synapticloop.linode.api.Test.echo(parameters));
+		LinodeResponse linodeResponse = linodeApi.execute(synapticloop.linode.api.request.Test.echo(parameters));
 
 		Assert.assertTrue(linodeResponse.getIsDataJSONObject());
 		Assert.assertFalse(linodeResponse.getIsDataJSONArray());

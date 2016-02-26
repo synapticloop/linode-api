@@ -1,4 +1,4 @@
-package synapticloop.linode.api;
+package synapticloop.linode.api.request;
 
 import org.json.JSONException;
 import org.junit.Assert;

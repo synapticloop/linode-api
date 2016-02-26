@@ -1,4 +1,4 @@
-package synapticloop.linode.api;
+package synapticloop.linode.api.request;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -8,7 +8,7 @@ import synapticloop.linode.LinodeApi;
 import synapticloop.linode.LinodeResponse;
 import synapticloop.linode.exception.ApiException;
 
-public class LinodeTest {
+public class NodebalancerTest {
 	private LinodeApi linodeApi = null;
 
 	@Before
@@ -18,13 +18,13 @@ public class LinodeTest {
 
 	@Test
 	public void testList() throws ApiException {
-		LinodeResponse linodeResponse = linodeApi.execute(Linode.iplist());
+		LinodeResponse linodeResponse = linodeApi.execute(Nodebalancer.list());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
-		linodeResponse = linodeApi.execute(Linode.list(-1l));
+		linodeResponse = linodeApi.execute(Nodebalancer.list(-1l));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
-		linodeResponse = linodeApi.execute(Linode.list());
+		linodeResponse = linodeApi.execute(Nodebalancer.list(-1l));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 }
