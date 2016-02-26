@@ -78,6 +78,7 @@ public class ApiMethod {
 	private static Map<String, String> responseNameLookup = new HashMap<String, String>();
 	static {
 		responseNameLookup.put("delete", "");
+		responseNameLookup.put("create", "");
 		responseNameLookup.put("list", "List");
 		responseNameLookup.put("update", "");
 	}

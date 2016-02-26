@@ -235,7 +235,7 @@ public class LinodeApi {
 
 	public TestEchoResponse getTestEcho() { return(null); };
 
-	public StackscriptCreateResponse getStackscriptCreate() { return(null); };
+	public StackscriptResponse getStackscriptCreate() { return(null); };
 
 	public StackscriptResponse getStackscriptDelete() { return(null); };
 
@@ -243,7 +243,7 @@ public class LinodeApi {
 
 	public StackscriptResponse getStackscriptUpdate() { return(null); };
 
-	public DomainCreateResponse getDomainCreate() { return(null); };
+	public DomainResponse getDomainCreate() { return(null); };
 
 	public DomainResponse getDomainDelete() { return(null); };
 
@@ -271,7 +271,7 @@ public class LinodeApi {
 
 	public LinodeConfigUpdateResponse getLinodeConfigUpdate() { return(null); };
 
-	public LinodeCreateResponse getLinodeCreate() { return(null); };
+	public LinodeResponse getLinodeCreate() { return(null); };
 
 	public LinodeResponse getLinodeDelete() { return(null); };
 
@@ -325,7 +325,7 @@ public class LinodeApi {
 
 	public NodebalancerConfigUpdateResponse getNodebalancerConfigUpdate() { return(null); };
 
-	public NodebalancerCreateResponse getNodebalancerCreate() { return(null); };
+	public NodebalancerResponse getNodebalancerCreate() { return(null); };
 
 	public NodebalancerResponse getNodebalancerDelete() { return(null); };
 
