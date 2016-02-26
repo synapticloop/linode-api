@@ -1265,12 +1265,12 @@ public class LinodeApi {
 	 * @param type <strong>(REQUIRED)</strong>   The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
 	 * @param size <strong>(REQUIRED)</strong>   The size in MB of this Disk.
 	 *
-	 * @return the parsed LinodeDiskCreateResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskCreateResponse getLinodeDiskCreate(Long linodeID, String label, String type, Long size) throws ApiException {
-		return(new LinodeDiskCreateResponse(execute(LinodeRequest.diskcreate(linodeID, label, type, size)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreate(Long linodeID, String label, String type, Long size) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreate(linodeID, label, type, size)).getJSON()));
 	}
 
 	/**
@@ -1291,12 +1291,12 @@ public class LinodeApi {
 	 * @param isReadOnly  <em>(OPTIONAL)</em> Enable forced read-only for this Disk
 	 * @param size <strong>(REQUIRED)</strong> The size in MB of this Disk.
 	 *
-	 * @return the parsed LinodeDiskCreateResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public LinodeDiskCreateResponse getLinodeDiskCreate(Long linodeID, Long fromDistributionID, String rootPass, String rootSSHKey, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
-		return(new LinodeDiskCreateResponse(execute(LinodeRequest.diskcreate(linodeID, fromDistributionID, rootPass, rootSSHKey, label, type, isReadOnly, size)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreate(Long linodeID, Long fromDistributionID, String rootPass, String rootSSHKey, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreate(linodeID, fromDistributionID, rootPass, rootSSHKey, label, type, isReadOnly, size)).getJSON()));
 	}
 
 	/**
@@ -1314,12 +1314,12 @@ public class LinodeApi {
 	 * @param size <strong>(REQUIRED)</strong>   Size of this disk image in MB
 	 * @param rootPass <strong>(REQUIRED)</strong>   The root user's password
 	 *
-	 * @return the parsed LinodeDiskCreateFromDistributionResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskCreateFromDistributionResponse getLinodeDiskCreateFromDistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass) throws ApiException {
-		return(new LinodeDiskCreateFromDistributionResponse(execute(LinodeRequest.diskcreatefromdistribution(linodeID, distributionID, label, size, rootPass)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreateFromDistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreatefromdistribution(linodeID, distributionID, label, size, rootPass)).getJSON()));
 	}
 
 	/**
@@ -1338,12 +1338,12 @@ public class LinodeApi {
 	 * @param rootPass <strong>(REQUIRED)</strong> The root user's password
 	 * @param rootSSHKey  <em>(OPTIONAL)</em> Optionally sets this string into /root/.ssh/authorized_keys upon distribution configuration.
 	 *
-	 * @return the parsed LinodeDiskCreateFromDistributionResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public LinodeDiskCreateFromDistributionResponse getLinodeDiskCreateFromDistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
-		return(new LinodeDiskCreateFromDistributionResponse(execute(LinodeRequest.diskcreatefromdistribution(linodeID, distributionID, label, size, rootPass, rootSSHKey)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreateFromDistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreatefromdistribution(linodeID, distributionID, label, size, rootPass, rootSSHKey)).getJSON()));
 	}
 
 	/**
@@ -1352,12 +1352,12 @@ public class LinodeApi {
 	 * @param imageID <strong>(REQUIRED)</strong>   The ID of the frozen image to deploy from
 	 * @param linodeID <strong>(REQUIRED)</strong>   Specifies the Linode to deploy on to
 	 *
-	 * @return the parsed LinodeDiskCreateFromImageResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskCreateFromImageResponse getLinodeDiskCreateFromImage(Long imageID, Long linodeID) throws ApiException {
-		return(new LinodeDiskCreateFromImageResponse(execute(LinodeRequest.diskcreatefromimage(imageID, linodeID)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreateFromImage(Long imageID, Long linodeID) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreatefromimage(imageID, linodeID)).getJSON()));
 	}
 
 	/**
@@ -1370,12 +1370,12 @@ public class LinodeApi {
 	 * @param rootPass  <em>(OPTIONAL)</em> Optionally sets the root password at deployment time. If a password is not provided the existing root password of the frozen image will not be modified
 	 * @param rootSSHKey  <em>(OPTIONAL)</em> Optionally sets this string into /root/.ssh/authorized_keys upon image deployment
 	 *
-	 * @return the parsed LinodeDiskCreateFromImageResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public LinodeDiskCreateFromImageResponse getLinodeDiskCreateFromImage(Long imageID, Long linodeID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
-		return(new LinodeDiskCreateFromImageResponse(execute(LinodeRequest.diskcreatefromimage(imageID, linodeID, label, size, rootPass, rootSSHKey)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreateFromImage(Long imageID, Long linodeID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreatefromimage(imageID, linodeID, label, size, rootPass, rootSSHKey)).getJSON()));
 	}
 
 	/**
@@ -1395,12 +1395,12 @@ public class LinodeApi {
 	 * @param size <strong>(REQUIRED)</strong>   Size of this disk image in MB
 	 * @param rootPass <strong>(REQUIRED)</strong>   The root user's password
 	 *
-	 * @return the parsed LinodeDiskCreateFromStackscriptResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskCreateFromStackscriptResponse getLinodeDiskCreateFromStackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass) throws ApiException {
-		return(new LinodeDiskCreateFromStackscriptResponse(execute(LinodeRequest.diskcreatefromstackscript(linodeID, stackScriptID, stackScriptUDFResponses, distributionID, label, size, rootPass)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreateFromStackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreatefromstackscript(linodeID, stackScriptID, stackScriptUDFResponses, distributionID, label, size, rootPass)).getJSON()));
 	}
 
 	/**
@@ -1421,12 +1421,12 @@ public class LinodeApi {
 	 * @param rootPass <strong>(REQUIRED)</strong> The root user's password
 	 * @param rootSSHKey  <em>(OPTIONAL)</em> Optionally sets this string into /root/.ssh/authorized_keys upon distribution configuration.
 	 *
-	 * @return the parsed LinodeDiskCreateFromStackscriptResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public LinodeDiskCreateFromStackscriptResponse getLinodeDiskCreateFromStackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
-		return(new LinodeDiskCreateFromStackscriptResponse(execute(LinodeRequest.diskcreatefromstackscript(linodeID, stackScriptID, stackScriptUDFResponses, distributionID, label, size, rootPass, rootSSHKey)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreateFromStackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreatefromstackscript(linodeID, stackScriptID, stackScriptUDFResponses, distributionID, label, size, rootPass, rootSSHKey)).getJSON()));
 	}
 
 	/**
@@ -1441,12 +1441,12 @@ public class LinodeApi {
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param diskID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
-	 * @return the parsed LinodeDiskDeleteResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskDeleteResponse getLinodeDiskDelete(Long linodeID, Long diskID) throws ApiException {
-		return(new LinodeDiskDeleteResponse(execute(LinodeRequest.diskdelete(linodeID, diskID)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskDelete(Long linodeID, Long diskID) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskdelete(linodeID, diskID)).getJSON()));
 	}
 
 	/**
@@ -1462,12 +1462,12 @@ public class LinodeApi {
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param diskID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
-	 * @return the parsed LinodeDiskDuplicateResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskDuplicateResponse getLinodeDiskDuplicate(Long linodeID, Long diskID) throws ApiException {
-		return(new LinodeDiskDuplicateResponse(execute(LinodeRequest.diskduplicate(linodeID, diskID)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskDuplicate(Long linodeID, Long diskID) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskduplicate(linodeID, diskID)).getJSON()));
 	}
 
 	/**
@@ -1476,12 +1476,12 @@ public class LinodeApi {
 	 * @param linodeID <strong>(REQUIRED)</strong>   Specifies the source Linode to create the image from
 	 * @param diskID <strong>(REQUIRED)</strong>   Specifies the source Disk to create the image from
 	 *
-	 * @return the parsed LinodeDiskImagizeResponse response object
+	 * @return the parsed LinodeImageResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskImagizeResponse getLinodeDiskImagize(Long linodeID, Long diskID) throws ApiException {
-		return(new LinodeDiskImagizeResponse(execute(LinodeRequest.diskimagize(linodeID, diskID)).getJSON()));
+	public LinodeImageResponse getLinodeDiskImagize(Long linodeID, Long diskID) throws ApiException {
+		return(new LinodeImageResponse(execute(LinodeRequest.diskimagize(linodeID, diskID)).getJSON()));
 	}
 
 	/**
@@ -1492,12 +1492,12 @@ public class LinodeApi {
 	 * @param description  <em>(OPTIONAL)</em> An optional description of the created image
 	 * @param label  <em>(OPTIONAL)</em> Sets the name of the image shown in the base image list, defaults to the source image label
 	 *
-	 * @return the parsed LinodeDiskImagizeResponse response object
+	 * @return the parsed LinodeImageResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public LinodeDiskImagizeResponse getLinodeDiskImagize(Long linodeID, Long diskID, String description, String label) throws ApiException {
-		return(new LinodeDiskImagizeResponse(execute(LinodeRequest.diskimagize(linodeID, diskID, description, label)).getJSON()));
+	public LinodeImageResponse getLinodeDiskImagize(Long linodeID, Long diskID, String description, String label) throws ApiException {
+		return(new LinodeImageResponse(execute(LinodeRequest.diskimagize(linodeID, diskID, description, label)).getJSON()));
 	}
 
 	/**
@@ -1540,12 +1540,12 @@ public class LinodeApi {
 	 * @param diskID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param size <strong>(REQUIRED)</strong>   The requested new size of this Disk in MB
 	 *
-	 * @return the parsed LinodeDiskResizeResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskResizeResponse getLinodeDiskResize(Long linodeID, Long diskID, Long size) throws ApiException {
-		return(new LinodeDiskResizeResponse(execute(LinodeRequest.diskresize(linodeID, diskID, size)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskResize(Long linodeID, Long diskID, Long size) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskresize(linodeID, diskID, size)).getJSON()));
 	}
 
 	/**
@@ -1559,12 +1559,12 @@ public class LinodeApi {
 	 * </ul>
 	 * @param diskID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
-	 * @return the parsed LinodeDiskUpdateResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeDiskUpdateResponse getLinodeDiskUpdate(Long diskID) throws ApiException {
-		return(new LinodeDiskUpdateResponse(execute(LinodeRequest.diskupdate(diskID)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskUpdate(Long diskID) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskupdate(diskID)).getJSON()));
 	}
 
 	/**
@@ -1581,12 +1581,12 @@ public class LinodeApi {
 	 * @param label  <em>(OPTIONAL)</em> The display label for this Disk
 	 * @param isReadOnly  <em>(OPTIONAL)</em> Enable forced read-only for this Disk
 	 *
-	 * @return the parsed LinodeDiskUpdateResponse response object
+	 * @return the parsed LinodeDiskResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public LinodeDiskUpdateResponse getLinodeDiskUpdate(Long linodeID, Long diskID, String label, Boolean isReadOnly) throws ApiException {
-		return(new LinodeDiskUpdateResponse(execute(LinodeRequest.diskupdate(linodeID, diskID, label, isReadOnly)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskUpdate(Long linodeID, Long diskID, String label, Boolean isReadOnly) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskupdate(linodeID, diskID, label, isReadOnly)).getJSON()));
 	}
 
 	/**

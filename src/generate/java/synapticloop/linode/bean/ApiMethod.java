@@ -81,16 +81,32 @@ public class ApiMethod {
 		responseNameLookup.put("create", "");
 		responseNameLookup.put("list", "List");
 		responseNameLookup.put("update", "");
+
 		responseNameLookup.put("resourcecreate", "Resource");
 		responseNameLookup.put("resourcedelete", "Resource");
 		responseNameLookup.put("resourceupdate", "Resource");
+		
 		responseNameLookup.put("boot", "Job");
 		responseNameLookup.put("reboot", "Job");
 		responseNameLookup.put("shutdown", "Job");
 		responseNameLookup.put("clone", "");
+
 		responseNameLookup.put("configcreate", "Config");
 		responseNameLookup.put("configdelete", "Config");
 		responseNameLookup.put("configupdate", "Config");
+
+		responseNameLookup.put("diskcreate", "Disk");
+		responseNameLookup.put("diskcreatefromdistribution", "Disk");
+		responseNameLookup.put("diskcreatefromimage", "Disk");
+		responseNameLookup.put("diskcreatefromstackscript", "Disk");
+		responseNameLookup.put("diskduplicate", "Disk");
+		responseNameLookup.put("diskresize", "Disk");
+		responseNameLookup.put("diskimagize", "Image");
+		
+		
+		responseNameLookup.put("diskdelete", "Disk");
+		responseNameLookup.put("diskupdate", "Disk");
+
 	}
 
 	/**
