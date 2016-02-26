@@ -21,8 +21,16 @@ import org.json.JSONArray;{\n}
 import org.json.JSONException;{\n}
 import org.json.JSONObject;{\n}
 {\n}
+
 import synapticloop.linode.exception.ApiException;{\n}
 {\n}
+{loop apis as api}
+	{loop api.apiMethods as apiMethod}
+import synapticloop.linode.api.response.{api.classname}{apiMethod.upperName}Response;{\n}
+	{endloop}
+{endloop}
+{\n}
+
 /**{\n}
  * The main class for interacting with the Linode api.{\n}
  * {\n}
@@ -70,30 +78,30 @@ public class LinodeApi {{{\n}
 {\t}/**{\n}
 {\t} * Execute a single request to the linode api{\n}
 {\t} * {\n}
-{\t} * @param linodeRequest the request to be made{\n}
+{\t} * @param linodeApiRequest the request to be made{\n}
 {\t} * {\n}
 {\t} * @return the response of the request{\n}
 {\t} * {\n}
 {\t} * @throws ApiException if there was a problem with the request{\n}
 {\t} */{\n}
-{\t}public LinodeResponse execute(LinodeRequest linodeRequest) throws ApiException {{{\n}
+{\t}public LinodeApiResponse execute(LinodeApiRequest linodeApiRequest) throws ApiException {{{\n}
 {\t}{\t}try {{{\n}
 {\t}{\t}{\t}HttpPost httpPost = new HttpPost(API_ENDPOINT);{\n}
 {\n}
-{\t}{\t}{\t}ArrayList postParameters = new ArrayList();{\n}
+{\t}{\t}{\t}ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();{\n}
 {\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_KEY, this.apiKey));{\n}
-{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_ACTION, linodeRequest.getAction()));{\n}
+{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_ACTION, linodeApiRequest.getAction()));{\n}
 {\n}
 {\t}{\t}{\t}// now add the parameters{\n}
-{\t}{\t}{\t}Map parameters = linodeRequest.getParameters();{\n}
+{\t}{\t}{\t}Map<String, String> parameters = linodeApiRequest.getParameters();{\n}
 {\t}{\t}{\t}for (String parameterKey : parameters.keySet()) {{{\n}
 {\t}{\t}{\t}{\t}postParameters.add(new BasicNameValuePair(parameterKey, parameters.get(parameterKey)));{\n}
 {\t}{\t}{\t}}{\n}
 {\t}{\t}{\t}{\n}
 {\n}
-{\t}{\t}{\t}String response = callApi(linodeRequest.getAction(), httpPost, postParameters);{\n}
+{\t}{\t}{\t}String response = callApi(linodeApiRequest.getAction(), httpPost, postParameters);{\n}
 {\n}
-{\t}{\t}{\t}return(new LinodeResponse(new JSONObject(response)));{\n}
+{\t}{\t}{\t}return(new LinodeApiResponse(new JSONObject(response)));{\n}
 {\t}{\t}} catch (JSONException ex) {{{\n}
 {\t}{\t}{\t}throw new ApiException(ex);{\n}
 {\t}{\t}}{\n}
@@ -102,28 +110,28 @@ public class LinodeApi {{{\n}
 {\t}/**{\n}
 {\t} * Execute a batch request to the linode api.{\n}
 {\t} * {\n}
-{\t} * @param linodeRequests The list of requests to execute{\n}
+{\t} * @param linodeApiRequests The list of requests to execute{\n}
 {\t} * {\n}
 {\t} * @return the list of responses to the requests{\n}
 {\t} * {\n}
 {\t} * @throws ApiException if there was an error with the request{\n}
 {\t} */{\n}
-{\t}public List execute(List linodeRequests) throws ApiException {{{\n}
-{\t}{\t}List linodeResponses = new ArrayList();{\n}
+{\t}public List<LinodeApiResponse> execute(List<LinodeApiRequest> linodeApiRequests) throws ApiException {{{\n}
+{\t}{\t}List<LinodeApiResponse> linodeApiResponses = new ArrayList<LinodeApiResponse>();{\n}
 {\t}{\t}try {{{\n}
 {\t}{\t}{\t}HttpPost httpPost = new HttpPost(API_ENDPOINT);{\n}
 {\n}
-{\t}{\t}{\t}ArrayList postParameters = new ArrayList();{\n}
+{\t}{\t}{\t}ArrayList<NameValuePair> postParameters = new ArrayList<NameValuePair>();{\n}
 {\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_KEY, this.apiKey));{\n}
 {\t}{\t}{\t}postParameters.add(new BasicNameValuePair(PARAMETER_API_ACTION, PARAMETER_BATCH));{\n}
 {\n}
 {\t}{\t}{\t}// now add the parameters{\n}
 {\t}{\t}{\t}JSONArray apiRequestArray = new JSONArray();{\n}
-{\t}{\t}{\t}for (LinodeRequest linodeRequest : linodeRequests) {{{\n}
+{\t}{\t}{\t}for (LinodeApiRequest linodeApiRequest : linodeApiRequests) {{{\n}
 {\t}{\t}{\t}{\t}JSONObject jsonObject = new JSONObject();{\n}
 {\n}
-{\t}{\t}{\t}{\t}Map parameters = linodeRequest.getParameters();{\n}
-{\t}{\t}{\t}{\t}jsonObject.put(PARAMETER_API_ACTION, linodeRequest.getAction());{\n}
+{\t}{\t}{\t}{\t}Map<String, String> parameters = linodeApiRequest.getParameters();{\n}
+{\t}{\t}{\t}{\t}jsonObject.put(PARAMETER_API_ACTION, linodeApiRequest.getAction());{\n}
 {\t}{\t}{\t}{\t}for (String parameterKey : parameters.keySet()) {{{\n}
 {\t}{\t}{\t}{\t}{\t}jsonObject.append(parameterKey, parameters.get(parameterKey));{\n}
 {\t}{\t}{\t}{\t}}{\n}
@@ -138,13 +146,13 @@ public class LinodeApi {{{\n}
 {\t}{\t}{\t}// as we are doing batch mode - the return will be an array{\n}
 {\t}{\t}{\t}JSONArray jsonArray = new JSONArray(response);{\n}
 {\t}{\t}{\t}for(int i = 0; i < jsonArray.length(); i ++) {{{\n}
-{\t}{\t}{\t}{\t}linodeResponses.add(new LinodeResponse(jsonArray.getJSONObject(i)));{\n}
+{\t}{\t}{\t}{\t}linodeApiResponses.add(new LinodeApiResponse(jsonArray.getJSONObject(i)));{\n}
 {\t}{\t}{\t}}{\n}
 {\t}{\t}} catch (JSONException | IOException ex) {{{\n}
 {\t}{\t}{\t}throw new ApiException(ex);{\n}
 {\t}{\t}}{\n}
 {\n}
-{\t}{\t}return(linodeResponses);{\n}
+{\t}{\t}return(linodeApiResponses);{\n}
 {\t}}{\n}
 {\n}
 {\n}
@@ -159,7 +167,7 @@ public class LinodeApi {{{\n}
 {\t} * {\n}
 {\t} * @throws ApiException If there was an error with the call{\n}
 {\t} */{\n}
-{\t}private String callApi(String action, HttpPost httpPost, ArrayList postParameters) throws ApiException {{{\n}
+{\t}private String callApi(String action, HttpPost httpPost, ArrayList<NameValuePair> postParameters) throws ApiException {{{\n}
 {\t}{\t}try {{{\n}
 {\t}{\t}{\t}httpPost.setEntity(new UrlEncodedFormEntity(postParameters));{\n}
 {\t}{\t}{\t}CloseableHttpResponse httpResponse = closeableHttpClient.execute(httpPost);{\n}
@@ -212,5 +220,13 @@ public class LinodeApi {{{\n}
 {\t}{\t}{\t}throw new ApiException(stringBuilder.toString());{\n}
 {\t}{\t}}{\n}
 {\t}}{\n}
+{--
+	now for all of the api calls
+}
+{loop apis as api}
+	{loop api.apiMethods as apiMethod}
+		{\n}
+		{\t}public {api.classname}{apiMethod.upperName}Response get{api.classname}{apiMethod.upperName}() {{ return(null); };{\n}
+	{endloop}
+{endloop}
 }{\n}
-{\n}

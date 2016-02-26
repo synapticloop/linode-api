@@ -7,7 +7,7 @@ package synapticloop.linode.api.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import synapticloop.linode.LinodeRequest;
+import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.exception.ApiException;
 
 /**
@@ -18,7 +18,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Account extends ApiBase {
+public class AccountRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_MODE = "mode";
 	private static final String PARAM_CONSTANT_PAYMENTTERM = "PaymentTerm";
 	private static final String PARAM_CONSTANT_PLANID = "PlanID";
@@ -27,7 +27,7 @@ public class Account extends ApiBase {
 	/**
 	 * Private constructor to deter instantiation
 	 */
-	private Account() {}
+	private AccountRequest() {}
 
 	/**
 	 * <p>Estimates the invoice for adding a new Linode or NodeBalancer as well as resizing a Linode. 
@@ -59,10 +59,10 @@ public class Account extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest estimateinvoice(String mode) throws ApiException {
+	public static LinodeApiRequest estimateinvoice(String mode) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, false);
-		return(new LinodeRequest("account.estimateinvoice", parameters));
+		return(new LinodeApiRequest("account.estimateinvoice", parameters));
 	}
 
 	/**
@@ -96,13 +96,13 @@ public class Account extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest estimateinvoice(String mode, Long paymentTerm, Long planID, Long linodeID) throws ApiException {
+	public static LinodeApiRequest estimateinvoice(String mode, Long paymentTerm, Long planID, Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
-		return(new LinodeRequest("account.estimateinvoice", parameters));
+		return(new LinodeApiRequest("account.estimateinvoice", parameters));
 	}
 
 	/**
@@ -132,9 +132,9 @@ public class Account extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest info() throws ApiException {
+	public static LinodeApiRequest info() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeRequest("account.info", parameters));
+		return(new LinodeApiRequest("account.info", parameters));
 	}
 
 };

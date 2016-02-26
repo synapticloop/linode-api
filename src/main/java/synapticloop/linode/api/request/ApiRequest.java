@@ -7,7 +7,7 @@ package synapticloop.linode.api.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import synapticloop.linode.LinodeRequest;
+import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.exception.ApiException;
 
 /**
@@ -18,12 +18,12 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Api extends ApiBase {
+public class ApiRequest extends ApiBaseRequest {
 
 	/**
 	 * Private constructor to deter instantiation
 	 */
-	private Api() {}
+	private ApiRequest() {}
 
 	/**
 	 * <p>Returns a data structure of the entire Linode API specification. This method does not 
@@ -61,9 +61,9 @@ public class Api extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest spec() throws ApiException {
+	public static LinodeApiRequest spec() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeRequest("api.spec", parameters));
+		return(new LinodeApiRequest("api.spec", parameters));
 	}
 
 };

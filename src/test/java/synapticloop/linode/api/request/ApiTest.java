@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import synapticloop.linode.LinodeApi;
-import synapticloop.linode.LinodeResponse;
+import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
 public class ApiTest {
@@ -20,7 +20,7 @@ public class ApiTest {
 
 	@Test
 	public void testMethodName() throws ApiException, JSONException {
-		LinodeResponse linodeResponse = linodeApi.execute(Api.spec());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Api.spec());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 

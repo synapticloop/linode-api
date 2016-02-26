@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 import synapticloop.linode.api.response.bean.Datacenter;
 
-public class DatacentersResponse extends BaseResponse {
+public class AvailDatacentersResponse extends BaseResponse {
 	private List<Datacenter> datacenters = new ArrayList<Datacenter>();
 	private Map<Long, Datacenter> datacenterIdLookup = new HashMap<Long, Datacenter>();
 	private Map<String, Datacenter> datacenterAbbreviationLookup = new HashMap<String, Datacenter>();
@@ -70,7 +70,7 @@ public class DatacentersResponse extends BaseResponse {
 	 * 
 	 * @param jsonObject
 	 */
-	public DatacentersResponse(JSONObject jsonObject) {
+	public AvailDatacentersResponse(JSONObject jsonObject) {
 		super(jsonObject);
 		JSONArray dataArray = jsonObject.getJSONArray("DATA");
 

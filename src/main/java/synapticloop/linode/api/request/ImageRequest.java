@@ -7,7 +7,7 @@ package synapticloop.linode.api.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import synapticloop.linode.LinodeRequest;
+import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.exception.ApiException;
 
 /**
@@ -18,7 +18,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Image extends ApiBase {
+public class ImageRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_IMAGEID = "ImageID";
 	private static final String PARAM_CONSTANT_PENDING = "pending";
 	private static final String PARAM_CONSTANT_LABEL = "label";
@@ -27,7 +27,7 @@ public class Image extends ApiBase {
 	/**
 	 * Private constructor to deter instantiation
 	 */
-	private Image() {}
+	private ImageRequest() {}
 
 	/**
 	 * <p>Deletes a gold-master image</p> 
@@ -68,10 +68,10 @@ public class Image extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest delete(Long imageID) throws ApiException {
+	public static LinodeApiRequest delete(Long imageID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
-		return(new LinodeRequest("image.delete", parameters));
+		return(new LinodeApiRequest("image.delete", parameters));
 	}
 
 	/**
@@ -125,9 +125,9 @@ public class Image extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest list() throws ApiException {
+	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeRequest("image.list", parameters));
+		return(new LinodeApiRequest("image.list", parameters));
 	}
 
 	/**
@@ -181,11 +181,11 @@ public class Image extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest list(Long pending, Long imageID) throws ApiException {
+	public static LinodeApiRequest list(Long pending, Long imageID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_PENDING, pending, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, true);
-		return(new LinodeRequest("image.list", parameters));
+		return(new LinodeApiRequest("image.list", parameters));
 	}
 
 	/**
@@ -228,10 +228,10 @@ public class Image extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest update(Long imageID) throws ApiException {
+	public static LinodeApiRequest update(Long imageID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
-		return(new LinodeRequest("image.update", parameters));
+		return(new LinodeApiRequest("image.update", parameters));
 	}
 
 	/**
@@ -274,12 +274,12 @@ public class Image extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest update(Long imageID, String label, String description) throws ApiException {
+	public static LinodeApiRequest update(Long imageID, String label, String description) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
-		return(new LinodeRequest("image.update", parameters));
+		return(new LinodeApiRequest("image.update", parameters));
 	}
 
 };

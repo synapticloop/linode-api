@@ -6,7 +6,7 @@ package synapticloop.linode.api.request;
 
 import java.util.Map;
 
-import synapticloop.linode.LinodeRequest;
+import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.exception.ApiException;
 
 /**
@@ -17,12 +17,12 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Test extends ApiBase {
+public class TestRequest extends ApiBaseRequest {
 
 	/**
 	 * Private constructor to deter instantiation
 	 */
-	private Test() {}
+	private TestRequest() {}
 
 	/**
 	 * <p>Echos back parameters that were passed in.</p> 
@@ -45,8 +45,8 @@ public class Test extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest echo(Map<String, String> parameters) throws ApiException {
-		return(new LinodeRequest("test.echo", parameters));
+	public static LinodeApiRequest echo(Map<String, String> parameters) throws ApiException {
+		return(new LinodeApiRequest("test.echo", parameters));
 	}
 
 };

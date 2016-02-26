@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import synapticloop.linode.LinodeApi;
-import synapticloop.linode.LinodeResponse;
+import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
 public class DomainTest {
@@ -19,7 +19,7 @@ public class DomainTest {
 
 	@Test
 	public void testDomainList() throws Exception, ApiException {
-		LinodeResponse linodeResponse = linodeApi.execute(Domain.list());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Domain.list());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 }

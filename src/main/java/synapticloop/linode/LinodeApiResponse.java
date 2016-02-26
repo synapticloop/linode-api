@@ -10,7 +10,7 @@ import synapticloop.linode.exception.ApiException;
  * Response from an Linode API call
  * 
  */
-public class LinodeResponse {
+public class LinodeApiResponse {
 	private static final String DATA = "DATA";
 	private static final String ACTION = "ACTION";
 	private static final String ERRORARRAY = "ERRORARRAY";
@@ -20,7 +20,7 @@ public class LinodeResponse {
 	/**
 	 * @param json the JSON object returned from the HTTP call
 	 */
-	public LinodeResponse(JSONObject json) {
+	public LinodeApiResponse(JSONObject json) {
 		this.json = json;
 	}
 

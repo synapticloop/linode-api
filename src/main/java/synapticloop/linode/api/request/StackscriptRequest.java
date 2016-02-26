@@ -7,7 +7,7 @@ package synapticloop.linode.api.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import synapticloop.linode.LinodeRequest;
+import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.exception.ApiException;
 
 /**
@@ -18,7 +18,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Stackscript extends ApiBase {
+public class StackscriptRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_LABEL = "Label";
 	private static final String PARAM_CONSTANT_DESCRIPTION = "Description";
 	private static final String PARAM_CONSTANT_DISTRIBUTIONIDLIST = "DistributionIDList";
@@ -30,7 +30,7 @@ public class Stackscript extends ApiBase {
 	/**
 	 * Private constructor to deter instantiation
 	 */
-	private Stackscript() {}
+	private StackscriptRequest() {}
 
 	/**
 	 * <p>Create a StackScript.</p> 
@@ -62,12 +62,12 @@ public class Stackscript extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest create(String label, String distributionIDList, String script) throws ApiException {
+	public static LinodeApiRequest create(String label, String distributionIDList, String script) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONIDLIST, distributionIDList, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SCRIPT, script, false);
-		return(new LinodeRequest("stackscript.create", parameters));
+		return(new LinodeApiRequest("stackscript.create", parameters));
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class Stackscript extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest create(String label, String description, String distributionIDList, Boolean isPublic, String rev_note, String script) throws ApiException {
+	public static LinodeApiRequest create(String label, String description, String distributionIDList, Boolean isPublic, String rev_note, String script) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
@@ -109,7 +109,7 @@ public class Stackscript extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_ISPUBLIC, isPublic, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_REV_NOTE, rev_note, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_SCRIPT, script, false);
-		return(new LinodeRequest("stackscript.create", parameters));
+		return(new LinodeApiRequest("stackscript.create", parameters));
 	}
 
 	/**
@@ -138,10 +138,10 @@ public class Stackscript extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest delete(Long stackScriptID) throws ApiException {
+	public static LinodeApiRequest delete(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
-		return(new LinodeRequest("stackscript.delete", parameters));
+		return(new LinodeApiRequest("stackscript.delete", parameters));
 	}
 
 	/**
@@ -195,9 +195,9 @@ public class Stackscript extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest list() throws ApiException {
+	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeRequest("stackscript.list", parameters));
+		return(new LinodeApiRequest("stackscript.list", parameters));
 	}
 
 	/**
@@ -252,10 +252,10 @@ public class Stackscript extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest list(Long stackScriptID) throws ApiException {
+	public static LinodeApiRequest list(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, true);
-		return(new LinodeRequest("stackscript.list", parameters));
+		return(new LinodeApiRequest("stackscript.list", parameters));
 	}
 
 	/**
@@ -286,10 +286,10 @@ public class Stackscript extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest update(Long stackScriptID) throws ApiException {
+	public static LinodeApiRequest update(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
-		return(new LinodeRequest("stackscript.update", parameters));
+		return(new LinodeApiRequest("stackscript.update", parameters));
 	}
 
 	/**
@@ -324,7 +324,7 @@ public class Stackscript extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest update(Long stackScriptID, String label, String description, String distributionIDList, Boolean isPublic, String rev_note, String script) throws ApiException {
+	public static LinodeApiRequest update(Long stackScriptID, String label, String description, String distributionIDList, Boolean isPublic, String rev_note, String script) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
@@ -333,7 +333,7 @@ public class Stackscript extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_ISPUBLIC, isPublic, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_REV_NOTE, rev_note, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_SCRIPT, script, true);
-		return(new LinodeRequest("stackscript.update", parameters));
+		return(new LinodeApiRequest("stackscript.update", parameters));
 	}
 
 };

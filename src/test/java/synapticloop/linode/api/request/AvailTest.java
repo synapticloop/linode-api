@@ -9,8 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import synapticloop.linode.LinodeApi;
-import synapticloop.linode.LinodeRequest;
-import synapticloop.linode.LinodeResponse;
+import synapticloop.linode.LinodeApiRequest;
+import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
 public class AvailTest {
@@ -23,25 +23,25 @@ public class AvailTest {
 
 	@Test
 	public void testBatchAvailable() throws ApiException {
-		List<LinodeRequest> linodeRequests = new ArrayList<LinodeRequest>();
+		List<LinodeApiRequest> linodeRequests = new ArrayList<LinodeApiRequest>();
 		linodeRequests.add(Avail.datacenters());
 		linodeRequests.add(Avail.distributions());
 
-		List<LinodeResponse> linodeResponses = linodeApi.execute(linodeRequests);
-		for (LinodeResponse linodeResponse : linodeResponses) {
+		List<LinodeApiResponse> linodeResponses = linodeApi.execute(linodeRequests);
+		for (LinodeApiResponse linodeResponse : linodeResponses) {
 			Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 		}
 	}
 
 	@Test
 	public void testAvailableDatacentres() throws ApiException {
-		LinodeResponse linodeResponse = linodeApi.execute(Avail.datacenters());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Avail.datacenters());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
 	@Test
 	public void testAvailableDistributions() throws ApiException, JSONException {
-		LinodeResponse linodeResponse = linodeApi.execute(Avail.distributions());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Avail.distributions());
 		long distributionID = linodeResponse.getDataAsJSONArray().getJSONObject(0).getLong("DISTRIBUTIONID");
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
@@ -53,13 +53,13 @@ public class AvailTest {
 	@Test
 	public void testInvalidDatacentre() throws ApiException, JSONException {
 		// test distributions with distributon id
-		LinodeResponse linodeResponse = linodeApi.execute(Avail.distributions(-109809809l));
+		LinodeApiResponse linodeResponse = linodeApi.execute(Avail.distributions(-109809809l));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
 	@Test
 	public void testAvailableKernels() throws ApiException {
-		LinodeResponse linodeResponse = linodeApi.execute(Avail.kernels());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Avail.kernels());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
 		linodeResponse = linodeApi.execute(Avail.kernels(true, true));
@@ -77,7 +77,7 @@ public class AvailTest {
 
 	@Test
 	public void testLinodePlans() throws ApiException, JSONException {
-		LinodeResponse linodeResponse = linodeApi.execute(Avail.linodeplans());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Avail.linodeplans());
 		Assert.assertFalse(linodeResponse.getIsDataJSONObject());
 		Assert.assertTrue(linodeResponse.getIsDataJSONArray());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
@@ -88,13 +88,13 @@ public class AvailTest {
 
 	@Test
 	public void testNodeBalancers() throws ApiException {
-		LinodeResponse linodeResponse = linodeApi.execute(Avail.nodebalancers());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Avail.nodebalancers());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
 	@Test
 	public void testStackScripts() throws ApiException, JSONException {
-		LinodeResponse linodeResponse = linodeApi.execute(Avail.stackscripts());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Avail.stackscripts());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
 		linodeResponse = linodeApi.execute(Avail.stackscripts(null, null, "Install"));

@@ -9,7 +9,7 @@ import java.util.Map;
  * @author synapticloop
  * 
  */
-public class LinodeRequest {
+public class LinodeApiRequest {
 	private String action  = null;
 	private Map<String, String> parameters = null;
 
@@ -20,7 +20,7 @@ public class LinodeRequest {
 	 * 
 	 * @param parameters a map of parameters to pass through
 	 */
-	public LinodeRequest(String action, Map<String, String> parameters) {
+	public LinodeApiRequest(String action, Map<String, String> parameters) {
 		this.action = action;
 		if(null != parameters) {
 			this.parameters = parameters;

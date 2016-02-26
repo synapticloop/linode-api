@@ -7,7 +7,7 @@ package synapticloop.linode.api.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import synapticloop.linode.LinodeRequest;
+import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.exception.ApiException;
 
 /**
@@ -18,7 +18,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Linode extends ApiBase {
+public class LinodeRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_LINODEID = "LinodeID";
 	private static final String PARAM_CONSTANT_CONFIGID = "ConfigID";
 	private static final String PARAM_CONSTANT_DATACENTERID = "DatacenterID";
@@ -81,7 +81,7 @@ public class Linode extends ApiBase {
 	/**
 	 * Private constructor to deter instantiation
 	 */
-	private Linode() {}
+	private LinodeRequest() {}
 
 	/**
 	 * <p>Issues a boot job for the provided ConfigID. If no ConfigID is provided boots the last used 
@@ -111,10 +111,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest boot(Long linodeID) throws ApiException {
+	public static LinodeApiRequest boot(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.boot", parameters));
+		return(new LinodeApiRequest("linode.boot", parameters));
 	}
 
 	/**
@@ -144,11 +144,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest boot(Long linodeID, Long configID) throws ApiException {
+	public static LinodeApiRequest boot(Long linodeID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
-		return(new LinodeRequest("linode.boot", parameters));
+		return(new LinodeApiRequest("linode.boot", parameters));
 	}
 
 	/**
@@ -187,12 +187,12 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest clone(Long linodeID, Long datacenterID, Long planID) throws ApiException {
+	public static LinodeApiRequest clone(Long linodeID, Long datacenterID, Long planID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
-		return(new LinodeRequest("linode.clone", parameters));
+		return(new LinodeApiRequest("linode.clone", parameters));
 	}
 
 	/**
@@ -230,13 +230,13 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest clone(Long linodeID, Long datacenterID, Long planID, Long paymentTerm) throws ApiException {
+	public static LinodeApiRequest clone(Long linodeID, Long datacenterID, Long planID, Long paymentTerm) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
-		return(new LinodeRequest("linode.clone", parameters));
+		return(new LinodeApiRequest("linode.clone", parameters));
 	}
 
 	/**
@@ -270,13 +270,13 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest configcreate(Long linodeID, Long kernelID, String label, String diskList) throws ApiException {
+	public static LinodeApiRequest configcreate(Long linodeID, Long kernelID, String label, String diskList) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_KERNELID, kernelID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKLIST, diskList, false);
-		return(new LinodeRequest("linode.config.create", parameters));
+		return(new LinodeApiRequest("linode.config.create", parameters));
 	}
 
 	/**
@@ -321,7 +321,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest configcreate(Long linodeID, Long kernelID, String label, String comments, Long rAMLimit, String diskList, String virt_mode, String runLevel, Long rootDeviceNum, String rootDeviceCustom, Boolean rootDeviceRO, Boolean helper_disableUpdateDB, Boolean helper_distro, Boolean helper_xen, Boolean helper_depmod, Boolean helper_network, Boolean devtmpfs_automount) throws ApiException {
+	public static LinodeApiRequest configcreate(Long linodeID, Long kernelID, String label, String comments, Long rAMLimit, String diskList, String virt_mode, String runLevel, Long rootDeviceNum, String rootDeviceCustom, Boolean rootDeviceRO, Boolean helper_disableUpdateDB, Boolean helper_distro, Boolean helper_xen, Boolean helper_depmod, Boolean helper_network, Boolean devtmpfs_automount) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_KERNELID, kernelID, false);
@@ -340,7 +340,7 @@ public class Linode extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DEPMOD, helper_depmod, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_NETWORK, helper_network, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT, devtmpfs_automount, true);
-		return(new LinodeRequest("linode.config.create", parameters));
+		return(new LinodeApiRequest("linode.config.create", parameters));
 	}
 
 	/**
@@ -372,11 +372,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest configdelete(Long linodeID, Long configID) throws ApiException {
+	public static LinodeApiRequest configdelete(Long linodeID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
-		return(new LinodeRequest("linode.config.delete", parameters));
+		return(new LinodeApiRequest("linode.config.delete", parameters));
 	}
 
 	/**
@@ -439,10 +439,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest configlist(Long linodeID) throws ApiException {
+	public static LinodeApiRequest configlist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.config.list", parameters));
+		return(new LinodeApiRequest("linode.config.list", parameters));
 	}
 
 	/**
@@ -504,11 +504,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest configlist(Long linodeID, Long configID) throws ApiException {
+	public static LinodeApiRequest configlist(Long linodeID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
-		return(new LinodeRequest("linode.config.list", parameters));
+		return(new LinodeApiRequest("linode.config.list", parameters));
 	}
 
 	/**
@@ -539,10 +539,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest configupdate(Long configID) throws ApiException {
+	public static LinodeApiRequest configupdate(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
-		return(new LinodeRequest("linode.config.update", parameters));
+		return(new LinodeApiRequest("linode.config.update", parameters));
 	}
 
 	/**
@@ -588,7 +588,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest configupdate(Long linodeID, Long configID, Long kernelID, String label, String comments, Long rAMLimit, String diskList, String virt_mode, String runLevel, Long rootDeviceNum, String rootDeviceCustom, Boolean rootDeviceRO, Boolean helper_disableUpdateDB, Boolean helper_distro, Boolean helper_xen, Boolean helper_depmod, Boolean helper_network, Boolean devtmpfs_automount) throws ApiException {
+	public static LinodeApiRequest configupdate(Long linodeID, Long configID, Long kernelID, String label, String comments, Long rAMLimit, String diskList, String virt_mode, String runLevel, Long rootDeviceNum, String rootDeviceCustom, Boolean rootDeviceRO, Boolean helper_disableUpdateDB, Boolean helper_distro, Boolean helper_xen, Boolean helper_depmod, Boolean helper_network, Boolean devtmpfs_automount) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
@@ -608,7 +608,7 @@ public class Linode extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DEPMOD, helper_depmod, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_NETWORK, helper_network, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT, devtmpfs_automount, true);
-		return(new LinodeRequest("linode.config.update", parameters));
+		return(new LinodeApiRequest("linode.config.update", parameters));
 	}
 
 	/**
@@ -644,11 +644,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest create(Long datacenterID, Long planID) throws ApiException {
+	public static LinodeApiRequest create(Long datacenterID, Long planID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
-		return(new LinodeRequest("linode.create", parameters));
+		return(new LinodeApiRequest("linode.create", parameters));
 	}
 
 	/**
@@ -683,12 +683,12 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest create(Long datacenterID, Long planID, Long paymentTerm) throws ApiException {
+	public static LinodeApiRequest create(Long datacenterID, Long planID, Long paymentTerm) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
-		return(new LinodeRequest("linode.create", parameters));
+		return(new LinodeApiRequest("linode.create", parameters));
 	}
 
 	/**
@@ -721,10 +721,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest delete(Long linodeID) throws ApiException {
+	public static LinodeApiRequest delete(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.delete", parameters));
+		return(new LinodeApiRequest("linode.delete", parameters));
 	}
 
 	/**
@@ -756,11 +756,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest delete(Long linodeID, Boolean skipChecks) throws ApiException {
+	public static LinodeApiRequest delete(Long linodeID, Boolean skipChecks) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SKIPCHECKS, skipChecks, true);
-		return(new LinodeRequest("linode.delete", parameters));
+		return(new LinodeApiRequest("linode.delete", parameters));
 	}
 
 	/**
@@ -794,13 +794,13 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskcreate(Long linodeID, String label, String type, Long size) throws ApiException {
+	public static LinodeApiRequest diskcreate(Long linodeID, String label, String type, Long size) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
-		return(new LinodeRequest("linode.disk.create", parameters));
+		return(new LinodeApiRequest("linode.disk.create", parameters));
 	}
 
 	/**
@@ -836,7 +836,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest diskcreate(Long linodeID, Long fromDistributionID, String rootPass, String rootSSHKey, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
+	public static LinodeApiRequest diskcreate(Long linodeID, Long fromDistributionID, String rootPass, String rootSSHKey, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_FROMDISTRIBUTIONID, fromDistributionID, true);
@@ -846,7 +846,7 @@ public class Linode extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ISREADONLY, isReadOnly, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
-		return(new LinodeRequest("linode.disk.create", parameters));
+		return(new LinodeApiRequest("linode.disk.create", parameters));
 	}
 
 	/**
@@ -881,14 +881,14 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskcreatefromdistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass) throws ApiException {
+	public static LinodeApiRequest diskcreatefromdistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
-		return(new LinodeRequest("linode.disk.createfromdistribution", parameters));
+		return(new LinodeApiRequest("linode.disk.createfromdistribution", parameters));
 	}
 
 	/**
@@ -922,7 +922,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest diskcreatefromdistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
+	public static LinodeApiRequest diskcreatefromdistribution(Long linodeID, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, false);
@@ -930,7 +930,7 @@ public class Linode extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
-		return(new LinodeRequest("linode.disk.createfromdistribution", parameters));
+		return(new LinodeApiRequest("linode.disk.createfromdistribution", parameters));
 	}
 
 	/**
@@ -956,11 +956,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskcreatefromimage(Long imageID, Long linodeID) throws ApiException {
+	public static LinodeApiRequest diskcreatefromimage(Long imageID, Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.disk.createfromimage", parameters));
+		return(new LinodeApiRequest("linode.disk.createfromimage", parameters));
 	}
 
 	/**
@@ -990,7 +990,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest diskcreatefromimage(Long imageID, Long linodeID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
+	public static LinodeApiRequest diskcreatefromimage(Long imageID, Long linodeID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
@@ -998,7 +998,7 @@ public class Linode extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
-		return(new LinodeRequest("linode.disk.createfromimage", parameters));
+		return(new LinodeApiRequest("linode.disk.createfromimage", parameters));
 	}
 
 	/**
@@ -1035,7 +1035,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskcreatefromstackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass) throws ApiException {
+	public static LinodeApiRequest diskcreatefromstackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
@@ -1044,7 +1044,7 @@ public class Linode extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
-		return(new LinodeRequest("linode.disk.createfromstackscript", parameters));
+		return(new LinodeApiRequest("linode.disk.createfromstackscript", parameters));
 	}
 
 	/**
@@ -1080,7 +1080,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest diskcreatefromstackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
+	public static LinodeApiRequest diskcreatefromstackscript(Long linodeID, Long stackScriptID, String stackScriptUDFResponses, Long distributionID, String label, Long size, String rootPass, String rootSSHKey) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
@@ -1090,7 +1090,7 @@ public class Linode extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
-		return(new LinodeRequest("linode.disk.createfromstackscript", parameters));
+		return(new LinodeApiRequest("linode.disk.createfromstackscript", parameters));
 	}
 
 	/**
@@ -1122,11 +1122,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskdelete(Long linodeID, Long diskID) throws ApiException {
+	public static LinodeApiRequest diskdelete(Long linodeID, Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
-		return(new LinodeRequest("linode.disk.delete", parameters));
+		return(new LinodeApiRequest("linode.disk.delete", parameters));
 	}
 
 	/**
@@ -1159,11 +1159,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskduplicate(Long linodeID, Long diskID) throws ApiException {
+	public static LinodeApiRequest diskduplicate(Long linodeID, Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
-		return(new LinodeRequest("linode.disk.duplicate", parameters));
+		return(new LinodeApiRequest("linode.disk.duplicate", parameters));
 	}
 
 	/**
@@ -1189,11 +1189,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskimagize(Long linodeID, Long diskID) throws ApiException {
+	public static LinodeApiRequest diskimagize(Long linodeID, Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
-		return(new LinodeRequest("linode.disk.imagize", parameters));
+		return(new LinodeApiRequest("linode.disk.imagize", parameters));
 	}
 
 	/**
@@ -1221,13 +1221,13 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest diskimagize(Long linodeID, Long diskID, String description, String label) throws ApiException {
+	public static LinodeApiRequest diskimagize(Long linodeID, Long diskID, String description, String label) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
-		return(new LinodeRequest("linode.disk.imagize", parameters));
+		return(new LinodeApiRequest("linode.disk.imagize", parameters));
 	}
 
 	/**
@@ -1272,10 +1272,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest disklist(Long linodeID) throws ApiException {
+	public static LinodeApiRequest disklist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.disk.list", parameters));
+		return(new LinodeApiRequest("linode.disk.list", parameters));
 	}
 
 	/**
@@ -1321,11 +1321,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest disklist(Long linodeID, Long diskID) throws ApiException {
+	public static LinodeApiRequest disklist(Long linodeID, Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, true);
-		return(new LinodeRequest("linode.disk.list", parameters));
+		return(new LinodeApiRequest("linode.disk.list", parameters));
 	}
 
 	/**
@@ -1358,12 +1358,12 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskresize(Long linodeID, Long diskID, Long size) throws ApiException {
+	public static LinodeApiRequest diskresize(Long linodeID, Long diskID, Long size) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
-		return(new LinodeRequest("linode.disk.resize", parameters));
+		return(new LinodeApiRequest("linode.disk.resize", parameters));
 	}
 
 	/**
@@ -1393,10 +1393,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest diskupdate(Long diskID) throws ApiException {
+	public static LinodeApiRequest diskupdate(Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
-		return(new LinodeRequest("linode.disk.update", parameters));
+		return(new LinodeApiRequest("linode.disk.update", parameters));
 	}
 
 	/**
@@ -1427,13 +1427,13 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest diskupdate(Long linodeID, Long diskID, String label, Boolean isReadOnly) throws ApiException {
+	public static LinodeApiRequest diskupdate(Long linodeID, Long diskID, String label, Boolean isReadOnly) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_ISREADONLY, isReadOnly, true);
-		return(new LinodeRequest("linode.disk.update", parameters));
+		return(new LinodeApiRequest("linode.disk.update", parameters));
 	}
 
 	/**
@@ -1464,10 +1464,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest ipaddprivate(Long linodeID) throws ApiException {
+	public static LinodeApiRequest ipaddprivate(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.ip.addprivate", parameters));
+		return(new LinodeApiRequest("linode.ip.addprivate", parameters));
 	}
 
 	/**
@@ -1499,10 +1499,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest ipaddpublic(Long linodeID) throws ApiException {
+	public static LinodeApiRequest ipaddpublic(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.ip.addpublic", parameters));
+		return(new LinodeApiRequest("linode.ip.addpublic", parameters));
 	}
 
 	/**
@@ -1544,9 +1544,9 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest iplist() throws ApiException {
+	public static LinodeApiRequest iplist() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeRequest("linode.ip.list", parameters));
+		return(new LinodeApiRequest("linode.ip.list", parameters));
 	}
 
 	/**
@@ -1588,11 +1588,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest iplist(Long linodeID, Long iPAddressID) throws ApiException {
+	public static LinodeApiRequest iplist(Long linodeID, Long iPAddressID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, true);
-		return(new LinodeRequest("linode.ip.list", parameters));
+		return(new LinodeApiRequest("linode.ip.list", parameters));
 	}
 
 	/**
@@ -1627,11 +1627,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest ipsetrdns(Long iPAddressID, String hostname) throws ApiException {
+	public static LinodeApiRequest ipsetrdns(Long iPAddressID, String hostname) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_HOSTNAME, hostname, false);
-		return(new LinodeRequest("linode.ip.setrdns", parameters));
+		return(new LinodeApiRequest("linode.ip.setrdns", parameters));
 	}
 
 	/**
@@ -1674,10 +1674,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest ipswap(Long iPAddressID) throws ApiException {
+	public static LinodeApiRequest ipswap(Long iPAddressID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
-		return(new LinodeRequest("linode.ip.swap", parameters));
+		return(new LinodeApiRequest("linode.ip.swap", parameters));
 	}
 
 	/**
@@ -1720,12 +1720,12 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest ipswap(Long iPAddressID, Long withIPAddressID, Long toLinodeID) throws ApiException {
+	public static LinodeApiRequest ipswap(Long iPAddressID, Long withIPAddressID, Long toLinodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_WITHIPADDRESSID, withIPAddressID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_TOLINODEID, toLinodeID, true);
-		return(new LinodeRequest("linode.ip.swap", parameters));
+		return(new LinodeApiRequest("linode.ip.swap", parameters));
 	}
 
 	/**
@@ -1771,10 +1771,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest joblist(Long linodeID) throws ApiException {
+	public static LinodeApiRequest joblist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.job.list", parameters));
+		return(new LinodeApiRequest("linode.job.list", parameters));
 	}
 
 	/**
@@ -1822,12 +1822,12 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest joblist(Long linodeID, Long jobID, Boolean pendingOnly) throws ApiException {
+	public static LinodeApiRequest joblist(Long linodeID, Long jobID, Boolean pendingOnly) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_JOBID, jobID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_PENDINGONLY, pendingOnly, true);
-		return(new LinodeRequest("linode.job.list", parameters));
+		return(new LinodeApiRequest("linode.job.list", parameters));
 	}
 
 	/**
@@ -1879,9 +1879,9 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest list() throws ApiException {
+	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeRequest("linode.list", parameters));
+		return(new LinodeApiRequest("linode.list", parameters));
 	}
 
 	/**
@@ -1934,10 +1934,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest list(Long linodeID) throws ApiException {
+	public static LinodeApiRequest list(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
-		return(new LinodeRequest("linode.list", parameters));
+		return(new LinodeApiRequest("linode.list", parameters));
 	}
 
 	/**
@@ -1967,10 +1967,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest reboot(Long linodeID) throws ApiException {
+	public static LinodeApiRequest reboot(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.reboot", parameters));
+		return(new LinodeApiRequest("linode.reboot", parameters));
 	}
 
 	/**
@@ -1999,11 +1999,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest reboot(Long linodeID, Long configID) throws ApiException {
+	public static LinodeApiRequest reboot(Long linodeID, Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
-		return(new LinodeRequest("linode.reboot", parameters));
+		return(new LinodeApiRequest("linode.reboot", parameters));
 	}
 
 	/**
@@ -2040,11 +2040,11 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest resize(Long linodeID, Long planID) throws ApiException {
+	public static LinodeApiRequest resize(Long linodeID, Long planID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
-		return(new LinodeRequest("linode.resize", parameters));
+		return(new LinodeApiRequest("linode.resize", parameters));
 	}
 
 	/**
@@ -2074,10 +2074,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest shutdown(Long linodeID) throws ApiException {
+	public static LinodeApiRequest shutdown(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.shutdown", parameters));
+		return(new LinodeApiRequest("linode.shutdown", parameters));
 	}
 
 	/**
@@ -2108,10 +2108,10 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest update(Long linodeID) throws ApiException {
+	public static LinodeApiRequest update(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeRequest("linode.update", parameters));
+		return(new LinodeApiRequest("linode.update", parameters));
 	}
 
 	/**
@@ -2159,7 +2159,7 @@ public class Linode extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest update(Long linodeID, String label, String lpm_displayGroup, Boolean Alert_cpu_enabled, Long Alert_cpu_threshold, Boolean Alert_diskio_enabled, Long Alert_diskio_threshold, Boolean Alert_bwin_enabled, Long Alert_bwin_threshold, Boolean Alert_bwout_enabled, Long Alert_bwout_threshold, Boolean Alert_bwquota_enabled, Long Alert_bwquota_threshold, Long backupWindow, Long backupWeeklyDay, Boolean watchdog, Boolean ms_ssh_disabled, String ms_ssh_user, String ms_ssh_ip, Long ms_ssh_port) throws ApiException {
+	public static LinodeApiRequest update(Long linodeID, String label, String lpm_displayGroup, Boolean Alert_cpu_enabled, Long Alert_cpu_threshold, Boolean Alert_diskio_enabled, Long Alert_diskio_threshold, Boolean Alert_bwin_enabled, Long Alert_bwin_threshold, Boolean Alert_bwout_enabled, Long Alert_bwout_threshold, Boolean Alert_bwquota_enabled, Long Alert_bwquota_threshold, Long backupWindow, Long backupWeeklyDay, Boolean watchdog, Boolean ms_ssh_disabled, String ms_ssh_user, String ms_ssh_ip, Long ms_ssh_port) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
@@ -2181,7 +2181,7 @@ public class Linode extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_USER, ms_ssh_user, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_IP, ms_ssh_ip, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_PORT, ms_ssh_port, true);
-		return(new LinodeRequest("linode.update", parameters));
+		return(new LinodeApiRequest("linode.update", parameters));
 	}
 
 };

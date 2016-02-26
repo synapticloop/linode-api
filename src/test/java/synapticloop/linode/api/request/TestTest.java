@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import synapticloop.linode.LinodeApi;
-import synapticloop.linode.LinodeResponse;
+import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
 public class TestTest {
@@ -26,7 +26,7 @@ public class TestTest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put("foo", "bar");
 		parameters.put("one", "two");
-		LinodeResponse linodeResponse = linodeApi.execute(synapticloop.linode.api.request.Test.echo(parameters));
+		LinodeApiResponse linodeResponse = linodeApi.execute(synapticloop.linode.api.request.Test.echo(parameters));
 
 		Assert.assertTrue(linodeResponse.getIsDataJSONObject());
 		Assert.assertFalse(linodeResponse.getIsDataJSONArray());

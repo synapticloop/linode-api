@@ -80,7 +80,7 @@ public class Main {
 			TemplarContext templarContext = new TemplarContext();
 			templarContext.add("api", api);
 			Parser parser = new Parser(Main.class.getResourceAsStream("/java-create-api.templar"));
-			String pathname = JAVA_SRC_API_OUTPUT_DIRECTORY + api.getClassName() + ".java";
+			String pathname = JAVA_SRC_API_OUTPUT_DIRECTORY + api.getClassName() + "Request.java";
 			SimpleLogger.log("Generating for: " + api.getClassName());
 			File outFile = new File(pathname);
 			FileWriter fileWriter = new FileWriter(outFile);

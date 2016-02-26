@@ -9,7 +9,7 @@ package synapticloop.linode.api.request;{\n}{\n}
 
 import java.util.Map;{\n}
 {\n}
-import synapticloop.linode.LinodeRequest;{\n}
+import synapticloop.linode.LinodeApiRequest;{\n}
 import synapticloop.linode.exception.ApiException;{\n}
 
 
@@ -22,7 +22,7 @@ import synapticloop.linode.exception.ApiException;{\n}
  * @author synapticloop{\n}
  */{\n}
 {\n}
-public class {api.className} extends ApiBase {{{\n}
+public class {api.className}Request extends ApiBaseRequest {{{\n}
 
 	{loop api.constantCache.keySet as key}
 		{\t}private static final String {key} = "{api.constantCache.$key}";{\n}
@@ -33,7 +33,7 @@ public class {api.className} extends ApiBase {{{\n}
 	{\t} * Private constructor to deter instantiation{\n}
 	{\t} */{\n}
 
-{\t}private {api.className}() {{}{\n}
+{\t}private {api.className}Request() {{}{\n}
 {\n}
 
 	{loop api.apiMethods as apiMethod}
@@ -91,7 +91,7 @@ public class {api.className} extends ApiBase {{{\n}
 		{\t} * @throws ApiException if a required parameter is null, or there was an error with the call{\n}
 		{\t} */{\n}
 
-		{\t}public static LinodeRequest {apiMethod.name}(
+		{\t}public static LinodeApiRequest {apiMethod.name}(
 				{loop apiMethod.requiredApiMethodParams as apiMethodParam}
 					{apiMethodParam.type} {apiMethodParam.parameterName}{if !apiMethodParamStatus.last}, {endif}
 				{endloop}
@@ -109,7 +109,7 @@ public class {api.className} extends ApiBase {{{\n}
 					{\t}{\t}addParameterSafely(parameters, {apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}, {!apiMethodParam.required});{\n}
 				{endloop}
 
-				{\t}{\t}return(new LinodeRequest("{apiMethod.methodName}", parameters));{\n}
+				{\t}{\t}return(new LinodeApiRequest("{apiMethod.methodName}", parameters));{\n}
 
 		{\t}}{\n}
 {\n}
@@ -175,7 +175,7 @@ public class {api.className} extends ApiBase {{{\n}
 			{\t} * @throws ApiException if a required parameter is null, or there is an error with the call{\n}
 			{\t} */{\n}
 
-			{\t}public static LinodeRequest {apiMethod.name}(
+			{\t}public static LinodeApiRequest {apiMethod.name}(
 				{loop apiMethod.apiMethodParams as apiMethodParam}
 					{apiMethodParam.type} {apiMethodParam.parameterName}{if !apiMethodParamStatus.last}, {endif}
 				{endloop}
@@ -192,7 +192,7 @@ public class {api.className} extends ApiBase {{{\n}
 					{\t}{\t}addParameterSafely(parameters, {apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}, {!apiMethodParam.required});{\n}
 				{endloop}
 
-				{\t}{\t}return(new LinodeRequest("{apiMethod.methodName}", parameters));{\n}
+				{\t}{\t}return(new LinodeApiRequest("{apiMethod.methodName}", parameters));{\n}
 
 		{\t}}{\n}
 

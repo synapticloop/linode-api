@@ -9,7 +9,7 @@ import synapticloop.linode.exception.ApiException;
  * 
  * @author synapticloop
  */
-public abstract class ApiBase {
+public abstract class ApiBaseRequest {
 
 	/**
 	 * Safely add a parameter to the parameter map, with checks for null values.  

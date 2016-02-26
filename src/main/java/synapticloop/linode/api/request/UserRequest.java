@@ -7,7 +7,7 @@ package synapticloop.linode.api.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import synapticloop.linode.LinodeRequest;
+import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.exception.ApiException;
 
 /**
@@ -18,7 +18,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class User extends ApiBase {
+public class UserRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_USERNAME = "username";
 	private static final String PARAM_CONSTANT_PASSWORD = "password";
 	private static final String PARAM_CONSTANT_TOKEN = "token";
@@ -28,7 +28,7 @@ public class User extends ApiBase {
 	/**
 	 * Private constructor to deter instantiation
 	 */
-	private User() {}
+	private UserRequest() {}
 
 	/**
 	 * <p>Authenticates a Linode Manager user against their username, password, and two-factor 
@@ -64,11 +64,11 @@ public class User extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest getapikey(String username, String password) throws ApiException {
+	public static LinodeApiRequest getapikey(String username, String password) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_USERNAME, username, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PASSWORD, password, false);
-		return(new LinodeRequest("user.getapikey", parameters));
+		return(new LinodeApiRequest("user.getapikey", parameters));
 	}
 
 	/**
@@ -106,14 +106,14 @@ public class User extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest getapikey(String username, String password, String token, Long expires, String label) throws ApiException {
+	public static LinodeApiRequest getapikey(String username, String password, String token, Long expires, String label) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_USERNAME, username, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PASSWORD, password, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TOKEN, token, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_EXPIRES, expires, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
-		return(new LinodeRequest("user.getapikey", parameters));
+		return(new LinodeApiRequest("user.getapikey", parameters));
 	}
 
 };

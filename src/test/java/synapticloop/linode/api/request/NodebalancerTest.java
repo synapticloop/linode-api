@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import synapticloop.linode.LinodeApi;
-import synapticloop.linode.LinodeResponse;
+import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
 public class NodebalancerTest {
@@ -18,7 +18,7 @@ public class NodebalancerTest {
 
 	@Test
 	public void testList() throws ApiException {
-		LinodeResponse linodeResponse = linodeApi.execute(Nodebalancer.list());
+		LinodeApiResponse linodeResponse = linodeApi.execute(Nodebalancer.list());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
 		linodeResponse = linodeApi.execute(Nodebalancer.list(-1l));

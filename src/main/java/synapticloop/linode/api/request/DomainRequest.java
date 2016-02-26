@@ -7,7 +7,7 @@ package synapticloop.linode.api.request;
 import java.util.HashMap;
 import java.util.Map;
 
-import synapticloop.linode.LinodeRequest;
+import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.exception.ApiException;
 
 /**
@@ -18,7 +18,7 @@ import synapticloop.linode.exception.ApiException;
  * @author synapticloop
  */
 
-public class Domain extends ApiBase {
+public class DomainRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_DOMAIN = "Domain";
 	private static final String PARAM_CONSTANT_DESCRIPTION = "Description";
 	private static final String PARAM_CONSTANT_TYPE = "Type";
@@ -43,7 +43,7 @@ public class Domain extends ApiBase {
 	/**
 	 * Private constructor to deter instantiation
 	 */
-	private Domain() {}
+	private DomainRequest() {}
 
 	/**
 	 * <p>Create a domain record.</p> 
@@ -74,11 +74,11 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest create(String domain, String type) throws ApiException {
+	public static LinodeApiRequest create(String domain, String type) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAIN, domain, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
-		return(new LinodeRequest("domain.create", parameters));
+		return(new LinodeApiRequest("domain.create", parameters));
 	}
 
 	/**
@@ -118,7 +118,7 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest create(String domain, String description, String type, String SOA_Email, Long Refresh_sec, Long Retry_sec, Long Expire_sec, Long TTL_sec, String lpm_displayGroup, Long status, String master_ips, String axfr_ips) throws ApiException {
+	public static LinodeApiRequest create(String domain, String description, String type, String SOA_Email, Long Refresh_sec, Long Retry_sec, Long Expire_sec, Long TTL_sec, String lpm_displayGroup, Long status, String master_ips, String axfr_ips) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAIN, domain, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
@@ -132,7 +132,7 @@ public class Domain extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_STATUS, status, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MASTER_IPS, master_ips, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_AXFR_IPS, axfr_ips, true);
-		return(new LinodeRequest("domain.create", parameters));
+		return(new LinodeApiRequest("domain.create", parameters));
 	}
 
 	/**
@@ -161,10 +161,10 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest delete(Long domainID) throws ApiException {
+	public static LinodeApiRequest delete(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
-		return(new LinodeRequest("domain.delete", parameters));
+		return(new LinodeApiRequest("domain.delete", parameters));
 	}
 
 	/**
@@ -212,9 +212,9 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest list() throws ApiException {
+	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeRequest("domain.list", parameters));
+		return(new LinodeApiRequest("domain.list", parameters));
 	}
 
 	/**
@@ -263,10 +263,10 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest list(Long domainID) throws ApiException {
+	public static LinodeApiRequest list(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, true);
-		return(new LinodeRequest("domain.list", parameters));
+		return(new LinodeApiRequest("domain.list", parameters));
 	}
 
 	/**
@@ -298,11 +298,11 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest resourcecreate(Long domainID, String type) throws ApiException {
+	public static LinodeApiRequest resourcecreate(Long domainID, String type) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
-		return(new LinodeRequest("domain.resource.create", parameters));
+		return(new LinodeApiRequest("domain.resource.create", parameters));
 	}
 
 	/**
@@ -339,7 +339,7 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest resourcecreate(Long domainID, String type, String name, String target, Long priority, Long weight, Long port, String protocol, Long TTL_sec) throws ApiException {
+	public static LinodeApiRequest resourcecreate(Long domainID, String type, String name, String target, Long priority, Long weight, Long port, String protocol, Long TTL_sec) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
@@ -350,7 +350,7 @@ public class Domain extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_PORT, port, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_PROTOCOL, protocol, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_TTL_SEC, TTL_sec, true);
-		return(new LinodeRequest("domain.resource.create", parameters));
+		return(new LinodeApiRequest("domain.resource.create", parameters));
 	}
 
 	/**
@@ -380,11 +380,11 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest resourcedelete(Long domainID, Long resourceID) throws ApiException {
+	public static LinodeApiRequest resourcedelete(Long domainID, Long resourceID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, false);
-		return(new LinodeRequest("domain.resource.delete", parameters));
+		return(new LinodeApiRequest("domain.resource.delete", parameters));
 	}
 
 	/**
@@ -430,10 +430,10 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest resourcelist(Long domainID) throws ApiException {
+	public static LinodeApiRequest resourcelist(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
-		return(new LinodeRequest("domain.resource.list", parameters));
+		return(new LinodeApiRequest("domain.resource.list", parameters));
 	}
 
 	/**
@@ -480,11 +480,11 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest resourcelist(Long domainID, Long resourceID) throws ApiException {
+	public static LinodeApiRequest resourcelist(Long domainID, Long resourceID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, true);
-		return(new LinodeRequest("domain.resource.list", parameters));
+		return(new LinodeApiRequest("domain.resource.list", parameters));
 	}
 
 	/**
@@ -515,10 +515,10 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest resourceupdate(Long resourceID) throws ApiException {
+	public static LinodeApiRequest resourceupdate(Long resourceID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, false);
-		return(new LinodeRequest("domain.resource.update", parameters));
+		return(new LinodeApiRequest("domain.resource.update", parameters));
 	}
 
 	/**
@@ -555,7 +555,7 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest resourceupdate(Long domainID, Long resourceID, String name, String target, Long priority, Long weight, Long port, String protocol, Long TTL_sec) throws ApiException {
+	public static LinodeApiRequest resourceupdate(Long domainID, Long resourceID, String name, String target, Long priority, Long weight, Long port, String protocol, Long TTL_sec) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, false);
@@ -566,7 +566,7 @@ public class Domain extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_PORT, port, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_PROTOCOL, protocol, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_TTL_SEC, TTL_sec, true);
-		return(new LinodeRequest("domain.resource.update", parameters));
+		return(new LinodeApiRequest("domain.resource.update", parameters));
 	}
 
 	/**
@@ -597,10 +597,10 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public static LinodeRequest update(Long domainID) throws ApiException {
+	public static LinodeApiRequest update(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
-		return(new LinodeRequest("domain.update", parameters));
+		return(new LinodeApiRequest("domain.update", parameters));
 	}
 
 	/**
@@ -641,7 +641,7 @@ public class Domain extends ApiBase {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeRequest update(Long domainID, String domain, String description, String type, String SOA_Email, Long Refresh_sec, Long Retry_sec, Long Expire_sec, Long TTL_sec, String lpm_displayGroup, Long status, String master_ips, String axfr_ips) throws ApiException {
+	public static LinodeApiRequest update(Long domainID, String domain, String description, String type, String SOA_Email, Long Refresh_sec, Long Retry_sec, Long Expire_sec, Long TTL_sec, String lpm_displayGroup, Long status, String master_ips, String axfr_ips) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAIN, domain, true);
@@ -656,7 +656,7 @@ public class Domain extends ApiBase {
 		addParameterSafely(parameters, PARAM_CONSTANT_STATUS, status, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MASTER_IPS, master_ips, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_AXFR_IPS, axfr_ips, true);
-		return(new LinodeRequest("domain.update", parameters));
+		return(new LinodeApiRequest("domain.update", parameters));
 	}
 
 };
