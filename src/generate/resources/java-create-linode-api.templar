@@ -24,6 +24,7 @@ import org.json.JSONObject;{\n}
 
 import synapticloop.linode.exception.ApiException;{\n}
 {\n}
+import synapticloop.linode.api.request.*;{\n}
 import synapticloop.linode.api.response.*;{\n}
 {\n}
 
@@ -216,13 +217,150 @@ public class LinodeApi {{{\n}
 {\t}{\t}{\t}throw new ApiException(stringBuilder.toString());{\n}
 {\t}{\t}}{\n}
 {\t}}{\n}
+{\n}
 {--
 	now for all of the api calls
 }
 {loop apis as api}
 	{loop api.apiMethods as apiMethod}
+		{\t}/**{\n}
+
+		{loop apiMethod.descriptions as description}
+			{\t} * {description}{\n}
+		{endloop}
+
+		{\t} *{\n}
+			{loop apiMethod.apiErrors as apiError}
+				{if apiErrorStatus.first}
+					{\t} * {\n}
+					{\t} * Possible return error codes:{\n}
+					{\t} * {\n}
+					{\t} * <ul>{\n}
+				{endif}
+				{\t} *   <li>{apiError}</li>{\n}
+				{if apiErrorStatus.last}
+					{\t} * </ul>{\n}
+				{endif}
+			{endloop}
+			{--
+			  At this point we are doing a special test for the 'echo' method
+			}
+
+			{if fn:=[apiMethod.name, "echo"]}
+				{\t} * @param parameters the map of parameters (String:String) to echo back{\n}
+			{endif}
+
+			{loop apiMethod.requiredApiMethodParams as apiMethodParam}
+				{\t} * @param {apiMethodParam.parameterName}
+					{if apiMethodParam.required} <strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
+					{if fn:=[fn:length[apiMethodParam.description], "0"]}
+						(<strong>SORRY</strong> - there was no description provided in the documentation)
+					{else}  {apiMethodParam.description}{endif}{\n}
+			{endloop}
+		{\t} *{\n}
+		{\t} * @return the parsed {api.classname}{apiMethod.responseName}Response response object{\n}
+		{\t} *{\n}
+		{\t} * @throws ApiException if a required parameter is null, or there was an error with the call{\n}
+		{\t} */{\n}
+
+		{\t}public {api.classname}{apiMethod.responseName}Response get{api.classname}{apiMethod.upperName}(
+
+				{loop apiMethod.requiredApiMethodParams as apiMethodParam}
+					{apiMethodParam.type} {apiMethodParam.parameterName}{if !apiMethodParamStatus.last}, {endif}
+				{endloop}
+
+				{if fn:=[apiMethod.name, "echo"]}Map<String, String> parameters{endif}
+
+					) throws ApiException {{{\n}
+
+		{\t}{\t}return(new {api.classname}{apiMethod.responseName}Response(execute({api.classname}Request.{apiMethod.name}(
+				{if fn:=[apiMethod.name, "echo"]}
+					parameters
+				{else}
+					{loop apiMethod.requiredApiMethodParams as apiMethodParam}
+						{apiMethodParam.parameterName}
+						{if !apiMethodParamStatus.last}, {endif}
+					{endloop}
+				{endif}
+
+		)).getJSON()));{\n}
+		{\t}}{\n}
 		{\n}
-		{\t}public {api.classname}{apiMethod.responseName}Response get{api.classname}{apiMethod.upperName}() {{ return(null); };{\n}
+
+		{if !fn:=[fn:length[apiMethod.requiredApiMethodParams], fn:length[apiMethod.apiMethodParams]]}
+
+			{\t}/**{\n}
+
+			{loop apiMethod.descriptions as description}
+				{\t} * {description}{\n}
+			{endloop}
+
+
+			{loop apiMethod.apiErrors as apiError}
+				{if apiErrorStatus.first}
+					{\t} * {\n}
+					{\t} * Possible return error codes:{\n}
+					{\t} * {\n}
+					{\t} * <ul>{\n}
+				{endif}
+				{\t} *   <li>{apiError}</li>{\n}
+				{if apiErrorStatus.last}
+					{\t} * </ul>{\n}
+				{endif}
+			{endloop}
+
+			{\t} *{\n}
+			{--
+			  At this point we are doind a special test for the 'echo' method
+			}
+
+			{if fn:=[apiMethod.name, "echo"]}
+				{\t} * @param parameters the map of parameters (String:String) to echo back{\n}
+			{endif}
+
+				{loop apiMethod.apiMethodParams as apiMethodParam}
+					{\t} * @param {apiMethodParam.parameterName} 
+						{if apiMethodParam.required}<strong>(REQUIRED)</strong> {else} <em>(OPTIONAL)</em> {endif}
+						{if fn:=[fn:length[apiMethodParam.description], "0"]}
+							(<strong>SORRY</strong> - there was no description provided in the documentation)
+						{else}
+							{apiMethodParam.description}
+						{endif}{\n}
+				{endloop}
+			{\t} *{\n}
+			{\t} * @return the parsed {api.classname}{apiMethod.responseName}Response response object{\n}
+			{\t} *{\n}
+			{\t} * @throws ApiException if a required parameter is null, or there is an error with the call{\n}
+			{\t} */{\n}
+
+			{\t}public {api.classname}{apiMethod.responseName}Response get{api.classname}{apiMethod.upperName}(
+				{loop apiMethod.apiMethodParams as apiMethodParam}
+					{apiMethodParam.type} {apiMethodParam.parameterName}{if !apiMethodParamStatus.last}, {endif}
+				{endloop}
+
+				{if fn:=[apiMethod.name, "echo"]}Map<String, String> parameters{endif}
+
+					) throws ApiException {{{\n}
+
+		{\t}{\t}return(new {api.classname}{apiMethod.responseName}Response(execute({api.classname}Request.{apiMethod.name}(
+				{if fn:=[apiMethod.name, "echo"]}
+					parameters
+				{else}
+					{loop apiMethod.apiMethodParams as apiMethodParam}
+						{apiMethodParam.parameterName}
+						{if !apiMethodParamStatus.last}, {endif}
+					{endloop}
+				{endif}
+
+				)).getJSON()));{\n}
+
+		{\t}}{\n}
+
+{\n}
+
+		{endif}
 	{endloop}
+
+
 {endloop}
 }{\n}

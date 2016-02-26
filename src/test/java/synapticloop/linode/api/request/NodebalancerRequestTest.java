@@ -19,6 +19,7 @@ public class NodebalancerRequestTest {
 	@Test
 	public void testList() throws ApiException {
 		LinodeApiResponse linodeResponse = linodeApi.execute(NodebalancerRequest.list());
+		System.out.println(linodeResponse.getJSON().toString(2));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
 		linodeResponse = linodeApi.execute(NodebalancerRequest.list(-1l));

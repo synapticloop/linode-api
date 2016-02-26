@@ -81,6 +81,16 @@ public class ApiMethod {
 		responseNameLookup.put("create", "");
 		responseNameLookup.put("list", "List");
 		responseNameLookup.put("update", "");
+		responseNameLookup.put("resourcecreate", "Resource");
+		responseNameLookup.put("resourcedelete", "Resource");
+		responseNameLookup.put("resourceupdate", "Resource");
+		responseNameLookup.put("boot", "Job");
+		responseNameLookup.put("reboot", "Job");
+		responseNameLookup.put("shutdown", "Job");
+		responseNameLookup.put("clone", "");
+		responseNameLookup.put("configcreate", "Config");
+		responseNameLookup.put("configdelete", "Config");
+		responseNameLookup.put("configupdate", "Config");
 	}
 
 	/**

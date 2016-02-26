@@ -9,13 +9,13 @@ import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
 public class AccountRequestTest {
-private LinodeApi linodeApi;
-	
+	private LinodeApi linodeApi;
+
 	@Before
 	public void setup() {
 		linodeApi = new LinodeApi(System.getenv("LINODE_API_KEY"));
 	}
-	
+
 	@Test
 	public void testInvalidEstimateInvoice() throws ApiException {
 		LinodeApiRequest linodeRequest = AccountRequest.estimateinvoice("linode_new");
