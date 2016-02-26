@@ -8,7 +8,7 @@ import synapticloop.linode.LinodeApi;
 import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
-public class LinodeTest {
+public class NodebalancerRequestTest {
 	private LinodeApi linodeApi = null;
 
 	@Before
@@ -18,13 +18,13 @@ public class LinodeTest {
 
 	@Test
 	public void testList() throws ApiException {
-		LinodeApiResponse linodeResponse = linodeApi.execute(Linode.iplist());
+		LinodeApiResponse linodeResponse = linodeApi.execute(NodebalancerRequest.list());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
-		linodeResponse = linodeApi.execute(Linode.list(-1l));
+		linodeResponse = linodeApi.execute(NodebalancerRequest.list(-1l));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 
-		linodeResponse = linodeApi.execute(Linode.list());
+		linodeResponse = linodeApi.execute(NodebalancerRequest.list(-1l));
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 }

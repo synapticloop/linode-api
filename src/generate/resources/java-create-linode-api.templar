@@ -24,11 +24,7 @@ import org.json.JSONObject;{\n}
 
 import synapticloop.linode.exception.ApiException;{\n}
 {\n}
-{loop apis as api}
-	{loop api.apiMethods as apiMethod}
-import synapticloop.linode.api.response.{api.classname}{apiMethod.upperName}Response;{\n}
-	{endloop}
-{endloop}
+import synapticloop.linode.api.response.*;{\n}
 {\n}
 
 /**{\n}
@@ -226,7 +222,7 @@ public class LinodeApi {{{\n}
 {loop apis as api}
 	{loop api.apiMethods as apiMethod}
 		{\n}
-		{\t}public {api.classname}{apiMethod.upperName}Response get{api.classname}{apiMethod.upperName}() {{ return(null); };{\n}
+		{\t}public {api.classname}{apiMethod.responseName}Response get{api.classname}{apiMethod.upperName}() {{ return(null); };{\n}
 	{endloop}
 {endloop}
 }{\n}

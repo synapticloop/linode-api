@@ -74,6 +74,14 @@ public class ApiMethod {
 		methodNameLookup.put("estimateinvoice", "EstimateInvoice");
 		methodNameLookup.put("info", "Info");
 	}
+
+	private static Map<String, String> responseNameLookup = new HashMap<String, String>();
+	static {
+		responseNameLookup.put("delete", "");
+		responseNameLookup.put("list", "List");
+		responseNameLookup.put("update", "");
+	}
+
 	/**
 	 * This maps to one method call for an api
 	 * 
@@ -155,7 +163,11 @@ public class ApiMethod {
 	public static Map<String, String> getConstantCache() { return CONSTANT_CACHE; }
 	public String getName() { return this.name; }
 	public String getResponseName() {
-		return this.name.substring(0,1).toUpperCase() + this.name.substring(1) + "Response"; 
+		if(responseNameLookup.containsKey(name)) {
+			return(responseNameLookup.get(name));
+		} else {
+			return(getUpperName());
+		}
 	}
 	public String getDescription() { return this.description; }
 	public List<ApiMethodParam> getApiMethodParams() { return this.apiMethodParams; }

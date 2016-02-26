@@ -1,62 +1,21 @@
 package synapticloop.linode.api.response;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import synapticloop.linode.api.response.bean.Image;
 
 public class ImageListResponse extends BaseResponse {
-	private Image image = null;
+	private List<Image> images = new ArrayList<Image>();
 
 	public ImageListResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		
-		this.image = new Image(jsonObject.getJSONObject("DATA"));
+		JSONArray jsonArray = jsonObject.getJSONArray("DATA");
+		for (Object object : jsonArray) {
+			images.add(new Image((JSONObject)object));
+		}
 	}
-
-	public Date getCreateDate() {
-		return this.image.getCreateDate();
-	}
-
-	public String getCreator() {
-		return this.image.getCreator();
-	}
-
-	public String getDescription() {
-		return this.image.getDescription();
-	}
-
-	public String getFileSystemType() {
-		return this.image.getFileSystemType();
-	}
-
-	public Long getImageId() {
-		return this.image.getImageId();
-	}
-
-	public boolean getIsPublic() {
-		return this.image.getIsPublic();
-	}
-
-	public String getLabel() {
-		return this.image.getLabel();
-	}
-
-	public Date getLastUsedDate() {
-		return this.image.getLastUsedDate();
-	}
-
-	public Long getMinSize() {
-		return this.image.getMinSize();
-	}
-
-	public String getStatus() {
-		return this.image.getStatus();
-	}
-
-	public String getType() {
-		return this.image.getType();
-	}
-
 }

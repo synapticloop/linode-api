@@ -8,7 +8,7 @@ import synapticloop.linode.LinodeApiRequest;
 import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
-public class AccountTest {
+public class AccountRequestTest {
 private LinodeApi linodeApi;
 	
 	@Before
@@ -18,14 +18,14 @@ private LinodeApi linodeApi;
 	
 	@Test
 	public void testInvalidEstimateInvoice() throws ApiException {
-		LinodeApiRequest linodeRequest = Account.estimateinvoice("linode_new");
+		LinodeApiRequest linodeRequest = AccountRequest.estimateinvoice("linode_new");
 		LinodeApiResponse linodeResponse = linodeApi.execute(linodeRequest);
 		Assert.assertEquals(1, linodeResponse.getErrorArray().length());
 	}
 
 	@Test
 	public void testInfo() throws ApiException {
-		LinodeApiRequest linodeRequest = Account.info();
+		LinodeApiRequest linodeRequest = AccountRequest.info();
 		LinodeApiResponse linodeResponse = linodeApi.execute(linodeRequest);
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}

@@ -6,12 +6,12 @@ import org.json.JSONObject;
 
 import synapticloop.linode.api.response.bean.Image;
 
-public class ImageDeleteResponse extends BaseResponse {
+public class ImageResponse extends BaseResponse {
 	private Image image = null;
 
-	public ImageDeleteResponse(JSONObject jsonObject) {
+	public ImageResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		this.image = new Image(jsonObject.getJSONObject("DATA"));
+		this.image = new Image(jsonObject.getJSONArray("DATA").getJSONObject(0));
 	}
 
 	public Date getCreateDate() {

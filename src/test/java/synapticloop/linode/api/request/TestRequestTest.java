@@ -12,7 +12,7 @@ import synapticloop.linode.LinodeApi;
 import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
-public class TestTest {
+public class TestRequestTest {
 	private LinodeApi linodeApi = null;
 
 
@@ -26,7 +26,7 @@ public class TestTest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put("foo", "bar");
 		parameters.put("one", "two");
-		LinodeApiResponse linodeResponse = linodeApi.execute(synapticloop.linode.api.request.Test.echo(parameters));
+		LinodeApiResponse linodeResponse = linodeApi.execute(TestRequest.echo(parameters));
 
 		Assert.assertTrue(linodeResponse.getIsDataJSONObject());
 		Assert.assertFalse(linodeResponse.getIsDataJSONArray());

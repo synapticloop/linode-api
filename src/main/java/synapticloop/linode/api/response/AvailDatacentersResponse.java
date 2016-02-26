@@ -77,7 +77,7 @@ public class AvailDatacentersResponse extends BaseResponse {
 		for (Object datacentreObject : dataArray) {
 			Datacenter datacenter = new Datacenter((JSONObject)datacentreObject);
 			datacenters.add(datacenter);
-			datacenterIdLookup.put(datacenter.getId(), datacenter);
+			datacenterIdLookup.put(datacenter.getDatacenterId(), datacenter);
 			datacenterAbbreviationLookup.put(datacenter.getAbbreviation(), datacenter);
 		}
 	}

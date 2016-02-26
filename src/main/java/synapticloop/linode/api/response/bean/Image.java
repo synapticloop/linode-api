@@ -25,7 +25,7 @@ public class Image {
 		this.description = jsonObject.getString("DESCRIPTION");
 		this.fileSystemType = jsonObject.getString("FS_TYPE");
 		this.imageId = jsonObject.getLong("IMAGEID");
-		this.isPublic = "1".equals(jsonObject.getString("ISPUBLIC"));
+		this.isPublic = (1 == jsonObject.getInt("ISPUBLIC"));
 		this.label = jsonObject.getString("LABEL");
 		this.lastUsedDate = BaseResponse.convertDate(jsonObject.getString("LAST_USED_DT"));
 		this.minSize = jsonObject.getLong("MINSIZE");

@@ -1,5 +1,6 @@
 package synapticloop.linode.api.request;
 
+import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import synapticloop.linode.LinodeApi;
 import synapticloop.linode.LinodeApiResponse;
 import synapticloop.linode.exception.ApiException;
 
-public class DomainTest {
+public class ApiRequestTest {
 	private LinodeApi linodeApi = null;
 
 
@@ -18,8 +19,9 @@ public class DomainTest {
 	}
 
 	@Test
-	public void testDomainList() throws Exception, ApiException {
-		LinodeApiResponse linodeResponse = linodeApi.execute(Domain.list());
+	public void testMethodName() throws ApiException, JSONException {
+		LinodeApiResponse linodeResponse = linodeApi.execute(ApiRequest.spec());
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
+
 }

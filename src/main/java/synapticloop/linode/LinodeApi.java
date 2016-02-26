@@ -23,73 +23,7 @@ import org.json.JSONObject;
 
 import synapticloop.linode.exception.ApiException;
 
-import synapticloop.linode.api.response.ImageDeleteResponse;
-import synapticloop.linode.api.response.ImageListResponse;
-import synapticloop.linode.api.response.ImageUpdateResponse;
-import synapticloop.linode.api.response.AvailDatacentersResponse;
-import synapticloop.linode.api.response.AvailDistributionsResponse;
-import synapticloop.linode.api.response.AvailKernelsResponse;
-import synapticloop.linode.api.response.AvailLinodePlansResponse;
-import synapticloop.linode.api.response.AvailNodeBalancersResponse;
-import synapticloop.linode.api.response.AvailStackscriptsResponse;
-import synapticloop.linode.api.response.TestEchoResponse;
-import synapticloop.linode.api.response.StackscriptCreateResponse;
-import synapticloop.linode.api.response.StackscriptDeleteResponse;
-import synapticloop.linode.api.response.StackscriptListResponse;
-import synapticloop.linode.api.response.StackscriptUpdateResponse;
-import synapticloop.linode.api.response.DomainCreateResponse;
-import synapticloop.linode.api.response.DomainDeleteResponse;
-import synapticloop.linode.api.response.DomainListResponse;
-import synapticloop.linode.api.response.DomainResourceCreateResponse;
-import synapticloop.linode.api.response.DomainResourceDeleteResponse;
-import synapticloop.linode.api.response.DomainResourceListResponse;
-import synapticloop.linode.api.response.DomainResourceUpdateResponse;
-import synapticloop.linode.api.response.DomainUpdateResponse;
-import synapticloop.linode.api.response.LinodeBootResponse;
-import synapticloop.linode.api.response.LinodeCloneResponse;
-import synapticloop.linode.api.response.LinodeConfigCreateResponse;
-import synapticloop.linode.api.response.LinodeConfigDeleteResponse;
-import synapticloop.linode.api.response.LinodeConfigListResponse;
-import synapticloop.linode.api.response.LinodeConfigUpdateResponse;
-import synapticloop.linode.api.response.LinodeCreateResponse;
-import synapticloop.linode.api.response.LinodeDeleteResponse;
-import synapticloop.linode.api.response.LinodeDiskCreateResponse;
-import synapticloop.linode.api.response.LinodeDiskCreateFromDistributionResponse;
-import synapticloop.linode.api.response.LinodeDiskCreateFromImageResponse;
-import synapticloop.linode.api.response.LinodeDiskCreateFromStackscriptResponse;
-import synapticloop.linode.api.response.LinodeDiskDeleteResponse;
-import synapticloop.linode.api.response.LinodeDiskDuplicateResponse;
-import synapticloop.linode.api.response.LinodeDiskImagizeResponse;
-import synapticloop.linode.api.response.LinodeDiskListResponse;
-import synapticloop.linode.api.response.LinodeDiskResizeResponse;
-import synapticloop.linode.api.response.LinodeDiskUpdateResponse;
-import synapticloop.linode.api.response.LinodeIpAddressPrivateResponse;
-import synapticloop.linode.api.response.LinodeIpAddressPublicResponse;
-import synapticloop.linode.api.response.LinodeIpListResponse;
-import synapticloop.linode.api.response.LinodeIpSetRdnsResponse;
-import synapticloop.linode.api.response.LinodeIpSwapResponse;
-import synapticloop.linode.api.response.LinodeJobListResponse;
-import synapticloop.linode.api.response.LinodeListResponse;
-import synapticloop.linode.api.response.LinodeRebootResponse;
-import synapticloop.linode.api.response.LinodeResizeResponse;
-import synapticloop.linode.api.response.LinodeShutdownResponse;
-import synapticloop.linode.api.response.LinodeUpdateResponse;
-import synapticloop.linode.api.response.NodebalancerConfigCreateResponse;
-import synapticloop.linode.api.response.NodebalancerConfigDeleteResponse;
-import synapticloop.linode.api.response.NodebalancerConfigListResponse;
-import synapticloop.linode.api.response.NodebalancerConfigUpdateResponse;
-import synapticloop.linode.api.response.NodebalancerCreateResponse;
-import synapticloop.linode.api.response.NodebalancerDeleteResponse;
-import synapticloop.linode.api.response.NodebalancerListResponse;
-import synapticloop.linode.api.response.NodebalancerNodeCreateResponse;
-import synapticloop.linode.api.response.NodebalancerNodeDeleteResponse;
-import synapticloop.linode.api.response.NodebalancerNodeListResponse;
-import synapticloop.linode.api.response.NodebalancerNodeUpdateResponse;
-import synapticloop.linode.api.response.NodebalancerUpdateResponse;
-import synapticloop.linode.api.response.ApiSpecResponse;
-import synapticloop.linode.api.response.UserGetApiKeyResponse;
-import synapticloop.linode.api.response.AccountEstimateInvoiceResponse;
-import synapticloop.linode.api.response.AccountInfoResponse;
+import synapticloop.linode.api.response.*;
 
 /**
  * The main class for interacting with the Linode api.
@@ -281,11 +215,11 @@ public class LinodeApi {
 		}
 	}
 
-	public ImageDeleteResponse getImageDelete() { return(null); };
+	public ImageResponse getImageDelete() { return(null); };
 
 	public ImageListResponse getImageList() { return(null); };
 
-	public ImageUpdateResponse getImageUpdate() { return(null); };
+	public ImageResponse getImageUpdate() { return(null); };
 
 	public AvailDatacentersResponse getAvailDatacenters() { return(null); };
 
@@ -303,15 +237,15 @@ public class LinodeApi {
 
 	public StackscriptCreateResponse getStackscriptCreate() { return(null); };
 
-	public StackscriptDeleteResponse getStackscriptDelete() { return(null); };
+	public StackscriptResponse getStackscriptDelete() { return(null); };
 
 	public StackscriptListResponse getStackscriptList() { return(null); };
 
-	public StackscriptUpdateResponse getStackscriptUpdate() { return(null); };
+	public StackscriptResponse getStackscriptUpdate() { return(null); };
 
 	public DomainCreateResponse getDomainCreate() { return(null); };
 
-	public DomainDeleteResponse getDomainDelete() { return(null); };
+	public DomainResponse getDomainDelete() { return(null); };
 
 	public DomainListResponse getDomainList() { return(null); };
 
@@ -323,7 +257,7 @@ public class LinodeApi {
 
 	public DomainResourceUpdateResponse getDomainResourceUpdate() { return(null); };
 
-	public DomainUpdateResponse getDomainUpdate() { return(null); };
+	public DomainResponse getDomainUpdate() { return(null); };
 
 	public LinodeBootResponse getLinodeBoot() { return(null); };
 
@@ -339,7 +273,7 @@ public class LinodeApi {
 
 	public LinodeCreateResponse getLinodeCreate() { return(null); };
 
-	public LinodeDeleteResponse getLinodeDelete() { return(null); };
+	public LinodeResponse getLinodeDelete() { return(null); };
 
 	public LinodeDiskCreateResponse getLinodeDiskCreate() { return(null); };
 
@@ -381,7 +315,7 @@ public class LinodeApi {
 
 	public LinodeShutdownResponse getLinodeShutdown() { return(null); };
 
-	public LinodeUpdateResponse getLinodeUpdate() { return(null); };
+	public LinodeResponse getLinodeUpdate() { return(null); };
 
 	public NodebalancerConfigCreateResponse getNodebalancerConfigCreate() { return(null); };
 
@@ -393,7 +327,7 @@ public class LinodeApi {
 
 	public NodebalancerCreateResponse getNodebalancerCreate() { return(null); };
 
-	public NodebalancerDeleteResponse getNodebalancerDelete() { return(null); };
+	public NodebalancerResponse getNodebalancerDelete() { return(null); };
 
 	public NodebalancerListResponse getNodebalancerList() { return(null); };
 
@@ -405,7 +339,7 @@ public class LinodeApi {
 
 	public NodebalancerNodeUpdateResponse getNodebalancerNodeUpdate() { return(null); };
 
-	public NodebalancerUpdateResponse getNodebalancerUpdate() { return(null); };
+	public NodebalancerResponse getNodebalancerUpdate() { return(null); };
 
 	public ApiSpecResponse getApiSpec() { return(null); };
 
