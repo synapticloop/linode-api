@@ -101,11 +101,14 @@ public class ApiMethod {
 		responseNameLookup.put("diskcreatefromstackscript", "Disk");
 		responseNameLookup.put("diskduplicate", "Disk");
 		responseNameLookup.put("diskresize", "Disk");
-		responseNameLookup.put("diskimagize", "Image");
-		
-		
 		responseNameLookup.put("diskdelete", "Disk");
 		responseNameLookup.put("diskupdate", "Disk");
+
+		responseNameLookup.put("diskimagize", "Image");
+
+		responseNameLookup.put("ipaddprivate", "Ip");
+		responseNameLookup.put("ipaddpublic", "Ip");
+		
 
 	}
 

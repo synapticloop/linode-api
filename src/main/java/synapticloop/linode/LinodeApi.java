@@ -1600,12 +1600,12 @@ public class LinodeApi {
 	 * </ul>
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 *
-	 * @return the parsed LinodeIpAddressPrivateResponse response object
+	 * @return the parsed LinodeIpResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeIpAddressPrivateResponse getLinodeIpAddressPrivate(Long linodeID) throws ApiException {
-		return(new LinodeIpAddressPrivateResponse(execute(LinodeRequest.ipaddprivate(linodeID)).getJSON()));
+	public LinodeIpResponse getLinodeIpAddressPrivate(Long linodeID) throws ApiException {
+		return(new LinodeIpResponse(execute(LinodeRequest.ipaddprivate(linodeID)).getJSON()));
 	}
 
 	/**
@@ -1620,12 +1620,12 @@ public class LinodeApi {
 	 * </ul>
 	 * @param linodeID <strong>(REQUIRED)</strong>   The LinodeID of the Linode that will be assigned an additional public IP address
 	 *
-	 * @return the parsed LinodeIpAddressPublicResponse response object
+	 * @return the parsed LinodeIpResponse response object
 	 *
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
-	public LinodeIpAddressPublicResponse getLinodeIpAddressPublic(Long linodeID) throws ApiException {
-		return(new LinodeIpAddressPublicResponse(execute(LinodeRequest.ipaddpublic(linodeID)).getJSON()));
+	public LinodeIpResponse getLinodeIpAddressPublic(Long linodeID) throws ApiException {
+		return(new LinodeIpResponse(execute(LinodeRequest.ipaddpublic(linodeID)).getJSON()));
 	}
 
 	/**
