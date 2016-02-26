@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.json.JSONObject;
 
-import synapticloop.linode.api.response.BaseResponse;
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Image {
 	private Date createDate = null;
@@ -20,14 +20,14 @@ public class Image {
 	private String type = null;
 
 	public Image(JSONObject jsonObject) {
-		this.createDate = BaseResponse.convertDate(jsonObject.getString("CREATE_DT"));
+		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
 		this.creator = jsonObject.getString("CREATOR");
 		this.description = jsonObject.getString("DESCRIPTION");
 		this.fileSystemType = jsonObject.getString("FS_TYPE");
 		this.imageId = jsonObject.getLong("IMAGEID");
 		this.isPublic = (1 == jsonObject.getInt("ISPUBLIC"));
 		this.label = jsonObject.getString("LABEL");
-		this.lastUsedDate = BaseResponse.convertDate(jsonObject.getString("LAST_USED_DT"));
+		this.lastUsedDate = ResponseHelper.convertDate(jsonObject.getString("LAST_USED_DT"));
 		this.minSize = jsonObject.getLong("MINSIZE");
 		this.status = jsonObject.getString("STATUS");
 		this.type = jsonObject.getString("TYPE");

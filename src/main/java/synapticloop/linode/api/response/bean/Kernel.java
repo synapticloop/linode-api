@@ -1,8 +1,14 @@
 package synapticloop.linode.api.response.bean;
 
+import java.util.logging.Logger;
+
 import org.json.JSONObject;
 
+import synapticloop.linode.api.helper.ResponseHelper;
+
 public class Kernel {
+	private static final Logger LOGGER = Logger.getLogger(Kernel.class.getName());
+
 	private String label = null;
 	private boolean isXen = false;
 	private boolean isKvm = false;
@@ -22,10 +28,21 @@ public class Kernel {
 
 	public Kernel(JSONObject jsonObject) {
 		this.label = jsonObject.getString("LABEL");
+		jsonObject.remove("LABEL");
+
 		this.isXen = (1 == jsonObject.getInt("ISXEN"));
+		jsonObject.remove("ISXEN");
+
 		this.isKvm = (1 == jsonObject.getInt("ISKVM"));
+		jsonObject.remove("ISKVM");
+
 		this.isPVOps = (1 == jsonObject.getInt("ISPVOPS"));
+		jsonObject.remove("ISPVOPS");
+
 		this.kernelId = jsonObject.getLong("KERNELID");
+		jsonObject.remove("KERNELID");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public String getLabel() {

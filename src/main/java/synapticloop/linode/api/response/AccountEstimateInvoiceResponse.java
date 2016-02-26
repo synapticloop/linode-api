@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
+import synapticloop.linode.api.helper.ResponseHelper;
+
 public class AccountEstimateInvoiceResponse extends BaseResponse {
 	private static final Logger LOGGER = Logger.getLogger(AccountEstimateInvoiceResponse.class.getName());
 
@@ -16,18 +18,18 @@ public class AccountEstimateInvoiceResponse extends BaseResponse {
 
 		if(!hasErrors()) {
 			JSONObject dataObject = jsonObject.getJSONObject("DATA");
-			this.invoiceTo = BaseResponse.convertDate(dataObject.getString("INVOICE_TO"));
+			this.invoiceTo = ResponseHelper.convertDate(dataObject.getString("INVOICE_TO"));
 			dataObject.remove("INVOICE_TO");
 
 			this.amount = dataObject.getDouble("AMOUNT");
 			dataObject.remove("AMOUNT");
 
-			warnOnMissedKeys(LOGGER, dataObject);
+			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
 		jsonObject.remove("DATA");
 
-		warnOnMissedKeys(LOGGER, jsonObject);
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Date getInvoiceTo() {

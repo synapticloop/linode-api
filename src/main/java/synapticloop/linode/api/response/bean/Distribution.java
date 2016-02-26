@@ -1,12 +1,15 @@
 package synapticloop.linode.api.response.bean;
 
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
-import synapticloop.linode.api.response.BaseResponse;
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Distribution {
+	private static final Logger LOGGER = Logger.getLogger(Distribution.class.getName());
+
 	private boolean is64Bit = false;
 	private String label = null;
 	private Long minimumImageSize = null;
@@ -28,10 +31,24 @@ public class Distribution {
 	 */
 	public Distribution(JSONObject jsonObject) {
 		this.is64Bit = (1 == jsonObject.getInt("IS64BIT"));
+		jsonObject.remove("IS64BIT");
+
 		this.label = jsonObject.getString("LABEL");
+		jsonObject.remove("LABEL");
+
 		this.distributionId = jsonObject.getLong("DISTRIBUTIONID");
-		this.createDate = BaseResponse.convertDate(jsonObject.getString("CREATE_DT"));
+		jsonObject.remove("DISTRIBUTIONID");
+
+		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
+		jsonObject.remove("CREATE_DT");
+
 		this.requiresVOpsKernel = (1 == jsonObject.getInt("REQUIRESPVOPSKERNEL"));
+		jsonObject.remove("REQUIRESPVOPSKERNEL");
+
+		this.minimumImageSize = jsonObject.getLong("MINIMAGESIZE");
+		jsonObject.remove("MINIMAGESIZE");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public boolean getIs64Bit() {

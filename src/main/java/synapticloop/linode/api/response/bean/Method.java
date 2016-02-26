@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
-import synapticloop.linode.api.response.BaseResponse;
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Method {
 	private static final Logger LOGGER = Logger.getLogger(Method.class.getName());
@@ -45,7 +45,7 @@ public class Method {
 		}
 		jsonObject.remove("PARAMETERS");
 
-		BaseResponse.warnOnMissedKeys(LOGGER, jsonObject);
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public String getName() {

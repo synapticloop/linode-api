@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Kernel;
 
 public class AvailKernelsResponse extends BaseResponse {
+	private static final Logger LOGGER = Logger.getLogger(AvailKernelsResponse.class.getName());
+
 	private List<Kernel> kernels = new ArrayList<Kernel>();
 	private Map<Long, Kernel> kernelIdLookup = new HashMap<Long, Kernel>();
 
@@ -38,13 +42,18 @@ public class AvailKernelsResponse extends BaseResponse {
 	 */
 	public AvailKernelsResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		JSONArray dataArray = jsonObject.getJSONArray("DATA");
+		if(!hasErrors()) {
+			JSONArray dataArray = jsonObject.getJSONArray("DATA");
 
-		for (Object KernelObject : dataArray) {
-			Kernel kernel = new Kernel((JSONObject)KernelObject);
-			kernels.add(kernel);
-			kernelIdLookup.put(kernel.getKernelId(), kernel);
+			for (Object KernelObject : dataArray) {
+				Kernel kernel = new Kernel((JSONObject)KernelObject);
+				kernels.add(kernel);
+				kernelIdLookup.put(kernel.getKernelId(), kernel);
+			}
 		}
+		jsonObject.remove("DATA");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public List<Kernel> getKernels() {

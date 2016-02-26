@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
+import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Method;
 
 public class ApiSpecResponse extends BaseResponse {
@@ -54,12 +55,12 @@ public class ApiSpecResponse extends BaseResponse {
 
 			dataObject.remove("METHODS");
 
-			warnOnMissedKeys(LOGGER, dataObject);
+			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
 		jsonObject.remove("DATA");
 
-		warnOnMissedKeys(LOGGER, jsonObject);
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 
 	}
 	public List<Method> getMethods() {

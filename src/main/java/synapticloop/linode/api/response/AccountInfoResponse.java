@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 
 import org.json.JSONObject;
 
+import synapticloop.linode.api.helper.ResponseHelper;
+
 public class AccountInfoResponse extends BaseResponse {
 	private static final Logger LOGGER = Logger.getLogger(AccountInfoResponse.class.getName());
 
@@ -33,7 +35,7 @@ public class AccountInfoResponse extends BaseResponse {
 
 		if(!hasErrors()) {
 			JSONObject dataObject = jsonObject.getJSONObject("DATA");
-			this.activeSince = BaseResponse.convertDate(dataObject.getString("ACTIVE_SINCE"));
+			this.activeSince = ResponseHelper.convertDate(dataObject.getString("ACTIVE_SINCE"));
 			dataObject.remove("ACTIVE_SINCE");
 			this.transferPool = dataObject.getLong("TRANSFER_POOL");
 			dataObject.remove("TRANSFER_POOL");
@@ -48,11 +50,11 @@ public class AccountInfoResponse extends BaseResponse {
 			this.balance = dataObject.getLong("BALANCE");
 			dataObject.remove("BALANCE");
 
-			warnOnMissedKeys(LOGGER, dataObject);
+			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
 		jsonObject.remove("DATA");
-		warnOnMissedKeys(LOGGER, jsonObject);
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Date getActiveSince() {

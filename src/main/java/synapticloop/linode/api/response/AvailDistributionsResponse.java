@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Distribution;
 
 public class AvailDistributionsResponse extends BaseResponse {
+	private static final Logger LOGGER = Logger.getLogger(AvailDistributionsResponse.class.getName());
+
 	private List<Distribution> distributions = new ArrayList<Distribution>();
 	private Map<Long, Distribution> distributionIdLookup = new HashMap<Long, Distribution>();
 
@@ -39,13 +43,18 @@ public class AvailDistributionsResponse extends BaseResponse {
 	 */
 	public AvailDistributionsResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		JSONArray dataArray = jsonObject.getJSONArray("DATA");
 
-		for (Object distributionObject : dataArray) {
-			Distribution distribution = new Distribution((JSONObject)distributionObject);
-			distributions.add(distribution);
-			distributionIdLookup.put(distribution.getDistributionId(), distribution);
+		if(!hasErrors()) {
+			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			for (Object distributionObject : dataArray) {
+				Distribution distribution = new Distribution((JSONObject)distributionObject);
+				distributions.add(distribution);
+				distributionIdLookup.put(distribution.getDistributionId(), distribution);
+			}
 		}
+
+		jsonObject.remove("DATA");
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public List<Distribution> getDistributions() {

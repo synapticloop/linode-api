@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Datacenter;
 
 public class AvailDatacentersResponse extends BaseResponse {
+	private static final Logger LOGGER = Logger.getLogger(AvailDatacentersResponse.class.getName());
+
 	private List<Datacenter> datacenters = new ArrayList<Datacenter>();
 	private Map<Long, Datacenter> datacenterIdLookup = new HashMap<Long, Datacenter>();
 	private Map<String, Datacenter> datacenterAbbreviationLookup = new HashMap<String, Datacenter>();
@@ -72,14 +76,20 @@ public class AvailDatacentersResponse extends BaseResponse {
 	 */
 	public AvailDatacentersResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		JSONArray dataArray = jsonObject.getJSONArray("DATA");
-
-		for (Object datacentreObject : dataArray) {
-			Datacenter datacenter = new Datacenter((JSONObject)datacentreObject);
-			datacenters.add(datacenter);
-			datacenterIdLookup.put(datacenter.getDatacenterId(), datacenter);
-			datacenterAbbreviationLookup.put(datacenter.getAbbreviation(), datacenter);
+		
+		if(!hasErrors()) {
+			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+	
+			for (Object datacentreObject : dataArray) {
+				Datacenter datacenter = new Datacenter((JSONObject)datacentreObject);
+				datacenters.add(datacenter);
+				datacenterIdLookup.put(datacenter.getDatacenterId(), datacenter);
+				datacenterAbbreviationLookup.put(datacenter.getAbbreviation(), datacenter);
+			}
 		}
+
+		jsonObject.remove("DATA");
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public List<Datacenter> getDatacenters() {

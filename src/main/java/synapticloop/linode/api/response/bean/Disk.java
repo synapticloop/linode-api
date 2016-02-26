@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.json.JSONObject;
 
-import synapticloop.linode.api.response.BaseResponse;
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Disk {
 	private Date updateDate = null;
@@ -32,14 +32,14 @@ public class Disk {
 	 * @param jsonObject
 	 */
 	public Disk(JSONObject jsonObject) {
-		this.updateDate = BaseResponse.convertDate(jsonObject.getString("UPDATE_DT"));
+		this.updateDate = ResponseHelper.convertDate(jsonObject.getString("UPDATE_DT"));
 		this.diskId = jsonObject.getLong("DISKID");
 		this.label = jsonObject.getString("LABEL");
 		this.type = jsonObject.getString("TYPE");
 		this.linodeId = jsonObject.getLong("LinodeID");
 		this.isReadOnly = (1 == jsonObject.getInt("ISREADONLY"));
 		this.status = jsonObject.getInt("STATUS");
-		this.createDate = BaseResponse.convertDate(jsonObject.getString("CREATE_DT"));
+		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
 		this.size = jsonObject.getLong("SIZE");
 	}
 
