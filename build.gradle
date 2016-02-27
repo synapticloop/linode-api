@@ -63,8 +63,6 @@ task generate(type: JavaExec) {
 	classpath += sourceSets.generate.output
 }
 
-tasks.compileJava.dependsOn("generate")
-
 dependencies {
 	runtime 'org.json:json:20160212'
 	runtime 'org.apache.httpcomponents:httpclient:4.3.4'

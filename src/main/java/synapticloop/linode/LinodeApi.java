@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -20,11 +18,59 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import synapticloop.linode.api.request.AccountRequest;
+import synapticloop.linode.api.request.ApiRequest;
+import synapticloop.linode.api.request.AvailRequest;
+import synapticloop.linode.api.request.DomainRequest;
+import synapticloop.linode.api.request.ImageRequest;
+import synapticloop.linode.api.request.LinodeRequest;
+import synapticloop.linode.api.request.NodebalancerRequest;
+import synapticloop.linode.api.request.StackscriptRequest;
+import synapticloop.linode.api.request.TestRequest;
+import synapticloop.linode.api.request.UserRequest;
+import synapticloop.linode.api.response.AccountEstimateInvoiceResponse;
+import synapticloop.linode.api.response.AccountInfoResponse;
+import synapticloop.linode.api.response.ApiSpecResponse;
+import synapticloop.linode.api.response.AvailDatacentersResponse;
+import synapticloop.linode.api.response.AvailDistributionsResponse;
+import synapticloop.linode.api.response.AvailKernelsResponse;
+import synapticloop.linode.api.response.AvailLinodePlansResponse;
+import synapticloop.linode.api.response.AvailNodeBalancersResponse;
+import synapticloop.linode.api.response.AvailStackscriptsResponse;
+import synapticloop.linode.api.response.DomainListResponse;
+import synapticloop.linode.api.response.DomainResourceListResponse;
+import synapticloop.linode.api.response.DomainResourceResponse;
+import synapticloop.linode.api.response.DomainResponse;
+import synapticloop.linode.api.response.ImageListResponse;
+import synapticloop.linode.api.response.ImageResponse;
+import synapticloop.linode.api.response.LinodeConfigListResponse;
+import synapticloop.linode.api.response.LinodeConfigResponse;
+import synapticloop.linode.api.response.LinodeDiskListResponse;
+import synapticloop.linode.api.response.LinodeDiskResponse;
+import synapticloop.linode.api.response.LinodeImageResponse;
+import synapticloop.linode.api.response.LinodeIpListResponse;
+import synapticloop.linode.api.response.LinodeIpResponse;
+import synapticloop.linode.api.response.LinodeIpSetRdnsResponse;
+import synapticloop.linode.api.response.LinodeIpSwapResponse;
+import synapticloop.linode.api.response.LinodeJobListResponse;
+import synapticloop.linode.api.response.LinodeJobResponse;
+import synapticloop.linode.api.response.LinodeListResponse;
+import synapticloop.linode.api.response.LinodeResizeResponse;
+import synapticloop.linode.api.response.LinodeResponse;
+import synapticloop.linode.api.response.NodebalancerConfigListResponse;
+import synapticloop.linode.api.response.NodebalancerConfigResponse;
+import synapticloop.linode.api.response.NodebalancerListResponse;
+import synapticloop.linode.api.response.NodebalancerNodeListResponse;
+import synapticloop.linode.api.response.NodebalancerNodeResponse;
+import synapticloop.linode.api.response.NodebalancerResponse;
+import synapticloop.linode.api.response.StackscriptListResponse;
+import synapticloop.linode.api.response.StackscriptResponse;
+import synapticloop.linode.api.response.TestEchoResponse;
+import synapticloop.linode.api.response.UserGetApiKeyResponse;
 import synapticloop.linode.exception.ApiException;
-
-import synapticloop.linode.api.request.*;
-import synapticloop.linode.api.response.*;
 
 /**
  * The main class for interacting with the Linode api.
@@ -32,7 +78,7 @@ import synapticloop.linode.api.response.*;
  * @author synapticloop
  */
 public class LinodeApi {
-	private static final Logger LOGGER = Logger.getLogger(LinodeApi.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(LinodeApi.class);
 
 	private static final String API_ENDPOINT = "https://api.linode.com/";
 
@@ -159,8 +205,8 @@ public class LinodeApi {
 	 * @param postParameters the post parameters for the httpPost
 	 * 
 	 * @return The response
-	 * 
-	 * @throws ApiException If there was an error with the call
+		 * 
+		 * @throws ApiException If there was an error with the call
 	 */
 	private String callApi(String action, HttpPost httpPost, ArrayList<NameValuePair> postParameters) throws ApiException {
 		try {
@@ -178,16 +224,8 @@ public class LinodeApi {
 			}
 
 			if (debug) {
-				if(LOGGER.isLoggable(Level.INFO)) {
-					StringBuilder stringBuilder = new StringBuilder();
-					stringBuilder.append("Response for end point: ");
-					stringBuilder.append(API_ENDPOINT);
-					stringBuilder.append(", with action '");
-					stringBuilder.append(action);
-					stringBuilder.append("'");
-					LOGGER.info(stringBuilder.toString());
-					LOGGER.info(response);
-				}
+				if(LOGGER.isDebugEnabled()) {
+					LOGGER.debug("Response for end point '{}', with action '{}': {}", API_ENDPOINT, action, response);				}
 			}
 			return(response);
 

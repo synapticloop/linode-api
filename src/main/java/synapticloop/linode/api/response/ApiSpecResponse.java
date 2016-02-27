@@ -69,7 +69,7 @@ public class ApiSpecResponse extends BaseResponse {
 	}
 
 	public Method getMethodForName(String name) {
-		return(methodLookup.get("name"));
+		return(methodLookup.get(name));
 	}
 
 	public Double getVersion() {

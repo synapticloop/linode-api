@@ -1,13 +1,29 @@
 package synapticloop.linode.api.response;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class LinodeConfigResponse extends BaseResponse {
+	private static final Logger LOGGER = LoggerFactory.getLogger(LinodeConfigResponse.class);
+
 	private Long configId = null;
 
 	public LinodeConfigResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		this.configId = jsonObject.getJSONObject("DATA").getLong("ConfigID");
+		if(!hasErrors()) {
+			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			this.configId = dataObject.getLong("ConfigID");
+			dataObject.remove("ConfigID");
+
+			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
+		}
+
+		jsonObject.remove("DATA");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Long getConfigId() {

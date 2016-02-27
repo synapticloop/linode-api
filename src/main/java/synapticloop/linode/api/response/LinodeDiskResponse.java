@@ -1,22 +1,40 @@
 package synapticloop.linode.api.response;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class LinodeDiskResponse extends BaseResponse {
+	private static final Logger LOGGER = LoggerFactory.getLogger(LinodeDiskResponse.class);
+
 	private Long jobId = null;
-	private Long imageId = null;
+	private Long diskId = null;
 
 	public LinodeDiskResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		this.jobId = jsonObject.getJSONObject("DATA").getLong("JobID");
-		this.imageId = jsonObject.getJSONObject("DATA").getLong("ImageID");
+
+		if(!hasErrors()) {
+			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			this.jobId = dataObject.getLong("JobID");
+			dataObject.remove("JobID");
+			this.diskId = dataObject.getLong("DiskID");
+			dataObject.remove("DiskID");
+			
+			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
+		}
+
+		jsonObject.remove("DATA");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Long getJobId() {
 		return this.jobId;
 	}
 
-	public Long getImageId() {
-		return this.imageId;
+	public Long getDiskId() {
+		return this.diskId;
 	}
 }

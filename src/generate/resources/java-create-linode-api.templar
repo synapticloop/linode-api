@@ -4,8 +4,8 @@ import java.io.IOException;{\n}
 import java.util.ArrayList;{\n}
 import java.util.List;{\n}
 import java.util.Map;{\n}
-import java.util.logging.Level;{\n}
-import java.util.logging.Logger;{\n}
+import org.slf4j.Logger;{\n}
+import org.slf4j.LoggerFactory;{\n}
 {\n}
 import org.apache.http.HttpStatus;{\n}
 import org.apache.http.NameValuePair;{\n}
@@ -34,7 +34,7 @@ import synapticloop.linode.api.response.*;{\n}
  * @author synapticloop{\n}
  */{\n}
 public class LinodeApi {{{\n}
-{\t}private static final Logger LOGGER = Logger.getLogger(LinodeApi.class.getName());{\n}
+{\t}	private static final Logger LOGGER = LoggerFactory.getLogger(LinodeApi.class);{\n}
 {\n}
 {\t}private static final String API_ENDPOINT = "https://api.linode.com/";{\n}
 {\n}
@@ -180,15 +180,8 @@ public class LinodeApi {{{\n}
 {\t}{\t}{\t}}{\n}
 {\n}
 {\t}{\t}{\t}if (debug) {{{\n}
-{\t}{\t}{\t}{\t}if(LOGGER.isLoggable(Level.INFO)) {{{\n}
-{\t}{\t}{\t}{\t}{\t}StringBuilder stringBuilder = new StringBuilder();{\n}
-{\t}{\t}{\t}{\t}{\t}stringBuilder.append("Response for end point: ");{\n}
-{\t}{\t}{\t}{\t}{\t}stringBuilder.append(API_ENDPOINT);{\n}
-{\t}{\t}{\t}{\t}{\t}stringBuilder.append(", with action '");{\n}
-{\t}{\t}{\t}{\t}{\t}stringBuilder.append(action);{\n}
-{\t}{\t}{\t}{\t}{\t}stringBuilder.append("'");{\n}
-{\t}{\t}{\t}{\t}{\t}LOGGER.info(stringBuilder.toString());{\n}
-{\t}{\t}{\t}{\t}{\t}LOGGER.info(response);{\n}
+{\t}{\t}{\t}{\t}if(LOGGER.isDebugEnabled()) {{{\n}
+{\t}{\t}{\t}{\t}{\t}LOGGER.debug("Response for end point '{{}', with action '{{}': {{}", API_ENDPOINT, action, response);
 {\t}{\t}{\t}{\t}}{\n}
 {\t}{\t}{\t}}{\n}
 {\t}{\t}{\t}return(response);{\n}
