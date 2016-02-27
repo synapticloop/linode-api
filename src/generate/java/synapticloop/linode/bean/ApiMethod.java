@@ -108,7 +108,11 @@ public class ApiMethod {
 
 		responseNameLookup.put("ipaddprivate", "Ip");
 		responseNameLookup.put("ipaddpublic", "Ip");
-		
+
+		responseNameLookup.put("nodecreate", "Node");
+		responseNameLookup.put("nodedelete", "Node");
+		responseNameLookup.put("nodeupdate", "Node");
+
 
 	}
 

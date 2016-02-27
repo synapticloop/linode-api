@@ -71,7 +71,6 @@ public class Stackscript {
 		jsonObject.remove("DEPLOYMENTSACTIVE");
 		this.stackscriptId = jsonObject.getLong("STACKSCRIPTID");
 		jsonObject.remove("STACKSCRIPTID");
-		String string = jsonObject.get("REV_NOTE").toString();
 		this.revisionNote = jsonObject.get("REV_NOTE").toString();
 		jsonObject.remove("REV_NOTE");
 		this.revisionDate = ResponseHelper.convertDate(jsonObject.getString("REV_DT"));

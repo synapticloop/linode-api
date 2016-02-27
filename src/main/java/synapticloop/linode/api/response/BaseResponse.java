@@ -16,7 +16,7 @@ public abstract class BaseResponse {
 	protected List<ApiError> errors = new ArrayList<ApiError>();
 	protected String action = null;
 
-	protected BaseResponse(JSONObject jsonObject) {
+	public BaseResponse(JSONObject jsonObject) {
 		JSONArray errorArray = jsonObject.getJSONArray(JSON_KEY_ERRORARRAY);
 
 		for (Object object : errorArray) {

@@ -20,15 +20,15 @@ public class ResponseHelper {
 	/**
 	 * Warn if there are still remaining keys on a JSONObject
 	 * 
-	 * @param logger The Logger to be used
+	 * @param LOGGER The Logger to be used
 	 * @param jsonObject the jsonObject to parse
 	 */
-	public static void warnOnMissedKeys(Logger logger, JSONObject jsonObject) {
-		if(logger.isWarnEnabled()) {
+	public static void warnOnMissedKeys(Logger LOGGER, JSONObject jsonObject) {
+		if(LOGGER.isWarnEnabled()) {
 			Iterator<String> keys = jsonObject.keys();
 			while (keys.hasNext()) {
 				String key = (String) keys.next();
-				logger.warn("Found an unexpected json key of '{}', this is not mapped to a field...", key);
+				LOGGER.warn("Found an unexpected json key of '{}', this is not mapped to a field...", key);
 			}
 		}
 	}
