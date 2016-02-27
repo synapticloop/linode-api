@@ -24,7 +24,7 @@ Major differences:
 
 ### High Level Interface
 
-If this doesn't provide enough options, the low level interface is more verbose, howvere it provides greater control
+If this doesn't provide enough options, the low level interface is more verbose, however it provides greater control, but sometimes you just want the simple things done.
 
 ### Low Level Interface
 

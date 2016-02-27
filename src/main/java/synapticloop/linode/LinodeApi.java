@@ -138,11 +138,16 @@ public class LinodeApi {
 			for (String parameterKey : parameters.keySet()) {
 				postParameters.add(new BasicNameValuePair(parameterKey, parameters.get(parameterKey)));
 			}
-			
 
 			String response = callApi(linodeApiRequest.getAction(), httpPost, postParameters);
 
-			return(new LinodeApiResponse(new JSONObject(response)));
+			JSONObject jsonResponseObject = new JSONObject(response);
+			JSONArray errorArray = jsonResponseObject.getJSONArray("ERRORARRAY");
+			if(errorArray.length() > 0) {
+				throw new ApiException("Errors occurred in the call, message was: " + errorArray.toString());
+			}
+
+			return(new LinodeApiResponse(jsonResponseObject));
 		} catch (JSONException ex) {
 			throw new ApiException(ex);
 		}
@@ -205,8 +210,8 @@ public class LinodeApi {
 	 * @param postParameters the post parameters for the httpPost
 	 * 
 	 * @return The response
-		 * 
-		 * @throws ApiException If there was an error with the call
+	 * 
+	 * @throws ApiException If there was an error with the call
 	 */
 	private String callApi(String action, HttpPost httpPost, ArrayList<NameValuePair> postParameters) throws ApiException {
 		try {
@@ -225,7 +230,8 @@ public class LinodeApi {
 
 			if (debug) {
 				if(LOGGER.isDebugEnabled()) {
-					LOGGER.debug("Response for end point '{}', with action '{}': {}", API_ENDPOINT, action, response);				}
+					LOGGER.debug("Response for end point '{}', with action '{}': {}", API_ENDPOINT, action, response);
+				}
 			}
 			return(response);
 
@@ -245,7 +251,7 @@ public class LinodeApi {
 	private void throwIfUnsuccessful(String action, int statusCode) throws ApiException {
 		if (statusCode != HttpStatus.SC_OK) {
 			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append("Non-200 HTTP Status code returned:");
+			stringBuilder.append("Non-200 HTTP Status code returned: ");
 			stringBuilder.append(statusCode);
 			stringBuilder.append(" for action '");
 			stringBuilder.append(action);

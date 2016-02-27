@@ -5,18 +5,29 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class TestEchoResponse extends BaseResponse {
+	private static final Logger LOGGER = LoggerFactory.getLogger(TestEchoResponse.class);
+
 	private Map<String, String> responses = new HashMap<String, String>();
 
 	public TestEchoResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		JSONObject dataObject = jsonObject.getJSONObject("DATA");
-		Iterator<String> keys = dataObject.keys();
-		while (keys.hasNext()) {
-			String key = (String) keys.next();
-			getResponses().put(key, dataObject.getString(key));
+		if(!hasErrors()) {
+			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			Iterator<String> keys = dataObject.keys();
+			while (keys.hasNext()) {
+				String key = (String) keys.next();
+				getResponses().put(key, dataObject.getString(key));
+			}
 		}
+
+		jsonObject.remove("DATA");
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Map<String, String> getResponses() {

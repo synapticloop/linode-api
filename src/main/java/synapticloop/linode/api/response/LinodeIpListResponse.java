@@ -22,7 +22,7 @@ public class LinodeIpListResponse extends BaseResponse {
 		if(!hasErrors()) {
 			JSONArray ipArray = jsonObject.getJSONArray("DATA");
 			for (Object object : ipArray) {
-				ipAddresses.add(new IPAddress((JSONObject)object));
+				getIpAddresses().add(new IPAddress((JSONObject)object));
 			}
 		}
 
@@ -30,4 +30,7 @@ public class LinodeIpListResponse extends BaseResponse {
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
+	public List<IPAddress> getIpAddresses() {
+		return ipAddresses;
+	}
 }

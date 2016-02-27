@@ -17,7 +17,7 @@ public class ImageRequestTest {
 	@Before
 	public void setup() {
 		linodeApi = new LinodeApi(System.getenv("LINODE_API_KEY"), true);
-		}
+	}
 
 	@Test
 	public void testListImages() throws ApiException, JSONException {
@@ -38,12 +38,10 @@ public class ImageRequestTest {
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
-	@Test
+	@Test(expected=ApiException.class)
 	public void testDeleteImagesInvalid() throws ApiException, JSONException {
 		LinodeApiRequest linodeRequest = ImageRequest.delete(-1l);
 		LinodeApiResponse linodeResponse = linodeApi.execute(linodeRequest);
-		// we are going to get a not found error here
-		Assert.assertEquals(1, linodeResponse.getErrorArray().length());
 	}
 
 	@Test(expected = ApiException.class)

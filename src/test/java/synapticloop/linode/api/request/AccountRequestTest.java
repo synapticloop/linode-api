@@ -1,5 +1,7 @@
 package synapticloop.linode.api.request;
-import org.junit.Assert;
+
+import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,16 +20,20 @@ public class AccountRequestTest {
 
 	@Test
 	public void testInvalidEstimateInvoice() throws ApiException {
-		LinodeApiRequest linodeRequest = AccountRequest.estimateinvoice("linode_new");
-		LinodeApiResponse linodeResponse = linodeApi.execute(linodeRequest);
-		Assert.assertEquals(1, linodeResponse.getErrorArray().length());
+		try {
+			LinodeApiRequest linodeRequest = AccountRequest.estimateinvoice("linode_new");
+			LinodeApiResponse linodeResponse = linodeApi.execute(linodeRequest);
+		} catch(ApiException ex) {
+			// this is expected
+			System.out.println(ex.getMessage());
+		}
 	}
 
 	@Test
 	public void testInfo() throws ApiException {
 		LinodeApiRequest linodeRequest = AccountRequest.info();
 		LinodeApiResponse linodeResponse = linodeApi.execute(linodeRequest);
-		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
+		assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
 }

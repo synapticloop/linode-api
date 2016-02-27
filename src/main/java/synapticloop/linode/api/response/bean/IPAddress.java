@@ -34,6 +34,8 @@ public class IPAddress {
 		jsonObject.remove("ISPUBLIC");
 		this.reverseDNSName = jsonObject.getString("RDNS_NAME");
 		jsonObject.remove("RDNS_NAME");
+		this.ipAddress = jsonObject.getString("IPADDRESS");
+		jsonObject.remove("IPADDRESS");
 		this.ipAddressId = jsonObject.getLong("IPADDRESSID");
 		jsonObject.remove("IPADDRESSID");
 
