@@ -29,4 +29,8 @@ public class NodebalancerConfigListResponse extends BaseResponse {
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
+	public List<NodeBalancerConfig> getNodeBalancerConfigs() {
+		return this.nodeBalancerConfigs;
+	}
+
 }

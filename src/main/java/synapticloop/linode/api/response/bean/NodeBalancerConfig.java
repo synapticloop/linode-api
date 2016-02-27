@@ -23,6 +23,9 @@ public class NodeBalancerConfig {
 	private Long nodeBalancerId = null;
 	private Long checkAttempts = null;
 	private boolean checkPassive = false;
+	private String sslCommonName = null;
+	private String cipherSuite = null;
+	private String sslFingerprint = null;
 	/**
 	 *       {
          STICKINESS: "table",
@@ -38,6 +41,11 @@ public class NodeBalancerConfig {
          NODEBALANCERID: 714,
          CHECK_ATTEMPTS: 2,
          CHECK_PASSIVE: 1
+
+         SSL_COMMONNAME: ""
+			CIPHER_SUITE: ""
+			CHECK: ""
+			SSL_FINGERPRINT:""
       },
 
 	 * @param jsonObject
@@ -65,6 +73,17 @@ public class NodeBalancerConfig {
 		jsonObject.remove("CHECK_ATTEMPTS");
 		this.checkPassive = (1 == jsonObject.getInt("CHECK_PASSIVE"));
 		jsonObject.remove("CHECK_PASSIVE");
+		this.sslCommonName = jsonObject.getString("SSL_COMMONNAME");
+		jsonObject.remove("SSL_COMMONNAME");
+		this.cipherSuite = jsonObject.getString("CIPHER_SUITE");
+		jsonObject.remove("CIPHER_SUITE");
+		this.checkInterval = jsonObject.getInt("CHECK_INTERVAL");
+		jsonObject.remove("CHECK_INTERVAL");
+		this.check = jsonObject.getString("CHECK");
+		jsonObject.remove("CHECK");
+		this.sslFingerprint = jsonObject.getString("SSL_FINGERPRINT");
+		jsonObject.remove("SSL_FINGERPRINT");
+
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
@@ -119,5 +138,17 @@ public class NodeBalancerConfig {
 
 	public boolean getCheckPassive() {
 		return this.checkPassive;
+	}
+
+	public String getSslCommonName() {
+		return this.sslCommonName;
+	}
+
+	public String getCipherSuite() {
+		return this.cipherSuite;
+	}
+
+	public String getSslFingerprint() {
+		return this.sslFingerprint;
 	}
 }

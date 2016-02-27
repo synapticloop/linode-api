@@ -14,6 +14,7 @@ import synapticloop.linode.api.response.LinodeResponse;
 import synapticloop.linode.api.response.bean.Datacenter;
 import synapticloop.linode.api.response.bean.Distribution;
 import synapticloop.linode.api.response.bean.Kernel;
+import synapticloop.linode.api.response.bean.Linode;
 import synapticloop.linode.api.response.bean.LinodePlan;
 import synapticloop.linode.exception.ApiException;
 
@@ -83,6 +84,15 @@ public class LinodeApiLinodeCreateTest {
 		LinodeJobResponse linodeBootResponse = linodeApi.getLinodeBoot(linodeId, linodeConfigCreateResponse.getConfigId());
 		assertFalse(linodeBootResponse.hasErrors());
 
+		List<Linode> linodes = linodeApi.getLinodeList().getLinodes();
+		boolean found = false;
+		for (Linode linode : linodes) {
+			if(linode.getLinodeId().equals(linodeId)) {
+				found = true;
+			}
+		}
+
+		assertTrue(found);
 		LinodeResponse linodeDeleteResponse = linodeApi.getLinodeDelete(linodeId, true);
 		assertFalse(linodeDeleteResponse.hasErrors());
 	}

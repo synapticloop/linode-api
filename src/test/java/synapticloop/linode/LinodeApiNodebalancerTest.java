@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import synapticloop.linode.api.response.NodebalancerResponse;
 import synapticloop.linode.api.response.bean.IPAddress;
+import synapticloop.linode.api.response.bean.NodeBalancerConfig;
+import synapticloop.linode.api.response.bean.NodeBalancerNode;
 import synapticloop.linode.exception.ApiException;
 
 public class LinodeApiNodebalancerTest {
@@ -37,7 +39,7 @@ public class LinodeApiNodebalancerTest {
 
 		Long nodebalancerId = nodebalancerCreateResponse.getNodebalancerId();
 
-		Long nodebalanceConfigId = linodeApi.getNodebalancerConfigCreate(nodebalancerId).getConfigId();
+		Long nodebalancerConfigId = linodeApi.getNodebalancerConfigCreate(nodebalancerId).getConfigId();
 
 		Long linodeIdOne = linodeApiHighLevel.createLinode(TestHelper.getDatacenterId(), TestHelper.getPlanId(), TestHelper.getUbuntuDistribution(), "NODE-1", "^&*678yuiYUI", true);
 		Long linodeIdTwo = linodeApiHighLevel.createLinode(TestHelper.getDatacenterId(), TestHelper.getPlanId(), TestHelper.getUbuntuDistribution(), "NODE-2", "^&*678yuiYUI", true);
@@ -61,8 +63,31 @@ public class LinodeApiNodebalancerTest {
 			}
 		}
 
-		linodeApi.getNodebalancerNodeCreate(nodebalanceConfigId, "Node-1-config", ipAddressOne + ":80");
-		linodeApi.getNodebalancerNodeCreate(nodebalanceConfigId, "Node-2-config", ipAddressTwo + ":80");
+		Long nodeIdOne = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node-1-config", ipAddressOne + ":80").getNodeId();
+		Long nodeIdTwo = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node-2-config", ipAddressTwo + ":80").getNodeId();
+
+		// before we do this - ensure that we are getting the lists back
+		List<NodeBalancerConfig> nodeBalancerConfigs = linodeApi.getNodebalancerConfigList(nodebalancerId).getNodeBalancerConfigs();
+		boolean found = false;
+		for (NodeBalancerConfig nodeBalancerConfig : nodeBalancerConfigs) {
+			if(nodeBalancerConfig.getConfigId().equals(nodebalancerConfigId)) {
+				found = true;
+			}
+		}
+		assertTrue(found);
+		
+		List<NodeBalancerNode> nodeBalancerNodes = linodeApi.getNodebalancerNodeList(nodebalancerConfigId).getNodeBalancerNodes();
+		boolean foundOne = false;
+		boolean foundTwo = false;
+		for (NodeBalancerNode nodeBalancerNode : nodeBalancerNodes) {
+			if(nodeBalancerNode.getNodeId().equals(nodeIdOne)) {
+				foundOne = true;
+			} else if(nodeBalancerNode.getNodeId().equals(nodeIdTwo)) {
+				foundTwo = true;
+			}
+		}
+		
+		assertTrue(foundOne && foundTwo);
 
 		linodeApi.getNodebalancerDelete(nodebalancerId);
 
