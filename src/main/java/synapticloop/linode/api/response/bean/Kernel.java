@@ -1,13 +1,13 @@
 package synapticloop.linode.api.response.bean;
 
-import java.util.logging.Logger;
-
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Kernel {
-	private static final Logger LOGGER = Logger.getLogger(Kernel.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(Kernel.class);
 
 	private String label = null;
 	private boolean isXen = false;

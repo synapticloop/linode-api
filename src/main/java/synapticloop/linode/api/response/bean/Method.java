@@ -3,14 +3,15 @@ package synapticloop.linode.api.response.bean;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Method {
-	private static final Logger LOGGER = Logger.getLogger(Method.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(Method.class);
 
 	private String name = null;
 	private String description = null;

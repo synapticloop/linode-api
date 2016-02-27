@@ -5,8 +5,14 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class LinodePlan {
+	private static final Logger LOGGER = LoggerFactory.getLogger(LinodePlan.class);
+
 	private Integer numCores = null;
 	private Double priceMonthly = null;
 	private Long ram = null;
@@ -41,18 +47,38 @@ public class LinodePlan {
 	 */
 	public LinodePlan(JSONObject jsonObject) {
 		this.numCores = jsonObject.getInt("CORES");
+		jsonObject.remove("CORES");
+
 		this.priceMonthly = jsonObject.getDouble("PRICE");
+		jsonObject.remove("PRICE");
+
 		this.ram = jsonObject.getLong("RAM");
+		jsonObject.remove("RAM");
+
 		this.planId = jsonObject.getLong("PLANID");
+		jsonObject.remove("PLANID");
+
 		this.label = jsonObject.getString("LABEL");
+		jsonObject.remove("LABEL");
+
 		this.diskSize = jsonObject.getLong("DISK");
+		jsonObject.remove("DISK");
+
 		this.priceHourly = jsonObject.getDouble("HOURLY");
+		jsonObject.remove("HOURLY");
+
+		this.xfer = jsonObject.getLong("XFER");
+		jsonObject.remove("XFER");
+
 		JSONObject availObject = jsonObject.getJSONObject("AVAIL");
 		Iterator<String> keys = availObject.keys();
 		while (keys.hasNext()) {
 			String key = (String) keys.next();
 			availability.put(Long.parseLong(key), availObject.getLong(key));
 		}
+		jsonObject.remove("AVAIL");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Integer getNumCores() {

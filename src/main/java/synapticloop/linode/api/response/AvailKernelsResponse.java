@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Kernel;
 
 public class AvailKernelsResponse extends BaseResponse {
-	private static final Logger LOGGER = Logger.getLogger(AvailKernelsResponse.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(AvailKernelsResponse.class);
 
 	private List<Kernel> kernels = new ArrayList<Kernel>();
 	private Map<Long, Kernel> kernelIdLookup = new HashMap<Long, Kernel>();

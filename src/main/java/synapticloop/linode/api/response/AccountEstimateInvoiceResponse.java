@@ -1,14 +1,15 @@
 package synapticloop.linode.api.response;
 
 import java.util.Date;
-import java.util.logging.Logger;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
 public class AccountEstimateInvoiceResponse extends BaseResponse {
-	private static final Logger LOGGER = Logger.getLogger(AccountEstimateInvoiceResponse.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(AccountEstimateInvoiceResponse.class);
 
 	private Date invoiceTo = null;
 	private Double amount = null;

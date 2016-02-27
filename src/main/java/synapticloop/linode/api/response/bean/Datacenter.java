@@ -1,13 +1,13 @@
 package synapticloop.linode.api.response.bean;
 
-import java.util.logging.Logger;
-
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Datacenter {
-	private static final Logger LOGGER = Logger.getLogger(Datacenter.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(Datacenter.class);
 
 	private static final String JSON_KEY_ABBREVIATION = "ABBR";
 	private static final String JSON_KEY_DATACENTREID = "DATACENTERID";

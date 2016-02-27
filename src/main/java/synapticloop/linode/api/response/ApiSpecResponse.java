@@ -5,15 +5,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Method;
 
 public class ApiSpecResponse extends BaseResponse {
-	private static final Logger LOGGER = Logger.getLogger(ApiSpecResponse.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApiSpecResponse.class);
 
 	private List<Method> methods = new ArrayList<Method>();
 	private Map<String, Method> methodLookup = new HashMap<String, Method>();

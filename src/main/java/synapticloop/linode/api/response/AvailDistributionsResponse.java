@@ -4,16 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Distribution;
 
 public class AvailDistributionsResponse extends BaseResponse {
-	private static final Logger LOGGER = Logger.getLogger(AvailDistributionsResponse.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(AvailDistributionsResponse.class);
 
 	private List<Distribution> distributions = new ArrayList<Distribution>();
 	private Map<Long, Distribution> distributionIdLookup = new HashMap<Long, Distribution>();

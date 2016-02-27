@@ -1,25 +1,20 @@
 package synapticloop.linode.api.response;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.api.response.bean.Stackscript;
 
 public class AvailStackscriptsResponse extends BaseResponse {
-	private String script = null;
-	private String description = null;
-	private List<Long> distributionIds = new ArrayList<Long>();
-	private Long numDeploymentsTotal = null;
-	private Long latestRevision = null;
-	private Date createDate = null;
-	private Long numDeploymentsActive = null;
-	private Long stackscriptId = null;
-	private String revisionNote = null;
-	private Date revisionDate = null;
-	private boolean isPublic = false;
-	private Long userId = null;
+	private static final Logger LOGGER = LoggerFactory.getLogger(AvailStackscriptsResponse.class);
 
+	private List<Stackscript> stackscripts = new ArrayList<Stackscript>();
 	/**
 	 *       {
 	 *          SCRIPT: "#!/bin/bash
@@ -43,61 +38,19 @@ public class AvailStackscriptsResponse extends BaseResponse {
 	 */
 	public AvailStackscriptsResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		
-		this.script = jsonObject.getString("SCRIPT");
-		this.description = jsonObject.getString("DESCRIPTION");
-		String[] distributionIdArray = jsonObject.optString("DISTRIBUTIONIDLIST", "").split(",");
-		for (String distributionId : distributionIdArray) {
-			distributionIds.add(Long.valueOf(distributionId));
+
+		if(!hasErrors()) {
+			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			for (Object object : dataArray) {
+				stackscripts.add(new Stackscript((JSONObject)object));
+			}
 		}
+
+		jsonObject.remove("DATA");
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
-	public String getScript() {
-		return this.script;
+	public List<Stackscript> getStackscripts() {
+		return this.stackscripts;
 	}
-
-	public String getDescription() {
-		return this.description;
-	}
-
-	public List<Long> getDistributionIds() {
-		return this.distributionIds;
-	}
-
-	public Long getNumDeploymentsTotal() {
-		return this.numDeploymentsTotal;
-	}
-
-	public Long getLatestRevision() {
-		return this.latestRevision;
-	}
-
-	public Date getCreateDate() {
-		return this.createDate;
-	}
-
-	public Long getNumDeploymentsActive() {
-		return this.numDeploymentsActive;
-	}
-
-	public Long getStackscriptId() {
-		return this.stackscriptId;
-	}
-
-	public String getRevisionNote() {
-		return this.revisionNote;
-	}
-
-	public Date getRevisionDate() {
-		return this.revisionDate;
-	}
-
-	public boolean getIsPublic() {
-		return this.isPublic;
-	}
-
-	public Long getUserId() {
-		return this.userId;
-	}
-
 }

@@ -1,8 +1,15 @@
 package synapticloop.linode.api.response.bean;
 
+
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class NodeBalancer {
+	private static final Logger LOGGER = LoggerFactory.getLogger(NodeBalancer.class);
+
 	private Double priceMonthly = null;
 	private Double priceHourly = null;
 	private Long numConnections = null;
@@ -17,8 +24,13 @@ public class NodeBalancer {
 	 */
 	public NodeBalancer(JSONObject jsonObject) {
 		this.priceMonthly = jsonObject.getDouble("HOURLY");
+		jsonObject.remove("HOURLY");
 		this.priceHourly = jsonObject.getDouble("MONTHLY");
+		jsonObject.remove("MONTHLY");
 		this.numConnections = jsonObject.getLong("CONNECTIONS");
+		jsonObject.remove("CONNECTIONS");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Double getPriceMonthly() {

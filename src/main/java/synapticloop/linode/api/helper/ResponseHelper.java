@@ -4,13 +4,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ResponseHelper {
-	private static final Logger LOGGER = Logger.getLogger(ResponseHelper.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(ResponseHelper.class);
 
 	// "2014-10-08 09:39:07.0"
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
@@ -24,11 +24,11 @@ public class ResponseHelper {
 	 * @param jsonObject the jsonObject to parse
 	 */
 	public static void warnOnMissedKeys(Logger logger, JSONObject jsonObject) {
-		if(logger.isLoggable(Level.WARNING)) {
+		if(logger.isWarnEnabled()) {
 			Iterator<String> keys = jsonObject.keys();
 			while (keys.hasNext()) {
 				String key = (String) keys.next();
-				logger.warning("Found an unexpected json key of '" + key + "', this is not mapped to a field...");
+				logger.warn("Found an unexpected json key of '{}', this is not mapped to a field...", key);
 			}
 		}
 	}
@@ -44,7 +44,7 @@ public class ResponseHelper {
 					return(SIMPLE_DATE_FORMAT.parse(dateString));
 				}
 			} catch (ParseException ex) {
-				LOGGER.severe("Could not parse date, exception was: " + ex.getMessage());
+				LOGGER.error("Could not parse date, exception was: " + ex.getMessage());
 			}
 		}
 		return(null);
