@@ -16,7 +16,7 @@ import synapticloop.linode.api.response.AvailStackscriptsResponse;
 import synapticloop.linode.api.response.bean.Distribution;
 import synapticloop.linode.api.response.bean.Kernel;
 import synapticloop.linode.api.response.bean.LinodePlan;
-import synapticloop.linode.api.response.bean.NodeBalancer;
+import synapticloop.linode.api.response.bean.NodeBalancerPrice;
 import synapticloop.linode.api.response.bean.Stackscript;
 import synapticloop.linode.exception.ApiException;
 
@@ -63,9 +63,9 @@ public class LinodeApiAvailTest {
 	@Test
 	public void testAvailNodeBalancers() throws ApiException {
 		AvailNodeBalancersResponse availNodeBalancers = linodeApi.getAvailNodeBalancers();
-		List<NodeBalancer> nodeBalancers = availNodeBalancers.getNodeBalancers();
+		List<NodeBalancerPrice> nodeBalancerPrices = availNodeBalancers.getNodeBalancers();
 
-		assertTrue(nodeBalancers.size() >= 1);
+		assertTrue(nodeBalancerPrices.size() >= 1);
 		assertFalse(availNodeBalancers.hasErrors());
 	}
 

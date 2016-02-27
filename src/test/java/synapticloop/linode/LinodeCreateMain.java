@@ -81,7 +81,6 @@ public class LinodeCreateMain {
 					linodeConfigCreateResponse.getConfigId());
 
 		} catch (ApiException ex) {
-			// TODO Auto-generated catch block
 			ex.printStackTrace();
 		}
 

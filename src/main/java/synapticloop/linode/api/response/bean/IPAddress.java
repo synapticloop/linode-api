@@ -30,9 +30,9 @@ public class IPAddress {
 	public IPAddress(JSONObject jsonObject) {
 		this.linodeId = jsonObject.getLong("LINODEID");
 		jsonObject.remove("LINODEID");
-		this.isPublic = (1 == jsonObject.getInt("ISPUBLIC"));
+		this.isPublic = (1 == jsonObject.optInt("ISPUBLIC", 0));
 		jsonObject.remove("ISPUBLIC");
-		this.reverseDNSName = jsonObject.getString("RDNS_NAME");
+		this.reverseDNSName = jsonObject.optString("RDNS_NAME", null);
 		jsonObject.remove("RDNS_NAME");
 		this.ipAddress = jsonObject.getString("IPADDRESS");
 		jsonObject.remove("IPADDRESS");

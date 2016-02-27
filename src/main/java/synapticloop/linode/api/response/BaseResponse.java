@@ -17,13 +17,23 @@ public abstract class BaseResponse {
 	protected String action = null;
 
 	public BaseResponse(JSONObject jsonObject) {
-		JSONArray errorArray = jsonObject.getJSONArray(JSON_KEY_ERRORARRAY);
+		parse(jsonObject, false);
+	}
 
-		for (Object object : errorArray) {
-			errors.add(new ApiError((JSONObject)object));
+	public BaseResponse(JSONObject jsonObject, boolean ignoreErrorArray) {
+		parse(jsonObject, true);
+	}
+
+	private void parse(JSONObject jsonObject, boolean ignoreErrorArray) {
+		if(!ignoreErrorArray) {
+			JSONArray errorArray = jsonObject.getJSONArray(JSON_KEY_ERRORARRAY);
+	
+			for (Object object : errorArray) {
+				errors.add(new ApiError((JSONObject)object));
+			}
+	
+			jsonObject.remove(JSON_KEY_ERRORARRAY);
 		}
-
-		jsonObject.remove(JSON_KEY_ERRORARRAY);
 
 		this.action = jsonObject.getString(JSON_KEY_ACTION);
 		jsonObject.remove(JSON_KEY_ACTION);

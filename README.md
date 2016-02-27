@@ -4,10 +4,12 @@ This supercedes version 1 - which is now considered deprecated.
 
 Major differences:
 
- - Package refactoring
+ - All errors returned in the JSON payload now throw an `ApiException` with the JSON error array as the message.
  - All responses are now fully parsed into beans for easy access.
  - High Level API convenience methods for easy creation of linodes
  - Caching of Availability calls
+ - Swapped to slf4j over `java.util.logging`
+ - Package refactoring
 
 
 > The api calls are automatically generated from the [https://www.linode.com/api](https://www.linode.com/api) pages so that they are kept in sync.

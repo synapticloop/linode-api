@@ -9,12 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
-import synapticloop.linode.api.response.bean.NodeBalancer;
+import synapticloop.linode.api.response.bean.NodeBalancerPrice;
 
 public class AvailNodeBalancersResponse extends BaseResponse {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AvailNodeBalancersResponse.class);
 
-	private List<NodeBalancer> nodeBalancers = new ArrayList<NodeBalancer>();
+	private List<NodeBalancerPrice> nodeBalancers = new ArrayList<NodeBalancerPrice>();
 
 	public AvailNodeBalancersResponse(JSONObject jsonObject) {
 		super(jsonObject);
@@ -22,7 +22,7 @@ public class AvailNodeBalancersResponse extends BaseResponse {
 		if(!hasErrors()) {
 			JSONArray dataArray = jsonObject.getJSONArray("DATA");
 			for (Object object : dataArray) {
-				nodeBalancers.add(new NodeBalancer((JSONObject)object));
+				nodeBalancers.add(new NodeBalancerPrice((JSONObject)object));
 			}
 		}
 
@@ -30,7 +30,7 @@ public class AvailNodeBalancersResponse extends BaseResponse {
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
-	public List<NodeBalancer> getNodeBalancers() {
+	public List<NodeBalancerPrice> getNodeBalancers() {
 		return this.nodeBalancers;
 	}
 

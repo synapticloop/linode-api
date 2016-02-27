@@ -32,7 +32,7 @@ public class TestRequestTest {
 		Assert.assertFalse(linodeResponse.getIsDataJSONArray());
 
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
-		// TODO THIS IS INCORRECT - THERE IS AN ERROR IN THE LINODE API...
+		// THIS IS INCORRECT - THERE IS AN ERROR IN THE LINODE API...
 		Assert.assertEquals("bar", linodeResponse.getDataAsJSONObject().getString("FOO"));
 
 	}
