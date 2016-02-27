@@ -1,6 +1,13 @@
 # linode api version 2
 
-All responses are now fully parsed into beans for easy access.
+This supercedes version 1 - which is now considered deprecated.
+
+Major differences:
+
+ - Package refactoring
+ - All responses are now fully parsed into beans for easy access.
+ - High Level API convenience methods for easy creation of linodes
+ - Caching of Availability calls
 
 
 > The api calls are automatically generated from the [https://www.linode.com/api](https://www.linode.com/api) pages so that they are kept in sync.
@@ -14,6 +21,12 @@ All responses are now fully parsed into beans for easy access.
 3. that's it!
 
 ## Creating a Linode
+
+### High Level Interface
+
+If this doesn't provide enough options, the low level interface is more verbose, howvere it provides greater control
+
+### Low Level Interface
 
 The general flow is
 
