@@ -53,17 +53,16 @@ public class LinodeCreateMain {
 				}
 			}
 
-
 			// create a linode
 			Long linodeId = linodeApi.getLinodeCreate(datacenter.getDatacenterId(), linodePlan.getPlanId()).getLinodeId();
-			
+
 			// create the root disk from the distribution
 			Long diskId = linodeApi.getLinodeDiskCreateFromDistribution(linodeId, 
 					distribution.getDistributionId(), 
 					"LINODE-API-DISK-ROOT", 
 					1024l, 
 					"^&*678yuiYUI").getDiskId();
-			
+
 			// create a swap disk - NOTE that you MUST have two disks
 			Long swapDiskId = linodeApi.getLinodeDiskCreate(linodeId, 
 					"LINODE-API-DISK-SWAP", 

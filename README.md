@@ -161,9 +161,43 @@ public class LinodeCreateMain {
 ```
 # Creating A Node Balancer
 
+```
+// create a node balancer - note that node balancer names __MUST__ be unique
+NodebalancerResponse nodebalancerCreateResponse = linodeApi.getNodebalancerCreate(TestHelper.getDatacenterId(), 
+		"LINODE-API-TEST-" + System.currentTimeMillis(), 
+		0l);
+
+// create a node balance config - this is all defaults - port 80
+Long nodebalancerConfigId = linodeApi.getNodebalancerConfigCreate(nodebalancerId).getConfigId();
+
+Long linodeIdOne = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+		PlanSlug.LINODE_1024,
+		DistributionSlug.UBUNTU_14_04_LTS,
+		KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
+		"NODE-1", 
+		"^&*678yuiYUI");
+
+Long linodeIdTwo = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+		PlanSlug.LINODE_1024,
+		DistributionSlug.UBUNTU_14_04_LTS,
+		KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
+		"NODE-2", 
+		"^&*678yuiYUI");
+
+// you may only node balance between private IP addresses - so
+// attach a private ip address to each of the linodes
+String ipAddressOne = linodeApi.getLinodeIpAddressPrivate(linodeIdOne).getIpAddress();
+String ipAddressTwo = linodeApi.getLinodeIpAddressPrivate(linodeIdTwo).getIpAddress();
+
+// create the two nodes - note the port is appended to the private ip address
+Long nodeIdOne = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node-1-config", ipAddressOne + ":80").getNodeId();
+Long nodeIdTwo = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node-2-config", ipAddressTwo + ":80").getNodeId();
+```
 
 
-## Code (deprecated)
+
+
+## Calling the API (deprecated)
 
 These are deprecated and the `LinodeApi` or `LinodeApiHighLevel` objects should be used instead
 
@@ -290,7 +324,7 @@ And now for the dependency
     <dependency>
       <groupId>synapticloop</groupId>
       <artifactId>linode-api</artifactId>
-      <version>v1.0.6</version>
+      <version>v2.0.0</version>
       <type>jar</type>
     </dependency>
  
@@ -313,15 +347,15 @@ Repository
 
 and then include the dependency:
 
-    runtime(group: 'synapticloop', name: 'linode-api', version: 'v1.0.6', ext: 'jar')
+    runtime(group: 'synapticloop', name: 'linode-api', version: 'v2.0.0', ext: 'jar')
 
-    compile(group: 'synapticloop', name: 'linode-api', version: 'v1.0.6', ext: 'jar')
+    compile(group: 'synapticloop', name: 'linode-api', version: 'v2.0.0', ext: 'jar')
  
 or 
 
-    runtime 'synapticloop:linode-api:v1.0.6'
+    runtime 'synapticloop:linode-api:v2.0.0'
 
-    compile 'synapticloop:linode-api:v1.0.6'
+    compile 'synapticloop:linode-api:v2.0.0'
     
 ## Other
 
@@ -331,5 +365,6 @@ You will also need the dependencies:
 
  - `org.json` `json` `20160212`
  - `org.apache.httpcomponents` `httpclient` `4.3.4`
+ - `org.slf4j` `slf4j-api` `1.7.13`
 
 which can be found by searching here: [http://mvnrepository.com/](http://mvnrepository.com/)
