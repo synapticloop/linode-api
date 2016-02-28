@@ -13,6 +13,10 @@ public abstract class BaseResponse {
 	private static final String JSON_KEY_ACTION = "ACTION";
 	protected static final String JSON_KEY_DATA = "DATA";
 	protected static final String JSON_KEY_ERRORARRAY = "ERRORARRAY";
+	protected static final String JSON_KEY_VERSION = "VERSION";
+	protected static final String JSON_KEY_METHODS = "METHODS";
+	protected static final String JSON_KEY_INVOICE_TO = "INVOICE_TO";
+	protected static final String JSON_KEY_AMOUNT = "AMOUNT";
 
 	protected List<ApiError> errors = new ArrayList<ApiError>();
 	protected String action = null;

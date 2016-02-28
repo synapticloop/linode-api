@@ -44,17 +44,17 @@ public class ApiSpecResponse extends BaseResponse {
 		if(!hasErrors()) {
 
 			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
-			this.version = dataObject.getDouble("VERSION");
-			dataObject.remove("VERSION");
+			this.version = dataObject.getDouble(JSON_KEY_VERSION);
+			dataObject.remove(JSON_KEY_VERSION);
 
-			JSONObject methodsObject = dataObject.getJSONObject("METHODS");
+			JSONObject methodsObject = dataObject.getJSONObject(JSON_KEY_METHODS);
 			Iterator<String> keys = methodsObject.keys();
 			while (keys.hasNext()) {
 				String key = (String) keys.next();
 				methods.add(new Method(key, methodsObject.getJSONObject(key)));
 			}
 
-			dataObject.remove("METHODS");
+			dataObject.remove(JSON_KEY_METHODS);
 
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}

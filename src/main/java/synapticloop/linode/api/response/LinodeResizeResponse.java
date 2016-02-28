@@ -17,14 +17,14 @@ public class LinodeResizeResponse extends BaseResponse {
 		// we are ignoring the rror array as this returns the reponse
 		super(jsonObject, true);
 
-		JSONArray errorArray = jsonObject.getJSONArray("ERRORARRAY");
-		
+		JSONArray errorArray = jsonObject.getJSONArray(JSON_KEY_ERRORARRAY);
+
 		for (Object object : errorArray) {
 			this.code = ((JSONObject)object).getInt("ERRORCODE");
 			this.message = ((JSONObject)object).getString("ERRORMESSAGE");
 		}
 
-		jsonObject.remove("ERRORARRAY");
+		jsonObject.remove(JSON_KEY_ERRORARRAY);
 		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

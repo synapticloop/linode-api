@@ -19,11 +19,11 @@ public class AccountEstimateInvoiceResponse extends BaseResponse {
 
 		if(!hasErrors()) {
 			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
-			this.invoiceTo = ResponseHelper.convertDate(dataObject.getString("INVOICE_TO"));
-			dataObject.remove("INVOICE_TO");
+			this.invoiceTo = ResponseHelper.convertDate(dataObject.getString(JSON_KEY_INVOICE_TO));
+			dataObject.remove(JSON_KEY_INVOICE_TO);
 
-			this.amount = dataObject.getDouble("AMOUNT");
-			dataObject.remove("AMOUNT");
+			this.amount = dataObject.getDouble(JSON_KEY_AMOUNT);
+			dataObject.remove(JSON_KEY_AMOUNT);
 
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
