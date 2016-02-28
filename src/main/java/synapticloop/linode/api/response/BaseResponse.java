@@ -11,7 +11,8 @@ import synapticloop.linode.api.response.bean.ApiError;
 
 public abstract class BaseResponse {
 	private static final String JSON_KEY_ACTION = "ACTION";
-	private static final String JSON_KEY_ERRORARRAY = "ERRORARRAY";
+	protected static final String JSON_KEY_DATA = "DATA";
+	protected static final String JSON_KEY_ERRORARRAY = "ERRORARRAY";
 
 	protected List<ApiError> errors = new ArrayList<ApiError>();
 	protected String action = null;

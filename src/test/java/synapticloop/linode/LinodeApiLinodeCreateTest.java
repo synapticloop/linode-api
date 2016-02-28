@@ -12,7 +12,9 @@ import synapticloop.linode.api.response.LinodeDiskResponse;
 import synapticloop.linode.api.response.LinodeJobResponse;
 import synapticloop.linode.api.response.LinodeResponse;
 import synapticloop.linode.api.response.bean.Datacenter;
+import synapticloop.linode.api.response.bean.Disk;
 import synapticloop.linode.api.response.bean.Distribution;
+import synapticloop.linode.api.response.bean.Job;
 import synapticloop.linode.api.response.bean.Kernel;
 import synapticloop.linode.api.response.bean.Linode;
 import synapticloop.linode.api.response.bean.LinodePlan;
@@ -78,6 +80,20 @@ public class LinodeApiLinodeCreateTest {
 		Long diskId = linodeDiskCreateFromDistributionResponse.getDiskId();
 		Long swapDiskId = linodeApi.getLinodeDiskCreate(linodeId, "LINODE-API-TEST-SWAP", "swap", 256l).getDiskId();
 
+		List<Disk> disks = linodeApi.getLinodeDiskList(linodeId).getDisks();
+		boolean foundRoot = false;
+		boolean foundSwap = false;
+		for (Disk disk : disks) {
+			if(disk.getDiskId().equals(diskId)) {
+				foundRoot = true;
+			} else if(disk.getDiskId().equals(swapDiskId)) {
+				foundSwap = true;
+			}
+		}
+		assertTrue(foundRoot && foundSwap);
+
+		assertEquals(diskId, linodeApi.getLinodeDiskList(linodeId, diskId).getDisks().get(0).getDiskId());
+
 		LinodeConfigResponse linodeConfigCreateResponse = linodeApi.getLinodeConfigCreate(linodeId, kernel.getKernelId(), "LINODE-API-TEST", Long.toString(diskId) + "," + Long.toString(swapDiskId));
 		assertFalse(linodeConfigCreateResponse.hasErrors());
 
@@ -91,8 +107,10 @@ public class LinodeApiLinodeCreateTest {
 				found = true;
 			}
 		}
-
 		assertTrue(found);
+
+		List<Job> jobs = linodeApi.getLinodeJobList(linodeId).getJobs();
+
 		LinodeResponse linodeDeleteResponse = linodeApi.getLinodeDelete(linodeId, true);
 		assertFalse(linodeDeleteResponse.hasErrors());
 	}

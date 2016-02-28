@@ -30,4 +30,8 @@ public class NodebalancerListResponse extends BaseResponse {
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
+	public List<NodeBalancer> getNodeBalancers() {
+		return this.nodeBalancers;
+	}
+
 }

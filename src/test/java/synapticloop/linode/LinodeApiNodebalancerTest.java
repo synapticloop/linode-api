@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import synapticloop.linode.api.response.NodebalancerResponse;
 import synapticloop.linode.api.response.bean.IPAddress;
+import synapticloop.linode.api.response.bean.NodeBalancer;
 import synapticloop.linode.api.response.bean.NodeBalancerConfig;
 import synapticloop.linode.api.response.bean.NodeBalancerNode;
 import synapticloop.linode.exception.ApiException;
@@ -39,6 +40,15 @@ public class LinodeApiNodebalancerTest {
 
 		Long nodebalancerId = nodebalancerCreateResponse.getNodebalancerId();
 
+		List<NodeBalancer> nodeBalancers = linodeApi.getNodebalancerList(nodebalancerId).getNodeBalancers();
+		boolean found = false;
+		for (NodeBalancer nodeBalancer : nodeBalancers) {
+			if(nodeBalancer.getNodebalancerId().equals(nodebalancerId)) {
+				found = true;
+			}
+		}
+		assertTrue(found);
+
 		Long nodebalancerConfigId = linodeApi.getNodebalancerConfigCreate(nodebalancerId).getConfigId();
 
 		Long linodeIdOne = linodeApiHighLevel.createLinode(TestHelper.getDatacenterId(), TestHelper.getPlanId(), TestHelper.getUbuntuDistribution(), "NODE-1", "^&*678yuiYUI", true);
@@ -68,14 +78,14 @@ public class LinodeApiNodebalancerTest {
 
 		// before we do this - ensure that we are getting the lists back
 		List<NodeBalancerConfig> nodeBalancerConfigs = linodeApi.getNodebalancerConfigList(nodebalancerId).getNodeBalancerConfigs();
-		boolean found = false;
+		found = false;
 		for (NodeBalancerConfig nodeBalancerConfig : nodeBalancerConfigs) {
 			if(nodeBalancerConfig.getConfigId().equals(nodebalancerConfigId)) {
 				found = true;
 			}
 		}
 		assertTrue(found);
-		
+
 		List<NodeBalancerNode> nodeBalancerNodes = linodeApi.getNodebalancerNodeList(nodebalancerConfigId).getNodeBalancerNodes();
 		boolean foundOne = false;
 		boolean foundTwo = false;
@@ -86,7 +96,7 @@ public class LinodeApiNodebalancerTest {
 				foundTwo = true;
 			}
 		}
-		
+
 		assertTrue(foundOne && foundTwo);
 
 		linodeApi.getNodebalancerDelete(nodebalancerId);

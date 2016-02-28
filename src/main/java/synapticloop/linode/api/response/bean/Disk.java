@@ -3,10 +3,14 @@ package synapticloop.linode.api.response.bean;
 import java.util.Date;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Disk {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Disk.class);
+
 	private Date updateDate = null;
 	private Long diskId = null;
 	private String label = null;
@@ -33,14 +37,25 @@ public class Disk {
 	 */
 	public Disk(JSONObject jsonObject) {
 		this.updateDate = ResponseHelper.convertDate(jsonObject.getString("UPDATE_DT"));
+		jsonObject.remove("UPDATE_DT");
 		this.diskId = jsonObject.getLong("DISKID");
+		jsonObject.remove("DISKID");
 		this.label = jsonObject.getString("LABEL");
+		jsonObject.remove("LABEL");
 		this.type = jsonObject.getString("TYPE");
+		jsonObject.remove("TYPE");
 		this.linodeId = jsonObject.getLong("LinodeID");
+		jsonObject.remove("LinodeID");
 		this.isReadOnly = (1 == jsonObject.getInt("ISREADONLY"));
+		jsonObject.remove("ISREADONLY");
 		this.status = jsonObject.getInt("STATUS");
+		jsonObject.remove("STATUS");
 		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
+		jsonObject.remove("CREATE_DT");
 		this.size = jsonObject.getLong("SIZE");
+		jsonObject.remove("SIZE");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Date getUpdateDate() {

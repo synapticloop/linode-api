@@ -30,4 +30,8 @@ public class LinodeJobListResponse extends BaseResponse {
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
+	public List<Job> getJobs() {
+		return this.jobs;
+	}
+
 }
