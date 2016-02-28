@@ -51,8 +51,16 @@ public class LinodeApiNodebalancerTest {
 
 		Long nodebalancerConfigId = linodeApi.getNodebalancerConfigCreate(nodebalancerId).getConfigId();
 
-		Long linodeIdOne = linodeApiHighLevel.createLinode(TestHelper.getDatacenterId(), TestHelper.getPlanId(), TestHelper.getUbuntuDistribution(), "NODE-1", "^&*678yuiYUI", true);
-		Long linodeIdTwo = linodeApiHighLevel.createLinode(TestHelper.getDatacenterId(), TestHelper.getPlanId(), TestHelper.getUbuntuDistribution(), "NODE-2", "^&*678yuiYUI", true);
+		Long linodeIdOne = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+				PlanSlug.LINODE_1024,
+				DistributionSlug.UBUNTU_14_04_LTS,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
+				"NODE-1", "^&*678yuiYUI");
+		Long linodeIdTwo = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+				PlanSlug.LINODE_1024,
+				DistributionSlug.UBUNTU_14_04_LTS,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
+				"NODE-2", "^&*678yuiYUI");
 
 		linodeApi.getLinodeIpAddressPrivate(linodeIdOne);
 		linodeApi.getLinodeIpAddressPrivate(linodeIdTwo);

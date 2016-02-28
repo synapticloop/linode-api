@@ -29,21 +29,27 @@ Major differences:
 This is desiegned to get a lindode up and running as quickly as possible.  This provides a very small subset of available calls.
 
 ```
-	/**
-	 * Create and boot a linode in a datacenter, for a specific plan, using a
-	 * specific distribution.
-	 * 
-	 * @param datacenterId the id of the datacenter to launch the linode in
-	 * @param planId the id of the linode plan 
-	 * @param distributionId the distribution that fills the root disk
-	 * @param password the root password
-	 * @param label the label for this linode
-	 * 
-	 * @return the id of the linode that was created
-	 * 
-	 * @throws ApiException if there was an error creating the linode
-	 */
-	public Long createLinode(Long datacenterId, Long planId, Long distributionId, String label, String password, boolean is64Bit) throws ApiException
+/**
+ * Create and boot a linode in a datacenter, for a specific plan, using a
+ * specific distribution.
+ * 
+ * @param datacenter the id of the datacenter to launch the linode in
+ * @param plan the id of the linode plan 
+ * @param distribution the distribution that fills the root disk
+ * @param kernel the kernel to use
+ * @param label the label for this linode
+ * @param rootPassword the root password
+ * 
+ * @return the id of the linode that was created
+ * 
+ * @throws ApiException if there was an error creating the linode
+ */
+public Long createLinode(DatacenterSlug datacenter, 
+		PlanSlug plan, 
+		DistributionSlug distribution, 
+		KernelSlug kernel, 
+		String label,
+		String rootPassword) throws ApiException {
 
 ```
 
@@ -153,8 +159,13 @@ public class LinodeCreateMain {
 
 }
 ```
+# Creating A Node Balancer
 
-## Code
+
+
+## Code (deprecated)
+
+These are deprecated and the `LinodeApi` or `LinodeApiHighLevel` objects should be used instead
 
 ### Single Requests
 

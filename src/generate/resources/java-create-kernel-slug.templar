@@ -1,0 +1,18 @@
+package synapticloop.linode;{\n}
+{\n}
+public enum KernelSlug {{{\n}
+	{loop kernels as kernel}
+		{\t}KERNEL_{fn:slug[kernel.label]} ({kernel.kernelId}l)
+		{if !kernelStatus.last},{else};{endif}{\n}
+	{endloop}
+{\n}
+{\t}private final Long kernelId;{\n}
+{\n}
+{\t}KernelSlug(Long kernelId) {{{\n}
+{\t}{\t}this.kernelId = kernelId;{\n}
+{\t}}{\n}
+{\n}
+{\t}public Long kernelId() {{{\n}
+{\t}{\t}return(kernelId);{\n}
+{\t}}{\n}
+}{\n}

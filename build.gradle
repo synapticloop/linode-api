@@ -11,7 +11,7 @@ group = 'synapticloop'
 archivesBaseName = 'linode-api'
 description = """An api for linode"""
 
-version = 'v1.0.7'
+version = 'v2.0.0'
 
 description = """linode-api"""
 
@@ -41,6 +41,7 @@ sourceSets {
 		output.resourcesDir = 'build/classes/generate'
 		output.classesDir = 'build/classes/generate'
 
+		compileClasspath += sourceSets.main.output
 	}
 }
 
@@ -61,6 +62,23 @@ task generate(type: JavaExec) {
 	main = "synapticloop.linode.Main"
 	classpath += configurations.generateRuntime
 	classpath += sourceSets.generate.output
+}
+
+task generateCompileSlugs(type: JavaCompile) {
+	source = sourceSets.generate.java.srcDirs
+	source += sourceSets.main.java.srcDirs
+	classpath = configurations.generateCompile
+	classpath += configurations.compile
+	destinationDir = file("build/classes/generate")
+}
+
+task generateSlugs(type: JavaExec) {
+	dependsOn "generateCompileSlugs"
+	main = "synapticloop.linode.SlugMain"
+	classpath += configurations.generateRuntime
+	classpath += configurations.runtime
+	classpath += sourceSets.generate.output
+	classpath += sourceSets.main.output
 }
 
 dependencies {

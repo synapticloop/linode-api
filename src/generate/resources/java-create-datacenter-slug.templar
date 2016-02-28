@@ -1,0 +1,18 @@
+package synapticloop.linode;{\n}
+{\n}
+public enum DatacenterSlug {{{\n}
+	{loop datacenters as datacenter}
+		{\t}{fn:slug[datacenter.location]} ({datacenter.datacenterId}l)
+		{if !datacenterStatus.last},{else};{endif}{\n}
+	{endloop}
+{\n}
+{\t}private final Long datacenterId;{\n}
+{\n}
+{\t}DatacenterSlug(Long datacenterId) {{{\n}
+{\t}{\t}this.datacenterId = datacenterId;{\n}
+{\t}}{\n}
+{\n}
+{\t}public Long datacenterId() {{{\n}
+{\t}{\t}return(datacenterId);{\n}
+{\t}}{\n}
+}{\n}

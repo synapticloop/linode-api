@@ -40,26 +40,31 @@ public class LinodeApiHighLevel {
 	 * Create and boot a linode in a datacenter, for a specific plan, using a
 	 * specific distribution.
 	 * 
-	 * @param datacenterId the id of the datacenter to launch the linode in
-	 * @param planId the id of the linode plan 
-	 * @param distributionId the distribution that fills the root disk
-	 * @param password the root password
+	 * @param datacenter the id of the datacenter to launch the linode in
+	 * @param plan the id of the linode plan 
+	 * @param distribution the distribution that fills the root disk
+	 * @param kernel the kernel to use
 	 * @param label the label for this linode
+	 * @param rootPassword the root password
 	 * 
 	 * @return the id of the linode that was created
 	 * 
 	 * @throws ApiException if there was an error creating the linode
 	 */
-	public Long createLinode(Long datacenterId, Long planId, Long distributionId, String label, String password, boolean is64Bit) throws ApiException {
+	public Long createLinode(DatacenterSlug datacenter, PlanSlug plan, DistributionSlug distribution, KernelSlug kernel, String label, String rootPassword) throws ApiException {
 		initialise();
 
+		Long planId = plan.planId();
+		Long datacenterId = datacenter.datacenterId();
 		Long linodeId = linodeApi.getLinodeCreate(datacenterId, planId).getLinodeId();
+		Long distributionId = distribution.distributionId();
+		Long kernelId = kernel.kernelId();
 
 		Long rootDiskId = linodeApi.getLinodeDiskCreateFromDistribution(linodeId, 
 				distributionId, 
 				label + "-root-disk", 
 				(linodePlanCacheMap.get(planId).getDiskSize() * 1024) - 256,
-				password).getDiskId();
+				rootPassword).getDiskId();
 
 		// create a swap disk - NOTE that you MUST have two disks
 		Long swapDiskId = linodeApi.getLinodeDiskCreate(linodeId, 
@@ -67,16 +72,16 @@ public class LinodeApiHighLevel {
 				"swap", 256l).getDiskId();
 
 		Long configId = linodeApi.getLinodeConfigCreate(linodeId, 
-				is64Bit? default64BitKernel.getKernelId() : default32BitKernel.getKernelId(), 
-						label, 
-						Long.toString(rootDiskId) + "," + Long.toString(swapDiskId)).getConfigId();
+				kernelId, 
+				label, 
+				Long.toString(rootDiskId) + "," + Long.toString(swapDiskId)).getConfigId();
 
 		// now boot the machine
 		linodeApi.getLinodeBoot(linodeId, configId);
 
 		return(linodeId);
 	}
-	
+
 	public void destroyLinode(Long linodeId) throws ApiException {
 		linodeApi.getLinodeDelete(linodeId, true);
 	}

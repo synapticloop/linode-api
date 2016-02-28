@@ -15,31 +15,31 @@ public class LinodeApiHighLevelTest {
 
 	@Test
 	public void testLinodeCreateAndDestroy() throws ApiException {
-		Long linodeId = linodeApiHighLevel.createLinode(TestHelper.getDatacenterId(), 
-				TestHelper.getPlanId(), 
-				TestHelper.getUbuntuDistribution(), 
+		Long linodeId = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+				PlanSlug.LINODE_1024,
+				DistributionSlug.UBUNTU_14_04_LTS,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
 				"LINODE-API-HIGH-LEVEL", 
-				"^&*678yuiYUI", 
-				true);
+				"^&*678yuiYUI");
 		linodeApiHighLevel.destroyLinode(linodeId);
 	}
 
 	@Test
 	public void testLinodeNodeBalancer() throws ApiException {
-		Long linodeIdOne = linodeApiHighLevel.createLinode(TestHelper.getDatacenterId(), 
-				TestHelper.getPlanId(), 
-				TestHelper.getUbuntuDistribution(), 
+		Long linodeIdOne = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+				PlanSlug.LINODE_1024,
+				DistributionSlug.UBUNTU_14_04_LTS,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
 				"LINODE-API-HIGH-LEVEL-1", 
-				"^&*678yuiYUI", 
-				true);
-		Long linodeIdTwo = linodeApiHighLevel.createLinode(TestHelper.getDatacenterId(), 
-				TestHelper.getPlanId(), 
-				TestHelper.getUbuntuDistribution(), 
+				"^&*678yuiYUI");
+		Long linodeIdTwo = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+				PlanSlug.LINODE_1024,
+				DistributionSlug.UBUNTU_14_04_LTS,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
 				"LINODE-API-HIGH-LEVEL-2", 
-				"^&*678yuiYUI", 
-				true);
+				"^&*678yuiYUI");
 
-		
+
 		linodeApiHighLevel.destroyLinode(linodeIdOne);
 		linodeApiHighLevel.destroyLinode(linodeIdTwo);
 	}
