@@ -5,6 +5,7 @@ plugins {
 	id "maven-publish"
 	id 'net.saliman.cobertura' version '2.2.6'
 	id "com.jfrog.bintray" version "1.4"
+	id 'co.riiid.gradle' version '0.4.2'
 }
 
 group = 'synapticloop'
@@ -154,5 +155,17 @@ bintray {
 		repo = 'maven'
 		name = 'linode-api'
 	}
+}
 
+github {
+	owner = group
+	repo = archivesBaseName
+	if(System.getenv('GITHUB_TOKEN')) {
+		token = System.getenv('GITHUB_TOKEN')
+	}
+	tagName = version
+	name = version
+	assets = [
+		'build/libs/' + archivesBaseName + '-' + version + '.jar'
+	]
 }
