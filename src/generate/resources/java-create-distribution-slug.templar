@@ -1,0 +1,18 @@
+package synapticloop.linode;{\n}
+{\n}
+public enum DistributionSlug {{{\n}
+	{loop distributions as distribution}
+		{\t}{fn:slug[distribution.label]} ({distribution.distributionId}l)
+		{if !distributionStatus.last},{else};{endif}{\n}
+	{endloop}
+{\n}
+{\t}private final Long distributionId;{\n}
+{\n}
+{\t}DistributionSlug(Long distributionId) {{{\n}
+{\t}{\t}this.distributionId = distributionId;{\n}
+{\t}}{\n}
+{\n}
+{\t}public Long distributionId() {{{\n}
+{\t}{\t}return(distributionId);{\n}
+{\t}}{\n}
+}{\n}

@@ -1,0 +1,18 @@
+package synapticloop.linode;{\n}
+{\n}
+public enum PlanSlug {{{\n}
+	{loop linodePlans as linodeplan}
+		{\t}{fn:slug[linodeplan.label]} ({linodeplan.planId}l)
+		{if !linodeplanStatus.last},{else};{endif}{\n}
+	{endloop}
+{\n}
+{\t}private final Long planId;{\n}
+{\n}
+{\t}PlanSlug(Long planId) {{{\n}
+{\t}{\t}this.planId = planId;{\n}
+{\t}}{\n}
+{\n}
+{\t}public Long planId() {{{\n}
+{\t}{\t}return(planId);{\n}
+{\t}}{\n}
+}{\n}

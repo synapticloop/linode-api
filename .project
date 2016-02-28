@@ -2,7 +2,7 @@
 <projectDescription>
 	<filteredResources>
 		<filter>
-			<id>1447172708212</id>
+			<id>1456564207954</id>
 			<name/>
 			<type>26</type>
 			<matcher>
@@ -11,7 +11,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1447172708220</id>
+			<id>1456564208233</id>
 			<name/>
 			<type>26</type>
 			<matcher>
@@ -24,8 +24,8 @@
 	<comment>linode-api</comment>
 	<projects/>
 	<natures>
-		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 	</natures>
 	<buildSpec>
 		<buildCommand>

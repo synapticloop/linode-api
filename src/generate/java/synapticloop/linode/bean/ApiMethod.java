@@ -1,6 +1,7 @@
 package synapticloop.linode.bean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,105 @@ public class ApiMethod {
 	private String exampleResponse = null;
 	private String[] exampleResponses = null;
 	private List<String> apiErrors = new ArrayList<String>();
+
+	// this is used to ensure we have nice names to lookup
+	private static Map<String, String> methodNameLookup = new HashMap<String, String>();
+	static {
+		methodNameLookup.put("resourcecreate", "ResourceCreate");
+		methodNameLookup.put("delete", "Delete");
+		methodNameLookup.put("list", "List");
+		methodNameLookup.put("update", "Update");
+		methodNameLookup.put("datacenters", "Datacenters");
+		methodNameLookup.put("distributions", "Distributions");
+		methodNameLookup.put("kernels", "Kernels");
+		methodNameLookup.put("linodeplans", "LinodePlans");
+		methodNameLookup.put("nodebalancers", "NodeBalancers");
+		methodNameLookup.put("stackscripts", "Stackscripts");
+		methodNameLookup.put("create", "Create");
+		methodNameLookup.put("echo", "Echo");
+		methodNameLookup.put("resourcedelete", "ResourceDelete");
+		methodNameLookup.put("resourcecreate", "ResourceCreate");
+		methodNameLookup.put("resourcelist", "ResourceList");
+		methodNameLookup.put("resourceupdate", "ResourceUpdate");
+		methodNameLookup.put("boot", "Boot");
+		methodNameLookup.put("clone", "Clone");
+		methodNameLookup.put("configdelete", "ConfigDelete");
+		methodNameLookup.put("configcreate", "ConfigCreate");
+		methodNameLookup.put("configlist", "ConfigList");
+		methodNameLookup.put("configupdate", "ConfigUpdate");
+		methodNameLookup.put("diskcreate", "DiskCreate");
+		methodNameLookup.put("diskcreatefromdistribution", "DiskCreateFromDistribution");
+		methodNameLookup.put("diskcreatefromimage", "DiskCreateFromImage");
+		methodNameLookup.put("diskcreatefromstackscript", "DiskCreateFromStackscript");
+		methodNameLookup.put("diskdelete", "DiskDelete");
+		methodNameLookup.put("diskduplicate", "DiskDuplicate");
+		methodNameLookup.put("diskimagize", "DiskImagize");
+		methodNameLookup.put("disklist", "DiskList");
+		methodNameLookup.put("diskresize", "DiskResize");
+		methodNameLookup.put("diskupdate", "DiskUpdate");
+		methodNameLookup.put("ipaddprivate", "IpAddressPrivate");
+		methodNameLookup.put("ipaddpublic", "IpAddressPublic");
+		methodNameLookup.put("iplist", "IpList");
+		methodNameLookup.put("ipsetrdns", "IpSetRdns");
+		methodNameLookup.put("ipswap", "IpSwap");
+		methodNameLookup.put("joblist", "JobList");
+		methodNameLookup.put("reboot", "Reboot");
+		methodNameLookup.put("resize", "Resize");
+		methodNameLookup.put("shutdown", "Shutdown");
+		methodNameLookup.put("configcreate", "ConfigCreate");
+		methodNameLookup.put("configdelete", "ConfigDelete");
+		methodNameLookup.put("configlist", "ConfigList");
+		methodNameLookup.put("configupdate", "ConfigUpdate");
+		methodNameLookup.put("nodecreate", "NodeCreate");
+		methodNameLookup.put("nodedelete", "NodeDelete");
+		methodNameLookup.put("nodelist", "NodeList");
+		methodNameLookup.put("nodeupdate", "NodeUpdate");
+		methodNameLookup.put("spec", "Spec");
+		methodNameLookup.put("getapikey", "GetApiKey");
+		methodNameLookup.put("estimateinvoice", "EstimateInvoice");
+		methodNameLookup.put("info", "Info");
+	}
+
+	private static Map<String, String> responseNameLookup = new HashMap<String, String>();
+	static {
+		responseNameLookup.put("delete", "");
+		responseNameLookup.put("create", "");
+		responseNameLookup.put("list", "List");
+		responseNameLookup.put("update", "");
+
+		responseNameLookup.put("resourcecreate", "Resource");
+		responseNameLookup.put("resourcedelete", "Resource");
+		responseNameLookup.put("resourceupdate", "Resource");
+		
+		responseNameLookup.put("boot", "Job");
+		responseNameLookup.put("reboot", "Job");
+		responseNameLookup.put("shutdown", "Job");
+		responseNameLookup.put("clone", "");
+
+		responseNameLookup.put("configcreate", "Config");
+		responseNameLookup.put("configdelete", "Config");
+		responseNameLookup.put("configupdate", "Config");
+
+		responseNameLookup.put("diskcreate", "Disk");
+		responseNameLookup.put("diskcreatefromdistribution", "Disk");
+		responseNameLookup.put("diskcreatefromimage", "Disk");
+		responseNameLookup.put("diskcreatefromstackscript", "Disk");
+		responseNameLookup.put("diskduplicate", "Disk");
+		responseNameLookup.put("diskresize", "Disk");
+		responseNameLookup.put("diskdelete", "Disk");
+		responseNameLookup.put("diskupdate", "Disk");
+
+		responseNameLookup.put("diskimagize", "Image");
+
+		responseNameLookup.put("ipaddprivate", "Ip");
+		responseNameLookup.put("ipaddpublic", "Ip");
+
+		responseNameLookup.put("nodecreate", "Node");
+		responseNameLookup.put("nodedelete", "Node");
+		responseNameLookup.put("nodeupdate", "Node");
+
+
+	}
 
 	/**
 	 * This maps to one method call for an api
@@ -96,6 +196,13 @@ public class ApiMethod {
 
 	public static Map<String, String> getConstantCache() { return CONSTANT_CACHE; }
 	public String getName() { return this.name; }
+	public String getResponseName() {
+		if(responseNameLookup.containsKey(name)) {
+			return(responseNameLookup.get(name));
+		} else {
+			return(getUpperName());
+		}
+	}
 	public String getDescription() { return this.description; }
 	public List<ApiMethodParam> getApiMethodParams() { return this.apiMethodParams; }
 	public List<String> getDescriptions() { return this.descriptions;}
@@ -113,6 +220,14 @@ public class ApiMethod {
 		}
 
 		return this.exampleResponses; 
+	}
+
+	public String getUpperName() {
+		if(methodNameLookup.containsKey(name)) {
+			return(methodNameLookup.get(name));
+		} else {
+			throw new RuntimeException("Cannot lookup name of '" + name + "'.");
+		}
 	}
 
 	public void addApiError(String apiError) {
