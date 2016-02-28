@@ -11,7 +11,6 @@ import synapticloop.linode.api.response.LinodeConfigResponse;
 import synapticloop.linode.api.response.LinodeDiskResponse;
 import synapticloop.linode.api.response.LinodeJobResponse;
 import synapticloop.linode.api.response.LinodeResponse;
-import synapticloop.linode.api.response.bean.Config;
 import synapticloop.linode.api.response.bean.Datacenter;
 import synapticloop.linode.api.response.bean.Disk;
 import synapticloop.linode.api.response.bean.Distribution;
@@ -98,8 +97,8 @@ public class LinodeApiLinodeCreateTest {
 		LinodeConfigResponse linodeConfigCreateResponse = linodeApi.getLinodeConfigCreate(linodeId, kernel.getKernelId(), "LINODE-API-TEST", Long.toString(diskId) + "," + Long.toString(swapDiskId));
 		assertFalse(linodeConfigCreateResponse.hasErrors());
 
-		List<Config> configs = linodeApi.getLinodeConfigList(linodeId).getConfigs();
-		
+		linodeApi.getLinodeConfigList(linodeId).getConfigs();
+
 		LinodeJobResponse linodeBootResponse = linodeApi.getLinodeBoot(linodeId, linodeConfigCreateResponse.getConfigId());
 		assertFalse(linodeBootResponse.hasErrors());
 

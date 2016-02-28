@@ -81,7 +81,7 @@ public class Config {
 		jsonObject.remove("KernelID");
 		this.numRootDevice = jsonObject.getInt("RootDeviceNum");
 		jsonObject.remove("RootDeviceNum");
-		this.helperLibTls = jsonObject.getBoolean("helper_libtls");
+		this.helperLibTls = (1 == jsonObject.getInt("helper_libtls"));
 		jsonObject.remove("helper_libtls");
 		this.ramLimit = jsonObject.getLong("RAMLimit");
 		jsonObject.remove("RAMLimit");
