@@ -39,6 +39,8 @@ public class LinodeApiAvailTest {
 	public void testAvailDistributions() throws ApiException {
 		AvailDistributionsResponse availDistributions = linodeApi.getAvailDistributions();
 		List<Distribution> distributions = availDistributions.getDistributions();
+		Long distributionId = distributions.get(0).getDistributionId();
+		assertEquals(distributionId, linodeApi.getAvailDistributions(distributionId).getDistributions().get(0).getDistributionId());
 		assertTrue(distributions.size() > 1);
 		assertFalse(availDistributions.hasErrors());
 	}
@@ -49,15 +51,22 @@ public class LinodeApiAvailTest {
 		List<Kernel> kernels = availKernels.getKernels();
 		assertTrue(kernels.size() > 1);
 		assertFalse(availKernels.hasErrors());
+
+		List<Kernel> allKernels = linodeApi.getAvailKernels(true, true).getKernels();
+
+		List<Kernel> allKernelsXen = linodeApi.getAvailKernels(true, false).getKernels();
+		List<Kernel> allKernelsKvm = linodeApi.getAvailKernels(false, true).getKernels();
 	}
 
 	@Test
 	public void testAvailLinodePlans() throws ApiException {
 		AvailLinodePlansResponse availLinodePlans = linodeApi.getAvailLinodePlans();
 		List<LinodePlan> linodePlans = availLinodePlans.getLinodePlans();
-
 		assertTrue(linodePlans.size() > 1);
 		assertFalse(availLinodePlans.hasErrors());
+		
+		Long planId = linodePlans.get(0).getPlanId();
+		assertEquals(planId, linodeApi.getAvailLinodePlans(planId).getLinodePlans().get(0).getPlanId());
 	}
 
 	@Test
