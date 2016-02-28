@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.exception.ApiException;
 
 public class Job {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Job.class);
@@ -38,7 +39,7 @@ public class Job {
 	 * 
 	 * @param jsonObject
 	 */
-	public Job(JSONObject jsonObject) {
+	public Job(JSONObject jsonObject) throws ApiException {
 		this.enteredDate = ResponseHelper.convertDate(jsonObject.getString("ENTERED_DT"));
 		jsonObject.remove("ENTERED_DT");
 		this.action = jsonObject.getString("ACTION");

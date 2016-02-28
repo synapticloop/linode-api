@@ -10,13 +10,14 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Image;
+import synapticloop.linode.exception.ApiException;
 
 public class ImageListResponse extends BaseResponse {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Image.class);
 
 	private List<Image> images = new ArrayList<Image>();
 
-	public ImageListResponse(JSONObject jsonObject) {
+	public ImageListResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);
 		if(!hasErrors()) {
 			JSONArray jsonArray = jsonObject.getJSONArray(JSON_KEY_DATA);

@@ -2,11 +2,13 @@ package synapticloop.linode.api.response.bean;
 
 import java.util.Date;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.exception.ApiException;
 
 public class Disk {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Disk.class);
@@ -34,8 +36,10 @@ public class Disk {
 	 *       },
 	 * 
 	 * @param jsonObject
+	 * @throws ApiException 
+	 * @throws JSONException 
 	 */
-	public Disk(JSONObject jsonObject) {
+	public Disk(JSONObject jsonObject) throws ApiException {
 		this.updateDate = ResponseHelper.convertDate(jsonObject.getString("UPDATE_DT"));
 		jsonObject.remove("UPDATE_DT");
 		this.diskId = jsonObject.getLong("DISKID");

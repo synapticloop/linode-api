@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Stackscript;
+import synapticloop.linode.exception.ApiException;
 
 public class AvailStackscriptsResponse extends BaseResponse {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AvailStackscriptsResponse.class);
@@ -36,7 +37,7 @@ public class AvailStackscriptsResponse extends BaseResponse {
 	 * 
 	 * @param jsonObject
 	 */
-	public AvailStackscriptsResponse(JSONObject jsonObject) {
+	public AvailStackscriptsResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);
 
 		if(!hasErrors()) {

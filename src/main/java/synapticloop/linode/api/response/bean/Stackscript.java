@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.exception.ApiException;
 
 public class Stackscript {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Stackscript.class);
@@ -47,7 +48,7 @@ public class Stackscript {
 	 *       },
 	 * @param jsonObject
 	 */
-	public Stackscript(JSONObject jsonObject) {
+	public Stackscript(JSONObject jsonObject) throws ApiException {
 		this.script = jsonObject.getString("SCRIPT");
 		jsonObject.remove("SCRIPT");
 		this.description = jsonObject.getString("DESCRIPTION");

@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Disk;
+import synapticloop.linode.exception.ApiException;
 
 public class LinodeDiskListResponse extends BaseResponse {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LinodeDiskListResponse.class);
@@ -20,7 +21,7 @@ public class LinodeDiskListResponse extends BaseResponse {
 	 * 
 	 * @param jsonObject
 	 */
-	public LinodeDiskListResponse(JSONObject jsonObject) {
+	public LinodeDiskListResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);
 		if(!hasErrors()) {
 			JSONArray dataArray = jsonObject.getJSONArray(JSON_KEY_DATA);

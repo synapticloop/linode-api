@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.exception.ApiException;
 
 public class Image {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Image.class);
@@ -23,7 +24,7 @@ public class Image {
 	private String status = null;
 	private String type = null;
 
-	public Image(JSONObject jsonObject) {
+	public Image(JSONObject jsonObject) throws ApiException {
 		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
 		jsonObject.remove("CREATE_DT");
 		this.creator = jsonObject.getString("CREATOR");

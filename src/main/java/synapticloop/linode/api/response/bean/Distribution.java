@@ -2,11 +2,13 @@ package synapticloop.linode.api.response.bean;
 
 import java.util.Date;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.exception.ApiException;
 
 public class Distribution {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Distribution.class);
@@ -29,8 +31,10 @@ public class Distribution {
 	 *       },
 	 * 
 	 * @param jsonObject
+	 * @throws ApiException 
+	 * @throws JSONException 
 	 */
-	public Distribution(JSONObject jsonObject) {
+	public Distribution(JSONObject jsonObject) throws ApiException {
 		this.is64Bit = (1 == jsonObject.getInt("IS64BIT"));
 		jsonObject.remove("IS64BIT");
 

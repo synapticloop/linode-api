@@ -8,13 +8,14 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Image;
+import synapticloop.linode.exception.ApiException;
 
 public class ImageResponse extends BaseResponse {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ImageResponse.class);
 
 	private Image image = null;
 
-	public ImageResponse(JSONObject jsonObject) {
+	public ImageResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);
 		if(!hasErrors()) {
 		this.image = new Image(jsonObject.getJSONArray(JSON_KEY_DATA).getJSONObject(0));

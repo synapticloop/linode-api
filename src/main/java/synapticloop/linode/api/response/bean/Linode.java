@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.exception.ApiException;
 
 public class Linode {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Linode.class);
@@ -70,7 +71,7 @@ public class Linode {
       }	 * 
 	 * @param jsonObject
 	 */
-	public Linode(JSONObject jsonObject) {
+	public Linode(JSONObject jsonObject) throws ApiException {
 		this.numTotalTransfer = jsonObject.getLong("TOTALXFER");
 		jsonObject.remove("TOTALXFER");
 		this.backupsEnabled = (1 == jsonObject.getInt("BACKUPSENABLED"));

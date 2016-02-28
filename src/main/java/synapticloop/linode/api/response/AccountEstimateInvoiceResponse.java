@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.exception.ApiException;
 
 public class AccountEstimateInvoiceResponse extends BaseResponse {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AccountEstimateInvoiceResponse.class);
@@ -14,7 +15,7 @@ public class AccountEstimateInvoiceResponse extends BaseResponse {
 	private Date invoiceTo = null;
 	private Double amount = null;
 
-	public AccountEstimateInvoiceResponse(JSONObject jsonObject) {
+	public AccountEstimateInvoiceResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);
 
 		if(!hasErrors()) {

@@ -2,6 +2,8 @@ package synapticloop.linode.api.response;
 
 import org.json.JSONObject;
 
+import synapticloop.linode.exception.ApiException;
+
 public class StackscriptListResponse extends AvailStackscriptsResponse {
 
 	/**
@@ -25,7 +27,7 @@ public class StackscriptListResponse extends AvailStackscriptsResponse {
 	 * 
 	 * @param jsonObject
 	 */
-	public StackscriptListResponse(JSONObject jsonObject) {
+	public StackscriptListResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);
 	}
 

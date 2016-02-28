@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Distribution;
+import synapticloop.linode.exception.ApiException;
 
 public class AvailDistributionsResponse extends BaseResponse {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AvailDistributionsResponse.class);
@@ -42,7 +43,7 @@ public class AvailDistributionsResponse extends BaseResponse {
 	 * 
 	 * @param jsonObject
 	 */
-	public AvailDistributionsResponse(JSONObject jsonObject) {
+	public AvailDistributionsResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);
 
 		if(!hasErrors()) {

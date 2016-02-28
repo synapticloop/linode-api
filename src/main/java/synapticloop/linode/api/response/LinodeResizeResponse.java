@@ -14,7 +14,7 @@ public class LinodeResizeResponse extends BaseResponse {
 	private String message = null;
 
 	public LinodeResizeResponse(JSONObject jsonObject) {
-		// we are ignoring the rror array as this returns the reponse
+		// we are ignoring the error array as this returns the response
 		super(jsonObject, true);
 
 		JSONArray errorArray = jsonObject.getJSONArray(JSON_KEY_ERRORARRAY);
