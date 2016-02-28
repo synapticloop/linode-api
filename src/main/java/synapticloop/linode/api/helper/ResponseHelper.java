@@ -61,6 +61,5 @@ public class ResponseHelper {
 				throw new ApiException("Could not parse the date '" + dateString + "', exception message was: " + ex.getMessage());
 			}
 		}
-		return(null);
 	}
 }
