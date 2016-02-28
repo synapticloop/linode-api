@@ -17,10 +17,10 @@ public class Job {
 	private Date hostStartDate = null;
 	private Long linodeId = null;
 	private Date HostFinishDate = null;
-	private Long duration = null;
+	private String duration = null;
 	private String hostMessage = null;
 	private Long jobId = null;
-	private boolean hostSuccess = false;
+	private String hostSuccess = null;
 
 	/**
       {
@@ -51,13 +51,13 @@ public class Job {
 		jsonObject.remove("LINODEID");
 		this.HostFinishDate = ResponseHelper.convertDate(jsonObject.getString("HOST_FINISH_DT"));
 		jsonObject.remove("HOST_FINISH_DT");
-		this.duration = jsonObject.getLong("DURATION");
+		this.duration = jsonObject.getString("DURATION");
 		jsonObject.remove("DURATION");
 		this.hostMessage = jsonObject.getString("HOST_MESSAGE");
 		jsonObject.remove("HOST_MESSAGE");
 		this.jobId = jsonObject.getLong("JOBID");
 		jsonObject.remove("JOBID");
-		this.hostSuccess = (1 == jsonObject.getInt("HOST_SUCCESS"));
+		this.hostSuccess = jsonObject.getString("HOST_SUCCESS");
 		jsonObject.remove("HOST_SUCCESS");
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
@@ -87,7 +87,7 @@ public class Job {
 		return this.HostFinishDate;
 	}
 
-	public Long getDuration() {
+	public String getDuration() {
 		return this.duration;
 	}
 
@@ -99,7 +99,7 @@ public class Job {
 		return this.jobId;
 	}
 
-	public boolean getHostSuccess() {
+	public String getHostSuccess() {
 		return this.hostSuccess;
 	}
 

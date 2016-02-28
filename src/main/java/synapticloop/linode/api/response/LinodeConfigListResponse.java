@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import synapticloop.linode.api.response.bean.Config;
 
-public class LinodeConfigListResponse extends AvailStackscriptsResponse {
+public class LinodeConfigListResponse extends BaseResponse {
 	private List<Config> configs = new ArrayList<Config>();
 	/**
 	 * 

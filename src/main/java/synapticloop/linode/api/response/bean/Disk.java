@@ -44,8 +44,12 @@ public class Disk {
 		jsonObject.remove("LABEL");
 		this.type = jsonObject.getString("TYPE");
 		jsonObject.remove("TYPE");
-		this.linodeId = jsonObject.getLong("LinodeID");
+		this.linodeId = jsonObject.optLong("LinodeID", -1l);
+		if(-1l == this.linodeId) {
+			this.linodeId = jsonObject.optLong("LINODEID", -1l);
+		}
 		jsonObject.remove("LinodeID");
+		jsonObject.remove("LINODEID");
 		this.isReadOnly = (1 == jsonObject.getInt("ISREADONLY"));
 		jsonObject.remove("ISREADONLY");
 		this.status = jsonObject.getInt("STATUS");

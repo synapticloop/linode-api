@@ -1,8 +1,14 @@
 package synapticloop.linode.api.response.bean;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Domain {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Domain.class);
+
 	private Long domainId = null;
 	private String description = null;
 	private String type = null;
@@ -15,7 +21,7 @@ public class Domain {
 	private Long numRefreshSeconds = null;
 	private Long numTtlSeconds = null;
 
-	
+
 	/**
 	 *       {
 	 *          "DOMAINID":5093,
@@ -34,15 +40,27 @@ public class Domain {
 	 */
 	public Domain(JSONObject jsonObject) {
 		this.domainId = jsonObject.getLong("DOMAINID");
+		jsonObject.remove("DOMAINID");
 		this.description = jsonObject.getString("DESCRIPTION");
+		jsonObject.remove("DESCRIPTION");
 		this.status = jsonObject.getInt("STATUS");
+		jsonObject.remove("STATUS");
 		this.soaEmail = jsonObject.getString("SOA_EMAIL");
+		jsonObject.remove("SOA_EMAIL");
 		this.domain = jsonObject.getString("DOMAIN");
+		jsonObject.remove("DOMAIN");
 		this.numRetrySeconds = jsonObject.getLong("RETRY_SEC");
+		jsonObject.remove("RETRY_SEC");
 		this.masterIps = jsonObject.getString("MASTER_IPS");
+		jsonObject.remove("MASTER_IPS");
 		this.numExpireSeconds = jsonObject.getLong("EXPIRE_SEC");
+		jsonObject.remove("EXPIRE_SEC");
 		this.numRefreshSeconds = jsonObject.getLong("REFRESH_SEC");
+		jsonObject.remove("REFRESH_SEC");
 		this.numTtlSeconds = jsonObject.getLong("TTL_SEC");
+		jsonObject.remove("TTL_SEC");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 

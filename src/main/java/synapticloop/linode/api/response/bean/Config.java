@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Config {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
+
 	private boolean helperDisableUpdateDb = false;
 	private boolean rootDeviceRO = false;
 	private String rootDeviceCustom = null;
@@ -45,25 +51,42 @@ public class Config {
 	 */
 	public Config(JSONObject jsonObject) {
 		this.helperDepMod = (1 == jsonObject.getInt("helper_disableUpdateDB"));
+		jsonObject.remove("helper_disableUpdateDB");
 		this.rootDeviceRO = jsonObject.getBoolean("RootDeviceRO");
+		jsonObject.remove("RootDeviceRO");
 		this.rootDeviceCustom = jsonObject.getString("RootDeviceCustom");
+		jsonObject.remove("RootDeviceCustom");
 		this.label = jsonObject.getString("Label");
+		jsonObject.remove("Label");
 
 		String[] diskIdList = jsonObject.optString("DiskList", "").split(",");
 		for (String diskId : diskIdList) {
 			diskIds.add(Long.valueOf(diskId));
 		}
+		jsonObject.remove("DiskList");
 
 		this.linodeId = jsonObject.getLong("LinodeID");
+		jsonObject.remove("LinodeID");
 		this.comments = jsonObject.getString("Comments");
+		jsonObject.remove("Comments");
 		this.configId = jsonObject.getLong("ConfigID");
+		jsonObject.remove("ConfigID");
 		this.helperXen = (1 == jsonObject.getInt("helper_xen"));
+		jsonObject.remove("helper_xen");
 		this.runLevel = jsonObject.getString("RunLevel");
+		jsonObject.remove("RunLevel");
 		this.helperDepMod = (1 == jsonObject.getInt("helper_depmod"));
+		jsonObject.remove("helper_depmod");
 		this.kernelID = jsonObject.getLong("KernelID");
+		jsonObject.remove("KernelID");
 		this.numRootDevice = jsonObject.getInt("RootDeviceNum");
+		jsonObject.remove("RootDeviceNum");
 		this.helperLibTls = jsonObject.getBoolean("helper_libtls");
+		jsonObject.remove("helper_libtls");
 		this.ramLimit = jsonObject.getLong("RAMLimit");
+		jsonObject.remove("RAMLimit");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public boolean getHelperDisableUpdateDb() {

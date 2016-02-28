@@ -26,7 +26,26 @@ Major differences:
 
 ### High Level Interface
 
-If this doesn't provide enough options, the low level interface is more verbose, however it provides greater control, but sometimes you just want the simple things done.
+This is desiegned to get a lindode up and running as quickly as possible.  This provides a very small subset of available calls.
+
+```
+	/**
+	 * Create and boot a linode in a datacenter, for a specific plan, using a
+	 * specific distribution.
+	 * 
+	 * @param datacenterId the id of the datacenter to launch the linode in
+	 * @param planId the id of the linode plan 
+	 * @param distributionId the distribution that fills the root disk
+	 * @param password the root password
+	 * @param label the label for this linode
+	 * 
+	 * @return the id of the linode that was created
+	 * 
+	 * @throws ApiException if there was an error creating the linode
+	 */
+	public Long createLinode(Long datacenterId, Long planId, Long distributionId, String label, String password, boolean is64Bit) throws ApiException
+
+```
 
 ### Low Level Interface
 
