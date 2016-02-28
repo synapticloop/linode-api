@@ -73,7 +73,7 @@ public class AvailDatacentersResponse extends BaseResponse {
 	 * }
 	 * </pre>
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
 	 */
 	public AvailDatacentersResponse(JSONObject jsonObject) {
 		super(jsonObject);

@@ -35,7 +35,8 @@ public class AvailStackscriptsResponse extends BaseResponse {
 	 *          USERID: 91886
 	 *       },
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
+	 * @throws ApiException if there was an error converting the date
 	 */
 	public AvailStackscriptsResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);

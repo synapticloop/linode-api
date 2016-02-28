@@ -2,7 +2,6 @@ package synapticloop.linode.api.response.bean;
 
 import java.util.Date;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,9 +29,8 @@ public class Distribution {
 	 *          "REQUIRESPVOPSKERNEL":0
 	 *       },
 	 * 
-	 * @param jsonObject
-	 * @throws ApiException 
-	 * @throws JSONException 
+	 * @param jsonObject the json object to extract the data from
+	 * @throws ApiException if there was an error converting the date 
 	 */
 	public Distribution(JSONObject jsonObject) throws ApiException {
 		this.is64Bit = (1 == jsonObject.getInt("IS64BIT"));

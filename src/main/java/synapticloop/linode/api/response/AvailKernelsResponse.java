@@ -39,7 +39,7 @@ public class AvailKernelsResponse extends BaseResponse {
 	 * }
 	 * </pre>
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
 	 */
 	public AvailKernelsResponse(JSONObject jsonObject) {
 		super(jsonObject);

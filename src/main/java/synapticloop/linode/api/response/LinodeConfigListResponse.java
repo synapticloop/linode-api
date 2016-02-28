@@ -17,7 +17,7 @@ public class LinodeConfigListResponse extends BaseResponse {
 	private List<Config> configs = new ArrayList<Config>();
 	/**
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
 	 */
 	public LinodeConfigListResponse(JSONObject jsonObject) {
 		super(jsonObject);

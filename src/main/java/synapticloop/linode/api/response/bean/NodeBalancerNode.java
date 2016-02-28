@@ -31,7 +31,7 @@ public class NodeBalancerNode {
          NODEBALANCERID: 714
       }
 
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public NodeBalancerNode(JSONObject jsonObject) {
 		this.weight = jsonObject.getInt("WEIGHT");

@@ -35,7 +35,7 @@ public class DomainResource {
 	 *          "NAME":"www"
 	 *       },
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public DomainResource(JSONObject jsonObject) {
 		this.protocol = jsonObject.getString("PROTOCOL");

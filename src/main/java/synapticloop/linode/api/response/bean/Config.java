@@ -47,7 +47,7 @@ public class Config {
 	 *          "RAMLimit":0
 	 *       },
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object
 	 */
 	public Config(JSONObject jsonObject) {
 		this.helperDepMod = (1 == jsonObject.getInt("helper_disableUpdateDB"));

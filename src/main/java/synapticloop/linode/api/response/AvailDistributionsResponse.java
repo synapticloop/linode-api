@@ -41,7 +41,8 @@ public class AvailDistributionsResponse extends BaseResponse {
 	 * }
 	 * </pre>
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
+	 * @throws ApiException if there was an error converting the date
 	 */
 	public AvailDistributionsResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);

@@ -30,7 +30,8 @@ public class AccountInfoResponse extends BaseResponse {
 	 *          "BALANCE":20
 	 *       }
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
+	 * @throws ApiException if there was an error converting the date
 	 */
 	public AccountInfoResponse(JSONObject jsonObject) throws ApiException {
 		super(jsonObject);

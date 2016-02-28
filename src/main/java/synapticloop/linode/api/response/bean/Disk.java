@@ -2,7 +2,6 @@ package synapticloop.linode.api.response.bean;
 
 import java.util.Date;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,9 +34,8 @@ public class Disk {
 	 *          "SIZE":4096
 	 *       },
 	 * 
-	 * @param jsonObject
-	 * @throws ApiException 
-	 * @throws JSONException 
+	 * @param jsonObject the json object to extract the data from
+	 * @throws ApiException if there was an error converting the date
 	 */
 	public Disk(JSONObject jsonObject) throws ApiException {
 		this.updateDate = ResponseHelper.convertDate(jsonObject.getString("UPDATE_DT"));

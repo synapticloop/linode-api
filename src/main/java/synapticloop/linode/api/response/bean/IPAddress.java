@@ -25,7 +25,7 @@ public class IPAddress {
 	 *          "RDNS_NAME":"li22-245.members.linode.com",
 	 *          "IPADDRESSID":5575
 	 *       }
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public IPAddress(JSONObject jsonObject) {
 		this.linodeId = jsonObject.getLong("LINODEID");

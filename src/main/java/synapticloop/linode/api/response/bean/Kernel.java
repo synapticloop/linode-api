@@ -24,6 +24,7 @@ public class Kernel {
 	 *          "KERNELID":123
 	 *       },
 	 * 
+	 * @param jsonObject the json object to extract the data from
 	 */
 
 	public Kernel(JSONObject jsonObject) {

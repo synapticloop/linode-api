@@ -27,7 +27,7 @@ public class LinodeIpSwapResponse extends BaseResponse {
       }
    ],
 
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
 	 */
 	public LinodeIpSwapResponse(JSONObject jsonObject) {
 		super(jsonObject);

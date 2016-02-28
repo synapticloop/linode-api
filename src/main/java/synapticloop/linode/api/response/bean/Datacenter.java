@@ -24,7 +24,7 @@ public class Datacenter {
 	 *          "ABBR":"dallas"
 	 *       },
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public Datacenter(JSONObject jsonObject) {
 		this.datacenterId = jsonObject.getLong(JSON_KEY_DATACENTREID);

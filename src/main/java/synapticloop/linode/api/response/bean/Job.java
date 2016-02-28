@@ -37,7 +37,8 @@ public class Job {
          "HOST_SUCCESS":1
       },
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
+	 * @throws ApiException if there was an error converting the date
 	 */
 	public Job(JSONObject jsonObject) throws ApiException {
 		this.enteredDate = ResponseHelper.convertDate(jsonObject.getString("ENTERED_DT"));

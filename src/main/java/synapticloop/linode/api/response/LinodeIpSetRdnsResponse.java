@@ -19,7 +19,7 @@ public class LinodeIpSetRdnsResponse extends BaseResponse {
       "IPADDRESSID": 5384,
       "IPADDRESS": "69.93.127.10"
    },
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
 	 */
 	public LinodeIpSetRdnsResponse(JSONObject jsonObject) {
 		super(jsonObject);

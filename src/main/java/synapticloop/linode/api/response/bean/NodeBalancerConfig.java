@@ -48,7 +48,7 @@ public class NodeBalancerConfig {
 			SSL_FINGERPRINT:""
       },
 
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public NodeBalancerConfig(JSONObject jsonObject) {
 		this.stickiness = jsonObject.getString("STICKINESS");

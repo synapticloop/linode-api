@@ -20,7 +20,7 @@ public class NodeBalancerPrice {
 	 *         "HOURLY": 0.0300,
 	 *         "CONNECTIONS": 10000
 	 *  }
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public NodeBalancerPrice(JSONObject jsonObject) {
 		this.priceMonthly = jsonObject.getDouble("HOURLY");

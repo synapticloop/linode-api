@@ -36,7 +36,7 @@ public class ApiSpecResponse extends BaseResponse {
 	 *    }
 	 *   }
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to parse
 	 */
 	public ApiSpecResponse(JSONObject jsonObject) {
 		super(jsonObject);

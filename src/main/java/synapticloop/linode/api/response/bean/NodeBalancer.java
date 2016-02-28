@@ -28,7 +28,7 @@ public class NodeBalancer {
          "CLIENTCONNTHROTTLE":4203
       }
 
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public NodeBalancer(JSONObject jsonObject) {
 		this.nodebalancerId = jsonObject.getLong("NODEBALANCERID");

@@ -43,7 +43,7 @@ public class LinodePlan {
 	 *      "HOURLY": 0.03
 	 *    }
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public LinodePlan(JSONObject jsonObject) {
 		this.numCores = jsonObject.getInt("CORES");

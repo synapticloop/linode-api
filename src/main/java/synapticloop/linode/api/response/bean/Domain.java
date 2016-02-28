@@ -36,7 +36,7 @@ public class Domain {
 	 *          "REFRESH_SEC":0,
 	 *          "TTL_SEC":0
 	 * 
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public Domain(JSONObject jsonObject) {
 		this.domainId = jsonObject.getLong("DOMAINID");

@@ -22,7 +22,7 @@ public class Parameter {
 	 *    "REQUIRED": true,
 	 *    "TYPE": "numeric"
 	 *  }
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public Parameter(JSONObject jsonObject) {
 		this.name = jsonObject.getString("NAME");

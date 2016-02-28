@@ -46,7 +46,8 @@ public class Stackscript {
 	 *          ISPUBLIC: 1,
 	 *          USERID: 91886
 	 *       },
-	 * @param jsonObject
+	 * @param jsonObject the json object to extract the data from
+	 * @throws ApiException if there was an error converting the date
 	 */
 	public Stackscript(JSONObject jsonObject) throws ApiException {
 		this.script = jsonObject.getString("SCRIPT");

@@ -26,8 +26,8 @@ public class Method {
 	 *      "PARAMETERS":{},
 	 *      "THROWS":""
 	 *     },
-	 * 
-	 * @param jsonObject
+	 * @param name the name of the method
+	 * @param jsonObject the json object to extract the data from
 	 */
 	public Method(String name, JSONObject jsonObject) {
 		this.name = name;
