@@ -12,6 +12,12 @@ public class ApiError {
 	private Integer errorCode = null;
 	private String errorMessage = null;
 
+	/**
+	 * Instantiate an APIError object by extracting the relevant data from the
+	 * json object.
+	 * 
+	 * @param jsonObject the json object to extract the data from
+	 */
 	public ApiError(JSONObject jsonObject) {
 		this.errorCode = jsonObject.getInt("ERRORCODE");
 		jsonObject.remove("ERRORCODE");
@@ -21,10 +27,20 @@ public class ApiError {
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
+	/**
+	 * return the error code associated with the API
+	 * 
+	 * @return the error code
+	 */
 	public Integer getErrorCode() {
 		return this.errorCode;
 	}
 
+	/**
+	 * Return the human readable error message for this error
+	 * 
+	 * @return the human readable error message for this error
+	 */
 	public String getErrorMessage() {
 		return this.errorMessage;
 	}
