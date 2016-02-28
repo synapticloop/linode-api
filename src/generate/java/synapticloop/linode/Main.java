@@ -2,8 +2,8 @@ package synapticloop.linode;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,14 +22,12 @@ import synapticloop.linode.bean.ApiMethod;
 import synapticloop.linode.bean.ApiMethodParam;
 import synapticloop.linode.bean.ErrorCodeMapper;
 import synapticloop.linode.logger.SimpleLogger;
-import synapticloop.templar.Parser;
-import synapticloop.templar.exception.ParseException;
-import synapticloop.templar.exception.RenderException;
-import synapticloop.templar.utils.TemplarContext;
 
 public class Main {
 	private static final String API_DOCS_DIRECTORY = "./api-docs";
-	private static final String JAVA_SRC_OUTPUT_DIRECTORY = "./src/main/java/synapticloop/linode/api/";
+	private static final String JAVA_SRC_API_OUTPUT_DIRECTORY = "./src/main/java/synapticloop/linode/api/request/";
+	private static final String JAVA_SRC_LINODE_API_OUTPUT_DIRECTORY = "./src/main/java/synapticloop/linode/";
+
 	private static final int NODE_TEXT = 0;
 	private static final int NODE_STRONG = 1;
 	private static final int NODE_SMALL = 2;
@@ -59,30 +57,9 @@ public class Main {
 	};
 
 	private static Map<String, Api> apiBeanCache = new HashMap<String, Api>();
+	private static List<Api> apis = new ArrayList<Api>();
 
-	public static void main(String[] args) throws ParseException, RenderException, IOException {
-		// here we are going to walk the directory and parse the documentation
-		File apiDocsDirectory = new File(API_DOCS_DIRECTORY);
-		parseFiles(apiDocsDirectory.listFiles(fileFilter));
 
-		new File(JAVA_SRC_OUTPUT_DIRECTORY).mkdirs();
-
-		// now that we have all of the apis
-		Iterator<String> iterator = apiBeanCache.keySet().iterator();
-		while (iterator.hasNext()) {
-			String key = (String) iterator.next();
-			Api api = apiBeanCache.get(key);
-			TemplarContext templarContext = new TemplarContext();
-			templarContext.add("api", api);
-			Parser parser = new Parser(Main.class.getResourceAsStream("/java-create-api.templar"));
-			String pathname = JAVA_SRC_OUTPUT_DIRECTORY + api.getClassName() + ".java";
-			SimpleLogger.log("Generating for: " + api.getClassName());
-			File outFile = new File(pathname);
-			FileWriter fileWriter = new FileWriter(outFile);
-			fileWriter.write(parser.render(templarContext));
-			fileWriter.close();
-		}
-	}
 
 	private static void parseFiles(File[] files) {
 		for (File file : files) {
@@ -195,4 +172,6 @@ public class Main {
 	private static String getLocation(String fileName) {
 		return("http:/" + fileName.substring(fileName.indexOf(API_DOCS_DIRECTORY) + API_DOCS_DIRECTORY.length(), fileName.lastIndexOf("/")));
 	}
+
+	
 }
