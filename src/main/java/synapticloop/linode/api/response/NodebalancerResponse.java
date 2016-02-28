@@ -14,12 +14,12 @@ public class NodebalancerResponse extends BaseResponse {
 	public NodebalancerResponse(JSONObject jsonObject) {
 		super(jsonObject);
 		if(!hasErrors()) {
-			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
 			this.nodebalancerId = dataObject.getLong("NodeBalancerID");
 			dataObject.remove("NodeBalancerID");
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

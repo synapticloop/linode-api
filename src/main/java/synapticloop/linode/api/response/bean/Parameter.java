@@ -37,7 +37,7 @@ public class Parameter {
 		this.type = jsonObject.getString("TYPE");
 		jsonObject.remove("TYPE");
 
-		// we are removing the default value - but not addigning it
+		// we are removing the default value - but not adding it as the type varies
 		jsonObject.remove("default");
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);

@@ -19,13 +19,13 @@ public class NodebalancerConfigListResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONArray jsonArray = jsonObject.getJSONArray("DATA");
+			JSONArray jsonArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 			for (Object object : jsonArray) {
 				nodeBalancerConfigs.add(new NodeBalancerConfig((JSONObject)object));
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

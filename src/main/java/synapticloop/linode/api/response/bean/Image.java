@@ -3,10 +3,14 @@ package synapticloop.linode.api.response.bean;
 import java.util.Date;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
 public class Image {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Image.class);
+
 	private Date createDate = null;
 	private String creator = null;
 	private String description = null;
@@ -21,16 +25,29 @@ public class Image {
 
 	public Image(JSONObject jsonObject) {
 		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
+		jsonObject.remove("CREATE_DT");
 		this.creator = jsonObject.getString("CREATOR");
+		jsonObject.remove("CREATOR");
 		this.description = jsonObject.getString("DESCRIPTION");
+		jsonObject.remove("DESCRIPTION");
 		this.fileSystemType = jsonObject.getString("FS_TYPE");
+		jsonObject.remove("FS_TYPE");
 		this.imageId = jsonObject.getLong("IMAGEID");
+		jsonObject.remove("IMAGEID");
 		this.isPublic = (1 == jsonObject.getInt("ISPUBLIC"));
+		jsonObject.remove("ISPUBLIC");
 		this.label = jsonObject.getString("LABEL");
+		jsonObject.remove("LABEL");
 		this.lastUsedDate = ResponseHelper.convertDate(jsonObject.getString("LAST_USED_DT"));
+		jsonObject.remove("LAST_USED_DT");
 		this.minSize = jsonObject.getLong("MINSIZE");
+		jsonObject.remove("MINSIZE");
 		this.status = jsonObject.getString("STATUS");
+		jsonObject.remove("STATUS");
 		this.type = jsonObject.getString("TYPE");
+		jsonObject.remove("TYPE");
+
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
 	public Date getCreateDate() {

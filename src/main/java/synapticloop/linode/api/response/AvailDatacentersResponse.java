@@ -79,7 +79,7 @@ public class AvailDatacentersResponse extends BaseResponse {
 		super(jsonObject);
 		
 		if(!hasErrors()) {
-			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			JSONArray dataArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 	
 			for (Object datacentreObject : dataArray) {
 				Datacenter datacenter = new Datacenter((JSONObject)datacentreObject);
@@ -89,7 +89,7 @@ public class AvailDatacentersResponse extends BaseResponse {
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

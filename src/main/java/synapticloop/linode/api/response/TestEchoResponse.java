@@ -18,7 +18,7 @@ public class TestEchoResponse extends BaseResponse {
 	public TestEchoResponse(JSONObject jsonObject) {
 		super(jsonObject);
 		if(!hasErrors()) {
-			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
 			Iterator<String> keys = dataObject.keys();
 			while (keys.hasNext()) {
 				String key = (String) keys.next();
@@ -26,7 +26,7 @@ public class TestEchoResponse extends BaseResponse {
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

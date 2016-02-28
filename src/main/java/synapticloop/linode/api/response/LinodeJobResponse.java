@@ -15,14 +15,14 @@ public class LinodeJobResponse extends BaseResponse {
 		super(jsonObject);
 		
 		if(!hasErrors()) {
-			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
 			this.jobId = dataObject.getLong("JobID");
 			dataObject.remove("JobID");
 
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

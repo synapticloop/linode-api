@@ -20,13 +20,13 @@ public class LinodeIpListResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONArray ipArray = jsonObject.getJSONArray("DATA");
+			JSONArray ipArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 			for (Object object : ipArray) {
 				getIpAddresses().add(new IPAddress((JSONObject)object));
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

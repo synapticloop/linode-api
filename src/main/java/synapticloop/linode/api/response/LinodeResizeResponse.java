@@ -25,7 +25,7 @@ public class LinodeResizeResponse extends BaseResponse {
 		}
 
 		jsonObject.remove("ERRORARRAY");
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

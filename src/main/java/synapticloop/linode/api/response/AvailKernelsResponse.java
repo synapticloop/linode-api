@@ -44,7 +44,7 @@ public class AvailKernelsResponse extends BaseResponse {
 	public AvailKernelsResponse(JSONObject jsonObject) {
 		super(jsonObject);
 		if(!hasErrors()) {
-			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			JSONArray dataArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 
 			for (Object KernelObject : dataArray) {
 				Kernel kernel = new Kernel((JSONObject)KernelObject);
@@ -52,7 +52,7 @@ public class AvailKernelsResponse extends BaseResponse {
 				kernelIdLookup.put(kernel.getKernelId(), kernel);
 			}
 		}
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

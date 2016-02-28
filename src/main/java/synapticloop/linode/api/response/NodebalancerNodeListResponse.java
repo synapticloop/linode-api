@@ -9,11 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
-import synapticloop.linode.api.response.bean.Job;
 import synapticloop.linode.api.response.bean.NodeBalancerNode;
 
 public class NodebalancerNodeListResponse extends BaseResponse {
-	private static final Logger LOGGER = LoggerFactory.getLogger(Job.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(NodebalancerNodeListResponse.class);
 
 	List<NodeBalancerNode> nodeBalancerNodes = new ArrayList<NodeBalancerNode>();
 
@@ -21,13 +20,13 @@ public class NodebalancerNodeListResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			JSONArray dataArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 			for (Object object : dataArray) {
 				nodeBalancerNodes.add(new NodeBalancerNode((JSONObject)object));
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

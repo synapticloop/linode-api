@@ -33,7 +33,7 @@ public class LinodeIpSwapResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			JSONArray dataArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 			switch (dataArray.length()) {
 			case 2:
 				ipAddressTo = new IPAddress(dataArray.getJSONObject(1));
@@ -45,7 +45,7 @@ public class LinodeIpSwapResponse extends BaseResponse {
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

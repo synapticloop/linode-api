@@ -46,7 +46,7 @@ public class AvailDistributionsResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			JSONArray dataArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 			for (Object distributionObject : dataArray) {
 				Distribution distribution = new Distribution((JSONObject)distributionObject);
 				distributions.add(distribution);
@@ -54,7 +54,7 @@ public class AvailDistributionsResponse extends BaseResponse {
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

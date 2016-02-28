@@ -12,7 +12,7 @@ import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.NodeBalancer;
 
 public class NodebalancerListResponse extends BaseResponse {
-	private static final Logger LOGGER = LoggerFactory.getLogger(ApiSpecResponse.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(NodebalancerListResponse.class);
 
 	private List<NodeBalancer> nodeBalancers = new ArrayList<NodeBalancer>();
 
@@ -20,13 +20,13 @@ public class NodebalancerListResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			JSONArray dataArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 			for (Object object : dataArray) {
 				nodeBalancers.add(new NodeBalancer((JSONObject)object));
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

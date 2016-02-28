@@ -16,7 +16,7 @@ public class LinodeDiskResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
 			this.jobId = dataObject.getLong("JobID");
 			dataObject.remove("JobID");
 			this.diskId = dataObject.getLong("DiskID");
@@ -25,7 +25,7 @@ public class LinodeDiskResponse extends BaseResponse {
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

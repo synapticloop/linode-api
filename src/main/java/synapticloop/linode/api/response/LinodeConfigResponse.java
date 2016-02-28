@@ -14,14 +14,14 @@ public class LinodeConfigResponse extends BaseResponse {
 	public LinodeConfigResponse(JSONObject jsonObject) {
 		super(jsonObject);
 		if(!hasErrors()) {
-			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
 			this.configId = dataObject.getLong("ConfigID");
 			dataObject.remove("ConfigID");
 
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

@@ -16,7 +16,7 @@ public class LinodeIpResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
 
 			// for both of these - for some unknown reason, the key is all UPPERCASE 
 			// (private ip addresses)
@@ -37,7 +37,7 @@ public class LinodeIpResponse extends BaseResponse {
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

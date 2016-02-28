@@ -35,7 +35,7 @@ public class AccountInfoResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
 			this.activeSince = ResponseHelper.convertDate(dataObject.getString("ACTIVE_SINCE"));
 			dataObject.remove("ACTIVE_SINCE");
 			this.transferPool = dataObject.getLong("TRANSFER_POOL");
@@ -54,7 +54,7 @@ public class AccountInfoResponse extends BaseResponse {
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

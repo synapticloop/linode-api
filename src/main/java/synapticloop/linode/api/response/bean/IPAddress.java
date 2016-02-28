@@ -41,18 +41,23 @@ public class IPAddress {
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
+
 	public Long getLinodeId() {
 		return this.linodeId;
 	}
+
 	public boolean getIsPublic() {
 		return this.isPublic;
 	}
+
 	public String getIpAddress() {
 		return this.ipAddress;
 	}
+
 	public String getReverseDNSName() {
 		return this.reverseDNSName;
 	}
+
 	public Long getIpAddressId() {
 		return this.ipAddressId;
 	}

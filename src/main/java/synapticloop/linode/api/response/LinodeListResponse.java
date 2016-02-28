@@ -18,12 +18,12 @@ public class LinodeListResponse extends BaseResponse {
 	public LinodeListResponse(JSONObject jsonObject) {
 		super(jsonObject);
 		if(!hasErrors()) {
-			JSONArray dataArray = jsonObject.getJSONArray("DATA");
+			JSONArray dataArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 			for (Object object : dataArray) {
 				linodes.add(new Linode((JSONObject)object));
 			}
 		}
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

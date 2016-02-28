@@ -43,7 +43,7 @@ public class ApiSpecResponse extends BaseResponse {
 
 		if(!hasErrors()) {
 
-			JSONObject dataObject = jsonObject.getJSONObject("DATA");
+			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
 			this.version = dataObject.getDouble("VERSION");
 			dataObject.remove("VERSION");
 
@@ -59,7 +59,7 @@ public class ApiSpecResponse extends BaseResponse {
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 

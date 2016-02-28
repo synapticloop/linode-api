@@ -3,15 +3,25 @@ package synapticloop.linode.api.response;
 import java.util.Date;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.api.response.bean.Image;
 
 public class ImageResponse extends BaseResponse {
+	private static final Logger LOGGER = LoggerFactory.getLogger(ImageResponse.class);
+
 	private Image image = null;
 
 	public ImageResponse(JSONObject jsonObject) {
 		super(jsonObject);
-		this.image = new Image(jsonObject.getJSONArray("DATA").getJSONObject(0));
+		if(!hasErrors()) {
+		this.image = new Image(jsonObject.getJSONArray(JSON_KEY_DATA).getJSONObject(0));
+		}
+		jsonObject.remove(JSON_KEY_DATA);
+		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
+		
 	}
 
 	public Date getCreateDate() {

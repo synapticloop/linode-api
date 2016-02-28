@@ -23,7 +23,7 @@ public class AvailLinodePlansResponse extends BaseResponse {
 		super(jsonObject);
 
 		if(!hasErrors()) {
-			JSONArray jsonArray = jsonObject.getJSONArray("DATA");
+			JSONArray jsonArray = jsonObject.getJSONArray(JSON_KEY_DATA);
 			for (Object object : jsonArray) {
 				LinodePlan linodePlan = new LinodePlan((JSONObject)object);
 				linodePlans.add(linodePlan);
@@ -31,7 +31,7 @@ public class AvailLinodePlansResponse extends BaseResponse {
 			}
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

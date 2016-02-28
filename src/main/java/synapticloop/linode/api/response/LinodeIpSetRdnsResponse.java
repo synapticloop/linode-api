@@ -24,7 +24,7 @@ public class LinodeIpSetRdnsResponse extends BaseResponse {
 	public LinodeIpSetRdnsResponse(JSONObject jsonObject) {
 		super(jsonObject);
 		if(!hasErrors()) {
-			jsonObject.getJSONObject("DATA");
+			jsonObject.getJSONObject(JSON_KEY_DATA);
 			this.hostname = jsonObject.getString("HOSTNAME");
 			jsonObject.remove("HOSTNAME");
 			this.ipAddressId = jsonObject.getLong("IPADDRESSID");
@@ -33,7 +33,7 @@ public class LinodeIpSetRdnsResponse extends BaseResponse {
 			jsonObject.remove("IPADDRESS");
 		}
 
-		jsonObject.remove("DATA");
+		jsonObject.remove(JSON_KEY_DATA);
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
