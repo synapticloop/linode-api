@@ -1,0 +1,24 @@
+{
+	"context": {
+		"dependencyLocation": "bintray"
+	},
+	"templates": [
+		{ "type":"inbuilt", "value":"badge-travis-ci" },
+		{ "type":"inbuilt", "value":"badge-bintray" },
+		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
+
+		{ "type":"file", "value":"usage.md" },
+
+		{ "type":"inbuilt", "value":"gradle-build" },
+		{ "type":"inbuilt", "value":"gradle-test" },
+		{ "type":"inbuilt", "value":"test-warn" },
+
+		{ "type":"inbuilt", "value":"logging-slf4j" },
+
+		{ "type":"inbuilt", "value":"dependency-management" },
+
+		{ "type":"inbuilt", "value":"license-mit" },
+
+		{ "type":"inbuilt", "value":"attribution" }
+	]
+}
