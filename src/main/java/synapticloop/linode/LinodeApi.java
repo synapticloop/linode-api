@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
@@ -18,59 +20,11 @@ import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import synapticloop.linode.api.request.AccountRequest;
-import synapticloop.linode.api.request.ApiRequest;
-import synapticloop.linode.api.request.AvailRequest;
-import synapticloop.linode.api.request.DomainRequest;
-import synapticloop.linode.api.request.ImageRequest;
-import synapticloop.linode.api.request.LinodeRequest;
-import synapticloop.linode.api.request.NodebalancerRequest;
-import synapticloop.linode.api.request.StackscriptRequest;
-import synapticloop.linode.api.request.TestRequest;
-import synapticloop.linode.api.request.UserRequest;
-import synapticloop.linode.api.response.AccountEstimateInvoiceResponse;
-import synapticloop.linode.api.response.AccountInfoResponse;
-import synapticloop.linode.api.response.ApiSpecResponse;
-import synapticloop.linode.api.response.AvailDatacentersResponse;
-import synapticloop.linode.api.response.AvailDistributionsResponse;
-import synapticloop.linode.api.response.AvailKernelsResponse;
-import synapticloop.linode.api.response.AvailLinodePlansResponse;
-import synapticloop.linode.api.response.AvailNodeBalancersResponse;
-import synapticloop.linode.api.response.AvailStackscriptsResponse;
-import synapticloop.linode.api.response.DomainListResponse;
-import synapticloop.linode.api.response.DomainResourceListResponse;
-import synapticloop.linode.api.response.DomainResourceResponse;
-import synapticloop.linode.api.response.DomainResponse;
-import synapticloop.linode.api.response.ImageListResponse;
-import synapticloop.linode.api.response.ImageResponse;
-import synapticloop.linode.api.response.LinodeConfigListResponse;
-import synapticloop.linode.api.response.LinodeConfigResponse;
-import synapticloop.linode.api.response.LinodeDiskListResponse;
-import synapticloop.linode.api.response.LinodeDiskResponse;
-import synapticloop.linode.api.response.LinodeImageResponse;
-import synapticloop.linode.api.response.LinodeIpListResponse;
-import synapticloop.linode.api.response.LinodeIpResponse;
-import synapticloop.linode.api.response.LinodeIpSetRdnsResponse;
-import synapticloop.linode.api.response.LinodeIpSwapResponse;
-import synapticloop.linode.api.response.LinodeJobListResponse;
-import synapticloop.linode.api.response.LinodeJobResponse;
-import synapticloop.linode.api.response.LinodeListResponse;
-import synapticloop.linode.api.response.LinodeResizeResponse;
-import synapticloop.linode.api.response.LinodeResponse;
-import synapticloop.linode.api.response.NodebalancerConfigListResponse;
-import synapticloop.linode.api.response.NodebalancerConfigResponse;
-import synapticloop.linode.api.response.NodebalancerListResponse;
-import synapticloop.linode.api.response.NodebalancerNodeListResponse;
-import synapticloop.linode.api.response.NodebalancerNodeResponse;
-import synapticloop.linode.api.response.NodebalancerResponse;
-import synapticloop.linode.api.response.StackscriptListResponse;
-import synapticloop.linode.api.response.StackscriptResponse;
-import synapticloop.linode.api.response.TestEchoResponse;
-import synapticloop.linode.api.response.UserGetApiKeyResponse;
 import synapticloop.linode.exception.ApiException;
+
+import synapticloop.linode.api.request.*;
+import synapticloop.linode.api.response.*;
 
 /**
  * The main class for interacting with the Linode api.
@@ -138,16 +92,11 @@ public class LinodeApi {
 			for (String parameterKey : parameters.keySet()) {
 				postParameters.add(new BasicNameValuePair(parameterKey, parameters.get(parameterKey)));
 			}
+			
 
 			String response = callApi(linodeApiRequest.getAction(), httpPost, postParameters);
 
-			JSONObject jsonResponseObject = new JSONObject(response);
-			JSONArray errorArray = jsonResponseObject.getJSONArray("ERRORARRAY");
-			if(errorArray.length() > 0) {
-				throw new ApiException("Errors occurred in the call, message was: " + errorArray.toString());
-			}
-
-			return(new LinodeApiResponse(jsonResponseObject));
+			return(new LinodeApiResponse(new JSONObject(response)));
 		} catch (JSONException ex) {
 			throw new ApiException(ex);
 		}
@@ -251,7 +200,7 @@ public class LinodeApi {
 	private void throwIfUnsuccessful(String action, int statusCode) throws ApiException {
 		if (statusCode != HttpStatus.SC_OK) {
 			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append("Non-200 HTTP Status code returned: ");
+			stringBuilder.append("Non-200 HTTP Status code returned:");
 			stringBuilder.append(statusCode);
 			stringBuilder.append(" for action '");
 			stringBuilder.append(action);
@@ -2410,7 +2359,7 @@ public class LinodeApi {
 	/**
 	 * <p>Authenticates a Linode Manager user against their username, password, and two-factor 
 	 * token (when enabled), and then returns a new API key, which can be used until it expires. The number of 
-	 * active keys is limited to 20.</p> 
+	 * active keys is limited to 20. Batch requests will be rejected if they include this API action.</p> 
 	 *
 	 * 
 	 * Possible return error codes:
@@ -2435,7 +2384,7 @@ public class LinodeApi {
 	/**
 	 * <p>Authenticates a Linode Manager user against their username, password, and two-factor 
 	 * token (when enabled), and then returns a new API key, which can be used until it expires. The number of 
-	 * active keys is limited to 20.</p> 
+	 * active keys is limited to 20. Batch requests will be rejected if they include this API action.</p> 
 	 * 
 	 * Possible return error codes:
 	 * 

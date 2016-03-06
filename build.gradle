@@ -12,7 +12,7 @@ group = 'synapticloop'
 archivesBaseName = 'linode-api'
 description = """An api for linode"""
 
-version = 'v2.0.0'
+version = 'v2.0.1'
 
 description = """linode-api"""
 
@@ -54,7 +54,9 @@ eclipse {
 
 task generateCompile(type: JavaCompile) {
 	source = sourceSets.generate.java.srcDirs
+	source += sourceSets.main.java.srcDirs
 	classpath = configurations.generateCompile
+	classpath += configurations.compile
 	destinationDir = file("build/classes/generate")
 }
 
@@ -62,19 +64,13 @@ task generate(type: JavaExec) {
 	dependsOn "generateCompile"
 	main = "synapticloop.linode.Main"
 	classpath += configurations.generateRuntime
+	classpath += configurations.runtime
 	classpath += sourceSets.generate.output
-}
-
-task generateCompileSlugs(type: JavaCompile) {
-	source = sourceSets.generate.java.srcDirs
-	source += sourceSets.main.java.srcDirs
-	classpath = configurations.generateCompile
-	classpath += configurations.compile
-	destinationDir = file("build/classes/generate")
+	classpath += sourceSets.main.output
 }
 
 task generateSlugs(type: JavaExec) {
-	dependsOn "generateCompileSlugs"
+	dependsOn "generateCompile"
 	main = "synapticloop.linode.SlugMain"
 	classpath += configurations.generateRuntime
 	classpath += configurations.runtime

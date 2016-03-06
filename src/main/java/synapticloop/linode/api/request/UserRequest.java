@@ -33,7 +33,7 @@ public class UserRequest extends ApiBaseRequest {
 	/**
 	 * <p>Authenticates a Linode Manager user against their username, password, and two-factor 
 	 * token (when enabled), and then returns a new API key, which can be used until it expires. The number of 
-	 * active keys is limited to 20.</p> 
+	 * active keys is limited to 20. Batch requests will be rejected if they include this API action.</p> 
 	 * 
 	 * Example response:
 	 * 
@@ -74,7 +74,7 @@ public class UserRequest extends ApiBaseRequest {
 	/**
 	 * <p>Authenticates a Linode Manager user against their username, password, and two-factor 
 	 * token (when enabled), and then returns a new API key, which can be used until it expires. The number of 
-	 * active keys is limited to 20.</p> 
+	 * active keys is limited to 20. Batch requests will be rejected if they include this API action.</p> 
 	 * 
 	 * Example response:
 	 * 

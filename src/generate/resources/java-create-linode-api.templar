@@ -181,7 +181,7 @@ public class LinodeApi {{{\n}
 {\n}
 {\t}{\t}{\t}if (debug) {{{\n}
 {\t}{\t}{\t}{\t}if(LOGGER.isDebugEnabled()) {{{\n}
-{\t}{\t}{\t}{\t}{\t}LOGGER.debug("Response for end point '{{}', with action '{{}': {{}", API_ENDPOINT, action, response);
+{\t}{\t}{\t}{\t}{\t}LOGGER.debug("Response for end point '{{}', with action '{{}': {{}", API_ENDPOINT, action, response);{\n}
 {\t}{\t}{\t}{\t}}{\n}
 {\t}{\t}{\t}}{\n}
 {\t}{\t}{\t}return(response);{\n}

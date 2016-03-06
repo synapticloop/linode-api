@@ -169,7 +169,7 @@
 		<div class="row">
 			<div class="col-sm-8">
 				<h1 class="h2">user.getapikey()</h1>
-				<p>Authenticates a Linode Manager user against their username, password, and two-factor token (when enabled), and then returns a new API key, which can be used until it expires.  The number of active keys is limited to 20.</p>
+				<p>Authenticates a Linode Manager user against their username, password, and two-factor token (when enabled), and then returns a new API key, which can be used until it expires.  The number of active keys is limited to 20.  Batch requests will be rejected if they include this API action.</p>
 
 
 				
