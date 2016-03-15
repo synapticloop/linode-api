@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/linode-api.svg?branch=master)](https://travis-ci.org/synapticloop/linode-api)[![Download](https://api.bintray.com/packages/synapticloop/maven/linode-api/images/download.svg)](https://bintray.com/synapticloop/maven/linode-api/_latestVersion)[![GitHub Release](https://img.shields.io/github/release/synapticloop/linode-api.svg)](https://github.com/synapticloop/linode-api/releases)
+[![Build Status](https://travis-ci.org/synapticloop/linode-api.svg?branch=master)](https://travis-ci.org/synapticloop/linode-api) [![Download](https://api.bintray.com/packages/synapticloop/maven/linode-api/images/download.svg)](https://bintray.com/synapticloop/maven/linode-api/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/linode-api.svg)](https://github.com/synapticloop/linode-api/releases)
 
 # linode api version 2
 
@@ -28,7 +28,7 @@ Major differences:
 
 ### High Level Interface
 
-This is desiegned to get a lindode up and running as quickly as possible.  This provides a very small subset of available calls.
+This is designed to get a lindode up and running as quickly as possible.  This provides a very small subset of available calls.
 
 ```
 /**
@@ -51,7 +51,23 @@ public Long createLinode(DatacenterSlug datacenter,
 		DistributionSlug distribution, 
 		KernelSlug kernel, 
 		String label,
-		String rootPassword) throws ApiException {
+		String rootPassword) throws ApiException
+
+```
+
+### Finding the IP address(es) of the newly created linode
+
+
+```
+// 'linodeId' is the ID of the newly created linode, the second
+// parameter 'null' is the linode ipAddressId (which we don't know
+// yet...
+
+List<IPAddress> ipAddresses = linodeApi.getLinodeIpList(linodeId, null).getIpAddresses();
+
+for (IPAddress ipAddress : ipAddresses) {
+	System.out.println(ipAddress.getIpAddress() + " is public?: " + ipAddress.getIsPublic());
+}
 
 ```
 
