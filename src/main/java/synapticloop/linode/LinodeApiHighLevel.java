@@ -38,27 +38,21 @@ public class LinodeApiHighLevel {
 
 	/**
 	 * Create and boot a linode in a datacenter, for a specific plan, using a
-	 * specific distribution.
+	 * specific distribution and kernel.
 	 * 
-	 * @param datacenter the id of the datacenter to launch the linode in
-	 * @param plan the id of the linode plan 
-	 * @param distribution the distribution that fills the root disk
-	 * @param kernel the kernel to use
+	 * @param datacenterId the id of the datacenter to launch the linode in
+	 * @param planId the id of the linode plan 
+	 * @param distributionId the distribution that fills the root disk
+	 * @param kernelId the kernel to use
 	 * @param label the label for this linode
 	 * @param rootPassword the root password
 	 * 
 	 * @return the id of the linode that was created
 	 * 
 	 * @throws ApiException if there was an error creating the linode
-	 */
-	public Long createLinode(DatacenterSlug datacenter, PlanSlug plan, DistributionSlug distribution, KernelSlug kernel, String label, String rootPassword) throws ApiException {
+	 */	public Long createLinode(long datacenterId, long planId, long distributionId, long kernelId, String label, String rootPassword) throws ApiException {
 		initialise();
-
-		Long planId = plan.planId();
-		Long datacenterId = datacenter.datacenterId();
 		Long linodeId = linodeApi.getLinodeCreate(datacenterId, planId).getLinodeId();
-		Long distributionId = distribution.distributionId();
-		Long kernelId = kernel.kernelId();
 
 		Long rootDiskId = linodeApi.getLinodeDiskCreateFromDistribution(linodeId, 
 				distributionId, 
@@ -80,6 +74,26 @@ public class LinodeApiHighLevel {
 		linodeApi.getLinodeBoot(linodeId, configId);
 
 		return(linodeId);
+	}
+
+	/**
+	 * Create and boot a linode in a datacenter, for a specific plan, using a
+	 * specific distribution and kernel.
+	 * 
+	 * @param datacenter the id of the datacenter to launch the linode in
+	 * @param plan the id of the linode plan 
+	 * @param distribution the distribution that fills the root disk
+	 * @param kernel the kernel to use
+	 * @param label the label for this linode
+	 * @param rootPassword the root password
+	 * 
+	 * @return the id of the linode that was created
+	 * 
+	 * @throws ApiException if there was an error creating the linode
+	 */
+	public Long createLinode(DatacenterSlug datacenter, PlanSlug plan, DistributionSlug distribution, 
+			KernelSlug kernel, String label, String rootPassword) throws ApiException {
+		return(createLinode(datacenter.datacenterId(), plan.planId(), distribution.distributionId(), kernel.kernelId(), label, rootPassword));
 	}
 
 	public void destroyLinode(Long linodeId) throws ApiException {
