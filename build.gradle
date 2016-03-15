@@ -12,7 +12,7 @@ group = 'synapticloop'
 archivesBaseName = 'linode-api'
 description = """An api for linode"""
 
-version = 'v2.0.1'
+version = 'v2.0.2'
 
 description = """linode-api"""
 
