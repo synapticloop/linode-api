@@ -9,7 +9,7 @@
 
 
 
-> linode-api
+> An api for linode
 
 
 

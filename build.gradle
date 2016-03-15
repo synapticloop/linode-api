@@ -15,12 +15,8 @@ description = """An api for linode"""
 
 version = 'v2.0.2'
 
-description = """linode-api"""
-
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
-
-
 
 repositories {
 	mavenLocal()
