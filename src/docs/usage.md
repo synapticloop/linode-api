@@ -1,7 +1,4 @@
 
-
-# linode api version 2
-
 This supercedes version 1 - which is now considered deprecated.
 
 Major differences:
@@ -28,7 +25,7 @@ Major differences:
 
 ### High Level Interface
 
-This is desiegned to get a lindode up and running as quickly as possible.  This provides a very small subset of available calls.
+This is designed to get a lindode up and running as quickly as possible.  This provides a very small subset of available calls.
 
 ```
 /**
@@ -51,7 +48,23 @@ public Long createLinode(DatacenterSlug datacenter,
 		DistributionSlug distribution, 
 		KernelSlug kernel, 
 		String label,
-		String rootPassword) throws ApiException {
+		String rootPassword) throws ApiException
+
+```
+
+### Finding the IP address(es) of the newly created linode
+
+
+```
+// 'linodeId' is the ID of the newly created linode, the second
+// parameter 'null' is the linode ipAddressId (which we don't know
+// yet...
+
+List<IPAddress> ipAddresses = linodeApi.getLinodeIpList(linodeId, null).getIpAddresses();
+
+for (IPAddress ipAddress : ipAddresses) {
+	System.out.println(ipAddress.getIpAddress() + " is public?: " + ipAddress.getIsPublic());
+}
 
 ```
 
@@ -278,4 +291,3 @@ These are deprecated and the `LinodeApi` or `LinodeApiHighLevel` objects should 
 ### Available API calls
 
 have a look at [https://github.com/synapticloop/linode-api/tree/master/src/main/java/synapticloop/linode/api](https://github.com/synapticloop/linode-api/tree/master/src/main/java/synapticloop/linode/api) for the list of available API classes.
-

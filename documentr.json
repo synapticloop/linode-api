@@ -7,7 +7,7 @@
 		{ "type":"inbuilt", "value":"badge-bintray" },
 		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
 
-		{ "type":"file", "value":"usage.md" },
+		{ "type":"file", "value":"src/docs/usage.md" },
 
 		{ "type":"inbuilt", "value":"gradle-build" },
 		{ "type":"inbuilt", "value":"gradle-test" },
@@ -15,7 +15,10 @@
 
 		{ "type":"inbuilt", "value":"logging-slf4j" },
 
-		{ "type":"inbuilt", "value":"dependency-management" },
+		{ "type":"inbuilt", "value":"publishing-github" },
+		{ "type":"inbuilt", "value":"publishing-bintray" },
+
+		{ "type":"inbuilt", "value":"dependencies" },
 
 		{ "type":"inbuilt", "value":"license-mit" },
 

@@ -1,7 +1,4 @@
-[![Build Status](https://travis-ci.org/synapticloop/linode-api.svg?branch=master)](https://travis-ci.org/synapticloop/linode-api) [![Download](https://api.bintray.com/packages/synapticloop/maven/linode-api/images/download.svg)](https://bintray.com/synapticloop/maven/linode-api/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/linode-api.svg)](https://github.com/synapticloop/linode-api/releases)
-
-# linode api version 2
-
+[![Build Status](https://travis-ci.org/synapticloop/linode-api.svg?branch=master)](https://travis-ci.org/synapticloop/linode-api) [![Download](https://api.bintray.com/packages/synapticloop/maven/linode-api/images/download.svg)](https://bintray.com/synapticloop/maven/linode-api/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/linode-api.svg)](https://github.com/synapticloop/linode-api/releases) 
 This supercedes version 1 - which is now considered deprecated.
 
 Major differences:
@@ -341,11 +338,57 @@ The `--info` switch will also output logging for the tests
 
 **WARNING:** These tests make calls against resources (either API calls to a service provider, or consumption of resources from a service provider) which may contribute to your limits, which may lead to a cost.
 
-# Logging
+# Logging - slf4j
 
-slf4j is the logging framework used for this project.  In order to use a logging framework with this project, sample configurations are below:
+slf4j is the logging framework used for this project.  In order to set up a logging framework with this project, sample configurations are below:
 
 ## Log4j
+
+
+You will need to include dependencies for this - note that the versions may need to be updated.
+
+### Maven
+
+```
+<dependency>
+	<groupId>org.apache.logging.log4j</groupId>
+	<artifactId>log4j-slf4j-impl</artifactId>
+	<version>2.5</version>
+	<scope>runtime</scope>
+</dependency>
+
+<dependency>
+	<groupId>org.apache.logging.log4j</groupId>
+	<artifactId>log4j-core</artifactId>
+	<version>2.5</version>
+	<scope>runtime</scope>
+</dependency>
+
+```
+
+### Gradle &lt; 2.1
+
+```
+dependencies {
+	...
+	runtime(group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.5', ext: 'jar')
+	runtime(group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.5', ext: 'jar')
+	...
+}
+```
+### Gradle &gt;= 2.1
+
+```
+dependencies {
+	...
+	runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.5'
+	runtime 'org.apache.logging.log4j:log4j-core:2.5'
+	...
+}
+```
+
+
+### Setting up the logging:
 
 A sample `log4j2.xml` is below:
 
@@ -364,7 +407,17 @@ A sample `log4j2.xml` is below:
 </Configuration>
 ```
 
-# Dependency Management
+# Artefact Publishing - Github
+
+This project publishes artefacts to [GitHib](https://github.com/)
+
+> Note that the latest version can be found [https://github.com/synapticloop/linode-api/releases](https://github.com/synapticloop/linode-api/releases)
+
+As such, this is not a repository, but a location to download files from.
+
+# Artefact Publishing - Bintray
+
+This project publishes artefacts to [bintray](https://bintray.com/)
 
 > Note that the latest version can be found [https://bintray.com/synapticloop/maven/linode-api/view](https://bintray.com/synapticloop/maven/linode-api/view)
 
@@ -406,18 +459,6 @@ this comes from the jcenter bintray, to set up your repository:
 </settings>
 ```
 
-And now for the dependency
-
-```
-<dependency>
-	<groupId>synapticloop</groupId>
-	<artifactId>linode-api</artifactId>
-	<version>v2.0.0</version>
-	<type>jar</type>
-</dependency>
-```
-
-
 ## gradle setup
 
 Repository
@@ -438,49 +479,89 @@ repositories {
 }
 ```
 
-and then include the dependency:
+## Dependencies - Gradle
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'linode-api', version: 'v2.0.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'linode-api', version: 'v2.0.2', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'linode-api', version: 'v2.0.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'linode-api', version: 'v2.0.2', ext: 'jar')
 }
 ```
 
-or, more simply for versions of gradle greater than 2.4
+or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:linode-api:v2.0.0'
+	runtime 'synapticloop:linode-api:v2.0.2'
 
-	compile 'synapticloop:linode-api:v2.0.0'
+	compile 'synapticloop:linode-api:v2.0.2'
 }
 ```
 
-## Other packages
+## Dependencies - Maven
+
+```
+<dependency>
+	<groupId>synapticloop</groupId>
+	<artifactId>linode-api</artifactId>
+	<version>v2.0.2</version>
+	<type>jar</type>
+</dependency>
+```
+
+## Dependencies - Downloads
 
 
-You may either download the files from [https://bintray.com/synapticloop/maven/linode-api/](https://bintray.com/synapticloop/maven/linode-api/) or from [https://github.com/synapticloop/linode-api/releases](https://github.com/synapticloop/linode-api/releases)
+You will also need to download the following dependencies:
 
-You will also need the dependencies:
 
-### runtime dependencies
 
-  - org.json, json, 20160212: (It may be available on: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
-  - org.apache.httpcomponents, httpclient, 4.3.4: (It may be available on: [bintray](https://bintray.com/org.apache.httpcomponents/maven/httpclient/4.3.4/view#files/org.apache.httpcomponents/httpclient/4.3.4) [mvn central](http://search.maven.org/#artifactdetails|org.apache.httpcomponents|httpclient|4.3.4|jar) [mvn repository](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.3.4) )
-  - org.slf4j, slf4j-api, 1.7.13: (It may be available on: [bintray](https://bintray.com/org.slf4j/maven/slf4j-api/1.7.13/view#files/org.slf4j/slf4j-api/1.7.13) [mvn central](http://search.maven.org/#artifactdetails|org.slf4j|slf4j-api|1.7.13|jar) [mvn repository](http://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.13) )
+### cobertura dependencies
+
+  - net.sourceforge.cobertura:cobertura:2.0.3: (It may be available on one of: [bintray](https://bintray.com/net.sourceforge.cobertura/maven/cobertura/2.0.3/view#files/net.sourceforge.cobertura/cobertura/2.0.3) [mvn central](http://search.maven.org/#artifactdetails|net.sourceforge.cobertura|cobertura|2.0.3|jar))
 
 
 ### compile dependencies
 
-  - org.json, json, 20160212: (It may be available on: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar) [mvn repository](http://mvnrepository.com/artifact/org.json/json/20160212) )
-  - org.apache.httpcomponents, httpclient, 4.3.4: (It may be available on: [bintray](https://bintray.com/org.apache.httpcomponents/maven/httpclient/4.3.4/view#files/org.apache.httpcomponents/httpclient/4.3.4) [mvn central](http://search.maven.org/#artifactdetails|org.apache.httpcomponents|httpclient|4.3.4|jar) [mvn repository](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.3.4) )
-  - org.slf4j, slf4j-api, 1.7.13: (It may be available on: [bintray](https://bintray.com/org.slf4j/maven/slf4j-api/1.7.13/view#files/org.slf4j/slf4j-api/1.7.13) [mvn central](http://search.maven.org/#artifactdetails|org.slf4j|slf4j-api|1.7.13|jar) [mvn repository](http://mvnrepository.com/artifact/org.slf4j/slf4j-api/1.7.13) )
+  - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar))
+  - org.apache.httpcomponents:httpclient:4.3.4: (It may be available on one of: [bintray](https://bintray.com/org.apache.httpcomponents/maven/httpclient/4.3.4/view#files/org.apache.httpcomponents/httpclient/4.3.4) [mvn central](http://search.maven.org/#artifactdetails|org.apache.httpcomponents|httpclient|4.3.4|jar))
+  - org.slf4j:slf4j-api:1.7.13: (It may be available on one of: [bintray](https://bintray.com/org.slf4j/maven/slf4j-api/1.7.13/view#files/org.slf4j/slf4j-api/1.7.13) [mvn central](http://search.maven.org/#artifactdetails|org.slf4j|slf4j-api|1.7.13|jar))
 
 
+### generateCompile dependencies
 
-**NOTE:** You may need to download any dependencies of the above dependencies in turn
+  - synapticloop:templar:v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar))
+  - org.jsoup:jsoup:1.8.3: (It may be available on one of: [bintray](https://bintray.com/org.jsoup/maven/jsoup/1.8.3/view#files/org.jsoup/jsoup/1.8.3) [mvn central](http://search.maven.org/#artifactdetails|org.jsoup|jsoup|1.8.3|jar))
+
+
+### generateRuntime dependencies
+
+  - synapticloop:templar:v1.1.3: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/v1.1.3/view#files/synapticloop/templar/v1.1.3) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|v1.1.3|jar))
+  - org.jsoup:jsoup:1.8.3: (It may be available on one of: [bintray](https://bintray.com/org.jsoup/maven/jsoup/1.8.3/view#files/org.jsoup/jsoup/1.8.3) [mvn central](http://search.maven.org/#artifactdetails|org.jsoup|jsoup|1.8.3|jar))
+
+
+### runtime dependencies
+
+  - org.json:json:20160212: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160212/view#files/org.json/json/20160212) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160212|jar))
+  - org.apache.httpcomponents:httpclient:4.3.4: (It may be available on one of: [bintray](https://bintray.com/org.apache.httpcomponents/maven/httpclient/4.3.4/view#files/org.apache.httpcomponents/httpclient/4.3.4) [mvn central](http://search.maven.org/#artifactdetails|org.apache.httpcomponents|httpclient|4.3.4|jar))
+  - org.slf4j:slf4j-api:1.7.13: (It may be available on one of: [bintray](https://bintray.com/org.slf4j/maven/slf4j-api/1.7.13/view#files/org.slf4j/slf4j-api/1.7.13) [mvn central](http://search.maven.org/#artifactdetails|org.slf4j|slf4j-api|1.7.13|jar))
+
+
+### testCompile dependencies
+
+  - junit:junit:4.7: (It may be available on one of: [bintray](https://bintray.com/junit/maven/junit/4.7/view#files/junit/junit/4.7) [mvn central](http://search.maven.org/#artifactdetails|junit|junit|4.7|jar))
+  - org.apache.logging.log4j:log4j-slf4j-impl:2.5: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-slf4j-impl/2.5/view#files/org.apache.logging.log4j/log4j-slf4j-impl/2.5) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-slf4j-impl|2.5|jar))
+  - org.apache.logging.log4j:log4j-core:2.5: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-core/2.5/view#files/org.apache.logging.log4j/log4j-core/2.5) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-core|2.5|jar))
+
+
+### testRuntime dependencies
+
+  - junit:junit:4.7: (It may be available on one of: [bintray](https://bintray.com/junit/maven/junit/4.7/view#files/junit/junit/4.7) [mvn central](http://search.maven.org/#artifactdetails|junit|junit|4.7|jar))
+  - org.apache.logging.log4j:log4j-slf4j-impl:2.5: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-slf4j-impl/2.5/view#files/org.apache.logging.log4j/log4j-slf4j-impl/2.5) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-slf4j-impl|2.5|jar))
+  - org.apache.logging.log4j:log4j-core:2.5: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-core/2.5/view#files/org.apache.logging.log4j/log4j-core/2.5) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-core|2.5|jar))
+
+**NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
 # License
 
@@ -511,7 +592,7 @@ SOFTWARE.
 
 --
 
-> `This README.md file was hand-crafted with care utilising synapticloop` [`templar`](https://github.com/synapticloop/templar/) `->`[`documentr`](https://github.com/synapticloop/documentr/)
+> `This README.md file was hand-crafted with care utilising synapticloop`[`templar`](https://github.com/synapticloop/templar/)`->`[`documentr`](https://github.com/synapticloop/documentr/)
 
 --
 
