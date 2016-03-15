@@ -38,10 +38,11 @@ public class ImageRequestTest {
 		Assert.assertEquals(0, linodeResponse.getErrorArray().length());
 	}
 
-	@Test(expected=ApiException.class)
+	@Test
 	public void testDeleteImagesInvalid() throws ApiException, JSONException {
 		LinodeApiRequest linodeRequest = ImageRequest.delete(-1l);
 		LinodeApiResponse linodeResponse = linodeApi.execute(linodeRequest);
+		Assert.assertEquals(1, linodeResponse.getErrorArray().length());
 	}
 
 	@Test(expected = ApiException.class)
