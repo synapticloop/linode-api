@@ -7,6 +7,10 @@
 		{ "type":"inbuilt", "value":"badge-bintray" },
 		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
 
+		{ "type":"inbuilt", "value":"jvm-compatability" },
+		{ "type":"inbuilt", "value":"project-name" },
+		{ "type":"inbuilt", "value":"project-description" },
+
 		{ "type":"file", "value":"src/docs/usage.md" },
 
 		{ "type":"inbuilt", "value":"gradle-build" },

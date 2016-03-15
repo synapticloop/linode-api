@@ -1,4 +1,18 @@
 [![Build Status](https://travis-ci.org/synapticloop/linode-api.svg?branch=master)](https://travis-ci.org/synapticloop/linode-api) [![Download](https://api.bintray.com/packages/synapticloop/maven/linode-api/images/download.svg)](https://bintray.com/synapticloop/maven/linode-api/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/linode-api.svg)](https://github.com/synapticloop/linode-api/releases) 
+
+> **This project requires JVM version of at least 1.7**
+
+
+
+
+# linode-api
+
+
+
+> linode-api
+
+
+
 This supercedes version 1 - which is now considered deprecated.
 
 Major differences:
