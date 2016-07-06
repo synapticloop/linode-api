@@ -13,8 +13,8 @@ import synapticloop.linode.api.response.bean.Kernel;
 import synapticloop.linode.api.response.bean.LinodePlan;
 import synapticloop.linode.exception.ApiException;
 
-public class LinodeApiHighLevel {
-	private static final Logger LOGGER = LoggerFactory.getLogger(LinodeApiHighLevel.class);
+public class LinodeApiFacade {
+	private static final Logger LOGGER = LoggerFactory.getLogger(LinodeApiFacade.class);
 	private List<Datacenter> datacenterCache = null;
 	private List<Kernel> kernelCache = null;
 	private List<LinodePlan> linodePlanCache = null;
@@ -28,11 +28,11 @@ public class LinodeApiHighLevel {
 
 	private boolean isInitialised = false;
 
-	public LinodeApiHighLevel(String apiKey) {
+	public LinodeApiFacade(String apiKey) {
 		this(apiKey, false);
 	}
 
-	public LinodeApiHighLevel(String apiKey, boolean debug) {
+	public LinodeApiFacade(String apiKey, boolean debug) {
 		this.linodeApi = new LinodeApi(apiKey, debug);
 	}
 
@@ -50,7 +50,8 @@ public class LinodeApiHighLevel {
 	 * @return the id of the linode that was created
 	 * 
 	 * @throws ApiException if there was an error creating the linode
-	 */	public Long createLinode(long datacenterId, long planId, long distributionId, long kernelId, String label, String rootPassword) throws ApiException {
+	 */
+	public Long createLinode(long datacenterId, long planId, long distributionId, long kernelId, String label, String rootPassword) throws ApiException {
 		initialise();
 		Long linodeId = linodeApi.getLinodeCreate(datacenterId, planId).getLinodeId();
 

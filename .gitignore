@@ -4,7 +4,7 @@
 ### Gradle ###
 .gradle
 build/
-
+reports/
 # Ignore Gradle GUI config
 gradle-app.setting
 

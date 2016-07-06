@@ -16,12 +16,12 @@ import synapticloop.linode.exception.ApiException;
 
 public class LinodeApiNodebalancerTest {
 	private LinodeApi linodeApi;
-	private LinodeApiHighLevel linodeApiHighLevel;
+	private LinodeApiFacade linodeApiHighLevel;
 
 	@Before
 	public void setup() {
 		linodeApi = new LinodeApi(System.getenv("LINODE_API_KEY"));
-		linodeApiHighLevel = new LinodeApiHighLevel(System.getenv("LINODE_API_KEY"));
+		linodeApiHighLevel = new LinodeApiFacade(System.getenv("LINODE_API_KEY"));
 	}
 
 	@Test

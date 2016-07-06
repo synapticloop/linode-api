@@ -6,7 +6,7 @@ import synapticloop.linode.api.response.bean.Distribution;
 import synapticloop.linode.exception.ApiException;
 
 public class TestHelper {
-	private static LinodeApiHighLevel linodeApiHighLevel = new LinodeApiHighLevel(System.getenv("LINODE_API_KEY"));
+	private static LinodeApiFacade linodeApiHighLevel = new LinodeApiFacade(System.getenv("LINODE_API_KEY"));
 
 	private static Long ubuntuDistributionId = null;
 	private static Long defaultPlanId = null;

@@ -23,11 +23,18 @@ Major differences:
 
 ## Creating a Linode
 
-### High Level Interface
+### High Level Facade
 
-This is designed to get a lindode up and running as quickly as possible.  This provides a very small subset of available calls.
+This is designed to get a linode up and running as quickly as possible.  This provides a very small subset of available calls.
+
+> Note that `LinodeApiHighLevel` has been renamed to `LinodeApifacade`
 
 ```
+
+LinodeApiFacade linodeApiFacade = new LinodeApiFacade("YOUR_API_KEY_GOES_HERE");
+
+linodeApiFacade.createLinode(...);
+
 /**
  * Create and boot a linode in a datacenter, for a specific plan, using a
  * specific distribution.
