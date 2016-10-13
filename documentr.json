@@ -7,6 +7,10 @@
 		{ "type":"inbuilt", "value":"badge-bintray" },
 		{ "type":"inbuilt", "value":"badge-shield-io-github-release" },
 
+		{ "type": "toc", "value": "2" },
+		{ "type": "toclinks", "value": "true" },
+		{ "type": "tocbacktotop", "value": " <sup><sup>[top](#documentr_top)</sup></sup>"},
+
 		{ "type":"inbuilt", "value":"jvm-compatability" },
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },

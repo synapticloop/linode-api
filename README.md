@@ -1,11 +1,41 @@
-[![Build Status](https://travis-ci.org/synapticloop/linode-api.svg?branch=master)](https://travis-ci.org/synapticloop/linode-api) [![Download](https://api.bintray.com/packages/synapticloop/maven/linode-api/images/download.svg)](https://bintray.com/synapticloop/maven/linode-api/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/linode-api.svg)](https://github.com/synapticloop/linode-api/releases) 
+<a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/linode-api.svg?branch=master)](https://travis-ci.org/synapticloop/linode-api) [![Download](https://api.bintray.com/packages/synapticloop/maven/linode-api/images/download.svg)](https://bintray.com/synapticloop/maven/linode-api/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/linode-api.svg)](https://github.com/synapticloop/linode-api/releases) 
+
+ - [linode-api](#documentr_heading_0)
+ - [Usage](#documentr_heading_1)
+   - [Requirements](#documentr_heading_2)
+   - [Creating a Linode](#documentr_heading_3)
+ - [Creating A Node Balancer](#documentr_heading_7)
+   - [Calling the API (deprecated)](#documentr_heading_8)
+ - [Building the Package](#documentr_heading_12)
+   - [*NIX/Mac OS X](#documentr_heading_13)
+   - [Windows](#documentr_heading_14)
+ - [Running the Tests](#documentr_heading_15)
+   - [*NIX/Mac OS X](#documentr_heading_16)
+   - [Windows](#documentr_heading_17)
+ - [Logging - slf4j](#documentr_heading_18)
+   - [Log4j](#documentr_heading_19)
+ - [Artefact Publishing - Github](#documentr_heading_24)
+ - [Artefact Publishing - Bintray](#documentr_heading_25)
+   - [maven setup](#documentr_heading_26)
+   - [gradle setup](#documentr_heading_27)
+   - [Dependencies - Gradle](#documentr_heading_28)
+   - [Dependencies - Maven](#documentr_heading_29)
+   - [Dependencies - Downloads](#documentr_heading_30)
+ - [License](#documentr_heading_38)
+
+
+
 
 > **This project requires JVM version of at least 1.7**
 
 
 
 
-# linode-api
+
+
+<a name="documentr_heading_0"></a>
+
+# linode-api <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 
@@ -27,21 +57,35 @@ Major differences:
 
 > The api calls are automatically generated from the [https://www.linode.com/api](https://www.linode.com/api) pages so that they are kept in sync.
 
-# Usage
 
-## Requirements
+
+<a name="documentr_heading_1"></a>
+
+# Usage <sup><sup>[top](#documentr_top)</sup></sup>
+
+
+
+<a name="documentr_heading_2"></a>
+
+## Requirements <sup><sup>[top](#documentr_top)</sup></sup>
 
 1. A linode Account - sign up/sign in for one here: [www.linode.com](https://www.linode.com/?r=42653249231ed8ab1ffd936e604749386c3f5160)
 2. A linode API Access key - once you are logged in, go here to create one [https://manager.linode.com/profile/api](https://manager.linode.com/profile/api)
 3. that's it!
 
-## Creating a Linode
+
+
+<a name="documentr_heading_3"></a>
+
+## Creating a Linode <sup><sup>[top](#documentr_top)</sup></sup>
 
 ### High Level Facade
 
 This is designed to get a linode up and running as quickly as possible.  This provides a very small subset of available calls.
 
 > Note that `LinodeApiHighLevel` has been renamed to `LinodeApifacade`
+
+
 
 ```
 
@@ -73,7 +117,11 @@ public Long createLinode(DatacenterSlug datacenter,
 
 ```
 
+
+
 ### Finding the IP address(es) of the newly created linode
+
+
 
 
 ```
@@ -89,6 +137,8 @@ for (IPAddress ipAddress : ipAddresses) {
 
 ```
 
+
+
 ### Low Level Interface
 
 The general flow is
@@ -102,6 +152,8 @@ The general flow is
  1. Create a configuration for the linode
  1. Boot the linode
  
+
+
 
 ```
 package synapticloop.linode;
@@ -195,7 +247,15 @@ public class LinodeCreateMain {
 
 }
 ```
-# Creating A Node Balancer
+
+
+
+
+<a name="documentr_heading_7"></a>
+
+# Creating A Node Balancer <sup><sup>[top](#documentr_top)</sup></sup>
+
+
 
 ```
 // create a node balancer - note that node balancer names __MUST__ be unique
@@ -207,16 +267,16 @@ NodebalancerResponse nodebalancerCreateResponse = linodeApi.getNodebalancerCreat
 Long nodebalancerConfigId = linodeApi.getNodebalancerConfigCreate(nodebalancerId).getConfigId();
 
 Long linodeIdOne = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
-		PlanSlug.LINODE_1024,
-		DistributionSlug.UBUNTU_14_04_LTS,
-		KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
+		PlanSlug.LINODE_2048,
+		DistributionSlug.UBUNTU_16_04_LTS,
+		KernelSlug.KERNEL_LATEST_64_BIT_4_7_0_X86_64_LINODE72_,
 		"NODE-1", 
 		"^&*678yuiYUI");
 
 Long linodeIdTwo = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
-		PlanSlug.LINODE_1024,
-		DistributionSlug.UBUNTU_14_04_LTS,
-		KernelSlug.KERNEL_LATEST_64_BIT_4_4_0_X86_64_LINODE63_,
+		PlanSlug.LINODE_2048,
+		DistributionSlug.UBUNTU_16_04_LTS,
+		KernelSlug.KERNEL_LATEST_64_BIT_4_7_0_X86_64_LINODE72_,
 		"NODE-2", 
 		"^&*678yuiYUI");
 
@@ -233,7 +293,13 @@ Long nodeIdTwo = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node
 
 
 
-## Calling the API (deprecated)
+
+
+
+
+<a name="documentr_heading_8"></a>
+
+## Calling the API (deprecated) <sup><sup>[top](#documentr_top)</sup></sup>
 
 These are deprecated and the `LinodeApi` or `LinodeApiHighLevel` objects should be used instead
 
@@ -313,16 +379,28 @@ These are deprecated and the `LinodeApi` or `LinodeApiHighLevel` objects should 
 
 have a look at [https://github.com/synapticloop/linode-api/tree/master/src/main/java/synapticloop/linode/api](https://github.com/synapticloop/linode-api/tree/master/src/main/java/synapticloop/linode/api) for the list of available API classes.
 
-# Building the Package
 
-## *NIX/Mac OS X
+
+<a name="documentr_heading_12"></a>
+
+# Building the Package <sup><sup>[top](#documentr_top)</sup></sup>
+
+
+
+<a name="documentr_heading_13"></a>
+
+## *NIX/Mac OS X <sup><sup>[top](#documentr_top)</sup></sup>
 
 From the root of the project, simply run
 
 `./gradlew build`
 
 
-## Windows
+
+
+<a name="documentr_heading_14"></a>
+
+## Windows <sup><sup>[top](#documentr_top)</sup></sup>
 
 `./gradlew.bat build`
 
@@ -331,9 +409,17 @@ This will compile and assemble the artefacts into the `build/libs/` directory.
 
 Note that this may also run tests (if applicable see the Testing notes)
 
-# Running the Tests
 
-## *NIX/Mac OS X
+
+<a name="documentr_heading_15"></a>
+
+# Running the Tests <sup><sup>[top](#documentr_top)</sup></sup>
+
+
+
+<a name="documentr_heading_16"></a>
+
+## *NIX/Mac OS X <sup><sup>[top](#documentr_top)</sup></sup>
 
 From the root of the project, simply run
 
@@ -343,7 +429,11 @@ if you do not have gradle installed, try:
 
 `gradlew --info test`
 
-## Windows
+
+
+<a name="documentr_heading_17"></a>
+
+## Windows <sup><sup>[top](#documentr_top)</sup></sup>
 
 From the root of the project, simply run
 
@@ -359,16 +449,26 @@ The `--info` switch will also output logging for the tests
 
 **WARNING:** These tests make calls against resources (either API calls to a service provider, or consumption of resources from a service provider) which may contribute to your limits, which may lead to a cost.
 
-# Logging - slf4j
+
+
+<a name="documentr_heading_18"></a>
+
+# Logging - slf4j <sup><sup>[top](#documentr_top)</sup></sup>
 
 slf4j is the logging framework used for this project.  In order to set up a logging framework with this project, sample configurations are below:
 
-## Log4j
+
+
+<a name="documentr_heading_19"></a>
+
+## Log4j <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 You will need to include dependencies for this - note that the versions may need to be updated.
 
 ### Maven
+
+
 
 ```
 <dependency>
@@ -387,7 +487,11 @@ You will need to include dependencies for this - note that the versions may need
 
 ```
 
+
+
 ### Gradle &lt; 2.1
+
+
 
 ```
 dependencies {
@@ -397,7 +501,11 @@ dependencies {
 	...
 }
 ```
+
+
 ### Gradle &gt;= 2.1
+
+
 
 ```
 dependencies {
@@ -409,9 +517,13 @@ dependencies {
 ```
 
 
+
+
 ### Setting up the logging:
 
 A sample `log4j2.xml` is below:
+
+
 
 ```
 <Configuration status="WARN">
@@ -428,23 +540,39 @@ A sample `log4j2.xml` is below:
 </Configuration>
 ```
 
-# Artefact Publishing - Github
 
-This project publishes artefacts to [GitHib](https://github.com/)
+
+
+
+<a name="documentr_heading_24"></a>
+
+# Artefact Publishing - Github <sup><sup>[top](#documentr_top)</sup></sup>
+
+This project publishes artefacts to [GitHub](https://github.com/)
 
 > Note that the latest version can be found [https://github.com/synapticloop/linode-api/releases](https://github.com/synapticloop/linode-api/releases)
 
 As such, this is not a repository, but a location to download files from.
 
-# Artefact Publishing - Bintray
+
+
+<a name="documentr_heading_25"></a>
+
+# Artefact Publishing - Bintray <sup><sup>[top](#documentr_top)</sup></sup>
 
 This project publishes artefacts to [bintray](https://bintray.com/)
 
 > Note that the latest version can be found [https://bintray.com/synapticloop/maven/linode-api/view](https://bintray.com/synapticloop/maven/linode-api/view)
 
-## maven setup
+
+
+<a name="documentr_heading_26"></a>
+
+## maven setup <sup><sup>[top](#documentr_top)</sup></sup>
 
 this comes from the jcenter bintray, to set up your repository:
+
+
 
 ```
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -480,9 +608,17 @@ this comes from the jcenter bintray, to set up your repository:
 </settings>
 ```
 
-## gradle setup
+
+
+
+
+<a name="documentr_heading_27"></a>
+
+## gradle setup <sup><sup>[top](#documentr_top)</sup></sup>
 
 Repository
+
+
 
 ```
 repositories {
@@ -492,7 +628,11 @@ repositories {
 }
 ```
 
+
+
 or just
+
+
 
 ```
 repositories {
@@ -500,38 +640,64 @@ repositories {
 }
 ```
 
-## Dependencies - Gradle
+
+
+
+
+<a name="documentr_heading_28"></a>
+
+## Dependencies - Gradle <sup><sup>[top](#documentr_top)</sup></sup>
+
+
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'linode-api', version: '2.1.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'linode-api', version: '2.2.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'linode-api', version: '2.1.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'linode-api', version: '2.2.0', ext: 'jar')
 }
 ```
+
+
 
 or, more simply for versions of gradle greater than 2.1
 
+
+
 ```
 dependencies {
-	runtime 'synapticloop:linode-api:2.1.0'
+	runtime 'synapticloop:linode-api:2.2.0'
 
-	compile 'synapticloop:linode-api:2.1.0'
+	compile 'synapticloop:linode-api:2.2.0'
 }
 ```
 
-## Dependencies - Maven
+
+
+
+
+<a name="documentr_heading_29"></a>
+
+## Dependencies - Maven <sup><sup>[top](#documentr_top)</sup></sup>
+
+
 
 ```
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>linode-api</artifactId>
-	<version>2.1.0</version>
+	<version>2.2.0</version>
 	<type>jar</type>
 </dependency>
 ```
 
-## Dependencies - Downloads
+
+
+
+
+<a name="documentr_heading_30"></a>
+
+## Dependencies - Downloads <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 You will also need to download the following dependencies:
@@ -584,7 +750,13 @@ You will also need to download the following dependencies:
 
 **NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
-# License
+
+
+<a name="documentr_heading_38"></a>
+
+# License <sup><sup>[top](#documentr_top)</sup></sup>
+
+
 
 ```
 The MIT License (MIT)
@@ -611,9 +783,10 @@ SOFTWARE.
 ```
 
 
+
+
 --
 
 > `This README.md file was hand-crafted with care utilising synapticloop`[`templar`](https://github.com/synapticloop/templar/)`->`[`documentr`](https://github.com/synapticloop/documentr/)
 
 --
-
