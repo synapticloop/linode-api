@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>nodebalancer.update&#x28;&#x29; - Linode API</title>
+		<title>linode.mutate&#x28;&#x29; - Linode API</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Our API is a programmatic interface into many of the Linode Manager&#x27;s features. The API has been expanded to include not only DNS Manager functions, but also Linode creation, control, and deletion.">
 		<meta name="keywords" content="linode api, cloud server api, vps server api">
@@ -130,10 +130,10 @@
 												<li><a 
 												href="/api">Intro</a></li>
 											
-												<li><a 
+												<li><a class="active"
 												href="/api/linode">Linode</a></li>
 											
-												<li><a class="active"
+												<li><a 
 												href="/api/nodebalancer">NodeBalancer</a></li>
 											
 												<li><a 
@@ -168,25 +168,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8">
-				<h1 class="h2">nodebalancer.update()</h1>
-				<p>Updates a NodeBalancer's properties</p>
+				<h1 class="h2">linode.mutate()</h1>
+				<p>Upgrades a Linode to its next generation.</p>
 
 
 				
 					<h3>Parameters</h3>
 					<ul class="api-params">
 						
-							<li><strong>NodeBalancerID</strong> - numeric (required) 
-							</li>
-						
-							<li><strong>Label</strong> - string (optional) 
-									<small>This NodeBalancer's label</small>
-								
-							</li>
-						
-							<li><strong>ClientConnThrottle</strong> - numeric (optional) 
-									<small>To help mitigate abuse, throttle connections per second, per client IP. 0 to disable. Max of 20.</small>
-								
+							<li><strong>LinodeID</strong> - numeric (required) 
 							</li>
 						
 					</ul>
@@ -194,17 +184,7 @@
 
 
 				<h3>Example Response</h3>
-				<pre class="highlight">
-{
-   "ERRORARRAY":[],
-   "ACTION":"nodebalancer.update",
-   "DATA":[
-      {
-         "NodeBalancerID":75
-      }
-   ]
-}
-</pre>
+				<pre class="highlight">No example.</pre>
 
 
 				<h3>Errors</h3>
@@ -215,7 +195,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="sidebar">
-					<ul> <li><h5>NodeBalancer</h5><ul><li><a href='/api/nodebalancer/nodebalancer.create'>nodebalancer.create</a></li><li><a href='/api/nodebalancer/nodebalancer.delete'>nodebalancer.delete</a></li><li><a href='/api/nodebalancer/nodebalancer.list'>nodebalancer.list</a></li><li><a href='/api/nodebalancer/nodebalancer.update'>nodebalancer.update</a></li></ul></li> <li><h5>NodeBalancer.Config</h5><ul><li><a href='/api/nodebalancer/nodebalancer.config.create'>nodebalancer.config.create</a></li><li><a href='/api/nodebalancer/nodebalancer.config.delete'>nodebalancer.config.delete</a></li><li><a href='/api/nodebalancer/nodebalancer.config.list'>nodebalancer.config.list</a></li><li><a href='/api/nodebalancer/nodebalancer.config.update'>nodebalancer.config.update</a></li></ul></li> <li><h5>NodeBalancer.Node</h5><ul><li><a href='/api/nodebalancer/nodebalancer.node.create'>nodebalancer.node.create</a></li><li><a href='/api/nodebalancer/nodebalancer.node.delete'>nodebalancer.node.delete</a></li><li><a href='/api/nodebalancer/nodebalancer.node.list'>nodebalancer.node.list</a></li><li><a href='/api/nodebalancer/nodebalancer.node.update'>nodebalancer.node.update</a></li></ul></li></ul>
+					<ul> <li><h5>Linode</h5><ul><li><a href='/api/linode/linode.boot'>linode.boot</a></li><li><a href='/api/linode/linode.clone'>linode.clone</a></li><li><a href='/api/linode/linode.create'>linode.create</a></li><li><a href='/api/linode/linode.delete'>linode.delete</a></li><li><a href='/api/linode/linode.kvmify'>linode.kvmify</a></li><li><a href='/api/linode/linode.list'>linode.list</a></li><li><a href='/api/linode/linode.mutate'>linode.mutate</a></li><li><a href='/api/linode/linode.reboot'>linode.reboot</a></li><li><a href='/api/linode/linode.resize'>linode.resize</a></li><li><a href='/api/linode/linode.shutdown'>linode.shutdown</a></li><li><a href='/api/linode/linode.update'>linode.update</a></li></ul></li> <li><h5>Linode.Config</h5><ul><li><a href='/api/linode/linode.config.create'>linode.config.create</a></li><li><a href='/api/linode/linode.config.delete'>linode.config.delete</a></li><li><a href='/api/linode/linode.config.list'>linode.config.list</a></li><li><a href='/api/linode/linode.config.update'>linode.config.update</a></li></ul></li> <li><h5>Linode.Disk</h5><ul><li><a href='/api/linode/linode.disk.create'>linode.disk.create</a></li><li><a href='/api/linode/linode.disk.createfromdistribution'>linode.disk.createfromdistribution</a></li><li><a href='/api/linode/linode.disk.createfromimage'>linode.disk.createfromimage</a></li><li><a href='/api/linode/linode.disk.createfromstackscript'>linode.disk.createfromstackscript</a></li><li><a href='/api/linode/linode.disk.delete'>linode.disk.delete</a></li><li><a href='/api/linode/linode.disk.duplicate'>linode.disk.duplicate</a></li><li><a href='/api/linode/linode.disk.imagize'>linode.disk.imagize</a></li><li><a href='/api/linode/linode.disk.list'>linode.disk.list</a></li><li><a href='/api/linode/linode.disk.resize'>linode.disk.resize</a></li><li><a href='/api/linode/linode.disk.update'>linode.disk.update</a></li></ul></li> <li><h5>Linode.IP</h5><ul><li><a href='/api/linode/linode.ip.addprivate'>linode.ip.addprivate</a></li><li><a href='/api/linode/linode.ip.addpublic'>linode.ip.addpublic</a></li><li><a href='/api/linode/linode.ip.list'>linode.ip.list</a></li><li><a href='/api/linode/linode.ip.setrdns'>linode.ip.setrdns</a></li><li><a href='/api/linode/linode.ip.swap'>linode.ip.swap</a></li></ul></li> <li><h5>Linode.Job</h5><ul><li><a href='/api/linode/linode.job.list'>linode.job.list</a></li></ul></li></ul>
 				</div>
 			</div>
 		</div>

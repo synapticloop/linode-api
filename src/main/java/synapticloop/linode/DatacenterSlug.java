@@ -1,12 +1,11 @@
 package synapticloop.linode;
 
 public enum DatacenterSlug {
-	DALLAS_TX_USA (2l),
+	NEWARK_NJ_USA (6l),
 	FREMONT_CA_USA (3l),
 	ATLANTA_GA_USA (4l),
-	NEWARK_NJ_USA (6l),
+	DALLAS_TX_USA (2l),
 	LONDON_ENGLAND_UK (7l),
-	TOKYO_JP (8l),
 	SINGAPORE_SG (9l),
 	FRANKFURT_DE (10l);
 

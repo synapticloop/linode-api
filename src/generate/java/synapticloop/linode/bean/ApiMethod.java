@@ -73,6 +73,8 @@ public class ApiMethod {
 		methodNameLookup.put("getapikey", "GetApiKey");
 		methodNameLookup.put("estimateinvoice", "EstimateInvoice");
 		methodNameLookup.put("info", "Info");
+		methodNameLookup.put("kvmify", "KvmIfy");
+		methodNameLookup.put("mutate", "Mutate");
 	}
 
 	private static Map<String, String> responseNameLookup = new HashMap<String, String>();

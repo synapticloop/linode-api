@@ -1276,9 +1276,6 @@ public class LinodeApi {
 	 * </ul>
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param fromDistributionID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param rootPass  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param rootSSHKey  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label <strong>(REQUIRED)</strong> The display label for this Disk
 	 * @param type <strong>(REQUIRED)</strong> The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
 	 * @param isReadOnly  <em>(OPTIONAL)</em> Enable forced read-only for this Disk
@@ -1288,8 +1285,8 @@ public class LinodeApi {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public LinodeDiskResponse getLinodeDiskCreate(Long linodeID, Long fromDistributionID, String rootPass, String rootSSHKey, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
-		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreate(linodeID, fromDistributionID, rootPass, rootSSHKey, label, type, isReadOnly, size)).getJSON()));
+	public LinodeDiskResponse getLinodeDiskCreate(Long linodeID, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
+		return(new LinodeDiskResponse(execute(LinodeRequest.diskcreate(linodeID, label, type, isReadOnly, size)).getJSON()));
 	}
 
 	/**
@@ -1756,6 +1753,26 @@ public class LinodeApi {
 	}
 
 	/**
+	 * <p>Changes a Linode's hypervisor from Xen to KVM.</p> 
+	 *
+	 * 
+	 * Possible return error codes:
+	 * 
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
+	 * @param linodeID <strong>(REQUIRED)</strong>   The LinodeID to migrate to KVM.
+	 *
+	 * @return the parsed LinodeKvmIfyResponse response object
+	 *
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
+	 */
+	public LinodeKvmIfyResponse getLinodeKvmIfy(Long linodeID) throws ApiException {
+		return(new LinodeKvmIfyResponse(execute(LinodeRequest.kvmify(linodeID)).getJSON()));
+	}
+
+	/**
 	 * <p>Returns a list of all Linodes user has access or delete to, including some properties. 
 	 * Status values are -1: Being Created, 0: Brand New, 1: Running, and 2: Powered Off.</p> 
 	 *
@@ -1780,6 +1797,26 @@ public class LinodeApi {
 	 */
 	public LinodeListResponse getLinodeList(Long linodeID) throws ApiException {
 		return(new LinodeListResponse(execute(LinodeRequest.list(linodeID)).getJSON()));
+	}
+
+	/**
+	 * <p>Upgrades a Linode to its next generation.</p> 
+	 *
+	 * 
+	 * Possible return error codes:
+	 * 
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
+	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 *
+	 * @return the parsed LinodeMutateResponse response object
+	 *
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
+	 */
+	public LinodeMutateResponse getLinodeMutate(Long linodeID) throws ApiException {
+		return(new LinodeMutateResponse(execute(LinodeRequest.mutate(linodeID)).getJSON()));
 	}
 
 	/**

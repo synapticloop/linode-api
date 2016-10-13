@@ -161,7 +161,7 @@
 			
 
 		</header>
-
+		<main>
 		
 
 <section class="white doc">
@@ -224,7 +224,7 @@
 			</div>
 			<div class="col-sm-4">
 				<div class="sidebar">
-					<ul> <li><h5>Linode</h5><ul><li><a href='/api/linode/linode.boot'>linode.boot</a></li><li><a href='/api/linode/linode.clone'>linode.clone</a></li><li><a href='/api/linode/linode.create'>linode.create</a></li><li><a href='/api/linode/linode.delete'>linode.delete</a></li><li><a href='/api/linode/linode.list'>linode.list</a></li><li><a href='/api/linode/linode.reboot'>linode.reboot</a></li><li><a href='/api/linode/linode.resize'>linode.resize</a></li><li><a href='/api/linode/linode.shutdown'>linode.shutdown</a></li><li><a href='/api/linode/linode.update'>linode.update</a></li></ul></li> <li><h5>Linode.Config</h5><ul><li><a href='/api/linode/linode.config.create'>linode.config.create</a></li><li><a href='/api/linode/linode.config.delete'>linode.config.delete</a></li><li><a href='/api/linode/linode.config.list'>linode.config.list</a></li><li><a href='/api/linode/linode.config.update'>linode.config.update</a></li></ul></li> <li><h5>Linode.Disk</h5><ul><li><a href='/api/linode/linode.disk.create'>linode.disk.create</a></li><li><a href='/api/linode/linode.disk.createfromdistribution'>linode.disk.createfromdistribution</a></li><li><a href='/api/linode/linode.disk.createfromimage'>linode.disk.createfromimage</a></li><li><a href='/api/linode/linode.disk.createfromstackscript'>linode.disk.createfromstackscript</a></li><li><a href='/api/linode/linode.disk.delete'>linode.disk.delete</a></li><li><a href='/api/linode/linode.disk.duplicate'>linode.disk.duplicate</a></li><li><a href='/api/linode/linode.disk.imagize'>linode.disk.imagize</a></li><li><a href='/api/linode/linode.disk.list'>linode.disk.list</a></li><li><a href='/api/linode/linode.disk.resize'>linode.disk.resize</a></li><li><a href='/api/linode/linode.disk.update'>linode.disk.update</a></li></ul></li> <li><h5>Linode.IP</h5><ul><li><a href='/api/linode/linode.ip.addprivate'>linode.ip.addprivate</a></li><li><a href='/api/linode/linode.ip.addpublic'>linode.ip.addpublic</a></li><li><a href='/api/linode/linode.ip.list'>linode.ip.list</a></li><li><a href='/api/linode/linode.ip.setrdns'>linode.ip.setrdns</a></li><li><a href='/api/linode/linode.ip.swap'>linode.ip.swap</a></li></ul></li> <li><h5>Linode.Job</h5><ul><li><a href='/api/linode/linode.job.list'>linode.job.list</a></li></ul></li></ul>
+					<ul> <li><h5>Linode</h5><ul><li><a href='/api/linode/linode.boot'>linode.boot</a></li><li><a href='/api/linode/linode.clone'>linode.clone</a></li><li><a href='/api/linode/linode.create'>linode.create</a></li><li><a href='/api/linode/linode.delete'>linode.delete</a></li><li><a href='/api/linode/linode.kvmify'>linode.kvmify</a></li><li><a href='/api/linode/linode.list'>linode.list</a></li><li><a href='/api/linode/linode.mutate'>linode.mutate</a></li><li><a href='/api/linode/linode.reboot'>linode.reboot</a></li><li><a href='/api/linode/linode.resize'>linode.resize</a></li><li><a href='/api/linode/linode.shutdown'>linode.shutdown</a></li><li><a href='/api/linode/linode.update'>linode.update</a></li></ul></li> <li><h5>Linode.Config</h5><ul><li><a href='/api/linode/linode.config.create'>linode.config.create</a></li><li><a href='/api/linode/linode.config.delete'>linode.config.delete</a></li><li><a href='/api/linode/linode.config.list'>linode.config.list</a></li><li><a href='/api/linode/linode.config.update'>linode.config.update</a></li></ul></li> <li><h5>Linode.Disk</h5><ul><li><a href='/api/linode/linode.disk.create'>linode.disk.create</a></li><li><a href='/api/linode/linode.disk.createfromdistribution'>linode.disk.createfromdistribution</a></li><li><a href='/api/linode/linode.disk.createfromimage'>linode.disk.createfromimage</a></li><li><a href='/api/linode/linode.disk.createfromstackscript'>linode.disk.createfromstackscript</a></li><li><a href='/api/linode/linode.disk.delete'>linode.disk.delete</a></li><li><a href='/api/linode/linode.disk.duplicate'>linode.disk.duplicate</a></li><li><a href='/api/linode/linode.disk.imagize'>linode.disk.imagize</a></li><li><a href='/api/linode/linode.disk.list'>linode.disk.list</a></li><li><a href='/api/linode/linode.disk.resize'>linode.disk.resize</a></li><li><a href='/api/linode/linode.disk.update'>linode.disk.update</a></li></ul></li> <li><h5>Linode.IP</h5><ul><li><a href='/api/linode/linode.ip.addprivate'>linode.ip.addprivate</a></li><li><a href='/api/linode/linode.ip.addpublic'>linode.ip.addpublic</a></li><li><a href='/api/linode/linode.ip.list'>linode.ip.list</a></li><li><a href='/api/linode/linode.ip.setrdns'>linode.ip.setrdns</a></li><li><a href='/api/linode/linode.ip.swap'>linode.ip.swap</a></li></ul></li> <li><h5>Linode.Job</h5><ul><li><a href='/api/linode/linode.job.list'>linode.job.list</a></li></ul></li></ul>
 				</div>
 			</div>
 		</div>
@@ -232,7 +232,7 @@
 </section>
 
 
-
+		</main>
 		<footer>
 			
 				<section id="pre-footer">

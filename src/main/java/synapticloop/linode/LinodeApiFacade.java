@@ -15,6 +15,7 @@ import synapticloop.linode.exception.ApiException;
 
 public class LinodeApiFacade {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LinodeApiFacade.class);
+
 	private List<Datacenter> datacenterCache = null;
 	private List<Kernel> kernelCache = null;
 	private List<LinodePlan> linodePlanCache = null;

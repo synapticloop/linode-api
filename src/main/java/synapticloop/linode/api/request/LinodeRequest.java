@@ -41,13 +41,12 @@ public class LinodeRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_HELPER_NETWORK = "helper_network";
 	private static final String PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT = "devtmpfs_automount";
 	private static final String PARAM_CONSTANT_SKIPCHECKS = "skipChecks";
-	private static final String PARAM_CONSTANT_FROMDISTRIBUTIONID = "FromDistributionID";
-	private static final String PARAM_CONSTANT_ROOTPASS = "rootPass";
-	private static final String PARAM_CONSTANT_ROOTSSHKEY = "rootSSHKey";
 	private static final String PARAM_CONSTANT_TYPE = "Type";
 	private static final String PARAM_CONSTANT_ISREADONLY = "isReadOnly";
 	private static final String PARAM_CONSTANT_SIZE = "size";
 	private static final String PARAM_CONSTANT_DISTRIBUTIONID = "DistributionID";
+	private static final String PARAM_CONSTANT_ROOTPASS = "rootPass";
+	private static final String PARAM_CONSTANT_ROOTSSHKEY = "rootSSHKey";
 	private static final String PARAM_CONSTANT_IMAGEID = "ImageID";
 	private static final String PARAM_CONSTANT_STACKSCRIPTID = "StackScriptID";
 	private static final String PARAM_CONSTANT_STACKSCRIPTUDFRESPONSES = "StackScriptUDFResponses";
@@ -824,9 +823,6 @@ public class LinodeRequest extends ApiBaseRequest {
 	 *   - VALIDATION
 	 *
 	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param fromDistributionID  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param rootPass  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param rootSSHKey  <em>(OPTIONAL)</em> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param label <strong>(REQUIRED)</strong> The display label for this Disk
 	 * @param type <strong>(REQUIRED)</strong> The formatted type of this disk. Valid types are: ext3, ext4, swap, raw
 	 * @param isReadOnly  <em>(OPTIONAL)</em> Enable forced read-only for this Disk
@@ -836,12 +832,9 @@ public class LinodeRequest extends ApiBaseRequest {
 	 *
 	 * @throws ApiException if a required parameter is null, or there is an error with the call
 	 */
-	public static LinodeApiRequest diskcreate(Long linodeID, Long fromDistributionID, String rootPass, String rootSSHKey, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
+	public static LinodeApiRequest diskcreate(Long linodeID, String label, String type, Boolean isReadOnly, Long size) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		addParameterSafely(parameters, PARAM_CONSTANT_FROMDISTRIBUTIONID, fromDistributionID, true);
-		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, true);
-		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ISREADONLY, isReadOnly, true);
@@ -1831,6 +1824,34 @@ public class LinodeRequest extends ApiBaseRequest {
 	}
 
 	/**
+	 * <p>Changes a Linode's hypervisor from Xen to KVM.</p> 
+	 * 
+	 * Example response:
+	 * 
+	 * <pre>
+	 * No example.
+	 * </pre>
+	 * 
+	 * Possible return error codes:
+	 * 
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
+	 *
+	 * @param linodeID <strong>(REQUIRED)</strong>   The LinodeID to migrate to KVM.
+	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
+	 */
+	public static LinodeApiRequest kvmify(Long linodeID) throws ApiException {
+		Map<String, String> parameters = new HashMap<String, String>();
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		return(new LinodeApiRequest("linode.kvmify", parameters));
+	}
+
+	/**
 	 * <p>Returns a list of all Linodes user has access or delete to, including some properties. 
 	 * Status values are -1: Being Created, 0: Brand New, 1: Running, and 2: Powered Off.</p> 
 	 * 
@@ -1938,6 +1959,34 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
 		return(new LinodeApiRequest("linode.list", parameters));
+	}
+
+	/**
+	 * <p>Upgrades a Linode to its next generation.</p> 
+	 * 
+	 * Example response:
+	 * 
+	 * <pre>
+	 * No example.
+	 * </pre>
+	 * 
+	 * Possible return error codes:
+	 * 
+	 * <ul>
+	 *   <li>NOTFOUND</li>
+	 *   <li>VALIDATION</li>
+	 * </ul>
+	 *
+	 * @param linodeID <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
+	 *
+	 * @return the linode request object
+	 *
+	 * @throws ApiException if a required parameter is null, or there was an error with the call
+	 */
+	public static LinodeApiRequest mutate(Long linodeID) throws ApiException {
+		Map<String, String> parameters = new HashMap<String, String>();
+		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
+		return(new LinodeApiRequest("linode.mutate", parameters));
 	}
 
 	/**
