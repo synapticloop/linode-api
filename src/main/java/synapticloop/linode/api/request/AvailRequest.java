@@ -80,6 +80,11 @@ public class AvailRequest extends ApiBaseRequest {
 	 *           "DATACENTERID":10,
 	 *           "LOCATION":"Frankfurt, DE",
 	 *           "ABBR":"frankfurt"
+	 *       },
+	 *       {
+	 *           "DATACENTERID":11,
+	 *           "LOCATION":"Tokyo 2, JP",
+	 *           "ABBR":"shinagawa1"
 	 *       }
 	 *    ]
 	 * }

@@ -8,7 +8,8 @@ public enum DatacenterSlug {
 	LONDON_ENGLAND_UK (7l),
 	TOKYO_JP (8l),
 	SINGAPORE_SG (9l),
-	FRANKFURT_DE (10l);
+	FRANKFURT_DE (10l),
+	TOKYO_2_JP (11l);
 
 	private final Long datacenterId;
 
