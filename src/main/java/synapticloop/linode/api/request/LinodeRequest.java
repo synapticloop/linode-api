@@ -611,7 +611,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	}
 
 	/**
-	 * <p>Creates a Linode and assigns you full privileges. There is a 75-linodes-per-hour 
+	 * <p>Creates a Linode and assigns you full privileges. There is a 250-linodes-per-hour 
 	 * limiter.</p> 
 	 * 
 	 * Example response:
@@ -651,7 +651,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	}
 
 	/**
-	 * <p>Creates a Linode and assigns you full privileges. There is a 75-linodes-per-hour 
+	 * <p>Creates a Linode and assigns you full privileges. There is a 250-linodes-per-hour 
 	 * limiter.</p> 
 	 * 
 	 * Example response:

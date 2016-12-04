@@ -169,7 +169,7 @@
 		<div class="row">
 			<div class="col-sm-8">
 				<h1 class="h2">linode.create()</h1>
-				<p>Creates a Linode and assigns you full privileges. There is a 75-linodes-per-hour limiter.</p>
+				<p>Creates a Linode and assigns you full privileges. There is a 250-linodes-per-hour limiter.</p>
 
 
 				

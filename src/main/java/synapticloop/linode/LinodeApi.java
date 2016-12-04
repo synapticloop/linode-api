@@ -1149,7 +1149,7 @@ public class LinodeApi {
 	}
 
 	/**
-	 * <p>Creates a Linode and assigns you full privileges. There is a 75-linodes-per-hour 
+	 * <p>Creates a Linode and assigns you full privileges. There is a 250-linodes-per-hour 
 	 * limiter.</p> 
 	 *
 	 * 
@@ -1174,7 +1174,7 @@ public class LinodeApi {
 	}
 
 	/**
-	 * <p>Creates a Linode and assigns you full privileges. There is a 75-linodes-per-hour 
+	 * <p>Creates a Linode and assigns you full privileges. There is a 250-linodes-per-hour 
 	 * limiter.</p> 
 	 * 
 	 * Possible return error codes:
