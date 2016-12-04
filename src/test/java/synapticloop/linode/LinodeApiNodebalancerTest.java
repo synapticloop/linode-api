@@ -54,12 +54,12 @@ public class LinodeApiNodebalancerTest {
 		Long linodeIdOne = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
 				PlanSlug.LINODE_2048,
 				DistributionSlug.UBUNTU_16_04_LTS,
-				KernelSlug.KERNEL_LATEST_64_BIT_4_8_3_X86_64_LINODE76_,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
 				"NODE-1", "^&*678yuiYUI");
 		Long linodeIdTwo = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
 				PlanSlug.LINODE_2048,
 				DistributionSlug.UBUNTU_16_04_LTS,
-				KernelSlug.KERNEL_LATEST_64_BIT_4_8_3_X86_64_LINODE76_,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
 				"NODE-2", "^&*678yuiYUI");
 
 		linodeApi.getLinodeIpAddressPrivate(linodeIdOne);
