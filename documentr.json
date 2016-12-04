@@ -15,7 +15,15 @@
 		{ "type":"inbuilt", "value":"project-name" },
 		{ "type":"inbuilt", "value":"project-description" },
 
-		{ "type":"file", "value":"src/docs/usage.md" },
+		{ "type":"file", "value":"src/docs/usage-001.md" },
+
+		{ "type":"file", "value":"src/test/java/synapticloop/linode/LinodeCreateMain.java" },
+
+		{ "type":"file", "value":"src/docs/usage-002.md" },
+
+		{ "type":"file", "value":"src/test/java/synapticloop/linode/LinodeCreateNodebalancerMain.java" },
+
+		{ "type":"file", "value":"src/docs/usage-003.md" },
 
 		{ "type":"inbuilt", "value":"gradle-build" },
 		{ "type":"inbuilt", "value":"gradle-test" },

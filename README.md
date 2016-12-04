@@ -211,17 +211,16 @@ public class LinodeCreateMain {
 				}
 			}
 
-
 			// create a linode
 			Long linodeId = linodeApi.getLinodeCreate(datacenter.getDatacenterId(), linodePlan.getPlanId()).getLinodeId();
-			
+
 			// create the root disk from the distribution
 			Long diskId = linodeApi.getLinodeDiskCreateFromDistribution(linodeId, 
 					distribution.getDistributionId(), 
 					"LINODE-API-DISK-ROOT", 
 					1024l, 
 					"^&*678yuiYUI").getDiskId();
-			
+
 			// create a swap disk - NOTE that you MUST have two disks
 			Long swapDiskId = linodeApi.getLinodeDiskCreate(linodeId, 
 					"LINODE-API-DISK-SWAP", 
@@ -239,7 +238,6 @@ public class LinodeCreateMain {
 					linodeConfigCreateResponse.getConfigId());
 
 		} catch (ApiException ex) {
-			// TODO Auto-generated catch block
 			ex.printStackTrace();
 		}
 
@@ -251,6 +249,7 @@ public class LinodeCreateMain {
 
 
 
+
 <a name="documentr_heading_7"></a>
 
 # Creating A Node Balancer <sup><sup>[top](#documentr_top)</sup></sup>
@@ -258,36 +257,55 @@ public class LinodeCreateMain {
 
 
 ```
-// create a node balancer - note that node balancer names __MUST__ be unique
-NodebalancerResponse nodebalancerCreateResponse = linodeApi.getNodebalancerCreate(TestHelper.getDatacenterId(), 
-		"LINODE-API-TEST-" + System.currentTimeMillis(), 
-		0l);
+package synapticloop.linode;
 
-// create a node balance config - this is all defaults - port 80
-Long nodebalancerConfigId = linodeApi.getNodebalancerConfigCreate(nodebalancerId).getConfigId();
+import synapticloop.linode.api.response.NodebalancerResponse;
+import synapticloop.linode.exception.ApiException;
 
-Long linodeIdOne = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
-		PlanSlug.LINODE_2048,
-		DistributionSlug.UBUNTU_16_04_LTS,
-		KernelSlug.KERNEL_LATEST_64_BIT_4_7_0_X86_64_LINODE72_,
-		"NODE-1", 
-		"^&*678yuiYUI");
+public class LinodeCreateNodebalancerMain {
 
-Long linodeIdTwo = linodeApiHighLevel.createLinode(DatacenterSlug.DALLAS_TX_USA, 
-		PlanSlug.LINODE_2048,
-		DistributionSlug.UBUNTU_16_04_LTS,
-		KernelSlug.KERNEL_LATEST_64_BIT_4_7_0_X86_64_LINODE72_,
-		"NODE-2", 
-		"^&*678yuiYUI");
+	public static void main(String[] args) {
+		try {
+			// create the linodeApi
+			LinodeApiFacade linodeApiFacade = new LinodeApiFacade(System.getenv("LINODE_API_KEY"));
+			LinodeApi linodeApi = linodeApiFacade.getLinodeApi();
 
-// you may only node balance between private IP addresses - so
-// attach a private ip address to each of the linodes
-String ipAddressOne = linodeApi.getLinodeIpAddressPrivate(linodeIdOne).getIpAddress();
-String ipAddressTwo = linodeApi.getLinodeIpAddressPrivate(linodeIdTwo).getIpAddress();
+			// create a node balancer - note that node balancer names __MUST__ be unique
+			NodebalancerResponse nodebalancerCreateResponse = linodeApi.getNodebalancerCreate(TestHelper.getDatacenterId(), 
+					"LINODE-API-TEST-" + System.currentTimeMillis(), 
+					0l);
 
-// create the two nodes - note the port is appended to the private ip address
-Long nodeIdOne = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node-1-config", ipAddressOne + ":80").getNodeId();
-Long nodeIdTwo = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node-2-config", ipAddressTwo + ":80").getNodeId();
+			// create a node balance config - this is all defaults - port 80
+			Long nodebalancerConfigId = linodeApi.getNodebalancerConfigCreate(nodebalancerCreateResponse.getNodebalancerId()).getConfigId();
+
+			Long linodeIdOne = linodeApiFacade.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+					PlanSlug.LINODE_2048,
+					DistributionSlug.UBUNTU_16_04_LTS,
+					KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
+					"NODE-1", 
+					"^&*678yuiYUI");
+
+			Long linodeIdTwo = linodeApiFacade.createLinode(DatacenterSlug.DALLAS_TX_USA, 
+					PlanSlug.LINODE_2048,
+					DistributionSlug.UBUNTU_16_04_LTS,
+					KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
+					"NODE-2", 
+					"^&*678yuiYUI");
+
+			// you may only node balance between private IP addresses - so
+			// attach a private ip address to each of the linodes
+			String ipAddressOne = linodeApi.getLinodeIpAddressPrivate(linodeIdOne).getIpAddress();
+			String ipAddressTwo = linodeApi.getLinodeIpAddressPrivate(linodeIdTwo).getIpAddress();
+
+			// create the two nodes - note the port is appended to the private ip address
+			Long nodeIdOne = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node-1-config", ipAddressOne + ":80").getNodeId();
+			Long nodeIdTwo = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node-2-config", ipAddressTwo + ":80").getNodeId();
+		} catch(ApiException ex) {
+			ex.printStackTrace();
+		}
+	}
+}
+
 ```
 
 
@@ -301,7 +319,7 @@ Long nodeIdTwo = linodeApi.getNodebalancerNodeCreate(nodebalancerConfigId, "Node
 
 ## Calling the API (deprecated) <sup><sup>[top](#documentr_top)</sup></sup>
 
-These are deprecated and the `LinodeApi` or `LinodeApiHighLevel` objects should be used instead
+These are deprecated and the `LinodeApi` or `LinodeApiFacade` objects should be used instead
 
 ### Single Requests
 

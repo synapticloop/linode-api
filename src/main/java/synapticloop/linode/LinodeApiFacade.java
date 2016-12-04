@@ -178,4 +178,13 @@ public class LinodeApiFacade {
 		this.isInitialised = true;
 		resetAllCaches();
 	}
+
+	/**
+	 * Return the underlying linode API object
+	 * 
+	 * @return the linode API object
+	 */
+	public LinodeApi getLinodeApi() {
+		return this.linodeApi;
+	}
 }
