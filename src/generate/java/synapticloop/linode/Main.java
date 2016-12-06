@@ -110,6 +110,9 @@ public class Main {
 
 		}
 
+		/*
+		// NOT DOING THIS YET AS THEIR EXAMPLES ARE NOT VALID OR MISSING
+
 		templarContext = new TemplarContext();
 		templarContext.add("apis", apis);
 		Parser parser = new Parser(Main.class.getResourceAsStream("/java-create-linode-api.templar"));
@@ -119,6 +122,7 @@ public class Main {
 		FileWriter fileWriter = new FileWriter(outFile);
 		fileWriter.write(parser.render(templarContext));
 		fileWriter.close();
+		 */
 
 	}
 
