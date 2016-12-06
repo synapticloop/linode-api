@@ -18,10 +18,10 @@ public class Job {
 	private Date hostStartDate = null;
 	private Long linodeId = null;
 	private Date HostFinishDate = null;
-	private String duration = null;
+	private Long duration = null;
 	private String hostMessage = null;
 	private Long jobId = null;
-	private String hostSuccess = null;
+	private Boolean hostSuccess = null;
 
 	/**
       {
@@ -53,56 +53,36 @@ public class Job {
 		jsonObject.remove("LINODEID");
 		this.HostFinishDate = ResponseHelper.convertDate(jsonObject.getString("HOST_FINISH_DT"));
 		jsonObject.remove("HOST_FINISH_DT");
-		this.duration = jsonObject.getString("DURATION");
+		this.duration = jsonObject.getLong("DURATION");
 		jsonObject.remove("DURATION");
 		this.hostMessage = jsonObject.getString("HOST_MESSAGE");
 		jsonObject.remove("HOST_MESSAGE");
 		this.jobId = jsonObject.getLong("JOBID");
 		jsonObject.remove("JOBID");
-		this.hostSuccess = jsonObject.getString("HOST_SUCCESS");
+		this.hostSuccess = jsonObject.getLong("HOST_SUCCESS") == 1;
 		jsonObject.remove("HOST_SUCCESS");
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
-	public Date getEnteredDate() {
-		return this.enteredDate;
-	}
+	public Date getEnteredDate() { return this.enteredDate; }
 
-	public String getAction() {
-		return this.action;
-	}
+	public String getAction() { return this.action; }
 
-	public String getLabel() {
-		return this.label;
-	}
+	public String getLabel() { return this.label; }
 
-	public Date getHostStartDate() {
-		return this.hostStartDate;
-	}
+	public Date getHostStartDate() { return this.hostStartDate; }
 
-	public Long getLinodeId() {
-		return this.linodeId;
-	}
+	public Long getLinodeId() { return this.linodeId; }
 
-	public Date getHostFinishDate() {
-		return this.HostFinishDate;
-	}
+	public Date getHostFinishDate() { return this.HostFinishDate; }
 
-	public String getDuration() {
-		return this.duration;
-	}
+	public Long getDuration() { return this.duration; }
 
-	public String getHostMessage() {
-		return this.hostMessage;
-	}
+	public String getHostMessage() { return this.hostMessage; }
 
-	public Long getJobId() {
-		return this.jobId;
-	}
+	public Long getJobId() { return this.jobId; }
 
-	public String getHostSuccess() {
-		return this.hostSuccess;
-	}
+	public Boolean getHostSuccess() { return this.hostSuccess; }
 
 }
