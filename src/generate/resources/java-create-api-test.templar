@@ -38,9 +38,14 @@ public class {api.className}GeneratedResponseTest {{{\n}
 	{\n}
 	{\t}@Test{\n}
 	{\t}public void test{api.classname}{apiMethod.responseName}_{apiMethod.name}() throws JSONException, ApiException {{{\n}
-	{\n}
+		{\n}
+		{loop apiMethod.exampleResponses as exampleResponse}
+			{if fn:=["No example.", exampleResponse]}
+				{\t}/*{\n}
+			{endif}
+		{endloop}
 
-	{\t}{\t}new {api.classname}{apiMethod.responseName}Response(new JSONObject(
+		{\t}{\t}new {api.classname}{apiMethod.responseName}Response(new JSONObject(
 		{loop apiMethod.exampleResponses as exampleResponse}
 			{if !exampleResponseStatus.first}
 				{\t}{\t}{\t}{\t}
@@ -52,6 +57,12 @@ public class {api.className}GeneratedResponseTest {{{\n}
 			 + {\n}
 			{endif}
 		{endloop}{\n}
+
+		{loop apiMethod.exampleResponses as exampleResponse}
+			{if fn:=["No example.", exampleResponse]}
+				{\t}*/{\n}
+			{endif}
+		{endloop}
 
 		{\t}}{\n}
 		{\n}

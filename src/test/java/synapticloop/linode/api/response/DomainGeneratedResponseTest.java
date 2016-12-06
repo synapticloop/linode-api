@@ -25,7 +25,7 @@ public class DomainGeneratedResponseTest {
 				"   \"ERRORARRAY\":[]," + 
 				"   \"ACTION\":\"domain.create\"," + 
 				"   \"DATA\":{" + 
-				"      \"DomainID\":5123" + 
+				"      \"DOMAINID\":5123" + 
 				"   }" + 
 				"}"));
 
@@ -39,7 +39,7 @@ public class DomainGeneratedResponseTest {
 				"   \"ERRORARRAY\":[]," + 
 				"   \"ACTION\":\"domain.delete\"," + 
 				"   \"DATA\":{" + 
-				"      \"DomainID\":5123" + 
+				"      \"DOMAINID\":5123" + 
 				"   }" + 
 				"}"));
 
@@ -92,7 +92,7 @@ public class DomainGeneratedResponseTest {
 				"   \"ERRORARRAY\":[]," + 
 				"   \"ACTION\":\"domain.resource.create\"," + 
 				"   \"DATA\":{" + 
-				"      \"ResourceID\":28537" + 
+				"      \"ResourceId\":28537" + 
 				"   }" + 
 				"}"));
 
@@ -106,7 +106,7 @@ public class DomainGeneratedResponseTest {
 				"   \"ERRORARRAY\":[]," + 
 				"   \"ACTION\":\"domain.resource.delete\"," + 
 				"   \"DATA\":{" + 
-				"      \"ResourceID\":28537" + 
+				"      \"ResourceId\":28537" + 
 				"   }" + 
 				"}"));
 
@@ -157,7 +157,7 @@ public class DomainGeneratedResponseTest {
 				"   \"ERRORARRAY\":[]," + 
 				"   \"ACTION\":\"domain.resource.update\"," + 
 				"   \"DATA\":{" + 
-				"      \"ResourceID\":28537" + 
+				"      \"ResourceId\":28537" + 
 				"   }" + 
 				"}"));
 
@@ -171,7 +171,7 @@ public class DomainGeneratedResponseTest {
 				"   \"ERRORARRAY\":[]," + 
 				"   \"ACTION\":\"domain.update\"," + 
 				"   \"DATA\":{" + 
-				"      \"DomainID\":5123" + 
+				"      \"DOMAINID\":5123" + 
 				"   }" + 
 				"}"));
 

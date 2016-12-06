@@ -39,7 +39,7 @@ public class AccountGeneratedResponseTest {
 		new AccountInfoResponse(new JSONObject("{" + 
 				"   \"ERRORARRAY\":[]," + 
 				"   \"ACTION\":\"account.info\"," + 
-				"   \"DATA\":[" + 
+				"   \"DATA\":" + 
 				"      {" + 
 				"         \"ACTIVE_SINCE\":\"2011-09-23 15:08:13.0\"," + 
 				"         \"TRANSFER_POOL\":200," + 
@@ -47,7 +47,7 @@ public class AccountGeneratedResponseTest {
 				"         \"TRANSFER_BILLABLE\":0," + 
 				"         \"MANAGED\":true," + 
 				"         \"BALANCE\":20, " +
-				"         \"BILLING_METERED\": \"metered\"" + 
+				"         \"BILLING_METHOD\": \"metered\"" + 
 				"      }" + 
 				"}"));
 

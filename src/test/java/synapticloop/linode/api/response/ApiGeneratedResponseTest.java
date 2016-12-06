@@ -25,8 +25,8 @@ public class ApiGeneratedResponseTest {
 				" \"ERRORARRAY\":[]," + 
 				" \"ACTION\":\"account.info\"," + 
 				" \"DATA\":{" + 
-				"  \"METHODS\":{" + 
 				"  \"VERSION\": 3.3, " + 
+				"  \"METHODS\":{" + 
 				"   \"account.info\":{" + 
 				"    \"DESCRIPTION\":\"Shows information about your account such as" + 
 				"     the date your account was opened as well as your network" + 

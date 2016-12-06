@@ -61,7 +61,9 @@ public class Config {
 
 		String[] diskIdList = jsonObject.optString("DiskList", "").split(",");
 		for (String diskId : diskIdList) {
-			diskIds.add(Long.valueOf(diskId));
+			if(diskId.trim().length() != 0) {
+				diskIds.add(Long.valueOf(diskId));
+			}
 		}
 		jsonObject.remove("DiskList");
 
