@@ -53,13 +53,27 @@ public class Job {
 		jsonObject.remove("LINODEID");
 		this.HostFinishDate = ResponseHelper.convertDate(jsonObject.getString("HOST_FINISH_DT"));
 		jsonObject.remove("HOST_FINISH_DT");
-		this.duration = jsonObject.getLong("DURATION");
+
+		// the duration may either be a long if it exists, or a string if empty...
+		Object object = jsonObject.get("DURATION");
+		if(object instanceof String) {
+			this.duration = 0l;
+		} else {
+			this.duration = jsonObject.getLong("DURATION");
+		}
 		jsonObject.remove("DURATION");
+
 		this.hostMessage = jsonObject.getString("HOST_MESSAGE");
 		jsonObject.remove("HOST_MESSAGE");
 		this.jobId = jsonObject.getLong("JOBID");
 		jsonObject.remove("JOBID");
-		this.hostSuccess = jsonObject.getLong("HOST_SUCCESS") == 1;
+
+		Object hostSuccessObject = jsonObject.get("HOST_SUCCESS");
+		if(hostSuccessObject instanceof String) {
+			this.hostSuccess = true;
+		} else {
+			this.hostSuccess = jsonObject.getLong("HOST_SUCCESS") == 1;
+		}
 		jsonObject.remove("HOST_SUCCESS");
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
