@@ -22,8 +22,10 @@ import synapticloop.linode.bean.Api;
 import synapticloop.linode.bean.ApiMethod;
 import synapticloop.linode.bean.ApiMethodParam;
 import synapticloop.linode.bean.ErrorCodeMapper;
+import synapticloop.linode.function.StringifyFunction;
 import synapticloop.linode.logger.SimpleLogger;
 import synapticloop.templar.Parser;
+import synapticloop.templar.exception.FunctionException;
 import synapticloop.templar.exception.ParseException;
 import synapticloop.templar.exception.RenderException;
 import synapticloop.templar.utils.TemplarContext;
@@ -31,6 +33,7 @@ import synapticloop.templar.utils.TemplarContext;
 public class Main {
 	private static final String API_DOCS_DIRECTORY = "./api-docs";
 	private static final String JAVA_SRC_API_OUTPUT_DIRECTORY = "./src/main/java/synapticloop/linode/api/request/";
+	private static final String JAVA_TEST_API_OUTPUT_DIRECTORY = "./src/test/java/synapticloop/linode/api/response/";
 	private static final String JAVA_SRC_LINODE_API_OUTPUT_DIRECTORY = "./src/main/java/synapticloop/linode/";
 
 	private static final int NODE_TEXT = 0;
@@ -73,12 +76,21 @@ public class Main {
 
 		// now that we have all of the apis
 		Iterator<String> iterator = apiBeanCache.keySet().iterator();
+
+		TemplarContext templarContext = new TemplarContext();
+		try {
+			templarContext.addFunction("stringify", new StringifyFunction(1));
+		} catch (FunctionException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+
 		while (iterator.hasNext()) {
 			String key = (String) iterator.next();
 			Api api = apiBeanCache.get(key);
 			apis.add(api);
-			TemplarContext templarContext = new TemplarContext();
 			templarContext.add("api", api);
+
 			Parser parser = new Parser(Main.class.getResourceAsStream("/java-create-api.templar"));
 			String pathname = JAVA_SRC_API_OUTPUT_DIRECTORY + api.getClassName() + "Request.java";
 			SimpleLogger.log("Generating for: " + api.getClassName());
@@ -86,9 +98,19 @@ public class Main {
 			FileWriter fileWriter = new FileWriter(outFile);
 			fileWriter.write(parser.render(templarContext));
 			fileWriter.close();
+
+			// now generate the test
+			parser = new Parser(Main.class.getResourceAsStream("/java-create-api-test.templar"));
+			pathname = JAVA_TEST_API_OUTPUT_DIRECTORY + api.getClassName() + "GeneratedResponseTest.java";
+			SimpleLogger.log("Generating for: " + api.getClassName() + "GeneratedResponseTest");
+			outFile = new File(pathname);
+			fileWriter = new FileWriter(outFile);
+			fileWriter.write(parser.render(templarContext));
+			fileWriter.close();
+
 		}
 
-		TemplarContext templarContext = new TemplarContext();
+		templarContext = new TemplarContext();
 		templarContext.add("apis", apis);
 		Parser parser = new Parser(Main.class.getResourceAsStream("/java-create-linode-api.templar"));
 		String pathname = JAVA_SRC_LINODE_API_OUTPUT_DIRECTORY + "LinodeApi.java";
@@ -177,7 +199,7 @@ public class Main {
 
 				if(ErrorCodeMapper.hasErrorCode(apiErrorText)) {
 					apiMethod.addApiError(apiErrorText);
-					
+
 				} else {
 					SimpleLogger.log("Unknown error code '" + apiErrorText + "', update Main.parseFile() apiError checking - from file: '" + file.getPath() + "'.");
 				}

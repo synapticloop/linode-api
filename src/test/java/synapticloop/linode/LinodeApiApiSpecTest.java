@@ -3,6 +3,7 @@ package synapticloop.linode;
 import org.junit.Before;
 import org.junit.Test;
 
+import synapticloop.linode.api.response.ApiSpecResponse;
 import synapticloop.linode.exception.ApiException;
 
 public class LinodeApiApiSpecTest {
@@ -15,7 +16,7 @@ public class LinodeApiApiSpecTest {
 
 	@Test
 	public void testMethodName() throws ApiException {
-		linodeApi.getApiSpec();
+		ApiSpecResponse apiSpec = linodeApi.getApiSpec();
 	}
 
 }
