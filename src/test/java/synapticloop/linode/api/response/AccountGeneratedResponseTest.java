@@ -24,8 +24,8 @@ public class AccountGeneratedResponseTest {
 		new AccountEstimateInvoiceResponse(new JSONObject("{" + 
 				"   ERRORARRAY: [ ]," + 
 				"   DATA: {" + 
-				"      \"INVOICE_TO\": \"2013-09-30 23:59:59\"," + 
-				"      \"AMOUNT\": 22.31" + 
+				"      INVOICE_TO: \"2013-09-30 23:59:59\"," + 
+				"      AMOUNT: 22.31" + 
 				"   }," + 
 				"   ACTION: \"account.estimateinvoice\"" + 
 				"}"));
@@ -39,15 +39,16 @@ public class AccountGeneratedResponseTest {
 		new AccountInfoResponse(new JSONObject("{" + 
 				"   \"ERRORARRAY\":[]," + 
 				"   \"ACTION\":\"account.info\"," + 
-				"   \"DATA\": {" + 
-				"      \"ACTIVE_SINCE\":\"2011-09-23 15:08:13.0\"," + 
-				"      \"TRANSFER_POOL\":200," + 
-				"      \"TRANSFER_USED\":150," + 
-				"      \"TRANSFER_BILLABLE\":0," + 
-				"      \"MANAGED\":true," + 
-				"      \"BALANCE\":20," + 
-				"      \"BILLING_METHOD\": \"\"" + 
-				"   }" +
+				"   \"DATA\":[" + 
+				"      {" + 
+				"         \"ACTIVE_SINCE\":\"2011-09-23 15:08:13.0\"," + 
+				"         \"TRANSFER_POOL\":200," + 
+				"         \"TRANSFER_USED\":150," + 
+				"         \"TRANSFER_BILLABLE\":0," + 
+				"         \"MANAGED\":true," + 
+				"         \"BALANCE\":20, " +
+				"         \"BILLING_METERED\": \"metered\"" + 
+				"      }" + 
 				"}"));
 
 	}
