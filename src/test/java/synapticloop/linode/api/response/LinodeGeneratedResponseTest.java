@@ -193,15 +193,15 @@ public class LinodeGeneratedResponseTest {
 	}
 
 
-//	@Test
+	@Test
 	public void testLinodeDisk_diskcreatefromimage() throws JSONException, ApiException {
 
 		new LinodeDiskResponse(new JSONObject("{" + 
 				"   ERRORARRAY: []," + 
 				"   ACTION: \"linode.disk.createfromimage\"," + 
 				"   DATA: {" + 
-				"      JOBID: 999," + 
-				"      DISKID: 4567" + 
+				"      JobID: 999," + 
+				"      DiskID: 4567" + 
 				"   }" + 
 				"}"));
 
@@ -465,11 +465,13 @@ public class LinodeGeneratedResponseTest {
 	}
 
 
-//	@Test
+	@Test
 	public void testLinodeKvmIfy_kvmify() throws JSONException, ApiException {
 
+	/*
 		new LinodeKvmIfyResponse(new JSONObject("No example."));
 
+	*/
 	}
 
 
@@ -515,11 +517,13 @@ public class LinodeGeneratedResponseTest {
 	}
 
 
-//	@Test
+	@Test
 	public void testLinodeMutate_mutate() throws JSONException, ApiException {
 
+	/*
 		new LinodeMutateResponse(new JSONObject("No example."));
 
+	*/
 	}
 
 

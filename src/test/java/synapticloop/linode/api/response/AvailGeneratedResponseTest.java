@@ -147,7 +147,7 @@ public class AvailGeneratedResponseTest {
 				"         \"ISXEN\":1," + 
 				"         \"ISPVOPS\":1," + 
 				"         \"KERNELID\":215" + 
-				"      }" + 
+				"      }," + 
 				"   ]" + 
 				"}"));
 

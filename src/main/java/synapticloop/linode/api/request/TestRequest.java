@@ -19,6 +19,7 @@ import synapticloop.linode.exception.ApiException;
 
 public class TestRequest extends ApiBaseRequest {
 
+	private static final String ACTION_TEST_ECHO = "test.echo";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -46,7 +47,7 @@ public class TestRequest extends ApiBaseRequest {
 	 * @throws ApiException if a required parameter is null, or there was an error with the call
 	 */
 	public static LinodeApiRequest echo(Map<String, String> parameters) throws ApiException {
-		return(new LinodeApiRequest("test.echo", parameters));
+		return(new LinodeApiRequest(ACTION_TEST_ECHO, parameters));
 	}
 
 };

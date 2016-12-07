@@ -43,6 +43,18 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_MODE = "Mode";
 	private static final String PARAM_CONSTANT_NODEID = "NodeID";
 
+	private static final String ACTION_NODEBALANCER_CONFIG_CREATE = "nodebalancer.config.create";
+	private static final String ACTION_NODEBALANCER_CONFIG_DELETE = "nodebalancer.config.delete";
+	private static final String ACTION_NODEBALANCER_CONFIG_LIST = "nodebalancer.config.list";
+	private static final String ACTION_NODEBALANCER_CONFIG_UPDATE = "nodebalancer.config.update";
+	private static final String ACTION_NODEBALANCER_CREATE = "nodebalancer.create";
+	private static final String ACTION_NODEBALANCER_DELETE = "nodebalancer.delete";
+	private static final String ACTION_NODEBALANCER_LIST = "nodebalancer.list";
+	private static final String ACTION_NODEBALANCER_NODE_CREATE = "nodebalancer.node.create";
+	private static final String ACTION_NODEBALANCER_NODE_DELETE = "nodebalancer.node.delete";
+	private static final String ACTION_NODEBALANCER_NODE_LIST = "nodebalancer.node.list";
+	private static final String ACTION_NODEBALANCER_NODE_UPDATE = "nodebalancer.node.update";
+	private static final String ACTION_NODEBALANCER_UPDATE = "nodebalancer.update";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -78,7 +90,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest configcreate(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
-		return(new LinodeApiRequest("nodebalancer.config.create", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CONFIG_CREATE, parameters));
 	}
 
 	/**
@@ -137,7 +149,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_SSL_CERT, ssl_cert, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_SSL_KEY, ssl_key, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_CIPHER_SUITE, cipher_suite, true);
-		return(new LinodeApiRequest("nodebalancer.config.create", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CONFIG_CREATE, parameters));
 	}
 
 	/**
@@ -172,7 +184,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
-		return(new LinodeApiRequest("nodebalancer.config.delete", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CONFIG_DELETE, parameters));
 	}
 
 	/**
@@ -231,7 +243,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest configlist(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
-		return(new LinodeApiRequest("nodebalancer.config.list", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CONFIG_LIST, parameters));
 	}
 
 	/**
@@ -292,7 +304,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
-		return(new LinodeApiRequest("nodebalancer.config.list", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CONFIG_LIST, parameters));
 	}
 
 	/**
@@ -326,7 +338,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest configupdate(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
-		return(new LinodeApiRequest("nodebalancer.config.update", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CONFIG_UPDATE, parameters));
 	}
 
 	/**
@@ -386,7 +398,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_SSL_CERT, ssl_cert, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_SSL_KEY, ssl_key, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_CIPHER_SUITE, cipher_suite, true);
-		return(new LinodeApiRequest("nodebalancer.config.update", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CONFIG_UPDATE, parameters));
 	}
 
 	/**
@@ -422,7 +434,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest create(Long datacenterID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
-		return(new LinodeApiRequest("nodebalancer.create", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CREATE, parameters));
 	}
 
 	/**
@@ -460,7 +472,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_CLIENTCONNTHROTTLE, clientConnThrottle, true);
-		return(new LinodeApiRequest("nodebalancer.create", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_CREATE, parameters));
 	}
 
 	/**
@@ -496,7 +508,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest delete(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
-		return(new LinodeApiRequest("nodebalancer.delete", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_DELETE, parameters));
 	}
 
 	/**
@@ -530,7 +542,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("nodebalancer.list", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_LIST, parameters));
 	}
 
 	/**
@@ -566,7 +578,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest list(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, true);
-		return(new LinodeApiRequest("nodebalancer.list", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_LIST, parameters));
 	}
 
 	/**
@@ -603,7 +615,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ADDRESS, address, false);
-		return(new LinodeApiRequest("nodebalancer.node.create", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_NODE_CREATE, parameters));
 	}
 
 	/**
@@ -642,7 +654,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_ADDRESS, address, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_WEIGHT, weight, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, true);
-		return(new LinodeApiRequest("nodebalancer.node.create", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_NODE_CREATE, parameters));
 	}
 
 	/**
@@ -675,7 +687,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest nodedelete(Long nodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, false);
-		return(new LinodeApiRequest("nodebalancer.node.delete", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_NODE_DELETE, parameters));
 	}
 
 	/**
@@ -711,7 +723,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest nodelist(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
-		return(new LinodeApiRequest("nodebalancer.node.list", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_NODE_LIST, parameters));
 	}
 
 	/**
@@ -749,7 +761,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, true);
-		return(new LinodeApiRequest("nodebalancer.node.list", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_NODE_LIST, parameters));
 	}
 
 	/**
@@ -783,7 +795,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest nodeupdate(Long nodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEID, nodeID, false);
-		return(new LinodeApiRequest("nodebalancer.node.update", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_NODE_UPDATE, parameters));
 	}
 
 	/**
@@ -823,7 +835,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_ADDRESS, address, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_WEIGHT, weight, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, true);
-		return(new LinodeApiRequest("nodebalancer.node.update", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_NODE_UPDATE, parameters));
 	}
 
 	/**
@@ -859,7 +871,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 	public static LinodeApiRequest update(Long nodeBalancerID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
-		return(new LinodeApiRequest("nodebalancer.update", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_UPDATE, parameters));
 	}
 
 	/**
@@ -897,7 +909,7 @@ public class NodebalancerRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_NODEBALANCERID, nodeBalancerID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_CLIENTCONNTHROTTLE, clientConnThrottle, true);
-		return(new LinodeApiRequest("nodebalancer.update", parameters));
+		return(new LinodeApiRequest(ACTION_NODEBALANCER_UPDATE, parameters));
 	}
 
 };

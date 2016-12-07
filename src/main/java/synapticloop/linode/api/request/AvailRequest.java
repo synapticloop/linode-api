@@ -26,6 +26,12 @@ public class AvailRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_DISTRIBUTIONVENDOR = "DistributionVendor";
 	private static final String PARAM_CONSTANT_KEYWORDS = "keywords";
 
+	private static final String ACTION_AVAIL_DATACENTERS = "avail.datacenters";
+	private static final String ACTION_AVAIL_DISTRIBUTIONS = "avail.distributions";
+	private static final String ACTION_AVAIL_KERNELS = "avail.kernels";
+	private static final String ACTION_AVAIL_LINODEPLANS = "avail.linodeplans";
+	private static final String ACTION_AVAIL_NODEBALANCERS = "avail.nodebalancers";
+	private static final String ACTION_AVAIL_STACKSCRIPTS = "avail.stackscripts";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -97,7 +103,7 @@ public class AvailRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest datacenters() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("avail.datacenters", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_DATACENTERS, parameters));
 	}
 
 	/**
@@ -145,7 +151,7 @@ public class AvailRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest distributions() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("avail.distributions", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_DISTRIBUTIONS, parameters));
 	}
 
 	/**
@@ -195,7 +201,7 @@ public class AvailRequest extends ApiBaseRequest {
 	public static LinodeApiRequest distributions(Long distributionID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, true);
-		return(new LinodeApiRequest("avail.distributions", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_DISTRIBUTIONS, parameters));
 	}
 
 	/**
@@ -247,7 +253,7 @@ public class AvailRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest kernels() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("avail.kernels", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_KERNELS, parameters));
 	}
 
 	/**
@@ -303,7 +309,7 @@ public class AvailRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_ISXEN, isXen, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_ISKVM, isKVM, true);
-		return(new LinodeApiRequest("avail.kernels", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_KERNELS, parameters));
 	}
 
 	/**
@@ -361,7 +367,7 @@ public class AvailRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest linodeplans() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("avail.linodeplans", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_LINODEPLANS, parameters));
 	}
 
 	/**
@@ -421,7 +427,7 @@ public class AvailRequest extends ApiBaseRequest {
 	public static LinodeApiRequest linodeplans(Long planID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, true);
-		return(new LinodeApiRequest("avail.linodeplans", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_LINODEPLANS, parameters));
 	}
 
 	/**
@@ -448,7 +454,7 @@ public class AvailRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest nodebalancers() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("avail.nodebalancers", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_NODEBALANCERS, parameters));
 	}
 
 	/**
@@ -505,7 +511,7 @@ public class AvailRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest stackscripts() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("avail.stackscripts", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_STACKSCRIPTS, parameters));
 	}
 
 	/**
@@ -568,7 +574,7 @@ public class AvailRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONID, distributionID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONVENDOR, distributionVendor, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_KEYWORDS, keywords, true);
-		return(new LinodeApiRequest("avail.stackscripts", parameters));
+		return(new LinodeApiRequest(ACTION_AVAIL_STACKSCRIPTS, parameters));
 	}
 
 };

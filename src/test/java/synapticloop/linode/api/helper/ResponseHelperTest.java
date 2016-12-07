@@ -25,7 +25,7 @@ public class ResponseHelperTest {
 		assertNotNull(ResponseHelper.convertDate("2012-10-10 10:10:10"));
 		assertNotNull(ResponseHelper.convertDate("2012-10-10 10:10:10.1"));
 		try {
-		assertNull(ResponseHelper.convertDate("blah-di-blah"));
+			assertNull(ResponseHelper.convertDate("blah-di-blah"));
 		} catch(ApiException ex) {
 			// do nothing
 		}

@@ -1,5 +1,21 @@
 package synapticloop.linode.api.response.bean;
 
+/*
+ * Copyright (c) 2016 Synapticloop.
+ * 
+ * All rights reserved.
+ * 
+ * This code may contain contributions from other parties which, where 
+ * applicable, will be listed in the default build file for the project 
+ * ~and/or~ in a file named CONTRIBUTORS.txt in the root of the project.
+ * 
+ * This source code and any derived binaries are covered by the terms and 
+ * conditions of the Licence agreement ("the Licence").  You may not use this 
+ * source code or any derived binaries except in compliance with the Licence.  
+ * A copy of the Licence is available in the file named LICENSE.txt shipped with 
+ * this source code or binaries.
+ */
+
 import java.util.Date;
 
 import org.json.JSONObject;
@@ -9,7 +25,8 @@ import org.slf4j.LoggerFactory;
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.exception.ApiException;
 
-public class Disk {
+public class Disk extends BaseLinodeBean {
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(Disk.class);
 
 	private Date updateDate = null;
@@ -38,28 +55,15 @@ public class Disk {
 	 * @throws ApiException if there was an error converting the date
 	 */
 	public Disk(JSONObject jsonObject) throws ApiException {
-		this.updateDate = ResponseHelper.convertDate(jsonObject.getString("UPDATE_DT"));
-		jsonObject.remove("UPDATE_DT");
-		this.diskId = jsonObject.getLong("DISKID");
-		jsonObject.remove("DISKID");
-		this.label = jsonObject.getString("LABEL");
-		jsonObject.remove("LABEL");
-		this.type = jsonObject.getString("TYPE");
-		jsonObject.remove("TYPE");
-		this.linodeId = jsonObject.optLong("LinodeID", -1l);
-		if(-1l == this.linodeId) {
-			this.linodeId = jsonObject.optLong("LINODEID", -1l);
-		}
-		jsonObject.remove("LinodeID");
-		jsonObject.remove("LINODEID");
-		this.isReadOnly = (1 == jsonObject.getInt("ISREADONLY"));
-		jsonObject.remove("ISREADONLY");
-		this.status = jsonObject.getInt("STATUS");
-		jsonObject.remove("STATUS");
-		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
-		jsonObject.remove("CREATE_DT");
-		this.size = jsonObject.getLong("SIZE");
-		jsonObject.remove("SIZE");
+		this.updateDate = readDate(jsonObject, JSON_KEY_UPDATE_DT);
+		this.diskId = readLong(jsonObject, JSON_KEY_DISKID);
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
+		this.type = readString(jsonObject, JSON_KEY_TYPE);
+		this.linodeId = readLong(jsonObject, JSON_KEY_LINODE_ID, JSON_KEY_LINODEID);
+		this.isReadOnly = (1 == readInt(jsonObject, JSON_KEY_ISREADONLY));
+		this.status = readInt(jsonObject, JSON_KEY_STATUS);
+		this.createDate = readDate(jsonObject, JSON_KEY_CREATE_DT);
+		this.size = readLong(jsonObject, JSON_KEY_SIZE);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

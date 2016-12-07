@@ -40,6 +40,14 @@ public class DomainRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_PROTOCOL = "Protocol";
 	private static final String PARAM_CONSTANT_RESOURCEID = "ResourceID";
 
+	private static final String ACTION_DOMAIN_CREATE = "domain.create";
+	private static final String ACTION_DOMAIN_DELETE = "domain.delete";
+	private static final String ACTION_DOMAIN_LIST = "domain.list";
+	private static final String ACTION_DOMAIN_RESOURCE_CREATE = "domain.resource.create";
+	private static final String ACTION_DOMAIN_RESOURCE_DELETE = "domain.resource.delete";
+	private static final String ACTION_DOMAIN_RESOURCE_LIST = "domain.resource.list";
+	private static final String ACTION_DOMAIN_RESOURCE_UPDATE = "domain.resource.update";
+	private static final String ACTION_DOMAIN_UPDATE = "domain.update";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -78,7 +86,7 @@ public class DomainRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAIN, domain, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
-		return(new LinodeApiRequest("domain.create", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_CREATE, parameters));
 	}
 
 	/**
@@ -132,7 +140,7 @@ public class DomainRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_STATUS, status, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MASTER_IPS, master_ips, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_AXFR_IPS, axfr_ips, true);
-		return(new LinodeApiRequest("domain.create", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_CREATE, parameters));
 	}
 
 	/**
@@ -164,7 +172,7 @@ public class DomainRequest extends ApiBaseRequest {
 	public static LinodeApiRequest delete(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
-		return(new LinodeApiRequest("domain.delete", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_DELETE, parameters));
 	}
 
 	/**
@@ -214,7 +222,7 @@ public class DomainRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("domain.list", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_LIST, parameters));
 	}
 
 	/**
@@ -266,7 +274,7 @@ public class DomainRequest extends ApiBaseRequest {
 	public static LinodeApiRequest list(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, true);
-		return(new LinodeApiRequest("domain.list", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_LIST, parameters));
 	}
 
 	/**
@@ -302,7 +310,7 @@ public class DomainRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
-		return(new LinodeApiRequest("domain.resource.create", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_RESOURCE_CREATE, parameters));
 	}
 
 	/**
@@ -350,7 +358,7 @@ public class DomainRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_PORT, port, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_PROTOCOL, protocol, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_TTL_SEC, TTL_sec, true);
-		return(new LinodeApiRequest("domain.resource.create", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_RESOURCE_CREATE, parameters));
 	}
 
 	/**
@@ -384,7 +392,7 @@ public class DomainRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, false);
-		return(new LinodeApiRequest("domain.resource.delete", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_RESOURCE_DELETE, parameters));
 	}
 
 	/**
@@ -433,7 +441,7 @@ public class DomainRequest extends ApiBaseRequest {
 	public static LinodeApiRequest resourcelist(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
-		return(new LinodeApiRequest("domain.resource.list", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_RESOURCE_LIST, parameters));
 	}
 
 	/**
@@ -484,7 +492,7 @@ public class DomainRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, true);
-		return(new LinodeApiRequest("domain.resource.list", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_RESOURCE_LIST, parameters));
 	}
 
 	/**
@@ -518,7 +526,7 @@ public class DomainRequest extends ApiBaseRequest {
 	public static LinodeApiRequest resourceupdate(Long resourceID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_RESOURCEID, resourceID, false);
-		return(new LinodeApiRequest("domain.resource.update", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_RESOURCE_UPDATE, parameters));
 	}
 
 	/**
@@ -566,7 +574,7 @@ public class DomainRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_PORT, port, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_PROTOCOL, protocol, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_TTL_SEC, TTL_sec, true);
-		return(new LinodeApiRequest("domain.resource.update", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_RESOURCE_UPDATE, parameters));
 	}
 
 	/**
@@ -600,7 +608,7 @@ public class DomainRequest extends ApiBaseRequest {
 	public static LinodeApiRequest update(Long domainID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DOMAINID, domainID, false);
-		return(new LinodeApiRequest("domain.update", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_UPDATE, parameters));
 	}
 
 	/**
@@ -656,7 +664,7 @@ public class DomainRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_STATUS, status, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MASTER_IPS, master_ips, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_AXFR_IPS, axfr_ips, true);
-		return(new LinodeApiRequest("domain.update", parameters));
+		return(new LinodeApiRequest(ACTION_DOMAIN_UPDATE, parameters));
 	}
 
 };

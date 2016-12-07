@@ -23,9 +23,9 @@ public class ApiGeneratedResponseTest {
 
 		new ApiSpecResponse(new JSONObject("{" + 
 				" \"ERRORARRAY\":[]," + 
-				" \"ACTION\":\"account.info\"," + 
+				" \"ACTION\":\"account.info\"," +
 				" \"DATA\":{" + 
-				"  \"VERSION\": 3.3, " + 
+				"  \"VERSION\":3.3," +
 				"  \"METHODS\":{" + 
 				"   \"account.info\":{" + 
 				"    \"DESCRIPTION\":\"Shows information about your account such as" + 

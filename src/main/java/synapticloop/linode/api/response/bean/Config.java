@@ -1,5 +1,21 @@
 package synapticloop.linode.api.response.bean;
 
+/*
+ * Copyright (c) 2016 Synapticloop.
+ * 
+ * All rights reserved.
+ * 
+ * This code may contain contributions from other parties which, where 
+ * applicable, will be listed in the default build file for the project 
+ * ~and/or~ in a file named CONTRIBUTORS.txt in the root of the project.
+ * 
+ * This source code and any derived binaries are covered by the terms and 
+ * conditions of the Licence agreement ("the Licence").  You may not use this 
+ * source code or any derived binaries except in compliance with the Licence.  
+ * A copy of the Licence is available in the file named LICENSE.txt shipped with 
+ * this source code or binaries.
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +25,9 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class Config {
+public class Config extends BaseLinodeBean {
+
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(Config.class);
 
 	private boolean helperDisableUpdateDb = false;
@@ -50,43 +68,28 @@ public class Config {
 	 * @param jsonObject the json object
 	 */
 	public Config(JSONObject jsonObject) {
-		this.helperDepMod = (1 == jsonObject.getInt("helper_disableUpdateDB"));
-		jsonObject.remove("helper_disableUpdateDB");
-		this.rootDeviceRO = jsonObject.getBoolean("RootDeviceRO");
-		jsonObject.remove("RootDeviceRO");
-		this.rootDeviceCustom = jsonObject.getString("RootDeviceCustom");
-		jsonObject.remove("RootDeviceCustom");
-		this.label = jsonObject.getString("Label");
-		jsonObject.remove("Label");
+		this.helperDisableUpdateDb = (1 == readInt(jsonObject, JSON_KEY_HELPER_DISABLE_UPDATE_DB));
+		this.rootDeviceRO = readBoolean(jsonObject, JSON_KEY_ROOT_DEVICE_RO);
+		this.rootDeviceCustom = readString(jsonObject, JSON_KEY_ROOT_DEVICE_CUSTOM);
+		this.label = readString(jsonObject, JSON_KEY_LABEL);
 
-		String[] diskIdList = jsonObject.optString("DiskList", "").split(",");
+		String[] diskIdList = readString(jsonObject, JSON_KEY_DISK_LIST, "").split(",");
 		for (String diskId : diskIdList) {
 			if(diskId.trim().length() != 0) {
 				diskIds.add(Long.valueOf(diskId));
 			}
 		}
-		jsonObject.remove("DiskList");
 
-		this.linodeId = jsonObject.getLong("LinodeID");
-		jsonObject.remove("LinodeID");
-		this.comments = jsonObject.getString("Comments");
-		jsonObject.remove("Comments");
-		this.configId = jsonObject.getLong("ConfigID");
-		jsonObject.remove("ConfigID");
-		this.helperXen = (1 == jsonObject.getInt("helper_xen"));
-		jsonObject.remove("helper_xen");
-		this.runLevel = jsonObject.getString("RunLevel");
-		jsonObject.remove("RunLevel");
-		this.helperDepMod = (1 == jsonObject.getInt("helper_depmod"));
-		jsonObject.remove("helper_depmod");
-		this.kernelID = jsonObject.getLong("KernelID");
-		jsonObject.remove("KernelID");
-		this.numRootDevice = jsonObject.getInt("RootDeviceNum");
-		jsonObject.remove("RootDeviceNum");
-		this.helperLibTls = (1 == jsonObject.getInt("helper_libtls"));
-		jsonObject.remove("helper_libtls");
-		this.ramLimit = jsonObject.getLong("RAMLimit");
-		jsonObject.remove("RAMLimit");
+		this.linodeId = readLong(jsonObject, JSON_KEY_LINODE_ID);
+		this.comments = readString(jsonObject, JSON_KEY_COMMENTS);
+		this.configId = readLong(jsonObject, JSON_KEY_CONFIG_ID);
+		this.helperXen = (1 == readInt(jsonObject, JSON_KEY_HELPER_XEN));
+		this.runLevel = readString(jsonObject, JSON_KEY_RUN_LEVEL);
+		this.helperDepMod = (1 == readInt(jsonObject, JSON_KEY_HELPER_DEPMOD));
+		this.kernelID = readLong(jsonObject, JSON_KEY_KERNEL_ID);
+		this.numRootDevice = readInt(jsonObject, JSON_KEY_ROOT_DEVICE_NUM);
+		this.helperLibTls = (1 == readInt(jsonObject, JSON_KEY_HELPER_LIBTLS));
+		this.ramLimit = jsonObject.getLong(JSON_KEY_RAM_LIMIT);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

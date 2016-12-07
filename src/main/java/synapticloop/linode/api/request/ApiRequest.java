@@ -20,6 +20,7 @@ import synapticloop.linode.exception.ApiException;
 
 public class ApiRequest extends ApiBaseRequest {
 
+	private static final String ACTION_API_SPEC = "api.spec";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -63,7 +64,7 @@ public class ApiRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest spec() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("api.spec", parameters));
+		return(new LinodeApiRequest(ACTION_API_SPEC, parameters));
 	}
 
 };

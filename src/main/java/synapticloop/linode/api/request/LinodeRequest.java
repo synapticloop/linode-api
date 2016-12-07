@@ -77,6 +77,37 @@ public class LinodeRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_MS_SSH_IP = "ms_ssh_ip";
 	private static final String PARAM_CONSTANT_MS_SSH_PORT = "ms_ssh_port";
 
+	private static final String ACTION_LINODE_BOOT = "linode.boot";
+	private static final String ACTION_LINODE_CLONE = "linode.clone";
+	private static final String ACTION_LINODE_CONFIG_CREATE = "linode.config.create";
+	private static final String ACTION_LINODE_CONFIG_DELETE = "linode.config.delete";
+	private static final String ACTION_LINODE_CONFIG_LIST = "linode.config.list";
+	private static final String ACTION_LINODE_CONFIG_UPDATE = "linode.config.update";
+	private static final String ACTION_LINODE_CREATE = "linode.create";
+	private static final String ACTION_LINODE_DELETE = "linode.delete";
+	private static final String ACTION_LINODE_DISK_CREATE = "linode.disk.create";
+	private static final String ACTION_LINODE_DISK_CREATEFROMDISTRIBUTION = "linode.disk.createfromdistribution";
+	private static final String ACTION_LINODE_DISK_CREATEFROMIMAGE = "linode.disk.createfromimage";
+	private static final String ACTION_LINODE_DISK_CREATEFROMSTACKSCRIPT = "linode.disk.createfromstackscript";
+	private static final String ACTION_LINODE_DISK_DELETE = "linode.disk.delete";
+	private static final String ACTION_LINODE_DISK_DUPLICATE = "linode.disk.duplicate";
+	private static final String ACTION_LINODE_DISK_IMAGIZE = "linode.disk.imagize";
+	private static final String ACTION_LINODE_DISK_LIST = "linode.disk.list";
+	private static final String ACTION_LINODE_DISK_RESIZE = "linode.disk.resize";
+	private static final String ACTION_LINODE_DISK_UPDATE = "linode.disk.update";
+	private static final String ACTION_LINODE_IP_ADDPRIVATE = "linode.ip.addprivate";
+	private static final String ACTION_LINODE_IP_ADDPUBLIC = "linode.ip.addpublic";
+	private static final String ACTION_LINODE_IP_LIST = "linode.ip.list";
+	private static final String ACTION_LINODE_IP_SETRDNS = "linode.ip.setrdns";
+	private static final String ACTION_LINODE_IP_SWAP = "linode.ip.swap";
+	private static final String ACTION_LINODE_JOB_LIST = "linode.job.list";
+	private static final String ACTION_LINODE_KVMIFY = "linode.kvmify";
+	private static final String ACTION_LINODE_LIST = "linode.list";
+	private static final String ACTION_LINODE_MUTATE = "linode.mutate";
+	private static final String ACTION_LINODE_REBOOT = "linode.reboot";
+	private static final String ACTION_LINODE_RESIZE = "linode.resize";
+	private static final String ACTION_LINODE_SHUTDOWN = "linode.shutdown";
+	private static final String ACTION_LINODE_UPDATE = "linode.update";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -113,7 +144,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest boot(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.boot", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_BOOT, parameters));
 	}
 
 	/**
@@ -147,7 +178,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
-		return(new LinodeApiRequest("linode.boot", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_BOOT, parameters));
 	}
 
 	/**
@@ -191,7 +222,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
-		return(new LinodeApiRequest("linode.clone", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CLONE, parameters));
 	}
 
 	/**
@@ -235,7 +266,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
-		return(new LinodeApiRequest("linode.clone", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CLONE, parameters));
 	}
 
 	/**
@@ -275,7 +306,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_KERNELID, kernelID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKLIST, diskList, false);
-		return(new LinodeApiRequest("linode.config.create", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CONFIG_CREATE, parameters));
 	}
 
 	/**
@@ -339,7 +370,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DEPMOD, helper_depmod, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_NETWORK, helper_network, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT, devtmpfs_automount, true);
-		return(new LinodeApiRequest("linode.config.create", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CONFIG_CREATE, parameters));
 	}
 
 	/**
@@ -375,7 +406,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
-		return(new LinodeApiRequest("linode.config.delete", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CONFIG_DELETE, parameters));
 	}
 
 	/**
@@ -441,7 +472,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest configlist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.config.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CONFIG_LIST, parameters));
 	}
 
 	/**
@@ -507,7 +538,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
-		return(new LinodeApiRequest("linode.config.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CONFIG_LIST, parameters));
 	}
 
 	/**
@@ -541,7 +572,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest configupdate(Long configID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, false);
-		return(new LinodeApiRequest("linode.config.update", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CONFIG_UPDATE, parameters));
 	}
 
 	/**
@@ -607,7 +638,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_DEPMOD, helper_depmod, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_HELPER_NETWORK, helper_network, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_DEVTMPFS_AUTOMOUNT, devtmpfs_automount, true);
-		return(new LinodeApiRequest("linode.config.update", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CONFIG_UPDATE, parameters));
 	}
 
 	/**
@@ -647,7 +678,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
-		return(new LinodeApiRequest("linode.create", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CREATE, parameters));
 	}
 
 	/**
@@ -687,7 +718,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_DATACENTERID, datacenterID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
-		return(new LinodeApiRequest("linode.create", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_CREATE, parameters));
 	}
 
 	/**
@@ -723,7 +754,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest delete(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.delete", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DELETE, parameters));
 	}
 
 	/**
@@ -759,7 +790,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SKIPCHECKS, skipChecks, true);
-		return(new LinodeApiRequest("linode.delete", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DELETE, parameters));
 	}
 
 	/**
@@ -799,7 +830,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
-		return(new LinodeApiRequest("linode.disk.create", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_CREATE, parameters));
 	}
 
 	/**
@@ -839,7 +870,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_TYPE, type, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ISREADONLY, isReadOnly, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
-		return(new LinodeApiRequest("linode.disk.create", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_CREATE, parameters));
 	}
 
 	/**
@@ -881,7 +912,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
-		return(new LinodeApiRequest("linode.disk.createfromdistribution", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_CREATEFROMDISTRIBUTION, parameters));
 	}
 
 	/**
@@ -923,7 +954,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
-		return(new LinodeApiRequest("linode.disk.createfromdistribution", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_CREATEFROMDISTRIBUTION, parameters));
 	}
 
 	/**
@@ -953,7 +984,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.disk.createfromimage", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_CREATEFROMIMAGE, parameters));
 	}
 
 	/**
@@ -991,7 +1022,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
-		return(new LinodeApiRequest("linode.disk.createfromimage", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_CREATEFROMIMAGE, parameters));
 	}
 
 	/**
@@ -1037,7 +1068,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
-		return(new LinodeApiRequest("linode.disk.createfromstackscript", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_CREATEFROMSTACKSCRIPT, parameters));
 	}
 
 	/**
@@ -1083,7 +1114,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTPASS, rootPass, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_ROOTSSHKEY, rootSSHKey, true);
-		return(new LinodeApiRequest("linode.disk.createfromstackscript", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_CREATEFROMSTACKSCRIPT, parameters));
 	}
 
 	/**
@@ -1119,7 +1150,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
-		return(new LinodeApiRequest("linode.disk.delete", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_DELETE, parameters));
 	}
 
 	/**
@@ -1156,7 +1187,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
-		return(new LinodeApiRequest("linode.disk.duplicate", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_DUPLICATE, parameters));
 	}
 
 	/**
@@ -1186,7 +1217,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
-		return(new LinodeApiRequest("linode.disk.imagize", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_IMAGIZE, parameters));
 	}
 
 	/**
@@ -1220,7 +1251,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
-		return(new LinodeApiRequest("linode.disk.imagize", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_IMAGIZE, parameters));
 	}
 
 	/**
@@ -1268,7 +1299,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest disklist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.disk.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_LIST, parameters));
 	}
 
 	/**
@@ -1318,7 +1349,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, true);
-		return(new LinodeApiRequest("linode.disk.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_LIST, parameters));
 	}
 
 	/**
@@ -1356,7 +1387,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SIZE, size, false);
-		return(new LinodeApiRequest("linode.disk.resize", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_RESIZE, parameters));
 	}
 
 	/**
@@ -1389,7 +1420,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest diskupdate(Long diskID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
-		return(new LinodeApiRequest("linode.disk.update", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_UPDATE, parameters));
 	}
 
 	/**
@@ -1426,7 +1457,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_DISKID, diskID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_ISREADONLY, isReadOnly, true);
-		return(new LinodeApiRequest("linode.disk.update", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_DISK_UPDATE, parameters));
 	}
 
 	/**
@@ -1460,7 +1491,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest ipaddprivate(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.ip.addprivate", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_IP_ADDPRIVATE, parameters));
 	}
 
 	/**
@@ -1495,7 +1526,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest ipaddpublic(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.ip.addpublic", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_IP_ADDPUBLIC, parameters));
 	}
 
 	/**
@@ -1539,7 +1570,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest iplist() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("linode.ip.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_IP_LIST, parameters));
 	}
 
 	/**
@@ -1585,7 +1616,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, true);
-		return(new LinodeApiRequest("linode.ip.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_IP_LIST, parameters));
 	}
 
 	/**
@@ -1624,7 +1655,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_HOSTNAME, hostname, false);
-		return(new LinodeApiRequest("linode.ip.setrdns", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_IP_SETRDNS, parameters));
 	}
 
 	/**
@@ -1670,7 +1701,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest ipswap(Long iPAddressID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
-		return(new LinodeApiRequest("linode.ip.swap", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_IP_SWAP, parameters));
 	}
 
 	/**
@@ -1718,7 +1749,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_IPADDRESSID, iPAddressID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_WITHIPADDRESSID, withIPAddressID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_TOLINODEID, toLinodeID, true);
-		return(new LinodeApiRequest("linode.ip.swap", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_IP_SWAP, parameters));
 	}
 
 	/**
@@ -1767,7 +1798,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest joblist(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.job.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_JOB_LIST, parameters));
 	}
 
 	/**
@@ -1820,7 +1851,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_JOBID, jobID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_PENDINGONLY, pendingOnly, true);
-		return(new LinodeApiRequest("linode.job.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_JOB_LIST, parameters));
 	}
 
 	/**
@@ -1848,7 +1879,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest kvmify(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.kvmify", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_KVMIFY, parameters));
 	}
 
 	/**
@@ -1902,7 +1933,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("linode.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_LIST, parameters));
 	}
 
 	/**
@@ -1958,7 +1989,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest list(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
-		return(new LinodeApiRequest("linode.list", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_LIST, parameters));
 	}
 
 	/**
@@ -1986,7 +2017,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest mutate(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.mutate", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_MUTATE, parameters));
 	}
 
 	/**
@@ -2019,7 +2050,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest reboot(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.reboot", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_REBOOT, parameters));
 	}
 
 	/**
@@ -2052,7 +2083,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_CONFIGID, configID, true);
-		return(new LinodeApiRequest("linode.reboot", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_REBOOT, parameters));
 	}
 
 	/**
@@ -2093,7 +2124,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, false);
-		return(new LinodeApiRequest("linode.resize", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_RESIZE, parameters));
 	}
 
 	/**
@@ -2126,7 +2157,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest shutdown(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.shutdown", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_SHUTDOWN, parameters));
 	}
 
 	/**
@@ -2160,7 +2191,7 @@ public class LinodeRequest extends ApiBaseRequest {
 	public static LinodeApiRequest update(Long linodeID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, false);
-		return(new LinodeApiRequest("linode.update", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_UPDATE, parameters));
 	}
 
 	/**
@@ -2230,7 +2261,7 @@ public class LinodeRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_USER, ms_ssh_user, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_IP, ms_ssh_ip, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_MS_SSH_PORT, ms_ssh_port, true);
-		return(new LinodeApiRequest("linode.update", parameters));
+		return(new LinodeApiRequest(ACTION_LINODE_UPDATE, parameters));
 	}
 
 };

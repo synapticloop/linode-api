@@ -27,6 +27,10 @@ public class StackscriptRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_SCRIPT = "script";
 	private static final String PARAM_CONSTANT_STACKSCRIPTID = "StackScriptID";
 
+	private static final String ACTION_STACKSCRIPT_CREATE = "stackscript.create";
+	private static final String ACTION_STACKSCRIPT_DELETE = "stackscript.delete";
+	private static final String ACTION_STACKSCRIPT_LIST = "stackscript.list";
+	private static final String ACTION_STACKSCRIPT_UPDATE = "stackscript.update";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -67,7 +71,7 @@ public class StackscriptRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_DISTRIBUTIONIDLIST, distributionIDList, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_SCRIPT, script, false);
-		return(new LinodeApiRequest("stackscript.create", parameters));
+		return(new LinodeApiRequest(ACTION_STACKSCRIPT_CREATE, parameters));
 	}
 
 	/**
@@ -109,7 +113,7 @@ public class StackscriptRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_ISPUBLIC, isPublic, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_REV_NOTE, rev_note, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_SCRIPT, script, false);
-		return(new LinodeApiRequest("stackscript.create", parameters));
+		return(new LinodeApiRequest(ACTION_STACKSCRIPT_CREATE, parameters));
 	}
 
 	/**
@@ -141,7 +145,7 @@ public class StackscriptRequest extends ApiBaseRequest {
 	public static LinodeApiRequest delete(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
-		return(new LinodeApiRequest("stackscript.delete", parameters));
+		return(new LinodeApiRequest(ACTION_STACKSCRIPT_DELETE, parameters));
 	}
 
 	/**
@@ -197,7 +201,7 @@ public class StackscriptRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("stackscript.list", parameters));
+		return(new LinodeApiRequest(ACTION_STACKSCRIPT_LIST, parameters));
 	}
 
 	/**
@@ -255,7 +259,7 @@ public class StackscriptRequest extends ApiBaseRequest {
 	public static LinodeApiRequest list(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, true);
-		return(new LinodeApiRequest("stackscript.list", parameters));
+		return(new LinodeApiRequest(ACTION_STACKSCRIPT_LIST, parameters));
 	}
 
 	/**
@@ -289,7 +293,7 @@ public class StackscriptRequest extends ApiBaseRequest {
 	public static LinodeApiRequest update(Long stackScriptID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_STACKSCRIPTID, stackScriptID, false);
-		return(new LinodeApiRequest("stackscript.update", parameters));
+		return(new LinodeApiRequest(ACTION_STACKSCRIPT_UPDATE, parameters));
 	}
 
 	/**
@@ -333,7 +337,7 @@ public class StackscriptRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_ISPUBLIC, isPublic, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_REV_NOTE, rev_note, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_SCRIPT, script, true);
-		return(new LinodeApiRequest("stackscript.update", parameters));
+		return(new LinodeApiRequest(ACTION_STACKSCRIPT_UPDATE, parameters));
 	}
 
 };

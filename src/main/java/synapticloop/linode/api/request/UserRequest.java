@@ -25,6 +25,7 @@ public class UserRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_EXPIRES = "expires";
 	private static final String PARAM_CONSTANT_LABEL = "label";
 
+	private static final String ACTION_USER_GETAPIKEY = "user.getapikey";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -68,7 +69,7 @@ public class UserRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_USERNAME, username, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_PASSWORD, password, false);
-		return(new LinodeApiRequest("user.getapikey", parameters));
+		return(new LinodeApiRequest(ACTION_USER_GETAPIKEY, parameters));
 	}
 
 	/**
@@ -113,7 +114,7 @@ public class UserRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_TOKEN, token, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_EXPIRES, expires, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
-		return(new LinodeApiRequest("user.getapikey", parameters));
+		return(new LinodeApiRequest(ACTION_USER_GETAPIKEY, parameters));
 	}
 
 };

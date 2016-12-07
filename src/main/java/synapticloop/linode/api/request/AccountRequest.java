@@ -24,6 +24,8 @@ public class AccountRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_PLANID = "PlanID";
 	private static final String PARAM_CONSTANT_LINODEID = "LinodeID";
 
+	private static final String ACTION_ACCOUNT_ESTIMATEINVOICE = "account.estimateinvoice";
+	private static final String ACTION_ACCOUNT_INFO = "account.info";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -62,7 +64,7 @@ public class AccountRequest extends ApiBaseRequest {
 	public static LinodeApiRequest estimateinvoice(String mode) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_MODE, mode, false);
-		return(new LinodeApiRequest("account.estimateinvoice", parameters));
+		return(new LinodeApiRequest(ACTION_ACCOUNT_ESTIMATEINVOICE, parameters));
 	}
 
 	/**
@@ -102,7 +104,7 @@ public class AccountRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_PAYMENTTERM, paymentTerm, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_PLANID, planID, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_LINODEID, linodeID, true);
-		return(new LinodeApiRequest("account.estimateinvoice", parameters));
+		return(new LinodeApiRequest(ACTION_ACCOUNT_ESTIMATEINVOICE, parameters));
 	}
 
 	/**
@@ -134,7 +136,7 @@ public class AccountRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest info() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("account.info", parameters));
+		return(new LinodeApiRequest(ACTION_ACCOUNT_INFO, parameters));
 	}
 
 };

@@ -24,6 +24,9 @@ public class ImageRequest extends ApiBaseRequest {
 	private static final String PARAM_CONSTANT_LABEL = "label";
 	private static final String PARAM_CONSTANT_DESCRIPTION = "description";
 
+	private static final String ACTION_IMAGE_DELETE = "image.delete";
+	private static final String ACTION_IMAGE_LIST = "image.list";
+	private static final String ACTION_IMAGE_UPDATE = "image.update";
 	/**
 	 * Private constructor to deter instantiation
 	 */
@@ -71,7 +74,7 @@ public class ImageRequest extends ApiBaseRequest {
 	public static LinodeApiRequest delete(Long imageID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
-		return(new LinodeApiRequest("image.delete", parameters));
+		return(new LinodeApiRequest(ACTION_IMAGE_DELETE, parameters));
 	}
 
 	/**
@@ -127,7 +130,7 @@ public class ImageRequest extends ApiBaseRequest {
 	 */
 	public static LinodeApiRequest list() throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
-		return(new LinodeApiRequest("image.list", parameters));
+		return(new LinodeApiRequest(ACTION_IMAGE_LIST, parameters));
 	}
 
 	/**
@@ -185,7 +188,7 @@ public class ImageRequest extends ApiBaseRequest {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_PENDING, pending, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, true);
-		return(new LinodeApiRequest("image.list", parameters));
+		return(new LinodeApiRequest(ACTION_IMAGE_LIST, parameters));
 	}
 
 	/**
@@ -231,7 +234,7 @@ public class ImageRequest extends ApiBaseRequest {
 	public static LinodeApiRequest update(Long imageID) throws ApiException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
-		return(new LinodeApiRequest("image.update", parameters));
+		return(new LinodeApiRequest(ACTION_IMAGE_UPDATE, parameters));
 	}
 
 	/**
@@ -279,7 +282,7 @@ public class ImageRequest extends ApiBaseRequest {
 		addParameterSafely(parameters, PARAM_CONSTANT_IMAGEID, imageID, false);
 		addParameterSafely(parameters, PARAM_CONSTANT_LABEL, label, true);
 		addParameterSafely(parameters, PARAM_CONSTANT_DESCRIPTION, description, true);
-		return(new LinodeApiRequest("image.update", parameters));
+		return(new LinodeApiRequest(ACTION_IMAGE_UPDATE, parameters));
 	}
 
 };

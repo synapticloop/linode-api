@@ -29,6 +29,10 @@ public class {api.className}Request extends ApiBaseRequest {{{\n}
 	{endloop}
 {\n}
 
+	{loop api.apiMethods as apiMethod}
+		{\t}private static final String ACTION_{fn:slug[apiMethod.methodName]} = "{apiMethod.methodName}";{\n}
+	{endloop}
+
 	{\t}/**{\n}
 	{\t} * Private constructor to deter instantiation{\n}
 	{\t} */{\n}
@@ -109,7 +113,7 @@ public class {api.className}Request extends ApiBaseRequest {{{\n}
 					{\t}{\t}addParameterSafely(parameters, {apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}, {!apiMethodParam.required});{\n}
 				{endloop}
 
-				{\t}{\t}return(new LinodeApiRequest("{apiMethod.methodName}", parameters));{\n}
+				{\t}{\t}return(new LinodeApiRequest(ACTION_{fn:slug[apiMethod.methodName]}, parameters));{\n}
 
 		{\t}}{\n}
 {\n}
@@ -192,7 +196,7 @@ public class {api.className}Request extends ApiBaseRequest {{{\n}
 					{\t}{\t}addParameterSafely(parameters, {apiMethodParam.parameterNameConstant}, {apiMethodParam.parameterName}, {!apiMethodParam.required});{\n}
 				{endloop}
 
-				{\t}{\t}return(new LinodeApiRequest("{apiMethod.methodName}", parameters));{\n}
+				{\t}{\t}return(new LinodeApiRequest(ACTION_{fn:slug[apiMethod.methodName]}, parameters));{\n}
 
 		{\t}}{\n}
 

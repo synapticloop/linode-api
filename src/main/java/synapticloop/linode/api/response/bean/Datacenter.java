@@ -1,17 +1,29 @@
 package synapticloop.linode.api.response.bean;
 
+/*
+ * Copyright (c) 2016 Synapticloop.
+ * 
+ * All rights reserved.
+ * 
+ * This code may contain contributions from other parties which, where 
+ * applicable, will be listed in the default build file for the project 
+ * ~and/or~ in a file named CONTRIBUTORS.txt in the root of the project.
+ * 
+ * This source code and any derived binaries are covered by the terms and 
+ * conditions of the Licence agreement ("the Licence").  You may not use this 
+ * source code or any derived binaries except in compliance with the Licence.  
+ * A copy of the Licence is available in the file named LICENSE.txt shipped with 
+ * this source code or binaries.
+ */
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class Datacenter {
+public class Datacenter extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Datacenter.class);
-
-	private static final String JSON_KEY_ABBREVIATION = "ABBR";
-	private static final String JSON_KEY_DATACENTREID = "DATACENTERID";
-	private static final String JSON_KEY_LOCATION = "LOCATION";
 
 	private Long datacenterId = null;
 	private String location = null;
@@ -27,14 +39,9 @@ public class Datacenter {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public Datacenter(JSONObject jsonObject) {
-		this.datacenterId = jsonObject.getLong(JSON_KEY_DATACENTREID);
-		jsonObject.remove(JSON_KEY_DATACENTREID);
-
-		this.location = jsonObject.getString(JSON_KEY_LOCATION);
-		jsonObject.remove(JSON_KEY_LOCATION);
-
-		this.abbreviation = jsonObject.getString(JSON_KEY_ABBREVIATION);
-		jsonObject.remove(JSON_KEY_ABBREVIATION);
+		this.datacenterId = readLong(jsonObject, JSON_KEY_DATACENTREID);
+		this.location = readString(jsonObject, JSON_KEY_LOCATION);
+		this.abbreviation = readString(jsonObject, JSON_KEY_ABBREVIATION);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

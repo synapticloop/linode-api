@@ -22,6 +22,7 @@ import synapticloop.linode.bean.Api;
 import synapticloop.linode.bean.ApiMethod;
 import synapticloop.linode.bean.ApiMethodParam;
 import synapticloop.linode.bean.ErrorCodeMapper;
+import synapticloop.linode.function.SlugFunction;
 import synapticloop.linode.function.StringifyFunction;
 import synapticloop.linode.logger.SimpleLogger;
 import synapticloop.templar.Parser;
@@ -80,6 +81,7 @@ public class Main {
 		TemplarContext templarContext = new TemplarContext();
 		try {
 			templarContext.addFunction("stringify", new StringifyFunction(1));
+			templarContext.addFunction("slug", new SlugFunction(1));
 		} catch (FunctionException ex) {
 			// TODO Auto-generated catch block
 			ex.printStackTrace();

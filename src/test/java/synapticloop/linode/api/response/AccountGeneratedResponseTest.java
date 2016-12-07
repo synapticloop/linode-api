@@ -46,7 +46,7 @@ public class AccountGeneratedResponseTest {
 				"         \"TRANSFER_USED\":150," + 
 				"         \"TRANSFER_BILLABLE\":0," + 
 				"         \"MANAGED\":true," + 
-				"         \"BALANCE\":20, " +
+				"         \"BALANCE\":20," +
 				"         \"BILLING_METHOD\": \"metered\"" + 
 				"      }" + 
 				"}"));
