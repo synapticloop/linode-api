@@ -23,9 +23,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.api.response.BaseJsonReader;
 import synapticloop.linode.exception.ApiException;
 
-public class Job extends BaseLinodeBean {
+public class Job extends BaseJsonReader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Job.class);
 
 	private Date enteredDate = null;

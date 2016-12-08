@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.response.bean.ApiError;
 
-public abstract class BaseResponse {
+public abstract class BaseResponse extends BaseJsonReader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(BaseResponse.class);
 
 	private static final String JSON_KEY_ACTION = "ACTION";

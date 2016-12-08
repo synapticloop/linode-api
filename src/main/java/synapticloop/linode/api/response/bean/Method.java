@@ -25,8 +25,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.api.response.BaseJsonReader;
 
-public class Method extends BaseLinodeBean {
+public class Method extends BaseJsonReader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Method.class);
 
 	private String name = null;

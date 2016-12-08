@@ -25,9 +25,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.api.response.BaseJsonReader;
 import synapticloop.linode.exception.ApiException;
 
-public class Stackscript extends BaseLinodeBean {
+public class Stackscript extends BaseJsonReader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Stackscript.class);
 
 	private String script = null;

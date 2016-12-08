@@ -1,12 +1,4 @@
-package synapticloop.linode.api.response.bean;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.json.JSONObject;
-
-import synapticloop.linode.exception.ApiException;
+package synapticloop.linode.api.response;
 
 /*
  * Copyright (c) 2016 Synapticloop.
@@ -24,7 +16,15 @@ import synapticloop.linode.exception.ApiException;
  * this source code or binaries.
  */
 
-public class BaseLinodeBean {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.json.JSONObject;
+
+import synapticloop.linode.exception.ApiException;
+
+public abstract class BaseJsonReader {
 
 	// "2014-10-08 09:39:07.0"
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");

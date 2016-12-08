@@ -21,8 +21,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
+import synapticloop.linode.api.response.BaseJsonReader;
 
-public class IPAddress extends BaseLinodeBean {
+public class IPAddress extends BaseJsonReader {
 	private static final Logger LOGGER = LoggerFactory.getLogger(IPAddress.class);
 
 	private Long linodeId = null;
