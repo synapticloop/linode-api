@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class LinodePlan {
+public class LinodePlan extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LinodePlan.class);
 
 	private Integer numCores = null;
@@ -62,29 +62,14 @@ public class LinodePlan {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public LinodePlan(JSONObject jsonObject) {
-		this.numCores = jsonObject.getInt("CORES");
-		jsonObject.remove("CORES");
-
-		this.priceMonthly = jsonObject.getDouble("PRICE");
-		jsonObject.remove("PRICE");
-
-		this.ram = jsonObject.getLong("RAM");
-		jsonObject.remove("RAM");
-
-		this.planId = jsonObject.getLong("PLANID");
-		jsonObject.remove("PLANID");
-
-		this.label = jsonObject.getString("LABEL");
-		jsonObject.remove("LABEL");
-
-		this.diskSize = jsonObject.getLong("DISK");
-		jsonObject.remove("DISK");
-
-		this.priceHourly = jsonObject.getDouble("HOURLY");
-		jsonObject.remove("HOURLY");
-
-		this.xfer = jsonObject.getLong("XFER");
-		jsonObject.remove("XFER");
+		this.numCores = readInt(jsonObject, JSON_KEY_CORES);
+		this.priceMonthly = readDouble(jsonObject, JSON_KEY_PRICE);
+		this.ram = readLong(jsonObject, JSON_KEY_RAM);
+		this.planId = readLong(jsonObject, JSON_KEY_PLANID);
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
+		this.diskSize = readLong(jsonObject, JSON_KEY_DISK);
+		this.priceHourly = readDouble(jsonObject, JSON_KEY_HOURLY);
+		this.xfer = readLong(jsonObject, JSON_KEY_XFER);
 
 		JSONObject availObject = jsonObject.getJSONObject("AVAIL");
 		Iterator<String> keys = availObject.keys();

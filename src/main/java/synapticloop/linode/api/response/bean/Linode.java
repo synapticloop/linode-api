@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.exception.ApiException;
 
-public class Linode {
+public class Linode extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Linode.class);
 
 	private Long numTotalTransfer = null;
@@ -89,60 +89,33 @@ public class Linode {
 	 * @throws ApiException if there was an error converting the date
 	 */
 	public Linode(JSONObject jsonObject) throws ApiException {
-		this.numTotalTransfer = jsonObject.getLong("TOTALXFER");
-		jsonObject.remove("TOTALXFER");
-		this.backupsEnabled = (1 == jsonObject.getInt("BACKUPSENABLED"));
-		jsonObject.remove("BACKUPSENABLED");
-		this.watchdog = (1 == jsonObject.getInt("WATCHDOG"));
-		jsonObject.remove("WATCHDOG");
-		this.lpmDisplayGroup = jsonObject.getString("LPM_DISPLAYGROUP");
-		jsonObject.remove("LPM_DISPLAYGROUP");
-		this.alertBWQuotaEnabled = (1 == jsonObject.getInt("ALERT_BWQUOTA_ENABLED"));
-		jsonObject.remove("ALERT_BWQUOTA_ENABLED");
-		this.status = jsonObject.getInt("STATUS");
-		jsonObject.remove("STATUS");
-		this.totalRam = jsonObject.getLong("TOTALRAM");
-		jsonObject.remove("TOTALRAM");
-		this.alertDiskIoThreshold = jsonObject.getLong("ALERT_DISKIO_THRESHOLD");
-		jsonObject.remove("ALERT_DISKIO_THRESHOLD");
-		this.backupWindow = (1 == jsonObject.getInt("BACKUPWINDOW"));
-		jsonObject.remove("BACKUPWINDOW");
-		this.alertBWOutEnabled = (1 == jsonObject.getInt("ALERT_BWOUT_ENABLED"));
-		jsonObject.remove("ALERT_BWOUT_ENABLED");
-		this.alertBWOutThreshold = jsonObject.getInt("ALERT_BWOUT_THRESHOLD");
-		jsonObject.remove("ALERT_BWOUT_THRESHOLD");
-		this.label = jsonObject.getString("LABEL");
-		jsonObject.remove("LABEL");
-		this.alertCpuEnabled = (1 == jsonObject.getInt("ALERT_CPU_ENABLED"));
-		jsonObject.remove("ALERT_CPU_ENABLED");
-		this.alertBWQuotaThreshold = jsonObject.getInt("ALERT_BWQUOTA_THRESHOLD");
-		jsonObject.remove("ALERT_BWQUOTA_THRESHOLD");
-		this.alertBWWinThreshold = jsonObject.getInt("ALERT_BWIN_THRESHOLD");
-		jsonObject.remove("ALERT_BWIN_THRESHOLD");
-		this.backupWeeklyDaily = jsonObject.getInt("BACKUPWEEKLYDAY");
-		jsonObject.remove("BACKUPWEEKLYDAY");
-		this.datacenterId = jsonObject.getLong("DATACENTERID");
-		jsonObject.remove("DATACENTERID");
-		this.alertCpuThreshold = jsonObject.getInt("ALERT_CPU_THRESHOLD");
-		jsonObject.remove("ALERT_CPU_THRESHOLD");
-		this.numTotalHardDisk = jsonObject.getInt("TOTALHD");
-		jsonObject.remove("TOTALHD");
-		this.alertDiskIOEnabled = (1 == jsonObject.getInt("ALERT_DISKIO_ENABLED"));
-		jsonObject.remove("ALERT_DISKIO_ENABLED");
-		this.alertBWinEnabled = (1 == jsonObject.getInt("ALERT_BWIN_ENABLED"));
-		jsonObject.remove("ALERT_BWIN_ENABLED");
-		this.linodeId = jsonObject.getLong("LINODEID");
-		jsonObject.remove("LINODEID");
-		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
-		jsonObject.remove("CREATE_DT");
-		this.planId = jsonObject.getLong("PLANID");
-		jsonObject.remove("PLANID");
-		this.distributionVendor = jsonObject.getString("DISTRIBUTIONVENDOR");
-		jsonObject.remove("DISTRIBUTIONVENDOR");
-		this.isXen = (1 == jsonObject.getInt("ISXEN"));
-		jsonObject.remove("ISXEN");
-		this.isKvm = (1 == jsonObject.getInt("ISKVM"));
-		jsonObject.remove("ISKVM");
+		this.numTotalTransfer = readLong(jsonObject, JSON_KEY_TOTALXFER);
+		this.backupsEnabled = (1 == readInt(jsonObject, JSON_KEY_BACKUPSENABLED));
+		this.watchdog = (1 == readInt(jsonObject, JSON_KEY_WATCHDOG));
+		this.lpmDisplayGroup = readString(jsonObject, JSON_KEY_LPM_DISPLAYGROUP);
+		this.alertBWQuotaEnabled = (1 == readInt(jsonObject, JSON_KEY_ALERT_BWQUOTA_ENABLED));
+		this.status = readInt(jsonObject, JSON_KEY_STATUS);
+		this.totalRam = readLong(jsonObject, JSON_KEY_TOTALRAM);
+		this.alertDiskIoThreshold = readLong(jsonObject, JSON_KEY_ALERT_DISKIO_THRESHOLD);
+		this.backupWindow = (1 == readInt(jsonObject, JSON_KEY_BACKUPWINDOW));
+		this.alertBWOutEnabled = (1 == readInt(jsonObject, JSON_KEY_ALERT_BWOUT_ENABLED));
+		this.alertBWOutThreshold = readInt(jsonObject, JSON_KEY_ALERT_BWOUT_THRESHOLD);
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
+		this.alertCpuEnabled = (1 == readInt(jsonObject, JSON_KEY_ALERT_CPU_ENABLED));
+		this.alertBWQuotaThreshold = readInt(jsonObject, JSON_KEY_ALERT_BWQUOTA_THRESHOLD);
+		this.alertBWWinThreshold = readInt(jsonObject, JSON_KEY_ALERT_BWIN_THRESHOLD);
+		this.backupWeeklyDaily = readInt(jsonObject, JSON_KEY_BACKUPWEEKLYDAY);
+		this.datacenterId = readLong(jsonObject, JSON_KEY_DATACENTERID);
+		this.alertCpuThreshold = readInt(jsonObject, JSON_KEY_ALERT_CPU_THRESHOLD);
+		this.numTotalHardDisk = readInt(jsonObject, JSON_KEY_TOTALHD);
+		this.alertDiskIOEnabled = (1 == readInt(jsonObject, JSON_KEY_ALERT_DISKIO_ENABLED));
+		this.alertBWinEnabled = (1 == readInt(jsonObject, JSON_KEY_ALERT_BWIN_ENABLED));
+		this.linodeId = readLong(jsonObject, JSON_KEY_LINODEID);
+		this.createDate = readDate(jsonObject, JSON_KEY_CREATE_DT);
+		this.planId = readLong(jsonObject, JSON_KEY_PLANID);
+		this.distributionVendor = readString(jsonObject, JSON_KEY_DISTRIBUTIONVENDOR);
+		this.isXen = (1 == readInt(jsonObject, JSON_KEY_ISXEN));
+		this.isKvm = (1 == readInt(jsonObject, JSON_KEY_ISKVM));
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

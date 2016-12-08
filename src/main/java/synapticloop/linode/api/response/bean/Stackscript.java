@@ -27,9 +27,7 @@ import org.slf4j.LoggerFactory;
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.exception.ApiException;
 
-public class Stackscript {
-	private static final String KEY_JSON_SCRIPT = "SCRIPT";
-
+public class Stackscript extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Stackscript.class);
 
 	private String script = null;
@@ -68,37 +66,24 @@ public class Stackscript {
 	 * @throws ApiException if there was an error converting the date
 	 */
 	public Stackscript(JSONObject jsonObject) throws ApiException {
-		this.script = jsonObject.getString(KEY_JSON_SCRIPT);
-		jsonObject.remove(KEY_JSON_SCRIPT);
-		this.description = jsonObject.getString("DESCRIPTION");
-		jsonObject.remove("DESCRIPTION");
+		this.script = readString(jsonObject, JSON_KEY_SCRIPT);
+		this.description = readString(jsonObject, JSON_KEY_DESCRIPTION);
 
-		String[] distributionIdList = jsonObject.optString("DISTRIBUTIONIDLIST", "").split(",");
+		String[] distributionIdList = readString(jsonObject, JSON_KEY_DISTRIBUTIONIDLIST, "").split(",");
 		for (String distributionId : distributionIdList) {
 			distributionIds.add(Long.valueOf(distributionId));
 		}
-		jsonObject.remove("DISTRIBUTIONIDLIST");
 
-		this.label = jsonObject.get("LABEL").toString();
-		jsonObject.remove("LABEL");
-		this.numDeploymentsTotal = jsonObject.getInt("DEPLOYMENTSTOTAL");
-		jsonObject.remove("DEPLOYMENTSTOTAL");
-		this.numLatestRevision = jsonObject.getInt("LATESTREV");
-		jsonObject.remove("LATESTREV");
-		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
-		jsonObject.remove("CREATE_DT");
-		this.numDeploymentsActive = jsonObject.getInt("DEPLOYMENTSACTIVE");
-		jsonObject.remove("DEPLOYMENTSACTIVE");
-		this.stackscriptId = jsonObject.getLong("STACKSCRIPTID");
-		jsonObject.remove("STACKSCRIPTID");
-		this.revisionNote = jsonObject.get("REV_NOTE").toString();
-		jsonObject.remove("REV_NOTE");
-		this.revisionDate = ResponseHelper.convertDate(jsonObject.getString("REV_DT"));
-		jsonObject.remove("REV_DT");
-		this.isPublic = (1 == jsonObject.getInt("ISPUBLIC"));
-		jsonObject.remove("ISPUBLIC");
-		this.userId = jsonObject.getLong("USERID");
-		jsonObject.remove("USERID");
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
+		this.numDeploymentsTotal = readInt(jsonObject, JSON_KEY_NTSTOTAL);
+		this.numLatestRevision = readInt(jsonObject, JSON_KEY_LATESTREV);
+		this.createDate = readDate(jsonObject, JSON_KEY_CREATE_DT);
+		this.numDeploymentsActive = readInt(jsonObject, JSON_KEY_DEPLOYMENTSACTIVE);
+		this.stackscriptId = readLong(jsonObject, JSON_KEY_STACKSCRIPTID);
+		this.revisionNote = readString(jsonObject, JSON_KEY_REV_NOTE);
+		this.revisionDate = readDate(jsonObject, JSON_KEY_REV_DT);
+		this.isPublic = (1 == readInt(jsonObject, JSON_KEY_ISPUBLIC));
+		this.userId = readLong(jsonObject, JSON_KEY_USERID);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

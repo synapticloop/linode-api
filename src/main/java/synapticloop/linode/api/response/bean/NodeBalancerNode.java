@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class NodeBalancerNode {
+public class NodeBalancerNode extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NodeBalancerNode.class);
 	
 	private Integer weight = null;
@@ -49,22 +49,14 @@ public class NodeBalancerNode {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public NodeBalancerNode(JSONObject jsonObject) {
-		this.weight = jsonObject.getInt("WEIGHT");
-		jsonObject.remove("WEIGHT");
-		this.address = jsonObject.getString("ADDRESS");
-		jsonObject.remove("ADDRESS");
-		this.label = jsonObject.getString("LABEL");
-		jsonObject.remove("LABEL");
-		this.nodeId = jsonObject.getLong("NODEID");
-		jsonObject.remove("NODEID");
-		this.mode = jsonObject.getString("MODE");
-		jsonObject.remove("MODE");
-		this.configId = jsonObject.getLong("CONFIGID");
-		jsonObject.remove("CONFIGID");
-		this.status = jsonObject.getString("STATUS");
-		jsonObject.remove("STATUS");
-		this.nodeBalancerId = jsonObject.getLong("NODEBALANCERID");
-		jsonObject.remove("NODEBALANCERID");
+		this.weight = readInt(jsonObject, JSON_KEY_WEIGHT);
+		this.address = readString(jsonObject, JSON_KEY_ADDRESS);
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
+		this.nodeId = readLong(jsonObject, JSON_KEY_NODEID);
+		this.mode = readString(jsonObject, JSON_KEY_MODE);
+		this.configId = readLong(jsonObject, JSON_KEY_CONFIGID);
+		this.status = readString(jsonObject, JSON_KEY_STATUS);
+		this.nodeBalancerId = readLong(jsonObject, JSON_KEY_NODEBALANCERID);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

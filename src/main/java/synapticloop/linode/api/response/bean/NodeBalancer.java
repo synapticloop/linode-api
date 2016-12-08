@@ -22,8 +22,9 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class NodeBalancer {
+public class NodeBalancer extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NodeBalancer.class);
+
 	private Long nodebalancerId = null;
 	private String label = null;
 	private Long datacenterId = null;
@@ -46,20 +47,13 @@ public class NodeBalancer {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public NodeBalancer(JSONObject jsonObject) {
-		this.nodebalancerId = jsonObject.getLong("NODEBALANCERID");
-		jsonObject.remove("NODEBALANCERID");
-		this.label = jsonObject.getString("LABEL");
-		jsonObject.remove("LABEL");
-		this.datacenterId = jsonObject.getLong("DATACENTERID");
-		jsonObject.remove("DATACENTERID");
-		this.hostname = jsonObject.getString("HOSTNAME");
-		jsonObject.remove("HOSTNAME");
-		this.ipAddressIPv4 = jsonObject.getString("ADDRESS4");
-		jsonObject.remove("ADDRESS4");
-		this.ipAddressIPv6 = jsonObject.getString("ADDRESS6");
-		jsonObject.remove("ADDRESS6");
-		this.clientConnectionThrottle = jsonObject.getLong("CLIENTCONNTHROTTLE");
-		jsonObject.remove("CLIENTCONNTHROTTLE");
+		this.nodebalancerId = readLong(jsonObject, JSON_KEY_NODEBALANCERID);
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
+		this.datacenterId = readLong(jsonObject, JSON_KEY_DATACENTERID);
+		this.hostname = readString(jsonObject, JSON_KEY_HOSTNAME);
+		this.ipAddressIPv4 = readString(jsonObject, JSON_KEY_ADDRESS4);
+		this.ipAddressIPv6 = readString(jsonObject, JSON_KEY_ADDRESS6);
+		this.clientConnectionThrottle = readLong(jsonObject, JSON_KEY_CLIENTCONNTHROTTLE);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

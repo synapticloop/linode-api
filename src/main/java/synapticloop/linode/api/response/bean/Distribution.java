@@ -59,27 +59,46 @@ public class Distribution extends BaseLinodeBean {
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
-	public boolean getIs64Bit() {
-		return this.is64Bit;
-	}
+	/**
+	 * Return whether this distribution is 64 bit
+	 * 
+	 * @return whether this distribution is 64 bit
+	 */
+	public boolean getIs64Bit() { return this.is64Bit; }
 
-	public String getLabel() {
-		return this.label;
-	}
+	/**
+	 * Return the label for this distribution
+	 * 
+	 * @return the label for this distribution
+	 */
+	public String getLabel() { return this.label; }
 
-	public Long getMinimumImageSize() {
-		return this.minimumImageSize;
-	}
+	
+	/**
+	 * Return the minimum image size required for this distribution
+	 * 
+	 * @return the minimum image size for this distribution
+	 */
+	public Long getMinimumImageSize() { return this.minimumImageSize; }
 
-	public Long getDistributionId() {
-		return this.distributionId;
-	}
+	/**
+	 * Return the id for this distribution
+	 * 
+	 * @return the id for this distribution
+	 */
+	public Long getDistributionId() { return this.distributionId; }
 
-	public Date getCreateDate() {
-		return this.createDate;
-	}
+	/**
+	 * Get the date on which this distribution was created
+	 * 
+	 * @return the date on which this distribution was created
+	 */
+	public Date getCreateDate() { return this.createDate; }
 
-	public boolean getRequiresVOpsKernel() {
-		return this.requiresVOpsKernel;
-	}
+	/**
+	 * Return whether this distribution requires ParaVirtual Operations
+	 * 
+	 * @return whether this distribution requires ParaVirtual Operations
+	 */
+	public boolean getRequiresVOpsKernel() { return this.requiresVOpsKernel; }
 }

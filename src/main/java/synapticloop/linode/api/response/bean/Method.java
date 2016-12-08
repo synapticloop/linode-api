@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class Method {
+public class Method extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Method.class);
 
 	private String name = null;
@@ -48,11 +48,9 @@ public class Method {
 	public Method(String name, JSONObject jsonObject) {
 		this.name = name;
 
-		this.description = jsonObject.getString("DESCRIPTION");
-		jsonObject.remove("DESCRIPTION");
+		this.description = readString(jsonObject, JSON_KEY_DESCRIPTION);
 
-		this.errors = jsonObject.getString("THROWS");
-		jsonObject.remove("THROWS");
+		this.errors = readString(jsonObject, JSON_KEY_THROWS);
 
 		JSONObject parametersObject = jsonObject.getJSONObject("PARAMETERS");
 		Iterator<String> keys = parametersObject.keys();

@@ -31,18 +31,50 @@ public class BaseLinodeBean {
 	// "2014-10-08 09:39:07"
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT_SHORTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-	public static final String JSON_KEY_DISTRIBUTIONID = "DISTRIBUTIONID";
-	public static final String JSON_KEY_IS64BIT = "IS64BIT";
 	public static final String JSON_KEY_ABBREVIATION = "ABBR";
 	public static final String JSON_KEY_ACTION = "ACTION";
+	public static final String JSON_KEY_ADDRESS = "ADDRESS";
+	public static final String JSON_KEY_ADDRESS4 = "ADDRESS4";
+	public static final String JSON_KEY_ADDRESS6 = "ADDRESS6";
+	public static final String JSON_KEY_ALERT_BWIN_ENABLED = "ALERT_BWIN_ENABLED";
+	public static final String JSON_KEY_ALERT_BWIN_THRESHOLD = "ALERT_BWIN_THRESHOLD";
+	public static final String JSON_KEY_ALERT_BWOUT_ENABLED = "ALERT_BWOUT_ENABLED";
+	public static final String JSON_KEY_ALERT_BWOUT_THRESHOLD = "ALERT_BWOUT_THRESHOLD";
+	public static final String JSON_KEY_ALERT_BWQUOTA_ENABLED = "ALERT_BWQUOTA_ENABLED";
+	public static final String JSON_KEY_ALERT_BWQUOTA_THRESHOLD = "ALERT_BWQUOTA_THRESHOLD";
+	public static final String JSON_KEY_ALERT_CPU_ENABLED = "ALERT_CPU_ENABLED";
+	public static final String JSON_KEY_ALERT_CPU_THRESHOLD = "ALERT_CPU_THRESHOLD";
+	public static final String JSON_KEY_ALERT_DISKIO_ENABLED = "ALERT_DISKIO_ENABLED";
+	public static final String JSON_KEY_ALERT_DISKIO_THRESHOLD = "ALERT_DISKIO_THRESHOLD";
+	public static final String JSON_KEY_ALGORITHM = "ALGORITHM";
+	public static final String JSON_KEY_BACKUPSENABLED = "BACKUPSENABLED";
+	public static final String JSON_KEY_BACKUPWEEKLYDAY = "BACKUPWEEKLYDAY";
+	public static final String JSON_KEY_BACKUPWINDOW = "BACKUPWINDOW";
+	public static final String JSON_KEY_CHECK = "CHECK";
+	public static final String JSON_KEY_CHECK_ATTEMPTS = "CHECK_ATTEMPTS";
+	public static final String JSON_KEY_CHECK_BODY = "CHECK_BODY";
+	public static final String JSON_KEY_CHECK_INTERVAL = "CHECK_INTERVAL";
+	public static final String JSON_KEY_CHECK_PASSIVE = "CHECK_PASSIVE";
+	public static final String JSON_KEY_CHECK_PATH = "CHECK_PATH";
+	public static final String JSON_KEY_CHECK_TIMEOUT = "CHECK_TIMEOUT";
+	public static final String JSON_KEY_CIPHER_SUITE = "CIPHER_SUITE";
+	public static final String JSON_KEY_CLIENTCONNTHROTTLE = "CLIENTCONNTHROTTLE";
 	public static final String JSON_KEY_COMMENTS = "Comments";
 	public static final String JSON_KEY_CONFIG_ID = "ConfigID";
+	public static final String JSON_KEY_CONFIGID = "CONFIGID";
+	public static final String JSON_KEY_CONNECTIONS = "CONNECTIONS";
+	public static final String JSON_KEY_CORES = "CORES";
 	public static final String JSON_KEY_CREATE_DT = "CREATE_DT";
 	public static final String JSON_KEY_CREATOR = "CREATOR";
-	public static final String JSON_KEY_DATACENTREID = "DATACENTERID";
+	public static final String JSON_KEY_DATACENTERID = "DATACENTERID";
+	public static final String JSON_KEY_DEPLOYMENTSACTIVE = "DEPLOYMENTSACTIVE";
 	public static final String JSON_KEY_DESCRIPTION = "DESCRIPTION";
+	public static final String JSON_KEY_DISK = "DISK";
 	public static final String JSON_KEY_DISK_LIST = "DiskList";
 	public static final String JSON_KEY_DISKID = "DISKID";
+	public static final String JSON_KEY_DISTRIBUTIONID = "DISTRIBUTIONID";
+	public static final String JSON_KEY_DISTRIBUTIONIDLIST = "DISTRIBUTIONIDLIST";
+	public static final String JSON_KEY_DISTRIBUTIONVENDOR = "DISTRIBUTIONVENDOR";
 	public static final String JSON_KEY_DOMAIN = "DOMAIN";
 	public static final String JSON_KEY_DOMAINID = "DOMAINID";
 	public static final String JSON_KEY_DURATION = "DURATION";
@@ -59,9 +91,12 @@ public class BaseLinodeBean {
 	public static final String JSON_KEY_HOST_MESSAGE = "HOST_MESSAGE";
 	public static final String JSON_KEY_HOST_START_DT = "HOST_START_DT";
 	public static final String JSON_KEY_HOST_SUCCESS = "HOST_SUCCESS";
+	public static final String JSON_KEY_HOSTNAME = "HOSTNAME";
+	public static final String JSON_KEY_HOURLY = "HOURLY";
 	public static final String JSON_KEY_IMAGEID = "IMAGEID";
 	public static final String JSON_KEY_IPADDRESS = "IPADDRESS";
 	public static final String JSON_KEY_IPADDRESSID = "IPADDRESSID";
+	public static final String JSON_KEY_IS64BIT = "IS64BIT";
 	public static final String JSON_KEY_ISKVM = "ISKVM";
 	public static final String JSON_KEY_ISPUBLIC = "ISPUBLIC";
 	public static final String JSON_KEY_ISPVOPS = "ISPVOPS";
@@ -73,34 +108,60 @@ public class BaseLinodeBean {
 	public static final String JSON_KEY_LABEL = "Label";
 	public static final String JSON_KEY_LABEL_UPPER = "LABEL";
 	public static final String JSON_KEY_LAST_USED_DT = "LAST_USED_DT";
+	public static final String JSON_KEY_LATESTREV = "LATESTREV";
 	public static final String JSON_KEY_LINODE_ID = "LinodeID";
 	public static final String JSON_KEY_LINODEID = "LINODEID";
 	public static final String JSON_KEY_LOCATION = "LOCATION";
+	public static final String JSON_KEY_LPM_DISPLAYGROUP = "LPM_DISPLAYGROUP";
 	public static final String JSON_KEY_MASTER_IPS = "MASTER_IPS";
 	public static final String JSON_KEY_MINIMAGESIZE = "MINIMAGESIZE";
 	public static final String JSON_KEY_MINSIZE = "MINSIZE";
+	public static final String JSON_KEY_MODE = "MODE";
+	public static final String JSON_KEY_MONTHLY = "MONTHLY";
 	public static final String JSON_KEY_NAME = "NAME";
+	public static final String JSON_KEY_NODEBALANCERID = "NODEBALANCERID";
+	public static final String JSON_KEY_NODEID = "NODEID";
+	public static final String JSON_KEY_NTSTOTAL = "DEPLOYMENTSTOTAL";
+	public static final String JSON_KEY_PLANID = "PLANID";
 	public static final String JSON_KEY_PORT = "PORT";
+	public static final String JSON_KEY_PRICE = "PRICE";
 	public static final String JSON_KEY_PROTOCOL = "PROTOCOL";
+	public static final String JSON_KEY_RAM = "RAM";
 	public static final String JSON_KEY_RAM_LIMIT = "RAMLimit";
 	public static final String JSON_KEY_RDNS_NAME = "RDNS_NAME";
 	public static final String JSON_KEY_REFRESH_SEC = "REFRESH_SEC";
+	public static final String JSON_KEY_REQUIRED = "REQUIRED";
 	public static final String JSON_KEY_REQUIRESPVOPSKERNEL = "REQUIRESPVOPSKERNEL";
 	public static final String JSON_KEY_RESOURCEID = "RESOURCEID";
 	public static final String JSON_KEY_RETRY_SEC = "RETRY_SEC";
+	public static final String JSON_KEY_REV_DT = "REV_DT";
+	public static final String JSON_KEY_REV_NOTE = "REV_NOTE";
 	public static final String JSON_KEY_ROOT_DEVICE_CUSTOM = "RootDeviceCustom";
 	public static final String JSON_KEY_ROOT_DEVICE_NUM = "RootDeviceNum";
 	public static final String JSON_KEY_ROOT_DEVICE_RO = "RootDeviceRO";
 	public static final String JSON_KEY_RUN_LEVEL = "RunLevel";
+	public static final String JSON_KEY_SCRIPT = "SCRIPT";
 	public static final String JSON_KEY_SIZE = "SIZE";
 	public static final String JSON_KEY_SOA_EMAIL = "SOA_EMAIL";
+	public static final String JSON_KEY_SSL_COMMONNAME = "SSL_COMMONNAME";
+	public static final String JSON_KEY_SSL_FINGERPRINT = "SSL_FINGERPRINT";
+	public static final String JSON_KEY_STACKSCRIPTID = "STACKSCRIPTID";
 	public static final String JSON_KEY_STATUS = "STATUS";
+	public static final String JSON_KEY_STICKINESS = "STICKINESS";
 	public static final String JSON_KEY_TARGET = "TARGET";
+	public static final String JSON_KEY_THROWS = "THROWS";
+	public static final String JSON_KEY_TOTALHD = "TOTALHD";
+	public static final String JSON_KEY_TOTALRAM = "TOTALRAM";
+	public static final String JSON_KEY_TOTALXFER = "TOTALXFER";
 	public static final String JSON_KEY_TTL_SEC = "TTL_SEC";
 	public static final String JSON_KEY_TYPE = "TYPE";
 	public static final String JSON_KEY_UPDATE_DT = "UPDATE_DT";
+	public static final String JSON_KEY_USERID = "USERID";
+	public static final String JSON_KEY_WATCHDOG = "WATCHDOG";
 	public static final String JSON_KEY_WEIGHT = "WEIGHT";
-	
+	public static final String JSON_KEY_XFER = "XFER";
+
+
 	/**
 	 * Read and return an int from the json object and remove it
 	 * 
@@ -207,6 +268,12 @@ public class BaseLinodeBean {
 		} else {
 			jsonObject.remove(key);
 		}
+		return(retVal);
+	}
+
+	protected Double readDouble(JSONObject jsonObject, String key) {
+		Double retVal = jsonObject.getDouble(key);
+		jsonObject.remove(key);
 		return(retVal);
 	}
 

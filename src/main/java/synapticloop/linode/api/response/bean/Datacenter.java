@@ -39,7 +39,7 @@ public class Datacenter extends BaseLinodeBean {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public Datacenter(JSONObject jsonObject) {
-		this.datacenterId = readLong(jsonObject, JSON_KEY_DATACENTREID);
+		this.datacenterId = readLong(jsonObject, JSON_KEY_DATACENTERID);
 		this.location = readString(jsonObject, JSON_KEY_LOCATION);
 		this.abbreviation = readString(jsonObject, JSON_KEY_ABBREVIATION);
 

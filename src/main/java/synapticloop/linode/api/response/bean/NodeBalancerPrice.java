@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class NodeBalancerPrice {
+public class NodeBalancerPrice extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NodeBalancerPrice.class);
 
 	private Double priceMonthly = null;
@@ -38,12 +38,9 @@ public class NodeBalancerPrice {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public NodeBalancerPrice(JSONObject jsonObject) {
-		this.priceMonthly = jsonObject.getDouble("HOURLY");
-		jsonObject.remove("HOURLY");
-		this.priceHourly = jsonObject.getDouble("MONTHLY");
-		jsonObject.remove("MONTHLY");
-		this.numConnections = jsonObject.getLong("CONNECTIONS");
-		jsonObject.remove("CONNECTIONS");
+		this.priceMonthly = readDouble(jsonObject, JSON_KEY_HOURLY);
+		this.priceHourly = readDouble(jsonObject, JSON_KEY_MONTHLY);
+		this.numConnections = readLong(jsonObject, JSON_KEY_CONNECTIONS);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

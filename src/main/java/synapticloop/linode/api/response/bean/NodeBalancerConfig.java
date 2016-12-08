@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class NodeBalancerConfig {
+public class NodeBalancerConfig extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(NodeBalancerConfig.class);
 
 	private String stickiness = null;
@@ -66,39 +66,22 @@ public class NodeBalancerConfig {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public NodeBalancerConfig(JSONObject jsonObject) {
-		this.stickiness = jsonObject.getString("STICKINESS");
-		jsonObject.remove("STICKINESS");
-		this.checkPath = jsonObject.getString("CHECK_PATH");
-		jsonObject.remove("CHECK_PATH");
-		this.port = jsonObject.getInt("PORT");
-		jsonObject.remove("PORT");
-		this.checkBody = jsonObject.getString("CHECK_BODY");
-		jsonObject.remove("CHECK_BODY");
-		this.protocol = jsonObject.getString("PROTOCOL");
-		jsonObject.remove("PROTOCOL");
-		this.configId = jsonObject.getLong("CONFIGID");
-		jsonObject.remove("CONFIGID");
-		this.algorithm = jsonObject.getString("ALGORITHM");
-		jsonObject.remove("ALGORITHM");
-		this.checkTimeout = jsonObject.getInt("CHECK_TIMEOUT");
-		jsonObject.remove("CHECK_TIMEOUT");
-		this.nodeBalancerId = jsonObject.getLong("NODEBALANCERID");
-		jsonObject.remove("NODEBALANCERID");
-		this.checkAttempts = jsonObject.getLong("CHECK_ATTEMPTS");
-		jsonObject.remove("CHECK_ATTEMPTS");
-		this.checkPassive = (1 == jsonObject.getInt("CHECK_PASSIVE"));
-		jsonObject.remove("CHECK_PASSIVE");
-		this.sslCommonName = jsonObject.getString("SSL_COMMONNAME");
-		jsonObject.remove("SSL_COMMONNAME");
-		this.cipherSuite = jsonObject.getString("CIPHER_SUITE");
-		jsonObject.remove("CIPHER_SUITE");
-		this.checkInterval = jsonObject.getInt("CHECK_INTERVAL");
-		jsonObject.remove("CHECK_INTERVAL");
-		this.check = jsonObject.getString("CHECK");
-		jsonObject.remove("CHECK");
-		this.sslFingerprint = jsonObject.getString("SSL_FINGERPRINT");
-		jsonObject.remove("SSL_FINGERPRINT");
-
+		this.stickiness = readString(jsonObject, JSON_KEY_STICKINESS);
+		this.checkPath = readString(jsonObject, JSON_KEY_CHECK_PATH);
+		this.port = readInt(jsonObject, JSON_KEY_PORT);
+		this.checkBody = readString(jsonObject, JSON_KEY_CHECK_BODY);
+		this.protocol = readString(jsonObject, JSON_KEY_PROTOCOL);
+		this.configId = readLong(jsonObject, JSON_KEY_CONFIGID);
+		this.algorithm = readString(jsonObject, JSON_KEY_ALGORITHM);
+		this.checkTimeout = readInt(jsonObject, JSON_KEY_CHECK_TIMEOUT);
+		this.nodeBalancerId = readLong(jsonObject, JSON_KEY_NODEBALANCERID);
+		this.checkAttempts = readLong(jsonObject, JSON_KEY_CHECK_ATTEMPTS);
+		this.checkPassive = (1 == readInt(jsonObject, JSON_KEY_CHECK_PASSIVE));
+		this.sslCommonName = readString(jsonObject, JSON_KEY_SSL_COMMONNAME);
+		this.cipherSuite = readString(jsonObject, JSON_KEY_CIPHER_SUITE);
+		this.checkInterval = readInt(jsonObject, JSON_KEY_CHECK_INTERVAL);
+		this.check = readString(jsonObject, JSON_KEY_CHECK);
+		this.sslFingerprint = readString(jsonObject, JSON_KEY_SSL_FINGERPRINT);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

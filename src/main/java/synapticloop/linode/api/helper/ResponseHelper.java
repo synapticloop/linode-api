@@ -26,15 +26,21 @@ public class ResponseHelper {
 	 * 
 	 * @param LOGGER The Logger to be used
 	 * @param jsonObject the jsonObject to parse
+	 * 
+	 * @return the number of missing keys found
 	 */
-	public static void warnOnMissedKeys(Logger LOGGER, JSONObject jsonObject) {
+	public static int warnOnMissedKeys(Logger LOGGER, JSONObject jsonObject) {
+		int i = 0;
 		if(LOGGER.isWarnEnabled()) {
 			Iterator<String> keys = jsonObject.keys();
 			while (keys.hasNext()) {
 				String key = (String) keys.next();
 				LOGGER.warn("Found an unexpected json key of '{}', this is not mapped to a field...", key);
+				i++;
 			}
 		}
+
+		return(i);
 	}
 
 	/**
