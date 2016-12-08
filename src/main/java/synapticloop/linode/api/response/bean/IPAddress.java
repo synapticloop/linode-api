@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class IPAddress {
+public class IPAddress extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(IPAddress.class);
 
 	private Long linodeId = null;
@@ -42,16 +42,11 @@ public class IPAddress {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public IPAddress(JSONObject jsonObject) {
-		this.linodeId = jsonObject.getLong("LINODEID");
-		jsonObject.remove("LINODEID");
-		this.isPublic = (1 == jsonObject.optInt("ISPUBLIC", 0));
-		jsonObject.remove("ISPUBLIC");
-		this.reverseDNSName = jsonObject.optString("RDNS_NAME", null);
-		jsonObject.remove("RDNS_NAME");
-		this.ipAddress = jsonObject.getString("IPADDRESS");
-		jsonObject.remove("IPADDRESS");
-		this.ipAddressId = jsonObject.getLong("IPADDRESSID");
-		jsonObject.remove("IPADDRESSID");
+		this.linodeId = readLong(jsonObject, JSON_KEY_LINODEID);
+		this.isPublic = (1 == readInt(jsonObject, JSON_KEY_ISPUBLIC, 0));
+		this.reverseDNSName = readString(jsonObject, JSON_KEY_RDNS_NAME, null);
+		this.ipAddress = readString(jsonObject, JSON_KEY_IPADDRESS);
+		this.ipAddressId = readLong(jsonObject, JSON_KEY_IPADDRESSID);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

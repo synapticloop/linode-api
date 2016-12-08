@@ -49,12 +49,12 @@ public class Distribution extends BaseLinodeBean {
 	 * @throws ApiException if there was an error converting the date 
 	 */
 	public Distribution(JSONObject jsonObject) throws ApiException {
-		this.is64Bit = (1 == readInt(jsonObject, IS64BIT));
+		this.is64Bit = (1 == readInt(jsonObject, JSON_KEY_IS64BIT));
 		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
-		this.distributionId = readLong(jsonObject, DISTRIBUTIONID);
-		this.createDate = readDate(jsonObject, CREATE_DT);
-		this.requiresVOpsKernel = (1 == readInt(jsonObject, REQUIRESPVOPSKERNEL));
-		this.minimumImageSize = readLong(jsonObject, MINIMAGESIZE);
+		this.distributionId = readLong(jsonObject, JSON_KEY_DISTRIBUTIONID);
+		this.createDate = readDate(jsonObject, JSON_KEY_CREATE_DT);
+		this.requiresVOpsKernel = (1 == readInt(jsonObject, JSON_KEY_REQUIRESPVOPSKERNEL));
+		this.minimumImageSize = readLong(jsonObject, JSON_KEY_MINIMAGESIZE);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

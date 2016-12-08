@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class Kernel {
+public class Kernel extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Kernel.class);
 
 	private String label = null;
@@ -44,41 +44,47 @@ public class Kernel {
 	 */
 
 	public Kernel(JSONObject jsonObject) {
-		this.label = jsonObject.getString("LABEL");
-		jsonObject.remove("LABEL");
-
-		this.isXen = (1 == jsonObject.getInt("ISXEN"));
-		jsonObject.remove("ISXEN");
-
-		this.isKvm = (1 == jsonObject.getInt("ISKVM"));
-		jsonObject.remove("ISKVM");
-
-		this.isPVOps = (1 == jsonObject.getInt("ISPVOPS"));
-		jsonObject.remove("ISPVOPS");
-
-		this.kernelId = jsonObject.getLong("KERNELID");
-		jsonObject.remove("KERNELID");
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
+		this.isXen = (1 == readInt(jsonObject, JSON_KEY_ISXEN));
+		this.isKvm = (1 == readInt(jsonObject, JSON_KEY_ISKVM));
+		this.isPVOps = (1 == readInt(jsonObject, JSON_KEY_ISPVOPS));
+		this.kernelId = readLong(jsonObject, JSON_KEY_KERNELID);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 
-	public String getLabel() {
-		return this.label;
-	}
+	/**
+	 * Get the label for this kernel
+	 * 
+	 * @return The label for this kerne;
+	 */
+	public String getLabel() { return this.label; }
 
-	public boolean getIsXen() {
-		return this.isXen;
-	}
+	/**
+	 * Return whether this runs on a Xen virtualisation platform
+	 * 
+	 * @return whether this runs on a Xen virtualisation platform
+	 */
+	public boolean getIsXen() { return this.isXen; }
 
-	public boolean getIsKvm() {
-		return this.isKvm;
-	}
+	/**
+	 * Return whether this runs on a KVM virtualisation platform
+	 * 
+	 * @return whether this runs on a KVM virtualisation platform
+	 */
+	public boolean getIsKvm() { return this.isKvm; }
 
-	public boolean getIsPVOps() {
-		return this.isPVOps;
-	}
+	/**
+	 * Return whether this uses ParaVirtual operations
+	 * 
+	 * @return whether this uses ParaVirtual operations
+	 */
+	public boolean getIsPVOps() { return this.isPVOps; }
 
-	public Long getKernelId() {
-		return this.kernelId;
-	}
+	/**
+	 * Return the ID of the Linode
+	 *  
+	 * @return the ID of the Linode
+	 */
+	public Long getKernelId() { return this.kernelId; }
 }

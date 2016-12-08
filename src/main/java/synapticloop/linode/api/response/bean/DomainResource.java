@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
 
 import synapticloop.linode.api.helper.ResponseHelper;
 
-public class DomainResource {
+public class DomainResource extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(DomainResource.class);
 
 	private String protocol = null;
@@ -54,25 +54,16 @@ public class DomainResource {
 	 * @param jsonObject the json object to extract the data from
 	 */
 	public DomainResource(JSONObject jsonObject) {
-		this.protocol = jsonObject.getString("PROTOCOL");
-		jsonObject.remove("PROTOCOL");
-		this.numTtlSeconds = jsonObject.getLong("TTL_SEC");
-		jsonObject.remove("TTL_SEC");
-		this.type = jsonObject.getString("TYPE");
-		jsonObject.remove("TYPE");
-		this.target = jsonObject.getString("TARGET");
-		jsonObject.remove("TARGET");
-		this.weight = jsonObject.getInt("WEIGHT");
-		jsonObject.remove("WEIGHT");
-		this.resourceId = jsonObject.getLong("RESOURCEID");
-		jsonObject.remove("RESOURCEID");
-		this.port = jsonObject.getInt("PORT");
-		jsonObject.remove("PORT");
-		this.domainId = jsonObject.getLong("DOMAINID");
-		jsonObject.remove("DOMAINID");
-		this.name = jsonObject.getString("NAME");
-		jsonObject.remove("NAME");
-		
+		this.protocol = readString(jsonObject, JSON_KEY_PROTOCOL);
+		this.numTtlSeconds = readLong(jsonObject, JSON_KEY_TTL_SEC);
+		this.type = readString(jsonObject, JSON_KEY_TYPE);
+		this.target = readString(jsonObject, JSON_KEY_TARGET);
+		this.weight = readInt(jsonObject, JSON_KEY_WEIGHT);
+		this.resourceId = readLong(jsonObject, JSON_KEY_RESOURCEID);
+		this.port = readInt(jsonObject, JSON_KEY_PORT);
+		this.domainId = readLong(jsonObject, JSON_KEY_DOMAINID);
+		this.name = readString(jsonObject, JSON_KEY_NAME);
+
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
 

@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.exception.ApiException;
 
-public class Job {
+public class Job extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Job.class);
 
 	private Date enteredDate = null;
@@ -57,40 +57,19 @@ public class Job {
 	 * @throws ApiException if there was an error converting the date
 	 */
 	public Job(JSONObject jsonObject) throws ApiException {
-		this.enteredDate = ResponseHelper.convertDate(jsonObject.getString("ENTERED_DT"));
-		jsonObject.remove("ENTERED_DT");
-		this.action = jsonObject.getString("ACTION");
-		jsonObject.remove("ACTION");
-		this.label = jsonObject.getString("LABEL");
-		jsonObject.remove("LABEL");
-		this.hostStartDate = ResponseHelper.convertDate(jsonObject.getString("HOST_START_DT"));
-		jsonObject.remove("HOST_START_DT");
-		this.linodeId = jsonObject.getLong("LINODEID");
-		jsonObject.remove("LINODEID");
-		this.HostFinishDate = ResponseHelper.convertDate(jsonObject.getString("HOST_FINISH_DT"));
-		jsonObject.remove("HOST_FINISH_DT");
+		this.enteredDate = readDate(jsonObject, JSON_KEY_ENTERED_DT);
+		this.action = readString(jsonObject, JSON_KEY_ACTION);
+		this.label = readString(jsonObject, JSON_KEY_LABEL);
+		this.hostStartDate = readDate(jsonObject, JSON_KEY_HOST_START_DT);
+		this.linodeId = readLong(jsonObject, JSON_KEY_LINODEID);
+		this.HostFinishDate = readDate(jsonObject, JSON_KEY_HOST_FINISH_DT);
 
 		// the duration may either be a long if it exists, or a string if empty...
-		Object object = jsonObject.get("DURATION");
-		if(object instanceof String) {
-			this.duration = 0l;
-		} else {
-			this.duration = jsonObject.getLong("DURATION");
-		}
-		jsonObject.remove("DURATION");
+		this.duration = readLongFromPossibleString(jsonObject, JSON_KEY_DURATION);
 
-		this.hostMessage = jsonObject.getString("HOST_MESSAGE");
-		jsonObject.remove("HOST_MESSAGE");
-		this.jobId = jsonObject.getLong("JOBID");
-		jsonObject.remove("JOBID");
-
-		Object hostSuccessObject = jsonObject.get("HOST_SUCCESS");
-		if(hostSuccessObject instanceof String) {
-			this.hostSuccess = true;
-		} else {
-			this.hostSuccess = jsonObject.getLong("HOST_SUCCESS") == 1;
-		}
-		jsonObject.remove("HOST_SUCCESS");
+		this.hostMessage = readString(jsonObject, JSON_KEY_HOST_MESSAGE);
+		this.jobId = readLong(jsonObject, JSON_KEY_JOBID);
+		this.hostSuccess = readBooleanFromPossibleString(jsonObject, JSON_KEY_HOST_SUCCESS);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}

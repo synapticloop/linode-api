@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 import synapticloop.linode.api.helper.ResponseHelper;
 import synapticloop.linode.exception.ApiException;
 
-public class Image {
+public class Image extends BaseLinodeBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Image.class);
 
 	private Date createDate = null;
@@ -41,28 +41,17 @@ public class Image {
 	private String type = null;
 
 	public Image(JSONObject jsonObject) throws ApiException {
-		this.createDate = ResponseHelper.convertDate(jsonObject.getString("CREATE_DT"));
-		jsonObject.remove("CREATE_DT");
-		this.creator = jsonObject.getString("CREATOR");
-		jsonObject.remove("CREATOR");
-		this.description = jsonObject.getString("DESCRIPTION");
-		jsonObject.remove("DESCRIPTION");
-		this.fileSystemType = jsonObject.getString("FS_TYPE");
-		jsonObject.remove("FS_TYPE");
-		this.imageId = jsonObject.getLong("IMAGEID");
-		jsonObject.remove("IMAGEID");
-		this.isPublic = (1 == jsonObject.getInt("ISPUBLIC"));
-		jsonObject.remove("ISPUBLIC");
-		this.label = jsonObject.getString("LABEL");
-		jsonObject.remove("LABEL");
-		this.lastUsedDate = ResponseHelper.convertDate(jsonObject.getString("LAST_USED_DT"));
-		jsonObject.remove("LAST_USED_DT");
-		this.minSize = jsonObject.getLong("MINSIZE");
-		jsonObject.remove("MINSIZE");
-		this.status = jsonObject.getString("STATUS");
-		jsonObject.remove("STATUS");
-		this.type = jsonObject.getString("TYPE");
-		jsonObject.remove("TYPE");
+		this.createDate =readDate(jsonObject, JSON_KEY_CREATE_DT);
+		this.creator = readString(jsonObject, JSON_KEY_CREATOR);
+		this.description = readString(jsonObject, JSON_KEY_DESCRIPTION);
+		this.fileSystemType = readString(jsonObject, JSON_KEY_FS_TYPE);
+		this.imageId = readLong(jsonObject, JSON_KEY_IMAGEID);
+		this.isPublic = (1 == readInt(jsonObject, JSON_KEY_ISPUBLIC));
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
+		this.lastUsedDate = readDate(jsonObject, JSON_KEY_LAST_USED_DT);
+		this.minSize = readLong(jsonObject, JSON_KEY_MINSIZE);
+		this.status = readString(jsonObject, JSON_KEY_STATUS);
+		this.type = readString(jsonObject, JSON_KEY_TYPE);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
