@@ -54,20 +54,14 @@ public class AccountInfoResponse extends BaseResponse {
 
 		if(!hasErrors()) {
 			JSONObject dataObject = jsonObject.getJSONObject(JSON_KEY_DATA);
-			this.activeSince = ResponseHelper.convertDate(dataObject.getString("ACTIVE_SINCE"));
-			dataObject.remove("ACTIVE_SINCE");
-			this.transferPool = dataObject.getLong("TRANSFER_POOL");
-			dataObject.remove("TRANSFER_POOL");
-			this.transferUsed = dataObject.getLong("TRANSFER_USED");
-			dataObject.remove("TRANSFER_USED");
-			this.transferBillable = dataObject.getLong("TRANSFER_BILLABLE");
-			dataObject.remove("TRANSFER_BILLABLE");
-			this.isManaged = dataObject.getBoolean("MANAGED");
-			dataObject.remove("MANAGED");
-			this.billingMethod = dataObject.getString("BILLING_METHOD");
-			dataObject.remove("BILLING_METHOD");
-			this.balance = dataObject.getLong("BALANCE");
-			dataObject.remove("BALANCE");
+
+			this.activeSince = readDate(dataObject, JSON_KEY_ACTIVE_SINCE);
+			this.transferPool = readLong(dataObject, JSON_KEY_TRANSFER_POOL);
+			this.transferUsed = readLong(dataObject, JSON_KEY_TRANSFER_USED);
+			this.transferBillable = readLong(dataObject, JSON_KEY_TRANSFER_BILLABLE);
+			this.isManaged = readBoolean(dataObject, JSON_KEY_MANAGED);
+			this.billingMethod = readString(dataObject, JSON_KEY_BILLING_METHOD);
+			this.balance = readLong(dataObject, JSON_KEY_BALANCE);
 
 			ResponseHelper.warnOnMissedKeys(LOGGER, dataObject);
 		}

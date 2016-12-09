@@ -37,6 +37,14 @@ public abstract class BaseResponse extends BaseJsonReader {
 	protected static final String JSON_KEY_METHODS = "METHODS";
 	protected static final String JSON_KEY_INVOICE_TO = "INVOICE_TO";
 	protected static final String JSON_KEY_AMOUNT = "AMOUNT";
+	protected static final String JSON_KEY_BALANCE = "BALANCE";
+	protected static final String JSON_KEY_BILLING_METHOD = "BILLING_METHOD";
+	protected static final String JSON_KEY_MANAGED = "MANAGED";
+	protected static final String JSON_KEY_TRANSFER_BILLABLE = "TRANSFER_BILLABLE";
+	protected static final String JSON_KEY_TRANSFER_USED = "TRANSFER_USED";
+	protected static final String JSON_KEY_TRANSFER_POOL = "TRANSFER_POOL";
+	protected static final String JSON_KEY_ACTIVE_SINCE = "ACTIVE_SINCE";
+
 
 	private final JSONObject jsonObject;
 

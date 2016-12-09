@@ -78,8 +78,8 @@ public class ApiSpecResponse extends BaseResponse {
 		jsonObject.remove(JSON_KEY_DATA);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
-
 	}
+
 	public List<Method> getMethods() {
 		return this.methods;
 	}
