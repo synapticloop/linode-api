@@ -29,7 +29,7 @@ public class DomainResponse extends BaseResponse {
 	public DomainResponse(JSONObject jsonObject) {
 		super(jsonObject);
 		if(!hasErrors()) {
-		this.domainId = jsonObject.getJSONObject(JSON_KEY_DATA).getLong("DOMAINID");
+			this.domainId = jsonObject.getJSONObject(JSON_KEY_DATA).getLong("DOMAINID");
 		}
 		
 		jsonObject.remove(JSON_KEY_DATA);

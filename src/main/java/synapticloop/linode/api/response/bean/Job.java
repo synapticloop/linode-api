@@ -60,7 +60,7 @@ public class Job extends BaseJsonReader {
 	public Job(JSONObject jsonObject) throws ApiException {
 		this.enteredDate = readDate(jsonObject, JSON_KEY_ENTERED_DT);
 		this.action = readString(jsonObject, JSON_KEY_ACTION);
-		this.label = readString(jsonObject, JSON_KEY_LABEL);
+		this.label = readString(jsonObject, JSON_KEY_LABEL_UPPER);
 		this.hostStartDate = readDate(jsonObject, JSON_KEY_HOST_START_DT);
 		this.linodeId = readLong(jsonObject, JSON_KEY_LINODEID);
 		this.HostFinishDate = readDate(jsonObject, JSON_KEY_HOST_FINISH_DT);
