@@ -46,29 +46,61 @@ public class Config extends BaseJsonReader {
 	private Integer numRootDevice = null;
 	private boolean helperLibTls = false;
 	private Long ramLimit = null;
+	private String virtMode = null;
+	private String apiColumnFilterStruct = null;
+	private Boolean devTmpFsAutomount =  null;
+	private Boolean isRescue = null;
+	private Boolean isHelperDistro = null;
+	private Boolean isHelperNetwork = null;
+	private List<String> validationErrorArray = null;
 
 	/**
-	 *       {
-	 *          "helper_disableUpdateDB":1,
-	 *          "RootDeviceRO":true,
-	 *          "RootDeviceCustom":"",
-	 *          "Label":"My configuration profile",
-	 *          "DiskList":"55319,55590,,55591,55592,,,,",
-	 *          "LinodeID":8098,
-	 *          "Comments":"",
-	 *          "ConfigID":31058,
-	 *          "helper_xen":1,
-	 *          "RunLevel":"default",
-	 *          "helper_depmod":1,
-	 *          "KernelID":85,
-	 *          "RootDeviceNum":1,
-	 *          "helper_libtls":false,
-	 *          "RAMLimit":0
-	 *       },
-	 * 
+	 * {
+	 *   "ACTION":"linode.config.list",
+	 *   "DATA":[
+	 *     {
+	 *       "RootDeviceNum":1,
+	 *       "RootDeviceCustom":"",
+	 *       "RunLevel":"default",
+	 *       "helper_xen":1,
+	 *       "virt_mode":"paravirt",
+	 *       "DiskList":"6666136,6666137,,,,,,,",
+	 *       "isRescue":0,
+	 *       "KernelID":138,
+	 *       "helper_network":1,
+	 *       "LinodeID":2549470,
+	 *       "Comments":"",
+	 *       "ConfigID":3489541,
+	 *       "__validationErrorArray":[
+	 *       ],
+	 *       "helper_libtls":0,
+	 *       "RootDeviceRO":true,
+	 *       "devtmpfs_automount":true,
+	 *       "helper_disableUpdateDB":1,
+	 *       "helper_depmod":1,
+	 *       "RAMLimit":0,
+	 *       "Label":"LINODE-API-TEST",
+	 *       "apiColumnFilterStruct":"",
+	 *       "helper_distro":1
+	 *     }
+	 *   ],
+	 *   "ERRORARRAY":[
+	 *   ]
+	 * }
 	 * @param jsonObject the json object
 	 */
 	public Config(JSONObject jsonObject) {
+/*
+    09:12:21.769 [Test worker] WARN  synapticloop.linode.api.response.bean.Config - Found an unexpected json key of 'virt_mode', this is not mapped to a field...
+    09:12:21.770 [Test worker] WARN  synapticloop.linode.api.response.bean.Config - Found an unexpected json key of 'apiColumnFilterStruct', this is not mapped to a field...
+    09:12:21.770 [Test worker] WARN  synapticloop.linode.api.response.bean.Config - Found an unexpected json key of 'devtmpfs_automount', this is not mapped to a field...
+    09:12:21.770 [Test worker] WARN  synapticloop.linode.api.response.bean.Config - Found an unexpected json key of 'isRescue', this is not mapped to a field...
+    09:12:21.770 [Test worker] WARN  synapticloop.linode.api.response.bean.Config - Found an unexpected json key of 'RAMLimit', this is not mapped to a field...
+    09:12:21.770 [Test worker] WARN  synapticloop.linode.api.response.bean.Config - Found an unexpected json key of 'helper_distro', this is not mapped to a field...
+    09:12:21.770 [Test worker] WARN  synapticloop.linode.api.response.bean.Config - Found an unexpected json key of 'helper_network', this is not mapped to a field...
+    09:12:21.770 [Test worker] WARN  synapticloop.linode.api.response.bean.Config - Found an unexpected json key of '__validationErrorArray', this is not mapped to a field...
+ * 
+ */
 		this.helperDisableUpdateDb = (1 == readInt(jsonObject, JSON_KEY_HELPER_DISABLE_UPDATE_DB));
 		this.rootDeviceRO = readBoolean(jsonObject, JSON_KEY_ROOT_DEVICE_RO);
 		this.rootDeviceCustom = readString(jsonObject, JSON_KEY_ROOT_DEVICE_CUSTOM);
@@ -90,7 +122,7 @@ public class Config extends BaseJsonReader {
 		this.kernelID = readLong(jsonObject, JSON_KEY_KERNEL_ID);
 		this.numRootDevice = readInt(jsonObject, JSON_KEY_ROOT_DEVICE_NUM);
 		this.helperLibTls = (1 == readInt(jsonObject, JSON_KEY_HELPER_LIBTLS));
-		this.ramLimit = jsonObject.getLong(JSON_KEY_RAM_LIMIT);
+		this.ramLimit = readLong(jsonObject, JSON_KEY_RAM_LIMIT);
 
 		ResponseHelper.warnOnMissedKeys(LOGGER, jsonObject);
 	}
