@@ -20,6 +20,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import synapticloop.linode.exception.ApiException;
@@ -192,8 +193,25 @@ public abstract class BaseJsonReader {
 		return(retVal);
 	}
 
+	
+	/**
+	 * Return the value of the key from the JSONObject as a string.  If the value 
+	 * is not a string, get the object and .toString() it
+	 *  
+	 * @param jsonObject The jsonObject to lookup from
+	 * @param key the key to lookup
+	 * 
+	 * @return the value of 'key' as a string
+	 */
 	protected String readString(JSONObject jsonObject, String key) {
-		String retVal = jsonObject.getString(key);
+		String retVal = null;
+
+		try {
+			retVal = jsonObject.getString(key);
+		} catch(JSONException ex) {
+			retVal = jsonObject.get(key).toString();
+		}
+
 		jsonObject.remove(key);
 		return(retVal);
 	}
