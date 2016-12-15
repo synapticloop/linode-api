@@ -183,7 +183,7 @@
 							</li>
 						
 							<li><strong>token</strong> - string (optional) 
-									<small>Required when two-factor authentication is enabled.</small>
+									<small>Required when two-factor authentication is enabled. Emergency scratch codes are not permitted.</small>
 								
 							</li>
 						
@@ -216,7 +216,7 @@
 
 				<h3>Errors</h3>
 				
-					<p><code class='api-error'>AUTHFAIL</code>, <code class='api-error'>NEEDTOKEN</code>, <code class='api-error'>PASSWORDEXPIRED</code>, <code class='api-error'>KEYLIMIT</code></p>
+					<p><code class='api-error'>AUTHFAIL</code>, <code class='api-error'>NEEDTOKEN</code>, <code class='api-error'>PASSWORDEXPIRED</code>, <code class='api-error'>KEYLIMIT</code>, <code class='api-error'>TOTPEXPIRED</code>, <code class='api-error'>NOACCESS</code></p>
 				
 
 			</div>
