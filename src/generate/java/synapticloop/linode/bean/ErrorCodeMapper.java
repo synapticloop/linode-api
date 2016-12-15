@@ -40,6 +40,7 @@ public class ErrorCodeMapper {
 
 		ERROR_CODE_LOOKUP.put("LINODELIMITER", "ErrorCode: 40, ErrorMessage: Limit of Linodes added per hour reached");
 		ERROR_CODE_LOOKUP.put("LINODENOTEMPTY", "ErrorCode: 41, ErrorMessage: Linode must have no disks before delete");
+		ERROR_CODE_LOOKUP.put("TOTPEXPIRED", "ErrorCode: 4, Authentication failed");
 	}
 
 	public static boolean hasErrorCode(String errorCodeName) {

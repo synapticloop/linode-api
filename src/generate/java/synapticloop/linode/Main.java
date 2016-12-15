@@ -101,6 +101,8 @@ public class Main {
 			fileWriter.write(parser.render(templarContext));
 			fileWriter.close();
 
+			/*
+			// NOT DOING THIS YET AS THEIR EXAMPLES ARE NOT VALID OR MISSING
 			// now generate the test
 			parser = new Parser(Main.class.getResourceAsStream("/java-create-api-test.templar"));
 			pathname = JAVA_TEST_API_OUTPUT_DIRECTORY + api.getClassName() + "GeneratedResponseTest.java";
@@ -109,11 +111,11 @@ public class Main {
 			fileWriter = new FileWriter(outFile);
 			fileWriter.write(parser.render(templarContext));
 			fileWriter.close();
+		 */
+
 
 		}
 
-		/*
-		// NOT DOING THIS YET AS THEIR EXAMPLES ARE NOT VALID OR MISSING
 
 		templarContext = new TemplarContext();
 		templarContext.add("apis", apis);
@@ -124,8 +126,6 @@ public class Main {
 		FileWriter fileWriter = new FileWriter(outFile);
 		fileWriter.write(parser.render(templarContext));
 		fileWriter.close();
-		 */
-
 	}
 
 	private static void parseFiles(File[] files) {
