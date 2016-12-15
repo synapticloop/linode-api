@@ -15,5 +15,5 @@ before_script:
 - sudo service rsync stop || true
 - sudo service x11-common stop || true
 
-script: ./gradlew --info build
+script: ./gradlew build
 
