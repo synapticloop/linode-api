@@ -670,9 +670,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'linode-api', version: '2.3.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'linode-api', version: '2.4.1', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'linode-api', version: '2.3.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'linode-api', version: '2.4.1', ext: 'jar')
 }
 ```
 
@@ -684,9 +684,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:linode-api:2.3.0'
+	runtime 'synapticloop:linode-api:2.4.1'
 
-	compile 'synapticloop:linode-api:2.3.0'
+	compile 'synapticloop:linode-api:2.4.1'
 }
 ```
 
@@ -704,7 +704,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>linode-api</artifactId>
-	<version>2.3.0</version>
+	<version>2.4.1</version>
 	<type>jar</type>
 </dependency>
 ```
