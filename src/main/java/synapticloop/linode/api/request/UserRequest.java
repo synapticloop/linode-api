@@ -56,6 +56,8 @@ public class UserRequest extends ApiBaseRequest {
 	 *   <li>NEEDTOKEN</li>
 	 *   <li>PASSWORDEXPIRED</li>
 	 *   <li>KEYLIMIT</li>
+	 *   <li>TOTPEXPIRED</li>
+	 *   <li>NOACCESS</li>
 	 * </ul>
 	 *
 	 * @param username <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
@@ -96,10 +98,12 @@ public class UserRequest extends ApiBaseRequest {
 	 *   - NEEDTOKEN
 	 *   - PASSWORDEXPIRED
 	 *   - KEYLIMIT
+	 *   - TOTPEXPIRED
+	 *   - NOACCESS
 	 *
 	 * @param username <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
 	 * @param password <strong>(REQUIRED)</strong> (<strong>SORRY</strong> - there was no description provided in the documentation)
-	 * @param token  <em>(OPTIONAL)</em> Required when two-factor authentication is enabled.
+	 * @param token  <em>(OPTIONAL)</em> Required when two-factor authentication is enabled. Emergency scratch codes are not permitted.
 	 * @param expires  <em>(OPTIONAL)</em> Number of hours the key will remain valid, between 0 and 8760. 0 means no expiration. Defaults to 168.
 	 * @param label  <em>(OPTIONAL)</em> An optional label for this key.
 	 *
