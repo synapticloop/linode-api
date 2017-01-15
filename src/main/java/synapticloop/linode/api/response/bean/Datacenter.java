@@ -1,7 +1,7 @@
 package synapticloop.linode.api.response.bean;
 
 /*
- * Copyright (c) 2016 Synapticloop.
+ * Copyright (c) 2016-2017 Synapticloop.
  * 
  * All rights reserved.
  * 
