@@ -254,7 +254,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-7">
-								<span>Get started in the Linode Cloud today.</span>
+								<span>Get started in the Linode Cloud.</span>
 							</div>
 							<div class="col-sm-5 pad-xs">
 								<a id="btn-signup-bottom" class="btn btn-lg btn-full btn-white" href="https://manager.linode.com/session/signup">Create an Account</a>
@@ -330,7 +330,7 @@
 					<div id="footer-copyright" class="row">
 						
 							<div class="col text-center">
-								&copy; 2016 Linode, LLC
+								&copy; 2017 Linode, LLC
 							</div>
 
 							<div class="col text-center">

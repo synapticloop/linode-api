@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		
-		<title>avail.kernels&#x28;&#x29; - Linode API</title>
+		<title>Ensure High-Availability with NodeBalancers - Linode</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Our API is a programmatic interface into many of the Linode Manager&#x27;s features. The API has been expanded to include not only DNS Manager functions, but also Linode creation, control, and deletion.">
-		<meta name="keywords" content="linode api, cloud server api, vps server api">
+		<meta name="description" content="NodeBalancers are a load balancing service that intelligently distributes incoming traffic over one or more Linodes.">
+		<meta name="keywords" content="cloud load distribution, cloud load balancing, balance incoming traffic, server distribution">
 		
 		
 
@@ -45,7 +45,7 @@
 						<div class="collapse navbar-collapse navbar-top-collapse">
 							<ul class="nav navbar-nav navbar-right">
 
-								<li class=""><a href="/"><span class='nav-home'></span></a></li> <li class=""><a href="/linodes">Features</a></li> <li class=""><a href="/pricing">Pricing</a></li> <li class=""><a href="/addons">Add-ons</a></li> 
+								<li class=""><a href="/"><span class='nav-home'></span></a></li> <li class=""><a href="/linodes">Features</a></li> <li class=""><a href="/pricing">Pricing</a></li> <li class=" active"><a href="/addons">Add-ons</a></li> 
 
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <span class="caret"></span></a>
@@ -119,7 +119,7 @@
 									</button>
 								
 									<h6 class="navbar-brand">
-										<a href="/api">API Docs</a>
+										<a href="/addons">Add-ons</a>
 									</h6>
 								
 							</div>
@@ -128,28 +128,22 @@
 								<ul class="nav navbar-nav navbar-right">
 									
 												<li><a 
-												href="/api">Intro</a></li>
-											
-												<li><a 
-												href="/api/linode">Linode</a></li>
-											
-												<li><a 
-												href="/api/nodebalancer">NodeBalancer</a></li>
-											
-												<li><a 
-												href="/api/stackscript">StackScript</a></li>
-											
-												<li><a 
-												href="/api/image">Image</a></li>
-											
-												<li><a 
-												href="/api/dns">DNS</a></li>
-											
-												<li><a 
-												href="/api/account">Account</a></li>
+												href="/backups">Backups</a></li>
 											
 												<li><a class="active"
-												href="/api/utility">Utility</a></li>
+												href="/nodebalancers">NodeBalancers</a></li>
+											
+												<li><a 
+												href="/longview">Longview</a></li>
+											
+												<li><a 
+												href="/managed">Managed</a></li>
+											
+												<li><a 
+												href="/professional-services">Professional Services</a></li>
+											
+												<li><a 
+												href="/dns-manager">DNS Manager</a></li>
 											
 								</ul>
 							</div>
@@ -164,86 +158,188 @@
 		<main>
 		
 
-<section class="white doc">
+<section class="white">
 	<div class="container">
-		<div class="row">
-			<div class="col-sm-8">
-				<h1 class="h2">avail.kernels()</h1>
-				<p>List available kernels.</p>
-
-
-				
-					<h3>Parameters</h3>
-					<ul class="api-params">
-						
-							<li><strong>isXen</strong> - boolean (optional) 
-									<small>Show or hide Xen compatible kernels</small>
-								
-							</li>
-						
-							<li><strong>isKVM</strong> - boolean (optional) 
-									<small>Show or hide KVM compatible kernels</small>
-								
-							</li>
-						
-					</ul>
-				
-
-
-				<h3>Example Response</h3>
-				<pre class="highlight">
-{
-   "ERRORARRAY":[],
-   "ACTION":"avail.kernels",
-   "DATA":[
-      {
-         "LABEL":"Latest Legacy (2.6.18.8-linode22)",
-         "ISXEN":1,
-         "ISKVM":0,
-         "ISPVOPS":0,
-         "KERNELID":60
-      },
-      {
-         "LABEL":"2.6.32.16-linode28",
-         "ISXEN":1,
-         "ISKVM":0,
-         "ISPVOPS":1,
-         "KERNELID":123
-      },
-      {
-         "LABEL":"pv-grub-x86_32",
-         "ISXEN":1,
-         "ISKVM":0,
-         "ISPVOPS":0,
-         "KERNELID":92
-      }
-      {
-         "LABEL":"4.0.2-x86_64-linode56",
-         "ISKVM":1,
-         "ISXen":1,
-         "ISPVOPS":1,
-         "KERNELID":215
-      },
-   ]
-}
-</pre>
-
-
-				<h3>Errors</h3>
-				
-					<p>None.</p>
-				
-
-			</div>
-			<div class="col-sm-4">
-				<div class="sidebar">
-					<ul> <li><h5>API</h5><ul><li><a href='/api/utility/api.spec'>api.spec</a></li></ul></li> <li><h5>Avail</h5><ul><li><a href='/api/utility/avail.datacenters'>avail.datacenters</a></li><li><a href='/api/utility/avail.distributions'>avail.distributions</a></li><li><a href='/api/utility/avail.kernels'>avail.kernels</a></li><li><a href='/api/utility/avail.linodeplans'>avail.linodeplans</a></li><li><a href='/api/utility/avail.nodebalancers'>avail.nodebalancers</a></li><li><a href='/api/utility/avail.stackscripts'>avail.stackscripts</a></li></ul></li> <li><h5>Test</h5><ul><li><a href='/api/utility/test.echo'>test.echo</a></li></ul></li></ul>
-				</div>
+		<div class="row-content">
+			<div class="col-sm-10 col-sm-offset-1 text-center">
+				<h1>NodeBalancers</h1>
+				<p class="lead">Ensure your valuable applications and services are highly-available.</p>
+				<img class="centered-icon img-circle" src="/media/images/common/nodebalancer_icon.png">
 			</div>
 		</div>
 	</div>
 </section>
 
+<section class="white extra-space-bottom">
+	<div class="container">
+		
+
+		<div class="row-content">
+			<div class="col-sm-4 col-sm-offset-4 text-center">
+				
+					<a href="https://manager.linode.com/session/signup" class="btn btn-block btn-lg btn-action">Sign up</a>
+					<p class="add-ons-log-in">or <a href="https://manager.linode.com/nodebalancers">log in <span class="login-caret"></span></a></p>
+				
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="primary extra-space-bottom">
+	<div class="container">
+		<div class="row-content">
+			<div class="col-sm-3 text-center">
+				<img src="/media/images/tour/nodebalancers/nodebalancer-network.png">
+			</div>
+
+			<div class="col-sm-9 pad-xs">
+				<h2 class="h3">Point-and-click high availability</h2>
+				<p>
+					NodeBalancers are highly-available, managed, cloud based, "load balancers as a service". 
+					They intelligently route incoming request to backend Linodes to help your application cope with
+					load, and to increase your application's availability.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="primary extra-space-bottom">
+	<div class="container">
+		<div class="row-content">
+			<div class="col-sm-3 col-sm-push-9 text-center">
+				<img src="/media/images/tour/nodebalancers/nodebalancer-health.png">
+			</div>
+
+			<div class="col-sm-9 col-sm-pull-3 pad-xs">
+				<h2 class="h3">Built-in health monitoring</h2>
+				<p>
+					NodeBalancers monitor the health of your backend Linodes using both active and passive checks,
+					and will only route requests to healthy backends.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="primary extra-space-bottom">
+	<div class="container">
+		<div class="row-content">
+			<div class="col-sm-3 text-center">
+				<img src="/media/images/tour/nodebalancers/nodebalancer-smile-shadow.png">
+			</div>
+
+			<div class="col-sm-9 pad-xs">
+				<h2 class="h3">Convenience in system administration</h2>
+				<p>
+					Take backend Linodes in and out of rotation via the Manager, the API, or the CLI, 
+					and perform system maintenance or software updates without missing a beat.
+
+					
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="primary extra-space-bottom">
+	<div class="container">
+		<div class="row-content">
+			<div class="col-sm-3 col-sm-push-9 text-center">
+				<img src="/media/images/tour/nodebalancers/nodebalancer-tcp.png">
+			</div>
+
+			<div class="col-sm-9 col-sm-pull-3 pad-xs">
+				<h2 class="h3">Load distribution for any application</h2>
+				<p>
+					Adapt to any workload, from a blog to a large application cluster and beyond.
+					We are not just talking Web traffic either;
+					NodeBalancers support balancing any TCP based traffic, including SSH and MySQL.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section class="primary extra-space-bottom">
+	<div class="container">
+		<div class="row-content">
+			<div class="col-sm-12">
+				<h2 class="text-center">Additional Features</h2>
+			</div>
+		</div>
+
+		<div class="row-content shrink">
+			<div class="col-sm-6">
+				<h6>SSL Termination</h6>
+				<p>NodeBalancers can terminate SSL traffic on your behalf, and pass requesters IP just like normal HTTP mode.</p>
+			</div>
+
+			<div class="col-sm-6 pad-xs">
+				<h6>Session Persistence</h6>
+				<p>NodeBalancers can route subsequent requests to the same backend, so your application's sessions work correctly.</p>
+			</div>
+		</div>
+
+		<div class="row-content shrink">
+			<div class="col-sm-6">
+				<h6>Multi-port Balancing</h6>
+				<p>NodeBalancers support balancing traffic to multiple network ports. Several services can be load balanced with a single NodeBalancer.</p>
+			</div>
+
+			<div class="col-sm-6 pad-xs">
+				<h6>Pooled Network Transfer</h6>
+				<p>Your Linode network transfer quota is shared with your NodeBalancers, allowing you to take full advantage of the generous network transfer provided with each Linode.</p>
+			</div>
+		</div>
+		<div class="row-content shrink">
+			<div class="col-sm-6">
+				<h6>Passive and Active Health Checks</h6>
+				<p>Traffic is routed to only healthy backend Linodes. Passive health checks happen on every request, and you can configure active health checks based on your application or service.</p>
+			</div>
+
+			<div class="col-sm-6 pad-xs">
+				<h6>Static IPv4 and IPv6 Addresses</h6>
+				<p>Each NodeBalancer comes with its own set of IP addresses. Like the entire Linode network, NodeBalancers come IPv6-ready.</p>
+			</div>
+		</div>
+		<div class="row-content shrink">
+			<div class="col-sm-6">
+				<h6>Connection Throttling</h6>
+				<p>Prevent potential abuse and preserve resources on your backend Linodes by setting a client connection throttle at the NodeBalancer.</p>
+			</div>
+
+			<div class="col-sm-6 pad-xs">
+				<h6>Full API Support</h6>
+				<p>Take advantage of the powerful Linode API to configure, maintain, and monitor your NodeBalancer. Instantly add, disable, or remove backend Linodes to scale with traffic.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="neutral extra-space">
+	<div class="container">
+		<div class="row-content">
+			<div class="col-sm-10 col-sm-offset-1 text-center">
+				<h2>Be prepared for insane traffic</h2>
+				<h2 class="h3">NodeBalancers are only <strong>$20.00/mo.</strong></h2>
+				<p>and support up to 10,000 concurrent connections.</p>
+			</div>
+		</div>
+		<div class="row-content">
+			<div class="col-sm-4 col-sm-offset-4 text-center">
+				
+					<a href="https://manager.linode.com/session/signup" class="btn btn-block btn-lg btn-action">Sign up</a>
+					<p class="add-ons-log-in">or <a href="https://manager.linode.com/nodebalancers">log in <span class="login-caret"></span></a></p>
+				
+			</div>
+		</div>
+	</div>
+</section>
 
 		</main>
 		<footer>
@@ -252,7 +348,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-7">
-								<span>Get started in the Linode Cloud today.</span>
+								<span>Get started in the Linode Cloud.</span>
 							</div>
 							<div class="col-sm-5 pad-xs">
 								<a id="btn-signup-bottom" class="btn btn-lg btn-full btn-white" href="https://manager.linode.com/session/signup">Create an Account</a>
@@ -328,7 +424,7 @@
 					<div id="footer-copyright" class="row">
 						
 							<div class="col text-center">
-								&copy; 2016 Linode, LLC
+								&copy; 2017 Linode, LLC
 							</div>
 
 							<div class="col text-center">
