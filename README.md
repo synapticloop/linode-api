@@ -670,9 +670,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'linode-api', version: '2.4.1', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'linode-api', version: '2.5.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'linode-api', version: '2.4.1', ext: 'jar')
+	compile(group: 'synapticloop', name: 'linode-api', version: '2.5.0', ext: 'jar')
 }
 ```
 
@@ -684,9 +684,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:linode-api:2.4.1'
+	runtime 'synapticloop:linode-api:2.5.0'
 
-	compile 'synapticloop:linode-api:2.4.1'
+	compile 'synapticloop:linode-api:2.5.0'
 }
 ```
 
@@ -704,7 +704,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>linode-api</artifactId>
-	<version>2.4.1</version>
+	<version>2.5.0</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -724,47 +724,47 @@ You will also need to download the following dependencies:
 
 ### cobertura dependencies
 
-  - net.sourceforge.cobertura:cobertura:2.0.3: (It may be available on one of: [bintray](https://bintray.com/net.sourceforge.cobertura/maven/cobertura/2.0.3/view#files/net.sourceforge.cobertura/cobertura/2.0.3) [mvn central](http://search.maven.org/#artifactdetails|net.sourceforge.cobertura|cobertura|2.0.3|jar))
+  - `net.sourceforge.cobertura:cobertura:2.0.3`: (It may be available on one of: [bintray](https://bintray.com/net.sourceforge.cobertura/maven/cobertura/2.0.3/view#files/net.sourceforge.cobertura/cobertura/2.0.3) [mvn central](http://search.maven.org/#artifactdetails|net.sourceforge.cobertura|cobertura|2.0.3|jar))
 
 
 ### compile dependencies
 
-  - org.json:json:20160810: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160810/view#files/org.json/json/20160810) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160810|jar))
-  - org.apache.httpcomponents:httpclient:4.5.2: (It may be available on one of: [bintray](https://bintray.com/org.apache.httpcomponents/maven/httpclient/4.5.2/view#files/org.apache.httpcomponents/httpclient/4.5.2) [mvn central](http://search.maven.org/#artifactdetails|org.apache.httpcomponents|httpclient|4.5.2|jar))
-  - org.slf4j:slf4j-api:1.7.21: (It may be available on one of: [bintray](https://bintray.com/org.slf4j/maven/slf4j-api/1.7.21/view#files/org.slf4j/slf4j-api/1.7.21) [mvn central](http://search.maven.org/#artifactdetails|org.slf4j|slf4j-api|1.7.21|jar))
+  - `org.json:json:20160810`: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160810/view#files/org.json/json/20160810) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160810|jar))
+  - `org.apache.httpcomponents:httpclient:4.5.2`: (It may be available on one of: [bintray](https://bintray.com/org.apache.httpcomponents/maven/httpclient/4.5.2/view#files/org.apache.httpcomponents/httpclient/4.5.2) [mvn central](http://search.maven.org/#artifactdetails|org.apache.httpcomponents|httpclient|4.5.2|jar))
+  - `org.slf4j:slf4j-api:1.7.21`: (It may be available on one of: [bintray](https://bintray.com/org.slf4j/maven/slf4j-api/1.7.21/view#files/org.slf4j/slf4j-api/1.7.21) [mvn central](http://search.maven.org/#artifactdetails|org.slf4j|slf4j-api|1.7.21|jar))
 
 
 ### generateCompile dependencies
 
-  - synapticloop:templar:1.3.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.3.0/view#files/synapticloop/templar/1.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.3.0|jar))
-  - org.jsoup:jsoup:1.9.2: (It may be available on one of: [bintray](https://bintray.com/org.jsoup/maven/jsoup/1.9.2/view#files/org.jsoup/jsoup/1.9.2) [mvn central](http://search.maven.org/#artifactdetails|org.jsoup|jsoup|1.9.2|jar))
+  - `synapticloop:templar:1.3.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.3.0/view#files/synapticloop/templar/1.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.3.0|jar))
+  - `org.jsoup:jsoup:1.9.2`: (It may be available on one of: [bintray](https://bintray.com/org.jsoup/maven/jsoup/1.9.2/view#files/org.jsoup/jsoup/1.9.2) [mvn central](http://search.maven.org/#artifactdetails|org.jsoup|jsoup|1.9.2|jar))
 
 
 ### generateRuntime dependencies
 
-  - synapticloop:templar:1.3.0: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.3.0/view#files/synapticloop/templar/1.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.3.0|jar))
-  - org.jsoup:jsoup:1.9.2: (It may be available on one of: [bintray](https://bintray.com/org.jsoup/maven/jsoup/1.9.2/view#files/org.jsoup/jsoup/1.9.2) [mvn central](http://search.maven.org/#artifactdetails|org.jsoup|jsoup|1.9.2|jar))
+  - `synapticloop:templar:1.3.0`: (It may be available on one of: [bintray](https://bintray.com/synapticloop/maven/templar/1.3.0/view#files/synapticloop/templar/1.3.0) [mvn central](http://search.maven.org/#artifactdetails|synapticloop|templar|1.3.0|jar))
+  - `org.jsoup:jsoup:1.9.2`: (It may be available on one of: [bintray](https://bintray.com/org.jsoup/maven/jsoup/1.9.2/view#files/org.jsoup/jsoup/1.9.2) [mvn central](http://search.maven.org/#artifactdetails|org.jsoup|jsoup|1.9.2|jar))
 
 
 ### runtime dependencies
 
-  - org.json:json:20160810: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160810/view#files/org.json/json/20160810) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160810|jar))
-  - org.apache.httpcomponents:httpclient:4.5.2: (It may be available on one of: [bintray](https://bintray.com/org.apache.httpcomponents/maven/httpclient/4.5.2/view#files/org.apache.httpcomponents/httpclient/4.5.2) [mvn central](http://search.maven.org/#artifactdetails|org.apache.httpcomponents|httpclient|4.5.2|jar))
-  - org.slf4j:slf4j-api:1.7.21: (It may be available on one of: [bintray](https://bintray.com/org.slf4j/maven/slf4j-api/1.7.21/view#files/org.slf4j/slf4j-api/1.7.21) [mvn central](http://search.maven.org/#artifactdetails|org.slf4j|slf4j-api|1.7.21|jar))
+  - `org.json:json:20160810`: (It may be available on one of: [bintray](https://bintray.com/org.json/maven/json/20160810/view#files/org.json/json/20160810) [mvn central](http://search.maven.org/#artifactdetails|org.json|json|20160810|jar))
+  - `org.apache.httpcomponents:httpclient:4.5.2`: (It may be available on one of: [bintray](https://bintray.com/org.apache.httpcomponents/maven/httpclient/4.5.2/view#files/org.apache.httpcomponents/httpclient/4.5.2) [mvn central](http://search.maven.org/#artifactdetails|org.apache.httpcomponents|httpclient|4.5.2|jar))
+  - `org.slf4j:slf4j-api:1.7.21`: (It may be available on one of: [bintray](https://bintray.com/org.slf4j/maven/slf4j-api/1.7.21/view#files/org.slf4j/slf4j-api/1.7.21) [mvn central](http://search.maven.org/#artifactdetails|org.slf4j|slf4j-api|1.7.21|jar))
 
 
 ### testCompile dependencies
 
-  - junit:junit:4.12: (It may be available on one of: [bintray](https://bintray.com/junit/maven/junit/4.12/view#files/junit/junit/4.12) [mvn central](http://search.maven.org/#artifactdetails|junit|junit|4.12|jar))
-  - org.apache.logging.log4j:log4j-slf4j-impl:2.7: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-slf4j-impl/2.7/view#files/org.apache.logging.log4j/log4j-slf4j-impl/2.7) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-slf4j-impl|2.7|jar))
-  - org.apache.logging.log4j:log4j-core:2.7: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-core/2.7/view#files/org.apache.logging.log4j/log4j-core/2.7) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-core|2.7|jar))
+  - `junit:junit:4.12`: (It may be available on one of: [bintray](https://bintray.com/junit/maven/junit/4.12/view#files/junit/junit/4.12) [mvn central](http://search.maven.org/#artifactdetails|junit|junit|4.12|jar))
+  - `org.apache.logging.log4j:log4j-slf4j-impl:2.7`: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-slf4j-impl/2.7/view#files/org.apache.logging.log4j/log4j-slf4j-impl/2.7) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-slf4j-impl|2.7|jar))
+  - `org.apache.logging.log4j:log4j-core:2.7`: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-core/2.7/view#files/org.apache.logging.log4j/log4j-core/2.7) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-core|2.7|jar))
 
 
 ### testRuntime dependencies
 
-  - junit:junit:4.12: (It may be available on one of: [bintray](https://bintray.com/junit/maven/junit/4.12/view#files/junit/junit/4.12) [mvn central](http://search.maven.org/#artifactdetails|junit|junit|4.12|jar))
-  - org.apache.logging.log4j:log4j-slf4j-impl:2.7: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-slf4j-impl/2.7/view#files/org.apache.logging.log4j/log4j-slf4j-impl/2.7) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-slf4j-impl|2.7|jar))
-  - org.apache.logging.log4j:log4j-core:2.7: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-core/2.7/view#files/org.apache.logging.log4j/log4j-core/2.7) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-core|2.7|jar))
+  - `junit:junit:4.12`: (It may be available on one of: [bintray](https://bintray.com/junit/maven/junit/4.12/view#files/junit/junit/4.12) [mvn central](http://search.maven.org/#artifactdetails|junit|junit|4.12|jar))
+  - `org.apache.logging.log4j:log4j-slf4j-impl:2.7`: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-slf4j-impl/2.7/view#files/org.apache.logging.log4j/log4j-slf4j-impl/2.7) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-slf4j-impl|2.7|jar))
+  - `org.apache.logging.log4j:log4j-core:2.7`: (It may be available on one of: [bintray](https://bintray.com/org.apache.logging.log4j/maven/log4j-core/2.7/view#files/org.apache.logging.log4j/log4j-core/2.7) [mvn central](http://search.maven.org/#artifactdetails|org.apache.logging.log4j|log4j-core|2.7|jar))
 
 **NOTE:** You may need to download any dependencies of the above dependencies in turn (i.e. the transitive dependencies)
 
@@ -779,7 +779,7 @@ You will also need to download the following dependencies:
 ```
 The MIT License (MIT)
 
-Copyright (c) 2016 synapticloop
+Copyright (c) 2017 synapticloop
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
