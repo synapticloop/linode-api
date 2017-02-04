@@ -1,4 +1,12 @@
-<!doctype html><html><head><title>linode-api by synapticloop</title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]--><link rel="stylesheet" href="assets/css/main.css" /><!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]--><script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script></head><body><div id="header"><h1 id="logo"><a href="http://synapticloop.github.io/">Synapticloop</a> :: <a href="index.html">linode-api</a></h1><nav id="nav"><ul><li><a href="#">Projects</a><ul><li><a href="https://synapticloop.github.io/h2zero/"><i class="icon fa-database"></i> h2zero</a></li><li><a href="https://github.com/synapticloop/backblaze-b2-java-api/"><i class="icon fa-puzzle-piece"></i> backblaze b2 java api</a></li><li><a href="https://synapticloop.github.io/templar/"><i class="icon fa-shield"></i> templar</a></li><li><a href="https://synapticloop.github.io/templar-gen/"><i class="icon fa-gears"></i> templar gen</a></li><li><a href="https://synapticloop.github.io/linode-api/"><i class="icon fa-puzzle-piece"></i> linode java api</a></li><li><a href="https://github.com/synapticloopltd/scaleway-java-api/"><i class="icon fa-puzzle-piece"></i> scaleway java api</a></li><li><a href="https://synapticloopltd.github.io/gradle-plugin-java-create/"><i class="icon fa-gears"></i> gradle plugin creator for java</a></li></ul></li></ul></nav></div><section id="banner"><h2>Welcome to the java linode API</h2><p>The official Linode API in Java</p></section><section id="main"><div class="container"><div class="row 200%"><div class="4u 12u$(medium)"><section id="sidebar"><section><h3>linode-api</h3><p>The official Java Linode API </p><hr /><ul><li><a href="index.html">Home</a></li></ul></section><hr /><section><h3>View this project on github</h3><footer><ul class="actions"><li><a href="https://github.com/synapticloop/linode-api" class="button small alt">GitHub Project</a></li></ul></footer></section><hr /><section><h3>templar-gen</h3><p>This project is maintained by <a href="https://github.com/synapticloop">synapticloop</a> and these pages were generated with <a href="https://github.com/synapticloop/templar-gen/">synapticloop templar-gen</a></p></section></section></div><div class="8u$ 12u$(medium) important(medium)"><section id="content"><h3>Overview</h3><p>The Java linode API allows you to programmatically create and control Linode resources.  Thie API provides you access to:</p><ol><li>Linodes</li><li>NodeBalancers</li><li>StackScripts</li><li>DNS</li><li>Account</li><li>Utility</li></ol><h4>Synchronisation</h4><p>To keep the calls synchronised with the live API documents, all of the api calls are automatically generated from the <a href="https://www.linode.com/api">https://www.linode.com/api</a> pages so that they are kept in sync.</p><h4>Requirements</h4><ol><li>A linode Account - sign up/sign in for one here: <a href="https://www.linode.com/?r=42653249231ed8ab1ffd936e604749386c3f5160">www.linode.com</a></li><li>A linode API Access key - once you are logged in, go here to create one <a href="https://manager.linode.com/profile/api">https://manager.linode.com/profile/api</a></li><li>that's it!</li></ol><h3>Code</h3><h4>Single Requests</h4><pre><code>// create a  linodeApi object
+<!doctype html><html><head><title>templar gen by synapticloop</title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]--><link rel="stylesheet" href="assets/css/main.css" /><!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]--><script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script></head><body><div id="header"><h1 id="logo"><a href="http://synapticloop.github.io/">Synapticloop</a> :: <a href="index.html">templar-gen</a></h1><nav id="nav"><ul><li><a href="#">Projects</a><ul><li><a href="https://synapticloop.github.io/h2zero/"><i class="icon fa-database"></i> h2zero</a></li><li><a href="https://github.com/synapticloop/backblaze-b2-java-api/"><i class="icon fa-puzzle-piece"></i> backblaze b2 java api</a></li><li><a href="https://synapticloop.github.io/templar/"><i class="icon fa-shield"></i> templar</a></li><li><a href="https://synapticloop.github.io/templar-gen/"><i class="icon fa-gears"></i> templar gen</a></li><li><a href="https://synapticloop.github.io/linode-api/"><i class="icon fa-puzzle-piece"></i> linode java api</a></li><li><a href="https://github.com/synapticloopltd/scaleway-java-api/"><i class="icon fa-puzzle-piece"></i> scaleway java api</a></li><li><a href="https://synapticloopltd.github.io/gradle-plugin-java-create/"><i class="icon fa-gears"></i> gradle plugin creator for java</a></li></ul></li></ul></nav></div><section id="banner"><h2>Welcome to templar gen</h2><p>Generate static pages using the templar templating language</p></section><section id="main"><div class="container"><div class="row 200%"><div class="4u 12u$(medium)"><section id="sidebar"><section><h3>templar-gen</h3><p>Generate static pages using the templar templating language</p><hr /><ul><li><a href="index.html">Home</a></li></ul></section><hr /><section><h3>View this project on github</h3><footer><ul class="actions"><li><a href="https://github.com/synapticloop/templar-gen" class="button small alt">GitHub Project</a></li></ul></footer></section><hr /><section>
+	<h3>templar-gen</h3>
+	<p>
+		This project is maintained by <a href="https://github.com/synapticloop">synapticloop</a> 
+		and these pages were generated with 
+		<a href="https://github.com/synapticloop/templar-gen/">synapticloop templar-gen</a>
+	</p>
+</section>
+</section></div><div class="8u$ 12u$(medium) important(medium)"><section id="content"><h3>Overview</h3><p>The Java linode API allows you to programmatically create and control Linode resources.  Thie API provides you access to:</p><ol><li>Linodes</li><li>NodeBalancers</li><li>StackScripts</li><li>DNS</li><li>Account</li><li>Utility</li></ol><h4>Synchronisation</h4><p>To keep the calls synchronised with the live API documents, all of the api calls are automatically generated from the <a href="https://www.linode.com/api">https://www.linode.com/api</a> pages so that they are kept in sync.</p><h4>Requirements</h4><ol><li>A linode Account - sign up/sign in for one here: <a href="https://www.linode.com/?r=42653249231ed8ab1ffd936e604749386c3f5160">www.linode.com</a></li><li>A linode API Access key - once you are logged in, go here to create one <a href="https://manager.linode.com/profile/api">https://manager.linode.com/profile/api</a></li><li>that's it!</li></ol><h3>Code</h3><h4>Single Requests</h4><pre><code>// create a  linodeApi object
 LinodeApi linodeApi = new LinodeApi("&lt;YOUR_SUPER_SECRET_API_KEY&gt;");
 
 // create a single request to get the available datacentres
@@ -105,4 +113,43 @@ List&lt;LinodeResponse&gt; linodeResponses = linodeApi.execute(linodeRequests);<
   jcenter()
 }</code></pre><p>and then include the dependency:</p><pre><code>runtime(group: 'synapticloop', name: 'linode-api', version: 'latest', ext: 'jar')compile(group: 'synapticloop', name: 'linode-api', version: 'latest', ext: 'jar')</code></pre><p>or </p><pre><code>runtime 'synapticloop:linode-api:latest'
 
-compile 'synapticloop:linode-api:latest'</code></pre><h2><a id="other" class="anchor" href="#other" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other</h2><p>You may either download the files from <a href="https://bintray.com/synapticloop/maven/linode-api/">https://bintray.com/synapticloop/maven/linode-api/</a> or from <a href="https://github.com/synapticloop/linode-api/releases">https://github.com/synapticloop/linode-api/releases</a></p><p>You will also need the dependencies:</p><ul><li><code>org.json</code> <code>json</code> <code>20090211</code></li><li><code>org.apache.httpcomponents</code> <code>httpclient</code> <code>4.3.4</code></li></ul></section></div></div></div></section><div id="footer"><div class="container"><div class="row 200% uniform"></div></div><div class="copyright">&copy; Synapticloop. All rights reserved.</div></div><script src="assets/js/jquery.min.js"></script><script src="assets/js/skel.min.js"></script><script src="assets/js/jquery.dropotron.min.js"></script><script src="assets/js/jquery.onvisible.min.js"></script><script src="assets/js/jquery.poptrox.min.js"></script><script src="assets/js/util.js"></script><!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]--><script src="assets/js/main.js"></script></body></html>
+compile 'synapticloop:linode-api:latest'</code></pre><h2><a id="other" class="anchor" href="#other" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other</h2><p>You may either download the files from <a href="https://bintray.com/synapticloop/maven/linode-api/">https://bintray.com/synapticloop/maven/linode-api/</a> or from <a href="https://github.com/synapticloop/linode-api/releases">https://github.com/synapticloop/linode-api/releases</a></p><p>You will also need the dependencies:</p><ul><li><code>org.json</code> <code>json</code> <code>20090211</code></li><li><code>org.apache.httpcomponents</code> <code>httpclient</code> <code>4.3.4</code></li></ul></section></div></div></div></section><div id="footer">
+	<div class="container">
+		<div class="row 200% uniform">
+		</div>
+	</div>
+	<div class="copyright">
+		&copy; Synapticloop. All rights reserved.
+	</div>
+	<div class="copyright">
+		This page uses the 
+		<a href="https://pixelarity.com/gravity?ref=4951149295">Gravity</a> 
+		commercial template from 
+		<a href="https://pixelarity.com/?ref=4951149295">Pixelarity</a> 
+		which we thoroughly recommend.
+		</div>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/jquery.dropotron.min.js"></script>
+<script src="assets/js/jquery.onvisible.min.js"></script>
+<script src="assets/js/jquery.poptrox.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
+<script type="text/javascript">
+	var _paq = _paq || [];
+	_paq.push(['trackPageView']);
+	_paq.push(['enableLinkTracking']);
+	(function() {
+		var u="//piwik.synapticloop.com/";
+		_paq.push(['setTrackerUrl', u+'piwik.php']);
+		_paq.push(['setSiteId', 13]);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+	})();
+</script>
+<noscript><p><img src="//piwik.synapticloop.com/piwik.php?idsite=13" style="border:0;" alt="" /></p></noscript>
+<script src="javascripts/prettify.js" type="text/javascript" ></script>
+</body></html>

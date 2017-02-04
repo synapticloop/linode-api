@@ -1,0 +1,11 @@
+head-title=templar gen by synapticloop
+
+header-h1=templar-gen
+header-h2=Welcome to templar gen
+header-tagline=Generate static pages using the templar templating language
+
+sidebar-h3=templar-gen
+sidebar-tagline=Generate static pages using the templar templating language
+
+github-org=synapticloop
+github-repo=templar-gen
