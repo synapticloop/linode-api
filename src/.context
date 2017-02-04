@@ -1,11 +1,11 @@
-head-title=templar gen by synapticloop
+head-title=linode api by synapticloop
 
-header-h1=templar-gen
-header-h2=Welcome to templar gen
-header-tagline=Generate static pages using the templar templating language
+header-h1=linode-api
+header-h2=Welcome to the Java Linode API
+header-tagline=The official linode API in Java
 
-sidebar-h3=templar-gen
-sidebar-tagline=Generate static pages using the templar templating language
+sidebar-h3=linode-api
+sidebar-tagline=The official Java Linode API
 
 github-org=synapticloop
-github-repo=templar-gen
+github-repo=linode-api
