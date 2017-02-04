@@ -1,0 +1,20 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+
+	id 'synapticloop.templar-gen' version '1.2.4'
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	jcenter()
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+templarGen {
+	out = '.'
+	inDir = 'src'
+}

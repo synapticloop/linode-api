@@ -1,0 +1,226 @@
+<h3>Overview</h3>
+
+<p>
+	The Java linode API allows you to programmatically create and control Linode 
+	resources.  Thie API provides you access to:
+</p>
+
+<ol>
+	<li>Linodes</li>
+	<li>NodeBalancers</li>
+	<li>StackScripts</li>
+	<li>DNS</li>
+	<li>Account</li>
+	<li>Utility</li>
+</ol>
+
+<h4>Synchronisation</h4>
+
+<p>
+	To keep the calls synchronised with the live API documents, all of the api calls 
+	are automatically generated from the 
+	<a href="https://www.linode.com/api">https://www.linode.com/api</a> pages so 
+	that they are kept in sync.
+</p>
+
+<h4>Requirements</h4>
+
+<ol>
+	<li>A linode Account - sign up/sign in for one here: <a href="https://www.linode.com/?r=42653249231ed8ab1ffd936e604749386c3f5160">www.linode.com</a></li>
+	<li>A linode API Access key - once you are logged in, go here to create one <a href="https://manager.linode.com/profile/api">https://manager.linode.com/profile/api</a></li>
+	<li>that's it!</li>
+</ol>
+
+<h3>Code</h3>
+
+<h4>Single Requests</h4>
+
+<pre><code>
+{pre // create a  linodeApi object
+LinodeApi linodeApi = new LinodeApi("&lt;YOUR_SUPER_SECRET_API_KEY&gt;");
+
+// create a single request to get the available datacentres
+LinodeResponse linodeResponse = linodeApi.execute(Avail.datacenters());
+
+// the response should look something like this:
+
+{
+   "ERRORARRAY":[],
+   "ACTION":"avail.datacenters",
+   "DATA":[
+      {
+         "DATACENTERID":2,
+         "LOCATION":"Dallas, TX, USA",
+         "ABBR":"dallas"
+      },
+      {
+         "DATACENTERID":3,
+         "LOCATION":"Fremont, CA, USA",
+         "ABBR":"fremont"
+      },
+      {
+         "DATACENTERID":4,
+         "LOCATION":"Atlanta, GA, USA",
+         "ABBR":"atlanta"
+      },
+      {
+         "DATACENTERID":6,
+         "LOCATION":"Newark, NJ, USA",
+         "ABBR":"newark"
+      },
+      {
+         "DATACENTERID":7,
+         "LOCATION":"London, England, UK",
+         "ABBR":"london"
+      },
+      {
+         "DATACENTERID":8,
+         "LOCATION":"Tokyo, JP",
+         "ABBR":"tokyo"
+      },
+      {
+          "DATACENTERID":9,
+          "LOCATION":"Singapore, SG",
+          "ABBR":"singapore"
+      },
+      {
+          "DATACENTERID":10,
+          "LOCATION":"Frankfurt, DE",
+          "ABBR":"frankfurt"
+      }
+   ]
+}
+pre}
+</code></pre>
+
+<h4>Multiple Requests</h4>
+
+<pre><code>
+{pre // create a  linodeApi object
+LinodeApi linodeApi = new LinodeApi("&lt;YOUR_SUPER_SECRET_API_KEY&gt;");
+
+// create an list of requests to perform
+List&lt;LinodeRequest&gt; linodeRequests = new ArrayList&lt;LinodeRequest&gt;();
+
+// add in the requests
+linodeRequests.add(Avail.datacenters());
+linodeRequests.add(Avail.distributions());
+
+// perform the requests and get back the responses
+List&lt;LinodeResponse&gt; linodeResponses = linodeApi.execute(linodeRequests);
+pre}</code></pre>
+
+<h3>
+<a id="available-api-calls" class="anchor" href="#available-api-calls" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available API calls</h3>
+
+<p>have a look at <a href="https://github.com/synapticloop/linode-api/blob/master/src/main/java/synapticloop/linode/LinodeApi.java">https://github.com/synapticloop/linode-api/blob/master/src/main/java/synapticloop/linode/LinodeApi.java</a> for the list of available API classes.</p>
+
+<h3>Dependency Management</h3>
+
+<blockquote>
+<p>Note that the latest version can be found <a href="https://bintray.com/synapticloop/maven/linode-api/">https://bintray.com/synapticloop/maven/linode-api/</a></p>
+</blockquote>
+
+<p>Include the dependency</p>
+
+<h4>maven</h4>
+
+<p>this comes from the jcenter bintray, to set up your repository:</p>
+
+<pre><code>
+{pre
+&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'&gt;
+  &lt;profiles&gt;
+    &lt;profile&gt;
+      &lt;repositories&gt;
+        &lt;repository&gt;
+          &lt;snapshots&gt;
+            &lt;enabled&gt;false&lt;/enabled&gt;
+          &lt;/snapshots&gt;
+          &lt;id&gt;central&lt;/id&gt;
+          &lt;name&gt;bintray&lt;/name&gt;
+          &lt;url&gt;http://jcenter.bintray.com&lt;/url&gt;
+        &lt;/repository&gt;
+      &lt;/repositories&gt;
+      &lt;pluginRepositories&gt;
+        &lt;pluginRepository&gt;
+          &lt;snapshots&gt;
+            &lt;enabled&gt;false&lt;/enabled&gt;
+          &lt;/snapshots&gt;
+          &lt;id&gt;central&lt;/id&gt;
+          &lt;name&gt;bintray-plugins&lt;/name&gt;
+          &lt;url&gt;http://jcenter.bintray.com&lt;/url&gt;
+        &lt;/pluginRepository&gt;
+      &lt;/pluginRepositories&gt;
+      &lt;id&gt;bintray&lt;/id&gt;
+    &lt;/profile&gt;
+  &lt;/profiles&gt;
+  &lt;activeProfiles&gt;
+    &lt;activeProfile&gt;bintray&lt;/activeProfile&gt;
+  &lt;/activeProfiles&gt;
+&lt;/settings&gt;
+pre}
+</code></pre>
+
+<p>And now for the dependency</p>
+
+<pre><code>{pre
+&lt;dependency&gt;
+  &lt;groupId&gt;synapticloop&lt;/groupId&gt;
+  &lt;artifactId&gt;linode-api&lt;/artifactId&gt;
+  &lt;version&gt;latest&lt;/version&gt;
+  &lt;type&gt;jar&lt;/type&gt;
+&lt;/dependency&gt;
+pre}
+</code></pre>
+
+<h3>gradle</h3>
+
+<p>Repository</p>
+
+<pre><code>{pre
+repositories {
+    maven {
+        url  "http://jcenter.bintray.com" 
+    }
+}
+pre}
+</code></pre>
+
+<p>or just</p>
+
+<pre><code>{pre
+repositories {
+  jcenter()
+}
+pre}</code></pre>
+
+<p>and then include the dependency:</p>
+
+<pre><code>runtime(group: 'synapticloop', name: 'linode-api', version: 'latest', ext: 'jar')
+
+compile(group: 'synapticloop', name: 'linode-api', version: 'latest', ext: 'jar')
+</code></pre>
+
+<p>or </p>
+
+<pre><code>{pre
+runtime 'synapticloop:linode-api:latest'
+
+compile 'synapticloop:linode-api:latest'
+pre}
+</code></pre>
+
+<h2>
+<a id="other" class="anchor" href="#other" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other</h2>
+
+<p>You may either download the files from <a href="https://bintray.com/synapticloop/maven/linode-api/">https://bintray.com/synapticloop/maven/linode-api/</a> or from <a href="https://github.com/synapticloop/linode-api/releases">https://github.com/synapticloop/linode-api/releases</a></p>
+
+<p>You will also need the dependencies:</p>
+
+<ul>
+	<li><code>org.json</code> <code>json</code> <code>20090211</code></li>
+	<li><code>org.apache.httpcomponents</code> <code>httpclient</code> <code>4.3.4</code></li>
+</ul>
+

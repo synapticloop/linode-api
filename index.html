@@ -1,52 +1,4 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Linode-api by synapticloop</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Linode-api</h1>
-      <h2 class="project-tagline">Linode API client implemented in Java</h2>
-      <a href="https://github.com/synapticloop/linode-api" class="btn">View on GitHub</a>
-      <a href="https://github.com/synapticloop/linode-api/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/synapticloop/linode-api/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <h1>
-<a id="linode-api" class="anchor" href="#linode-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>linode api</h1>
-
-<p>Based on the idea of <a href="https://github.com/theo/linode-api">https://github.com/theo/linode-api</a> - at time of writing, last published 11 October 2009.</p>
-
-<p>The api calls are automatically generated from the <a href="https://www.linode.com/api">https://www.linode.com/api</a> pages so that they are kept in sync.</p>
-
-<h1>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
-
-<h2>
-<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
-
-<ol>
-<li>A linode Account - sign up/sign in for one here: <a href="https://www.linode.com/?r=42653249231ed8ab1ffd936e604749386c3f5160">www.linode.com</a>
-</li>
-<li>A linode API Access key - once you are logged in, go here to create one <a href="https://manager.linode.com/profile/api">https://manager.linode.com/profile/api</a>
-</li>
-<li>that's it!</li>
-</ol>
-
-<h2>
-<a id="code" class="anchor" href="#code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code</h2>
-
-<h3>
-<a id="single-requests" class="anchor" href="#single-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Single Requests</h3>
-
-<pre><code>// create a  linodeApi object
+<!doctype html><html><head><title>linode-api by synapticloop</title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]--><link rel="stylesheet" href="assets/css/main.css" /><!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]--><script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script></head><body><div id="header"><h1 id="logo"><a href="http://synapticloop.github.io/">Synapticloop</a> :: <a href="index.html">linode-api</a></h1><nav id="nav"><ul><li><a href="#">Projects</a><ul><li><a href="https://synapticloop.github.io/h2zero/"><i class="icon fa-database"></i> h2zero</a></li><li><a href="https://github.com/synapticloop/backblaze-b2-java-api/"><i class="icon fa-puzzle-piece"></i> backblaze b2 java api</a></li><li><a href="https://synapticloop.github.io/templar/"><i class="icon fa-shield"></i> templar</a></li><li><a href="https://synapticloop.github.io/templar-gen/"><i class="icon fa-gears"></i> templar gen</a></li><li><a href="https://synapticloop.github.io/linode-api/"><i class="icon fa-puzzle-piece"></i> linode java api</a></li><li><a href="https://github.com/synapticloopltd/scaleway-java-api/"><i class="icon fa-puzzle-piece"></i> scaleway java api</a></li><li><a href="https://synapticloopltd.github.io/gradle-plugin-java-create/"><i class="icon fa-gears"></i> gradle plugin creator for java</a></li></ul></li></ul></nav></div><section id="banner"><h2>Welcome to the java linode API</h2><p>The official Linode API in Java</p></section><section id="main"><div class="container"><div class="row 200%"><div class="4u 12u$(medium)"><section id="sidebar"><section><h3>linode-api</h3><p>The official Java Linode API </p><hr /><ul><li><a href="index.html">Home</a></li></ul></section><hr /><section><h3>View this project on github</h3><footer><ul class="actions"><li><a href="https://github.com/synapticloop/linode-api" class="button small alt">GitHub Project</a></li></ul></footer></section><hr /><section><h3>templar-gen</h3><p>This project is maintained by <a href="https://github.com/synapticloop">synapticloop</a> and these pages were generated with <a href="https://github.com/synapticloop/templar-gen/">synapticloop templar-gen</a></p></section></section></div><div class="8u$ 12u$(medium) important(medium)"><section id="content"><h3>Overview</h3><p>The Java linode API allows you to programmatically create and control Linode resources.  Thie API provides you access to:</p><ol><li>Linodes</li><li>NodeBalancers</li><li>StackScripts</li><li>DNS</li><li>Account</li><li>Utility</li></ol><h4>Synchronisation</h4><p>To keep the calls synchronised with the live API documents, all of the api calls are automatically generated from the <a href="https://www.linode.com/api">https://www.linode.com/api</a> pages so that they are kept in sync.</p><h4>Requirements</h4><ol><li>A linode Account - sign up/sign in for one here: <a href="https://www.linode.com/?r=42653249231ed8ab1ffd936e604749386c3f5160">www.linode.com</a></li><li>A linode API Access key - once you are logged in, go here to create one <a href="https://manager.linode.com/profile/api">https://manager.linode.com/profile/api</a></li><li>that's it!</li></ol><h3>Code</h3><h4>Single Requests</h4><pre><code>// create a  linodeApi object
 LinodeApi linodeApi = new LinodeApi("&lt;YOUR_SUPER_SECRET_API_KEY&gt;");
 
 // create a single request to get the available datacentres
@@ -99,13 +51,7 @@ LinodeResponse linodeResponse = linodeApi.execute(Avail.datacenters());
           "ABBR":"frankfurt"
       }
    ]
-}
-</code></pre>
-
-<h3>
-<a id="multiple-requests" class="anchor" href="#multiple-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multiple Requests</h3>
-
-<pre><code>// create a  linodeApi object
+}</code></pre><h4>Multiple Requests</h4><pre><code>// create a  linodeApi object
 LinodeApi linodeApi = new LinodeApi("&lt;YOUR_SUPER_SECRET_API_KEY&gt;");
 
 // create an list of requests to perform
@@ -116,29 +62,7 @@ linodeRequests.add(Avail.datacenters());
 linodeRequests.add(Avail.distributions());
 
 // perform the requests and get back the responses
-List&lt;LinodeResponse&gt; linodeResponses = linodeApi.execute(linodeRequests);
-</code></pre>
-
-<h3>
-<a id="available-api-calls" class="anchor" href="#available-api-calls" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available API calls</h3>
-
-<p>have a look at <a href="https://github.com/synapticloop/linode-api/tree/master/src/main/java/synapticloop/linode/api">https://github.com/synapticloop/linode-api/tree/master/src/main/java/synapticloop/linode/api</a> for the list of available API classes.</p>
-
-<h1>
-<a id="dependency-management" class="anchor" href="#dependency-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependency Management</h1>
-
-<blockquote>
-<p>Note that the latest version can be found <a href="https://bintray.com/synapticloop/maven/linode-api/">https://bintray.com/synapticloop/maven/linode-api/</a></p>
-</blockquote>
-
-<p>Include the dependency</p>
-
-<h2>
-<a id="maven" class="anchor" href="#maven" aria-hidden="true"><span class="octicon octicon-link"></span></a>maven</h2>
-
-<p>this comes from the jcenter bintray, to set up your repository:</p>
-
-<pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+List&lt;LinodeResponse&gt; linodeResponses = linodeApi.execute(linodeRequests);</code></pre><h3><a id="available-api-calls" class="anchor" href="#available-api-calls" aria-hidden="true"><span class="octicon octicon-link"></span></a>Available API calls</h3><p>have a look at <a href="https://github.com/synapticloop/linode-api/blob/master/src/main/java/synapticloop/linode/LinodeApi.java">https://github.com/synapticloop/linode-api/blob/master/src/main/java/synapticloop/linode/LinodeApi.java</a> for the list of available API classes.</p><h3>Dependency Management</h3><blockquote><p>Note that the latest version can be found <a href="https://bintray.com/synapticloop/maven/linode-api/">https://bintray.com/synapticloop/maven/linode-api/</a></p></blockquote><p>Include the dependency</p><h4>maven</h4><p>this comes from the jcenter bintray, to set up your repository:</p><pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 &lt;settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'&gt;
   &lt;profiles&gt;
     &lt;profile&gt;
@@ -168,78 +92,17 @@ List&lt;LinodeResponse&gt; linodeResponses = linodeApi.execute(linodeRequests);
   &lt;activeProfiles&gt;
     &lt;activeProfile&gt;bintray&lt;/activeProfile&gt;
   &lt;/activeProfiles&gt;
-&lt;/settings&gt;
-</code></pre>
-
-<p>And now for the dependency</p>
-
-<pre><code>&lt;dependency&gt;
+&lt;/settings&gt;</code></pre><p>And now for the dependency</p><pre><code>&lt;dependency&gt;
   &lt;groupId&gt;synapticloop&lt;/groupId&gt;
   &lt;artifactId&gt;linode-api&lt;/artifactId&gt;
-  &lt;version&gt;v1.0.2&lt;/version&gt;
+  &lt;version&gt;latest&lt;/version&gt;
   &lt;type&gt;jar&lt;/type&gt;
-&lt;/dependency&gt;
-</code></pre>
-
-<h2>
-<a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span class="octicon octicon-link"></span></a>gradle</h2>
-
-<p>Repository</p>
-
-<pre><code>repositories {
+&lt;/dependency&gt;</code></pre><h3>gradle</h3><p>Repository</p><pre><code>repositories {
     maven {
         url  "http://jcenter.bintray.com" 
     }
-}
-</code></pre>
-
-<p>or just</p>
-
-<pre><code>repositories {
+}</code></pre><p>or just</p><pre><code>repositories {
   jcenter()
-}
-</code></pre>
+}</code></pre><p>and then include the dependency:</p><pre><code>runtime(group: 'synapticloop', name: 'linode-api', version: 'latest', ext: 'jar')compile(group: 'synapticloop', name: 'linode-api', version: 'latest', ext: 'jar')</code></pre><p>or </p><pre><code>runtime 'synapticloop:linode-api:latest'
 
-<p>and then include the dependency:</p>
-
-<pre><code>runtime(group: 'synapticloop', name: 'linode-api', version: 'v1.0.2', ext: 'jar')
-
-compile(group: 'synapticloop', name: 'linode-api', version: 'v1.0.2', ext: 'jar')
-</code></pre>
-
-<p>or </p>
-
-<pre><code>runtime 'synapticloop:linode-api:v1.0.2'
-
-compile 'synapticloop:linode-api:v1.0.2'
-</code></pre>
-
-<h2>
-<a id="other" class="anchor" href="#other" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other</h2>
-
-<p>You may either download the files from <a href="https://bintray.com/synapticloop/maven/linode-api/">https://bintray.com/synapticloop/maven/linode-api/</a> or from <a href="https://github.com/synapticloop/linode-api/releases">https://github.com/synapticloop/linode-api/releases</a></p>
-
-<p>You will also need the dependencies:</p>
-
-<ul>
-<li>
-<code>org.json</code> <code>json</code> <code>20090211</code>
-</li>
-<li>
-<code>org.apache.httpcomponents</code> <code>httpclient</code> <code>4.3.4</code>
-</li>
-</ul>
-
-<p>which can be found by searching here: <a href="http://mvnrepository.com/">http://mvnrepository.com/</a></p>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/synapticloop/linode-api">Linode-api</a> is maintained by <a href="https://github.com/synapticloop">synapticloop</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
-</html>
+compile 'synapticloop:linode-api:latest'</code></pre><h2><a id="other" class="anchor" href="#other" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other</h2><p>You may either download the files from <a href="https://bintray.com/synapticloop/maven/linode-api/">https://bintray.com/synapticloop/maven/linode-api/</a> or from <a href="https://github.com/synapticloop/linode-api/releases">https://github.com/synapticloop/linode-api/releases</a></p><p>You will also need the dependencies:</p><ul><li><code>org.json</code> <code>json</code> <code>20090211</code></li><li><code>org.apache.httpcomponents</code> <code>httpclient</code> <code>4.3.4</code></li></ul></section></div></div></div></section><div id="footer"><div class="container"><div class="row 200% uniform"></div></div><div class="copyright">&copy; Synapticloop. All rights reserved.</div></div><script src="assets/js/jquery.min.js"></script><script src="assets/js/skel.min.js"></script><script src="assets/js/jquery.dropotron.min.js"></script><script src="assets/js/jquery.onvisible.min.js"></script><script src="assets/js/jquery.poptrox.min.js"></script><script src="assets/js/util.js"></script><!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]--><script src="assets/js/main.js"></script></body></html>

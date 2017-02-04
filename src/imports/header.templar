@@ -1,0 +1,11 @@
+<div id="header">
+	<h1 id="logo"><a href="http://synapticloop.github.io/">Synapticloop</a> :: <a href="index.html">linode-api</a></h1>
+	<nav id="nav">
+		{import ../synapticloop.github.io/src/includes/all-projects.html}
+	</nav>
+</div>
+
+<section id="banner">
+	<h2>Welcome to the java linode API</h2>
+	<p>The official Linode API in Java</p>
+</section>
