@@ -12,7 +12,7 @@
 
 		
 		<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-		<link href="/media/css/home.css?12" rel="stylesheet">
+		<link href="/media/css/home.css?13" rel="stylesheet">
 
 		<script src="/media/js/jquery.min.js?0"></script>
 		<script src="//cdn.optimizely.com/js/2220190451.js"></script>
@@ -191,10 +191,30 @@
    "ERRORARRAY":[],
    "ACTION":"avail.linodeplans",
    "DATA": [{
-     "CORES": 2,
-     "PRICE": 20.00,
+     "CORES": 1,
+     "PRICE": 5.0,
+     "RAM": 1024,
+     "XFER": 1000,
+     "PLANID": 1,
+     "LABEL": "Linode 1024",
+     "AVAIL": {
+         "3": 500,
+         "2": 500,
+         "7": 500,
+         "6": 500,
+         "4": 500,
+         "8": 500,
+         "9": 500,
+         "10": 500,
+         "11": 500
+     },
+     "DISK": 20,
+     "HOURLY": 0.0075
+   }, {
+     "CORES": 1,
+     "PRICE": 10.0,
      "RAM": 2048,
-     "XFER": 3000,
+     "XFER": 2000,
      "PLANID": 2,
      "LABEL": "Linode 2048",
      "AVAIL": {
@@ -203,27 +223,13 @@
          "7": 500,
          "6": 500,
          "4": 500,
-         "8": 500
-     },
-     "DISK": 48,
-     "HOURLY": 0.03
-   }, {
-     "CORES": 4,
-     "PRICE": 40.00,
-     "RAM": 4096,
-     "XFER": 4000,
-     "PLANID": 4,
-     "LABEL": "Linode 4096",
-     "AVAIL": {
-         "3": 500,
-         "2": 500,
-         "7": 500,
-         "6": 500,
-         "4": 500,
-         "8": 500
-     },
-     "DISK": 96,
-     "HOURLY": 0.06
+         "8": 500,
+         "9": 500,
+         "10": 500,
+         "11": 500
+         },
+     "DISK": 30,
+     "HOURLY": 0.015
    }]
 }
 </pre>

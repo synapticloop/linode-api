@@ -12,7 +12,7 @@
 
 		
 		<link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-		<link href="/media/css/home.css?12" rel="stylesheet">
+		<link href="/media/css/home.css?13" rel="stylesheet">
 
 		<script src="/media/js/jquery.min.js?0"></script>
 		<script src="//cdn.optimizely.com/js/2220190451.js"></script>
