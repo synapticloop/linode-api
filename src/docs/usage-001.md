@@ -1,5 +1,11 @@
+#  New plans, including
 
-This supercedes version 1 - which is now considered deprecated.
+    **WARNING** Plan numbers have change, so be careful with 
+    old versions as they will create a different linode than 
+    the version 3
+
+
+This supercedes version 1 and 2 - which are now considered deprecated.
 
 Major differences:
 

@@ -1,27 +1,28 @@
 <a name="documentr_top"></a>[![Build Status](https://travis-ci.org/synapticloop/linode-api.svg?branch=master)](https://travis-ci.org/synapticloop/linode-api) [![Download](https://api.bintray.com/packages/synapticloop/maven/linode-api/images/download.svg)](https://bintray.com/synapticloop/maven/linode-api/_latestVersion) [![GitHub Release](https://img.shields.io/github/release/synapticloop/linode-api.svg)](https://github.com/synapticloop/linode-api/releases) 
 
  - [linode-api](#documentr_heading_0)
- - [Usage](#documentr_heading_1)
-   - [Requirements](#documentr_heading_2)
-   - [Creating a Linode](#documentr_heading_3)
- - [Creating A Node Balancer](#documentr_heading_7)
-   - [Calling the API (deprecated)](#documentr_heading_8)
- - [Building the Package](#documentr_heading_12)
-   - [*NIX/Mac OS X](#documentr_heading_13)
-   - [Windows](#documentr_heading_14)
- - [Running the Tests](#documentr_heading_15)
-   - [*NIX/Mac OS X](#documentr_heading_16)
-   - [Windows](#documentr_heading_17)
- - [Logging - slf4j](#documentr_heading_18)
-   - [Log4j](#documentr_heading_19)
- - [Artefact Publishing - Github](#documentr_heading_24)
- - [Artefact Publishing - Bintray](#documentr_heading_25)
-   - [maven setup](#documentr_heading_26)
-   - [gradle setup](#documentr_heading_27)
-   - [Dependencies - Gradle](#documentr_heading_28)
-   - [Dependencies - Maven](#documentr_heading_29)
-   - [Dependencies - Downloads](#documentr_heading_30)
- - [License](#documentr_heading_38)
+ - [New plans, including](#documentr_heading_1)
+ - [Usage](#documentr_heading_2)
+   - [Requirements](#documentr_heading_3)
+   - [Creating a Linode](#documentr_heading_4)
+ - [Creating A Node Balancer](#documentr_heading_8)
+   - [Calling the API (deprecated)](#documentr_heading_9)
+ - [Building the Package](#documentr_heading_13)
+   - [*NIX/Mac OS X](#documentr_heading_14)
+   - [Windows](#documentr_heading_15)
+ - [Running the Tests](#documentr_heading_16)
+   - [*NIX/Mac OS X](#documentr_heading_17)
+   - [Windows](#documentr_heading_18)
+ - [Logging - slf4j](#documentr_heading_19)
+   - [Log4j](#documentr_heading_20)
+ - [Artefact Publishing - Github](#documentr_heading_25)
+ - [Artefact Publishing - Bintray](#documentr_heading_26)
+   - [maven setup](#documentr_heading_27)
+   - [gradle setup](#documentr_heading_28)
+   - [Dependencies - Gradle](#documentr_heading_29)
+   - [Dependencies - Maven](#documentr_heading_30)
+   - [Dependencies - Downloads](#documentr_heading_31)
+ - [License](#documentr_heading_39)
 
 
 
@@ -43,7 +44,17 @@
 
 
 
-This supercedes version 1 - which is now considered deprecated.
+
+<a name="documentr_heading_1"></a>
+
+#  New plans, including <sup><sup>[top](#documentr_top)</sup></sup>
+
+    **WARNING** Plan numbers have change, so be careful with 
+    old versions as they will create a different linode than 
+    the version 3
+
+
+This supercedes version 1 and 2 - which are now considered deprecated.
 
 Major differences:
 
@@ -59,13 +70,13 @@ Major differences:
 
 
 
-<a name="documentr_heading_1"></a>
+<a name="documentr_heading_2"></a>
 
 # Usage <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 
-<a name="documentr_heading_2"></a>
+<a name="documentr_heading_3"></a>
 
 ## Requirements <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -75,7 +86,7 @@ Major differences:
 
 
 
-<a name="documentr_heading_3"></a>
+<a name="documentr_heading_4"></a>
 
 ## Creating a Linode <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -250,7 +261,7 @@ public class LinodeCreateMain {
 
 
 
-<a name="documentr_heading_7"></a>
+<a name="documentr_heading_8"></a>
 
 # Creating A Node Balancer <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -315,7 +326,7 @@ public class LinodeCreateNodebalancerMain {
 
 
 
-<a name="documentr_heading_8"></a>
+<a name="documentr_heading_9"></a>
 
 ## Calling the API (deprecated) <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -399,13 +410,13 @@ have a look at [https://github.com/synapticloop/linode-api/tree/master/src/main/
 
 
 
-<a name="documentr_heading_12"></a>
+<a name="documentr_heading_13"></a>
 
 # Building the Package <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 
-<a name="documentr_heading_13"></a>
+<a name="documentr_heading_14"></a>
 
 ## *NIX/Mac OS X <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -416,7 +427,7 @@ From the root of the project, simply run
 
 
 
-<a name="documentr_heading_14"></a>
+<a name="documentr_heading_15"></a>
 
 ## Windows <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -429,13 +440,13 @@ Note that this may also run tests (if applicable see the Testing notes)
 
 
 
-<a name="documentr_heading_15"></a>
+<a name="documentr_heading_16"></a>
 
 # Running the Tests <sup><sup>[top](#documentr_top)</sup></sup>
 
 
 
-<a name="documentr_heading_16"></a>
+<a name="documentr_heading_17"></a>
 
 ## *NIX/Mac OS X <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -449,7 +460,7 @@ if you do not have gradle installed, try:
 
 
 
-<a name="documentr_heading_17"></a>
+<a name="documentr_heading_18"></a>
 
 ## Windows <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -469,7 +480,7 @@ The `--info` switch will also output logging for the tests
 
 
 
-<a name="documentr_heading_18"></a>
+<a name="documentr_heading_19"></a>
 
 # Logging - slf4j <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -477,7 +488,7 @@ slf4j is the logging framework used for this project.  In order to set up a logg
 
 
 
-<a name="documentr_heading_19"></a>
+<a name="documentr_heading_20"></a>
 
 ## Log4j <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -562,7 +573,7 @@ A sample `log4j2.xml` is below:
 
 
 
-<a name="documentr_heading_24"></a>
+<a name="documentr_heading_25"></a>
 
 # Artefact Publishing - Github <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -574,7 +585,7 @@ As such, this is not a repository, but a location to download files from.
 
 
 
-<a name="documentr_heading_25"></a>
+<a name="documentr_heading_26"></a>
 
 # Artefact Publishing - Bintray <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -584,7 +595,7 @@ This project publishes artefacts to [bintray](https://bintray.com/)
 
 
 
-<a name="documentr_heading_26"></a>
+<a name="documentr_heading_27"></a>
 
 ## maven setup <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -630,7 +641,7 @@ this comes from the jcenter bintray, to set up your repository:
 
 
 
-<a name="documentr_heading_27"></a>
+<a name="documentr_heading_28"></a>
 
 ## gradle setup <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -662,7 +673,7 @@ repositories {
 
 
 
-<a name="documentr_heading_28"></a>
+<a name="documentr_heading_29"></a>
 
 ## Dependencies - Gradle <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -670,9 +681,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'linode-api', version: '2.6.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'linode-api', version: '3.0.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'linode-api', version: '2.6.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'linode-api', version: '3.0.0', ext: 'jar')
 }
 ```
 
@@ -684,9 +695,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:linode-api:2.6.0'
+	runtime 'synapticloop:linode-api:3.0.0'
 
-	compile 'synapticloop:linode-api:2.6.0'
+	compile 'synapticloop:linode-api:3.0.0'
 }
 ```
 
@@ -694,7 +705,7 @@ dependencies {
 
 
 
-<a name="documentr_heading_29"></a>
+<a name="documentr_heading_30"></a>
 
 ## Dependencies - Maven <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -704,7 +715,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>linode-api</artifactId>
-	<version>2.6.0</version>
+	<version>3.0.0</version>
 	<type>jar</type>
 </dependency>
 ```
@@ -713,7 +724,7 @@ dependencies {
 
 
 
-<a name="documentr_heading_30"></a>
+<a name="documentr_heading_31"></a>
 
 ## Dependencies - Downloads <sup><sup>[top](#documentr_top)</sup></sup>
 
@@ -770,7 +781,7 @@ You will also need to download the following dependencies:
 
 
 
-<a name="documentr_heading_38"></a>
+<a name="documentr_heading_39"></a>
 
 # License <sup><sup>[top](#documentr_top)</sup></sup>
 
