@@ -18,7 +18,7 @@ public class LinodeApiFacadeTest {
 		Long linodeId = linodeApiFacade.createLinode(DatacenterSlug.DALLAS_TX_USA, 
 				PlanSlug.LINODE_2048,
 				DistributionSlug.UBUNTU_16_04_LTS,
-				KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_9_7_X86_64_LINODE80_,
 				"LINODE-API-HIGH-LEVEL", 
 				"^&*678yuiYUI");
 		linodeApiFacade.destroyLinode(linodeId);
@@ -29,13 +29,13 @@ public class LinodeApiFacadeTest {
 		Long linodeIdOne = linodeApiFacade.createLinode(DatacenterSlug.DALLAS_TX_USA, 
 				PlanSlug.LINODE_2048,
 				DistributionSlug.UBUNTU_16_04_LTS,
-				KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_9_7_X86_64_LINODE80_,
 				"LINODE-API-HIGH-LEVEL-1", 
 				"^&*678yuiYUI");
 		Long linodeIdTwo = linodeApiFacade.createLinode(DatacenterSlug.DALLAS_TX_USA, 
 				PlanSlug.LINODE_2048,
 				DistributionSlug.UBUNTU_16_04_LTS,
-				KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
+				KernelSlug.KERNEL_LATEST_64_BIT_4_9_7_X86_64_LINODE80_,
 				"LINODE-API-HIGH-LEVEL-2", 
 				"^&*678yuiYUI");
 
