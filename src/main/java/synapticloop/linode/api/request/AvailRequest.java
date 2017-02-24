@@ -323,10 +323,30 @@ public class AvailRequest extends ApiBaseRequest {
 	 *    "ERRORARRAY":[],
 	 *    "ACTION":"avail.linodeplans",
 	 *    "DATA": [{
-	 *      "CORES": 2,
-	 *      "PRICE": 20.00,
+	 *      "CORES": 1,
+	 *      "PRICE": 5.0,
+	 *      "RAM": 1024,
+	 *      "XFER": 1000,
+	 *      "PLANID": 1,
+	 *      "LABEL": "Linode 1024",
+	 *      "AVAIL": {
+	 *          "3": 500,
+	 *          "2": 500,
+	 *          "7": 500,
+	 *          "6": 500,
+	 *          "4": 500,
+	 *          "8": 500,
+	 *          "9": 500,
+	 *          "10": 500,
+	 *          "11": 500
+	 *      },
+	 *      "DISK": 20,
+	 *      "HOURLY": 0.0075
+	 *    }, {
+	 *      "CORES": 1,
+	 *      "PRICE": 10.0,
 	 *      "RAM": 2048,
-	 *      "XFER": 3000,
+	 *      "XFER": 2000,
 	 *      "PLANID": 2,
 	 *      "LABEL": "Linode 2048",
 	 *      "AVAIL": {
@@ -335,27 +355,13 @@ public class AvailRequest extends ApiBaseRequest {
 	 *          "7": 500,
 	 *          "6": 500,
 	 *          "4": 500,
-	 *          "8": 500
-	 *      },
-	 *      "DISK": 48,
-	 *      "HOURLY": 0.03
-	 *    }, {
-	 *      "CORES": 4,
-	 *      "PRICE": 40.00,
-	 *      "RAM": 4096,
-	 *      "XFER": 4000,
-	 *      "PLANID": 4,
-	 *      "LABEL": "Linode 4096",
-	 *      "AVAIL": {
-	 *          "3": 500,
-	 *          "2": 500,
-	 *          "7": 500,
-	 *          "6": 500,
-	 *          "4": 500,
-	 *          "8": 500
-	 *      },
-	 *      "DISK": 96,
-	 *      "HOURLY": 0.06
+	 *          "8": 500,
+	 *          "9": 500,
+	 *          "10": 500,
+	 *          "11": 500
+	 *          },
+	 *      "DISK": 30,
+	 *      "HOURLY": 0.015
 	 *    }]
 	 * }
 	 * </pre>
@@ -381,10 +387,30 @@ public class AvailRequest extends ApiBaseRequest {
 	 *    "ERRORARRAY":[],
 	 *    "ACTION":"avail.linodeplans",
 	 *    "DATA": [{
-	 *      "CORES": 2,
-	 *      "PRICE": 20.00,
+	 *      "CORES": 1,
+	 *      "PRICE": 5.0,
+	 *      "RAM": 1024,
+	 *      "XFER": 1000,
+	 *      "PLANID": 1,
+	 *      "LABEL": "Linode 1024",
+	 *      "AVAIL": {
+	 *          "3": 500,
+	 *          "2": 500,
+	 *          "7": 500,
+	 *          "6": 500,
+	 *          "4": 500,
+	 *          "8": 500,
+	 *          "9": 500,
+	 *          "10": 500,
+	 *          "11": 500
+	 *      },
+	 *      "DISK": 20,
+	 *      "HOURLY": 0.0075
+	 *    }, {
+	 *      "CORES": 1,
+	 *      "PRICE": 10.0,
 	 *      "RAM": 2048,
-	 *      "XFER": 3000,
+	 *      "XFER": 2000,
 	 *      "PLANID": 2,
 	 *      "LABEL": "Linode 2048",
 	 *      "AVAIL": {
@@ -393,27 +419,13 @@ public class AvailRequest extends ApiBaseRequest {
 	 *          "7": 500,
 	 *          "6": 500,
 	 *          "4": 500,
-	 *          "8": 500
-	 *      },
-	 *      "DISK": 48,
-	 *      "HOURLY": 0.03
-	 *    }, {
-	 *      "CORES": 4,
-	 *      "PRICE": 40.00,
-	 *      "RAM": 4096,
-	 *      "XFER": 4000,
-	 *      "PLANID": 4,
-	 *      "LABEL": "Linode 4096",
-	 *      "AVAIL": {
-	 *          "3": 500,
-	 *          "2": 500,
-	 *          "7": 500,
-	 *          "6": 500,
-	 *          "4": 500,
-	 *          "8": 500
-	 *      },
-	 *      "DISK": 96,
-	 *      "HOURLY": 0.06
+	 *          "8": 500,
+	 *          "9": 500,
+	 *          "10": 500,
+	 *          "11": 500
+	 *          },
+	 *      "DISK": 30,
+	 *      "HOURLY": 0.015
 	 *    }]
 	 * }
 	 * </pre>
