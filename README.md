@@ -292,14 +292,14 @@ public class LinodeCreateNodebalancerMain {
 			Long linodeIdOne = linodeApiFacade.createLinode(DatacenterSlug.DALLAS_TX_USA, 
 					PlanSlug.LINODE_2048,
 					DistributionSlug.UBUNTU_16_04_LTS,
-					KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
+					KernelSlug.KERNEL_LATEST_64_BIT_4_9_7_X86_64_LINODE80_,
 					"NODE-1", 
 					"^&*678yuiYUI");
 
 			Long linodeIdTwo = linodeApiFacade.createLinode(DatacenterSlug.DALLAS_TX_USA, 
 					PlanSlug.LINODE_2048,
 					DistributionSlug.UBUNTU_16_04_LTS,
-					KernelSlug.KERNEL_LATEST_64_BIT_4_8_6_X86_64_LINODE78_,
+					KernelSlug.KERNEL_LATEST_64_BIT_4_9_7_X86_64_LINODE80_,
 					"NODE-2", 
 					"^&*678yuiYUI");
 
@@ -681,9 +681,9 @@ repositories {
 
 ```
 dependencies {
-	runtime(group: 'synapticloop', name: 'linode-api', version: '3.0.0', ext: 'jar')
+	runtime(group: 'synapticloop', name: 'linode-api', version: '3.1.0', ext: 'jar')
 
-	compile(group: 'synapticloop', name: 'linode-api', version: '3.0.0', ext: 'jar')
+	compile(group: 'synapticloop', name: 'linode-api', version: '3.1.0', ext: 'jar')
 }
 ```
 
@@ -695,9 +695,9 @@ or, more simply for versions of gradle greater than 2.1
 
 ```
 dependencies {
-	runtime 'synapticloop:linode-api:3.0.0'
+	runtime 'synapticloop:linode-api:3.1.0'
 
-	compile 'synapticloop:linode-api:3.0.0'
+	compile 'synapticloop:linode-api:3.1.0'
 }
 ```
 
@@ -715,7 +715,7 @@ dependencies {
 <dependency>
 	<groupId>synapticloop</groupId>
 	<artifactId>linode-api</artifactId>
-	<version>3.0.0</version>
+	<version>3.1.0</version>
 	<type>jar</type>
 </dependency>
 ```

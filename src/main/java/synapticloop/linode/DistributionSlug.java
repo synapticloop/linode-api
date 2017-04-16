@@ -6,7 +6,7 @@ package synapticloop.linode;
 
 
 public enum DistributionSlug {
-	ARCH_2017_01_01 (148l),
+	ARCH_2017_04_01 (148l),
 	CENTOS_7 (129l),
 	DEBIAN_8 (140l),
 	FEDORA_25 (155l),
@@ -15,8 +15,8 @@ public enum DistributionSlug {
 	SLACKWARE_14_2 (151l),
 	UBUNTU_16_04_LTS (146l),
 	UBUNTU_16_10 (152l),
-	CENTOS_5_6 (60l),
-	CENTOS_6_5 (127l),
+	UBUNTU_17_04 (156l),
+	CENTOS_6_8 (127l),
 	DEBIAN_7 (130l),
 	FEDORA_24 (149l),
 	OPENSUSE_LEAP_42_1 (150l),
